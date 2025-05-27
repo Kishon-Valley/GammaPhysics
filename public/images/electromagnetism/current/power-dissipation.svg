@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Resistor and thermal effects -->
+    <g id="resistor-thermal">
+        <!-- Resistor body -->
+        <rect x="300" y="150" width="200" height="80" fill="#E0E0E0" stroke="#666" stroke-width="2"/>
+        
+        <!-- Heat waves -->
+        <g id="heat-waves" stroke="#FF5722" stroke-width="2" fill="none">
+            <!-- Top waves -->
+            <path d="M 320,140 Q 330,130 340,140">
+                <animate attributeName="d" 
+                         values="M 320,140 Q 330,130 340,140;
+                                 M 320,135 Q 330,125 340,135;
+                                 M 320,140 Q 330,130 340,140" 
+                         dur="2s" 
+                         repeatCount="indefinite"/>
+            </path>
+            <path d="M 380,140 Q 390,130 400,140">
+                <animate attributeName="d" 
+                         values="M 380,140 Q 390,130 400,140;
+                                 M 380,135 Q 390,125 400,135;
+                                 M 380,140 Q 390,130 400,140" 
+                         dur="2s" 
+                         repeatCount="indefinite"/>
+            </path>
+            <path d="M 440,140 Q 450,130 460,140">
+                <animate attributeName="d" 
+                         values="M 440,140 Q 450,130 460,140;
+                                 M 440,135 Q 450,125 460,135;
+                                 M 440,140 Q 450,130 460,140" 
+                         dur="2s" 
+                         repeatCount="indefinite"/>
+            </path>
+            
+            <!-- Bottom waves -->
+            <path d="M 320,240 Q 330,250 340,240">
+                <animate attributeName="d" 
+                         values="M 320,240 Q 330,250 340,240;
+                                 M 320,245 Q 330,255 340,245;
+                                 M 320,240 Q 330,250 340,240" 
+                         dur="2s" 
+                         repeatCount="indefinite"/>
+            </path>
+            <path d="M 380,240 Q 390,250 400,240">
+                <animate attributeName="d" 
+                         values="M 380,240 Q 390,250 400,240;
+                                 M 380,245 Q 390,255 400,245;
+                                 M 380,240 Q 390,250 400,240" 
+                         dur="2s" 
+                         repeatCount="indefinite"/>
+            </path>
+            <path d="M 440,240 Q 450,250 460,240">
+                <animate attributeName="d" 
+                         values="M 440,240 Q 450,250 460,240;
+                                 M 440,245 Q 450,255 460,245;
+                                 M 440,240 Q 450,250 460,240" 
+                         dur="2s" 
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+        
+        <!-- Power equations -->
+        <g id="equations" font-family="Arial" text-anchor="middle">
+            <text x="400" y="190" font-size="16">P = VI</text>
+            <text x="400" y="210" font-size="16">P = I²R</text>
+        </g>
+    </g>
+    
+    <!-- Power graph -->
+    <g id="power-graph" transform="translate(50,50)">
+        <!-- Axes -->
+        <line x1="50" y1="250" x2="250" y2="250" stroke="#000" stroke-width="2"/>
+        <line x1="50" y1="250" x2="50" y2="50" stroke="#000" stroke-width="2"/>
+        
+        <!-- Power curve -->
+        <path d="M 50,250 Q 150,50 250,250" 
+              fill="none" stroke="#2196F3" stroke-width="2"/>
+        
+        <!-- Labels -->
+        <text x="150" y="280" font-size="14" text-anchor="middle">Current</text>
+        <text x="30" y="150" font-size="14" transform="rotate(-90,30,150)">Power</text>
+    </g>
+    
+    <!-- Title -->
+    <text x="400" y="30" font-size="20" text-anchor="middle" font-family="Arial">
+        Power Dissipation in a Resistor
+    </text>
+    
+    <!-- Labels -->
+    <g id="labels" font-family="Arial" text-anchor="middle">
+        <text x="150" y="350" font-size="14">Power vs Current</text>
+        <text x="600" y="350" font-size="14">Thermal Dissipation</text>
+    </g>
+</svg>

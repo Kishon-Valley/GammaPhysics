@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="620" viewBox="0 0 800 620">
+  <!-- Definitions for markers and animations -->
+  <defs>
+    <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+      <path d="M0,0 L0,4 L6,2 Z" fill="#FF5733" />
+    </marker>
+    
+    <marker id="lightArrow" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+      <path d="M0,0 L0,4 L6,2 Z" fill="#FFC300" />
+    </marker>
+    
+    <style type="text/css">
+      @keyframes electronFlow {
+        0% { stroke-dashoffset: 30; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes lightEmission {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 1; }
+      }
+      
+      @keyframes lightPulse {
+        0% { r: 5; opacity: 1; }
+        100% { r: 30; opacity: 0; }
+      }
+      
+      @keyframes lightBeam {
+        0% { stroke-dashoffset: 30; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes solarParticleMove {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(30px); }
+      }
+      
+      .electron-flow {
+        stroke-dasharray: 5, 3;
+        animation: electronFlow 2s linear infinite;
+      }
+      
+      .light-beam {
+        stroke-dasharray: 5, 3;
+        animation: lightBeam 2s linear infinite;
+      }
+      
+      .light-emission {
+        animation: lightEmission 2s infinite;
+      }
+      
+      .light-pulse {
+        animation: lightPulse 3s infinite;
+      }
+      
+      .solar-particle {
+        animation: solarParticleMove 4s ease-in-out infinite;
+      }
+      
+      text {
+        font-family: Arial, sans-serif;
+      }
+    </style>
+    
+    <!-- Radial gradient for light emission -->
+    <radialGradient id="lightGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#FFEB3B; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFEB3B; stop-opacity:0" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="620" fill="white"/>
+  <text x="400" y="40" font-size="24" font-weight="bold" text-anchor="middle">Optoelectronic Devices</text>
+  
+  <!-- LED (Light Emitting Diode) -->
+  <g transform="translate(200, 180)">
+    <text x="0" y="-50" font-size="20" font-weight="bold" text-anchor="middle">Light Emitting Diode (LED)</text>
+    
+    <!-- LED Structure -->
+    <rect x="-80" y="0" width="80" height="120" fill="#8ECAE6" stroke="#2A9D8F" stroke-width="2"/>
+    <rect x="0" y="0" width="80" height="120" fill="#FFB703" stroke="#FB8500" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="-40" y="60" font-size="16" font-weight="bold" text-anchor="middle">P</text>
+    <text x="40" y="60" font-size="16" font-weight="bold" text-anchor="middle">N</text>
+    
+    <!-- Junction -->
+    <line x1="0" y1="0" x2="0" y2="120" stroke="#333" stroke-width="2" stroke-dasharray="5,2"/>
+    
+    <!-- Contacts -->
+    <rect x="-80" y="-15" width="80" height="15" fill="#C0C0C0" stroke="#333" stroke-width="2"/>
+    <rect x="0" y="-15" width="80" height="15" fill="#C0C0C0" stroke="#333" stroke-width="2"/>
+    
+    <!-- Battery connection -->
+    <line x1="-40" y1="-15" x2="-40" y2="-40" stroke="black" stroke-width="2"/>
+    <text x="-40" y="-25" font-size="14" text-anchor="middle">+</text>
+    <line x1="40" y1="-15" x2="40" y2="-40" stroke="black" stroke-width="2"/>
+    <text x="40" y="-25" font-size="14" text-anchor="middle">-</text>
+    
+    <!-- Electron flow animation -->
+    <path class="electron-flow" d="M40,-30 C40,-10 40,40 40,60" stroke="#0077B6" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <path class="electron-flow" d="M-40,60 C-40,30 -40,0 -40,-30" stroke="#FB8500" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Light emission -->
+    <circle cx="0" cy="60" r="10" fill="yellow" class="light-emission" opacity="0.6"/>
+    <text x="0" cy="60" font-size="8" text-anchor="middle">e-h+</text>
+    
+    <!-- Light rays animation -->
+    <g class="light-beam">
+      <line x1="0" y1="60" x2="0" y2="150" stroke="#FFC300" stroke-width="2" marker-end="url(#lightArrow)"/>
+      <line x1="0" y1="60" x2="30" y2="130" stroke="#FFC300" stroke-width="2" marker-end="url(#lightArrow)"/>
+      <line x1="0" y1="60" x2="-30" y2="130" stroke="#FFC300" stroke-width="2" marker-end="url(#lightArrow)"/>
+    </g>
+    
+    <!-- Description -->
+    <text x="0" y="180" font-size="14" text-anchor="middle">Converts electrical energy to light</text>
+    <text x="0" y="200" font-size="14" text-anchor="middle">through electron-hole recombination</text>
+  </g>
+  
+  <!-- Photodiode -->
+  <g transform="translate(600, 180)">
+    <text x="0" y="-50" font-size="20" font-weight="bold" text-anchor="middle">Photodiode</text>
+    
+    <!-- Photodiode Structure -->
+    <rect x="-80" y="0" width="80" height="120" fill="#8ECAE6" stroke="#2A9D8F" stroke-width="2"/>
+    <rect x="0" y="0" width="80" height="120" fill="#FFB703" stroke="#FB8500" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="-40" y="60" font-size="16" font-weight="bold" text-anchor="middle">P</text>
+    <text x="40" y="60" font-size="16" font-weight="bold" text-anchor="middle">N</text>
+    
+    <!-- Junction -->
+    <line x1="0" y1="0" x2="0" y2="120" stroke="#333" stroke-width="2" stroke-dasharray="5,2"/>
+    
+    <!-- Contacts -->
+    <rect x="-80" y="-15" width="80" height="15" fill="#C0C0C0" stroke="#333" stroke-width="2"/>
+    <rect x="0" y="-15" width="80" height="15" fill="#C0C0C0" stroke="#333" stroke-width="2"/>
+    
+    <!-- Reverse bias connection -->
+    <line x1="-40" y1="-15" x2="-40" y2="-40" stroke="black" stroke-width="2"/>
+    <text x="-40" y="-25" font-size="14" text-anchor="middle">-</text>
+    <line x1="40" y1="-15" x2="40" y2="-40" stroke="black" stroke-width="2"/>
+    <text x="40" y="-25" font-size="14" text-anchor="middle">+</text>
+    
+    <!-- Light incident on device -->
+    <g transform="translate(0, -80)">
+      <circle cx="0" cy="0" r="15" fill="url(#lightGradient)" class="light-pulse"/>
+      <circle cx="0" cy="0" r="5" fill="#FFEB3B"/>
+    </g>
+    
+    <g class="light-beam">
+      <line x1="0" y1="-65" x2="0" y2="20" stroke="#FFC300" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#lightArrow)"/>
+      <line x1="0" y1="-65" x2="-20" y2="0" stroke="#FFC300" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#lightArrow)"/>
+      <line x1="0" y1="-65" x2="20" y2="0" stroke="#FFC300" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#lightArrow)"/>
+    </g>
+    
+    <!-- Photogenerated carriers -->
+    <circle cx="10" cy="40" r="5" fill="#0077B6" class="electron-flow" opacity="0.8"/>
+    <text x="10" y="40" font-size="8" text-anchor="middle" fill="white">-</text>
+    
+    <circle cx="-10" cy="40" r="5" fill="white" stroke="#FB8500" stroke-width="1" class="electron-flow" opacity="0.8"/>
+    <text x="-10" y="40" font-size="8" text-anchor="middle">+</text>
+    
+    <!-- Generated current -->
+    <path class="electron-flow" d="M-40,60 C-40,30 -40,0 -40,-30" stroke="#0077B6" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <path class="electron-flow" d="M40,-30 C40,-10 40,40 40,60" stroke="#0077B6" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Description -->
+    <text x="0" y="180" font-size="14" text-anchor="middle">Converts light to electrical current</text>
+    <text x="0" y="200" font-size="14" text-anchor="middle">through photon absorption</text>
+  </g>
+  
+  <!-- Solar Cell -->
+  <g transform="translate(400, 420)">
+    <text x="0" y="-30" font-size="20" font-weight="bold" text-anchor="middle">Solar Cell</text>
+    
+    <!-- Solar Cell Structure -->
+    <rect x="-120" y="0" width="240" height="20" fill="#0077B6" stroke="#333" stroke-width="2"/>
+    <rect x="-120" y="20" width="240" height="80" fill="#90E0EF" stroke="#333" stroke-width="2"/>
+    <rect x="-120" y="100" width="240" height="40" fill="#FFB703" stroke="#333" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="-90" y="15" font-size="12" text-anchor="middle" fill="white">Anti-reflection Coating</text>
+    <text x="0" y="60" font-size="14" font-weight="bold" text-anchor="middle">P-type</text>
+    <text x="0" y="120" font-size="14" font-weight="bold" text-anchor="middle">N-type</text>
+    
+    <!-- Contacts -->
+    <rect x="-120" y="-10" width="30" height="10" fill="#C0C0C0" stroke="#333" stroke-width="2"/>
+    <rect x="90" y="-10" width="30" height="10" fill="#C0C0C0" stroke="#333" stroke-width="2"/>
+    <rect x="-120" y="140" width="240" height="10" fill="#C0C0C0" stroke="#333" stroke-width="2"/>
+    
+    <!-- Junction -->
+    <line x1="-120" y1="100" x2="120" y2="100" stroke="#333" stroke-width="1" stroke-dasharray="5,2"/>
+    
+    <!-- Sunlight -->
+    <g transform="translate(-70, -70)">
+      <circle cx="0" cy="0" r="20" fill="#FFEB3B" stroke="#FB8500" stroke-width="2"/>
+      <line x1="0" y1="25" x2="0" y2="40" stroke="#FB8500" stroke-width="2"/>
+      <line x1="0" y1="-25" x2="0" y2="-40" stroke="#FB8500" stroke-width="2"/>
+      <line x1="25" y1="0" x2="40" y2="0" stroke="#FB8500" stroke-width="2"/>
+      <line x1="-25" y1="0" x2="-40" y2="0" stroke="#FB8500" stroke-width="2"/>
+      <line x1="18" y1="18" x2="28" y2="28" stroke="#FB8500" stroke-width="2"/>
+      <line x1="-18" y1="-18" x2="-28" y2="-28" stroke="#FB8500" stroke-width="2"/>
+      <line x1="18" y1="-18" x2="28" y2="-28" stroke="#FB8500" stroke-width="2"/>
+      <line x1="-18" y1="18" x2="-28" y2="28" stroke="#FB8500" stroke-width="2"/>
+    </g>
+    
+    <!-- Light beams -->
+    <g class="light-beam">
+      <line x1="-70" y1="-30" x2="-70" y2="-10" stroke="#FFC300" stroke-width="2" marker-end="url(#lightArrow)"/>
+      <line x1="-50" y1="-40" x2="-30" y2="-10" stroke="#FFC300" stroke-width="2" marker-end="url(#lightArrow)"/>
+      <line x1="-90" y1="-40" x2="-110" y2="-10" stroke="#FFC300" stroke-width="2" marker-end="url(#lightArrow)"/>
+    </g>
+    
+    <!-- Photogenerated carriers -->
+    <g class="solar-particle">
+      <circle cx="-90" cy="50" r="5" fill="#0077B6" opacity="0.8"/>
+      <text x="-90" y="50" font-size="8" text-anchor="middle" fill="white">-</text>
+    </g>
+    
+    <g class="solar-particle" style="animation-delay: 1s">
+      <circle cx="-40" cy="60" r="5" fill="#0077B6" opacity="0.8"/>
+      <text x="-40" y="60" font-size="8" text-anchor="middle" fill="white">-</text>
+    </g>
+    
+    <g class="solar-particle" style="animation-delay: 2s">
+      <circle cx="20" cy="40" r="5" fill="#0077B6" opacity="0.8"/>
+      <text x="20" y="40" font-size="8" text-anchor="middle" fill="white">-</text>
+    </g>
+    
+    <g class="solar-particle" style="animation-delay: 0.5s">
+      <circle cx="-70" cy="110" r="5" fill="white" stroke="#FB8500" stroke-width="1" opacity="0.8"/>
+      <text x="-70" y="110" font-size="8" text-anchor="middle">+</text>
+    </g>
+    
+    <g class="solar-particle" style="animation-delay: 1.5s">
+      <circle cx="0" cy="120" r="5" fill="white" stroke="#FB8500" stroke-width="1" opacity="0.8"/>
+      <text x="0" y="120" font-size="8" text-anchor="middle">+</text>
+    </g>
+    
+    <g class="solar-particle" style="animation-delay: 2.5s">
+      <circle cx="70" cy="115" r="5" fill="white" stroke="#FB8500" stroke-width="1" opacity="0.8"/>
+      <text x="70" y="115" font-size="8" text-anchor="middle">+</text>
+    </g>
+    
+    <!-- Current flow -->
+    <path class="electron-flow" d="M-105,-5 C-105,-20 100,-20 105,-5" stroke="#0077B6" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <path class="electron-flow" d="M0,145 C-50,145 -70,145 -105,145" stroke="#0077B6" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <path class="electron-flow" d="M105,145 C50,145 0,145 0,145" stroke="#0077B6" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Load -->
+    <rect x="70" y="-50" width="30" height="40" fill="none" stroke="#333" stroke-width="2"/>
+    <line x1="85" y1="-50" x2="85" y2="-10" stroke="#333" stroke-width="2"/>
+    
+    <!-- Connecting wires -->
+    <line x1="-105" y1="-5" x2="-105" y2="-50" stroke="#333" stroke-width="2"/>
+    <line x1="-105" y1="-50" x2="70" y2="-50" stroke="#333" stroke-width="2"/>
+    <line x1="85" y1="-10" x2="85" y2="-5" stroke="#333" stroke-width="2"/>
+    <line x1="0" y1="150" x2="0" y2="175" stroke="#333" stroke-width="2"/>
+    
+    <!-- Description -->
+    <text x="0" y="190" font-size="14" text-anchor="middle">Converts sunlight directly into electricity</text>
+    <text x="0" y="210" font-size="14" text-anchor="middle">through photovoltaic effect</text>
+  </g>
+</svg> 

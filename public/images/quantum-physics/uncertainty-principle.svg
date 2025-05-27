@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="positionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#2980b9" stop-opacity="0.7"/>
+    </linearGradient>
+    
+    <linearGradient id="momentumGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#c0392b" stop-opacity="0.7"/>
+    </linearGradient>
+    
+    <linearGradient id="wavepacketGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#8e44ad" stop-opacity="0.6"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    
+    <!-- Markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <style>
+    @keyframes wavePulseLow {
+      0% { transform: scaleY(0.9); }
+      50% { transform: scaleY(1.1); }
+      100% { transform: scaleY(0.9); }
+    }
+    
+    @keyframes wavePulseHigh {
+      0% { transform: scaleY(0.7); }
+      50% { transform: scaleY(1.3); }
+      100% { transform: scaleY(0.7); }
+    }
+    
+    @keyframes waveContraction {
+      0% { transform: scaleX(1.0) translateX(0); }
+      50% { transform: scaleX(0.5) translateX(125px); }
+      100% { transform: scaleX(1.0) translateX(0); }
+    }
+    
+    @keyframes waveExpansion {
+      0% { transform: scaleX(1.0) translateX(0); }
+      50% { transform: scaleX(2.0) translateX(-125px); }
+      100% { transform: scaleX(1.0) translateX(0); }
+    }
+    
+    @keyframes gaussianPulse {
+      0% { opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { opacity: 0.7; }
+    }
+    
+    @keyframes arrowScale {
+      0% { transform: scaleX(1); }
+      50% { transform: scaleX(2); }
+      100% { transform: scaleX(1); }
+    }
+    
+    @keyframes arrowShrink {
+      0% { transform: scaleX(1); }
+      50% { transform: scaleX(0.5); }
+      100% { transform: scaleX(1); }
+    }
+    
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .axis-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+    }
+    
+    .formula {
+      font-family: 'Arial', sans-serif;
+      font-size: 20px;
+      font-style: italic;
+      fill: #333;
+    }
+    
+    .caption {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    .position-wave {
+      fill: none;
+      stroke: url(#positionGradient);
+      stroke-width: 3;
+      animation: gaussianPulse 4s infinite ease-in-out;
+    }
+    
+    .position-wave-narrow {
+      fill: none;
+      stroke: url(#positionGradient);
+      stroke-width: 3;
+      animation: waveContraction 8s infinite ease-in-out;
+      transform-origin: center;
+    }
+    
+    .momentum-wave {
+      fill: none;
+      stroke: url(#momentumGradient);
+      stroke-width: 3;
+      animation: gaussianPulse 4s infinite ease-in-out;
+    }
+    
+    .momentum-wave-wide {
+      fill: none;
+      stroke: url(#momentumGradient);
+      stroke-width: 3;
+      animation: waveExpansion 8s infinite ease-in-out;
+      transform-origin: center;
+    }
+    
+    .uncertainty-box {
+      fill: rgba(155, 89, 182, 0.2);
+      stroke: #8e44ad;
+      stroke-width: 2;
+      stroke-dasharray: 5, 3;
+    }
+    
+    .delta-arrow {
+      stroke-width: 2;
+      marker-end: url(#arrowhead);
+    }
+    
+    .delta-x {
+      stroke: #3498db;
+    }
+    
+    .delta-p {
+      stroke: #e74c3c;
+    }
+    
+    .delta-x-animated {
+      stroke: #3498db;
+      animation: arrowShrink 8s infinite ease-in-out;
+      transform-origin: center;
+    }
+    
+    .delta-p-animated {
+      stroke: #e74c3c;
+      animation: arrowScale 8s infinite ease-in-out;
+      transform-origin: center;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title and Subtitle -->
+  <text x="400" y="40" class="title">Heisenberg Uncertainty Principle</text>
+  <text x="400" y="70" class="subtitle">The Fundamental Limit on Measurement Precision</text>
+  
+  <!-- Main equation -->
+  <rect x="150" y="90" width="500" height="40" rx="5" fill="#f0f0f0" stroke="#ddd"/>
+  <text x="400" y="118" class="formula" text-anchor="middle">
+    ΔxΔp ≥ ħ/2
+  </text>
+  
+  <!-- Position Space Representation -->
+  <g transform="translate(100, 180)">
+    <rect width="280" height="240" fill="#f0f0f0" rx="10" stroke="#ddd"/>
+    <text x="140" y="30" class="axis-label" text-anchor="middle" font-weight="bold">Position Space</text>
+    
+    <!-- Axis -->
+    <line x1="40" y1="180" x2="240" y2="180" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="240" y="200" class="axis-label" text-anchor="middle">Position (x)</text>
+    
+    <!-- Wave function initial -->
+    <g transform="translate(40, 0)">
+      <text x="100" y="60" class="caption" text-anchor="middle">Well-defined position</text>
+      <text x="100" y="75" class="caption" text-anchor="middle">Small Δx</text>
+      
+      <path class="position-wave-narrow" d="M0,180 
+             C 20,180 40,100 50,100 
+             S 60,100 80,100 
+             S 100,100 120,100 
+             S 140,100 150,100 
+             S 160,100 180,100 
+             S 200,180 200,180" />
+      
+      <!-- Delta x representation -->
+      <line class="delta-arrow delta-x-animated" x1="70" y1="140" x2="130" y2="140"/>
+      <text x="100" y="135" class="caption" text-anchor="middle">Δx</text>
+      
+      <!-- Position probability density -->
+      <path fill="url(#positionGradient)" fill-opacity="0.3" d="M0,180 
+             C 20,180 40,100 50,100 
+             S 60,100 80,100 
+             S 100,100 120,100 
+             S 140,100 150,100 
+             S 160,100 180,100 
+             S 200,180 200,180 
+             L 200,180 L 0,180 Z" />
+    </g>
+  </g>
+  
+  <!-- Momentum Space Representation -->
+  <g transform="translate(420, 180)">
+    <rect width="280" height="240" fill="#f0f0f0" rx="10" stroke="#ddd"/>
+    <text x="140" y="30" class="axis-label" text-anchor="middle" font-weight="bold">Momentum Space</text>
+    
+    <!-- Axis -->
+    <line x1="40" y1="180" x2="240" y2="180" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="240" y="200" class="axis-label" text-anchor="middle">Momentum (p)</text>
+    
+    <!-- Wave function in momentum space -->
+    <g transform="translate(40, 0)">
+      <text x="100" y="60" class="caption" text-anchor="middle">Uncertain momentum</text>
+      <text x="100" y="75" class="caption" text-anchor="middle">Large Δp</text>
+      
+      <path class="momentum-wave-wide" d="M0,180 
+             C 40,160 50,130 100,100
+             S 150,130 160,160
+             S 200,180 200,180" />
+      
+      <!-- Delta p representation -->
+      <line class="delta-arrow delta-p-animated" x1="40" y1="140" x2="160" y2="140"/>
+      <text x="100" y="135" class="caption" text-anchor="middle">Δp</text>
+      
+      <!-- Momentum probability density -->
+      <path fill="url(#momentumGradient)" fill-opacity="0.3" d="M0,180 
+             C 40,160 50,130 100,100
+             S 150,130 160,160
+             S 200,180 200,180
+             L 200,180 L 0,180 Z" />
+    </g>
+  </g>
+  
+  <!-- Uncertainty Relation Visualization -->
+  <g transform="translate(100, 430)">
+    <rect width="600" height="60" rx="10" fill="#f0f0f0" stroke="#ddd"/>
+    
+    <text x="300" y="20" class="caption" text-anchor="middle" font-weight="bold">Measurement Trade-off</text>
+    
+    <text x="20" y="40" class="caption" text-anchor="start">
+      • More precise position measurement (smaller Δx) → more uncertain momentum (larger Δp)
+    </text>
+    <text x="20" y="55" class="caption" text-anchor="start">
+      • More precise momentum measurement (smaller Δp) → more uncertain position (larger Δx)
+    </text>
+  </g>
+  
+  <!-- Wave packet examples -->
+  <g transform="translate(100, 340)">
+    <text x="140" y="15" class="caption" text-anchor="middle">Narrow wave packet</text>
+    <text x="140" y="30" class="caption" text-anchor="middle">(small Δx, large Δp)</text>
+  </g>
+  
+  <g transform="translate(420, 340)">
+    <text x="140" y="15" class="caption" text-anchor="middle">Wide wave packet</text>
+    <text x="140" y="30" class="caption" text-anchor="middle">(large Δx, small Δp)</text>
+  </g>
+</svg> 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <!-- White Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Title -->
+  <text x="150" y="30" font-size="16" font-weight="bold">Linear and Angular Motion Relationships</text>
+  
+  <!-- Left Side: Linear Motion -->
+  <g transform="translate(150,200)">
+    <!-- Path -->
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Moving Object -->
+    <circle cx="50" cy="0" r="6" fill="#1E88E5"/>
+    
+    <!-- Displacement Arrow -->
+    <line x1="-50" y1="-20" x2="50" y2="-20" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="-10" y="-30" fill="#4CAF50">s = rθ</text>
+    
+    <!-- Velocity Arrow -->
+    <line x1="50" y1="-40" x2="100" y2="-40" stroke="#FF9800" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="60" y="-50" fill="#FF9800">v = rω</text>
+    
+    <!-- Acceleration Arrow -->
+    <line x1="50" y1="-60" x2="100" y2="-60" stroke="#9C27B0" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="60" y="-70" fill="#9C27B0">a = rα</text>
+  </g>
+  
+  <!-- Right Side: Angular Motion -->
+  <g transform="translate(450,200)">
+    <!-- Circle -->
+    <circle cx="0" cy="0" r="80" fill="none" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Center -->
+    <circle cx="0" cy="0" r="3" fill="black"/>
+    
+    <!-- Moving Object -->
+    <circle cx="80" cy="0" r="6" fill="#1E88E5"/>
+    
+    <!-- Radius -->
+    <line x1="0" y1="0" x2="80" y2="0" stroke="red" stroke-width="2"/>
+    <text x="35" y="-10" fill="red">r</text>
+    
+    <!-- Angular Displacement -->
+    <path d="M 80,0 A 80,80 0 0 1 56,56" stroke="#4CAF50" stroke-width="2" fill="none"/>
+    <text x="75" y="30" fill="#4CAF50">θ</text>
+    
+    <!-- Angular Velocity -->
+    <path d="M 0,0 A 100,100 0 0 1 70,-70" stroke="#FF9800" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <text x="50" y="-50" fill="#FF9800">ω</text>
+    
+    <!-- Angular Acceleration -->
+    <path d="M 0,0 A 120,120 0 0 1 120,0" stroke="#9C27B0" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+    <text x="90" y="-20" fill="#9C27B0">α</text>
+  </g>
+  
+  <!-- Equations Box -->
+  <g transform="translate(50,320)">
+    <rect x="0" y="0" width="500" height="60" fill="#f5f5f5" stroke="#ddd"/>
+    <text x="20" y="20" font-family="monospace">Linear Displacement (s) = r × θ   (where θ is in radians)</text>
+    <text x="20" y="40" font-family="monospace">Linear Velocity (v) = r × ω      (where ω is angular velocity)</text>
+    <text x="20" y="60" font-family="monospace">Linear Acceleration (a) = r × α  (where α is angular acceleration)</text>
+  </g>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+    </marker>
+  </defs>
+</svg>

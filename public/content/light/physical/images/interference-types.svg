@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="300" y="40" font-family="Arial" font-size="20" font-weight="bold">Types of Interference</text>
+    
+    <!-- Division of Wavefront (Top Half) -->
+    <text x="250" y="80" font-family="Arial" font-size="16">Division of Wavefront</text>
+    
+    <!-- Source -->
+    <circle cx="100" cy="150" r="5" fill="#fbbc05"/>
+    <text x="80" y="180" font-family="Arial" font-size="12">Source</text>
+    
+    <!-- Slits -->
+    <rect x="200" y="130" width="5" height="40" fill="black"/>
+    <text x="180" y="190" font-family="Arial" font-size="12">Slits</text>
+    
+    <!-- Wavefronts -->
+    <path d="M 205,130 Q 300,100 400,100" fill="none" stroke="#4285f4" stroke-width="1" stroke-dasharray="5,5"/>
+    <path d="M 205,170 Q 300,200 400,200" fill="none" stroke="#4285f4" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Screen -->
+    <line x1="400" y1="80" x2="400" y2="220" stroke="black" stroke-width="2"/>
+    <text x="410" y="150" font-family="Arial" font-size="12">Screen</text>
+    
+    <!-- Interference Pattern -->
+    <path d="M 420,150 C 440,120 460,180 480,150" fill="none" stroke="#34a853" stroke-width="2"/>
+    
+    <!-- Division of Amplitude (Bottom Half) -->
+    <text x="250" y="280" font-family="Arial" font-size="16">Division of Amplitude</text>
+    
+    <!-- Incident beam -->
+    <line x1="100" y1="350" x2="200" y2="350" stroke="#fbbc05" stroke-width="2"/>
+    <text x="80" y="340" font-family="Arial" font-size="12">Incident</text>
+    
+    <!-- Thin film -->
+    <rect x="200" y="320" width="20" height="150" fill="#e3f2fd" opacity="0.5"/>
+    <text x="180" y="490" font-family="Arial" font-size="12">Thin Film</text>
+    
+    <!-- Reflected and transmitted beams -->
+    <line x1="200" y1="350" x2="300" y2="300" stroke="#ea4335" stroke-width="2"/>
+    <text x="310" y="290" font-family="Arial" font-size="12">Reflected</text>
+    
+    <line x1="220" y1="350" x2="300" y2="350" stroke="#4285f4" stroke-width="2"/>
+    <text x="310" y="360" font-family="Arial" font-size="12">Transmitted</text>
+    
+    <!-- Phase differences -->
+    <path d="M 240,320 A 20,20 0 0 1 260,320" fill="none" stroke="#666" stroke-width="1"/>
+    <text x="245" y="315" font-family="Arial" font-size="10">Δφ</text>
+</svg>

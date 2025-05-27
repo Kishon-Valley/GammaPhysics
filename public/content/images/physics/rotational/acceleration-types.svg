@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font: bold 16px sans-serif; }
+        .label { font: 14px sans-serif; }
+        .math { font-style: italic; }
+        .equation { font: italic 16px serif; }
+    </style>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" class="title">Types of Acceleration in Rotational Motion</text>
+    
+    <!-- Tangential Acceleration -->
+    <g transform="translate(50,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Tangential Acceleration</text>
+        
+        <!-- Circle and Radius -->
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#000" stroke-width="1" stroke-dasharray="4,4"/>
+        
+        <!-- Motion Arrows -->
+        <path d="M 160,100 A 60,60 0 0,1 130,50" fill="none" stroke="#4444ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <line x1="160" y1="100" x2="190" y2="100" stroke="#ff4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="175" y="90" class="math">aₜ</text>
+        <text x="145" y="80" class="math">v</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">Changes speed</text>
+    </g>
+    
+    <!-- Centripetal Acceleration -->
+    <g transform="translate(300,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Centripetal Acceleration</text>
+        
+        <!-- Circle and Radius -->
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#000" stroke-width="1" stroke-dasharray="4,4"/>
+        
+        <!-- Motion Arrows -->
+        <path d="M 160,100 A 60,60 0 0,1 130,50" fill="none" stroke="#4444ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <line x1="160" y1="100" x2="100" y2="100" stroke="#ff4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="130" y="90" class="math">aᵣ</text>
+        <text x="145" y="80" class="math">v</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">Changes direction</text>
+    </g>
+    
+    <!-- Total Acceleration -->
+    <g transform="translate(550,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Total Acceleration</text>
+        
+        <!-- Circle and Radius -->
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#000" stroke-width="1" stroke-dasharray="4,4"/>
+        
+        <!-- Motion Arrows -->
+        <path d="M 160,100 A 60,60 0 0,1 130,50" fill="none" stroke="#4444ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <line x1="160" y1="100" x2="190" y2="100" stroke="#ff4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <line x1="160" y1="100" x2="100" y2="100" stroke="#44ff44" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <line x1="160" y1="100" x2="145" y2="70" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="175" y="90" class="math">aₜ</text>
+        <text x="130" y="90" class="math">aᵣ</text>
+        <text x="150" y="65" class="math">a</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">Vector sum</text>
+    </g>
+    
+    <!-- Equations -->
+    <g transform="translate(0,300)">
+        <text x="200" y="20" class="equation">aₜ = rα</text>
+        <text x="400" y="20" class="equation">aᵣ = rω²</text>
+        <text x="600" y="20" class="equation">a = √(aₜ² + aᵣ²)</text>
+    </g>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+        </marker>
+    </defs>
+</svg>

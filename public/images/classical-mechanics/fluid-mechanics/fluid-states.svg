@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-family="Arial">States of Matter</text>
+    
+    <!-- Solid -->
+    <g transform="translate(100,100)">
+        <text x="80" y="-20" text-anchor="middle" font-size="18">Solid</text>
+        <rect x="20" y="0" width="120" height="120" fill="none" stroke="black"/>
+        <!-- Particles in regular arrangement -->
+        <g fill="#1f77b4">
+            <circle cx="40" cy="20" r="8"/>
+            <circle cx="80" cy="20" r="8"/>
+            <circle cx="120" cy="20" r="8"/>
+            <circle cx="40" cy="60" r="8"/>
+            <circle cx="80" cy="60" r="8"/>
+            <circle cx="120" cy="60" r="8"/>
+            <circle cx="40" cy="100" r="8"/>
+            <circle cx="80" cy="100" r="8"/>
+            <circle cx="120" cy="100" r="8"/>
+        </g>
+    </g>
+    
+    <!-- Liquid -->
+    <g transform="translate(300,100)">
+        <text x="80" y="-20" text-anchor="middle" font-size="18">Liquid</text>
+        <rect x="20" y="0" width="120" height="120" fill="none" stroke="black"/>
+        <!-- Particles in semi-random arrangement -->
+        <g fill="#ff7f0e">
+            <circle cx="50" cy="30" r="8"/>
+            <circle cx="90" cy="25" r="8"/>
+            <circle cx="120" cy="40" r="8"/>
+            <circle cx="30" cy="70" r="8"/>
+            <circle cx="70" cy="65" r="8"/>
+            <circle cx="110" cy="80" r="8"/>
+            <circle cx="45" cy="100" r="8"/>
+            <circle cx="85" cy="95" r="8"/>
+            <circle cx="125" cy="90" r="8"/>
+        </g>
+    </g>
+    
+    <!-- Gas -->
+    <g transform="translate(500,100)">
+        <text x="80" y="-20" text-anchor="middle" font-size="18">Gas</text>
+        <rect x="20" y="0" width="120" height="120" fill="none" stroke="black"/>
+        <!-- Particles scattered randomly -->
+        <g fill="#2ca02c">
+            <circle cx="30" cy="20" r="6"/>
+            <circle cx="120" cy="30" r="6"/>
+            <circle cx="70" cy="40" r="6"/>
+            <circle cx="40" cy="90" r="6"/>
+            <circle cx="100" cy="70" r="6"/>
+            <circle cx="60" cy="110" r="6"/>
+            <circle cx="110" cy="10" r="6"/>
+            <circle cx="90" cy="100" r="6"/>
+            <circle cx="50" cy="60" r="6"/>
+        </g>
+    </g>
+    
+    <!-- Labels -->
+    <g font-size="14" fill="black">
+        <text x="100" y="260">Regular structure</text>
+        <text x="300" y="260">Close but mobile</text>
+        <text x="500" y="260">Free movement</text>
+    </g>
+</svg>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="500" viewBox="0 0 600 500">
+  <style>
+    .axis { stroke: #333; stroke-width: 2; }
+    .grid { stroke: #ccc; stroke-width: 0.5; stroke-dasharray: 5,5; }
+    .phase-a { stroke: #e74c3c; stroke-width: 3; fill: none; }
+    .phase-b { stroke: #3498db; stroke-width: 3; fill: none; }
+    .phase-c { stroke: #2ecc71; stroke-width: 3; fill: none; }
+    .circuit { stroke: #333; stroke-width: 2; fill: none; }
+    .component { stroke: #333; stroke-width: 2; fill: white; }
+    .highlight { stroke: #f39c12; stroke-width: 3; fill: none; stroke-dasharray: 5,3; }
+    .label { font-family: Arial; font-size: 14px; }
+    .connection { stroke-width: 2; fill: none; }
+    .power { stroke: #8e44ad; stroke-width: 3; fill: none; }
+  </style>
+  
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Title -->
+  <text class="label" x="300" y="25" text-anchor="middle" font-size="18px" font-weight="bold">Three-Phase Power Systems</text>
+  
+  <!-- Waveform Section -->
+  <g transform="translate(0, 50)">
+    <text class="label" x="300" y="20" text-anchor="middle" font-size="16px">Three-Phase Voltage Waveforms</text>
+    
+    <!-- Axes -->
+    <g>
+      <line class="axis" x1="50" y1="120" x2="550" y2="120"/>
+      <line class="axis" x1="50" y1="50" x2="50" y2="190"/>
+      
+      <text class="label" x="560" y="120" dominant-baseline="middle">Time</text>
+      <text class="label" x="50" y="40" text-anchor="middle">Voltage</text>
+      
+      <text class="label" x="100" y="145" text-anchor="middle">π/3</text>
+      <text class="label" x="150" y="145" text-anchor="middle">2π/3</text>
+      <text class="label" x="200" y="145" text-anchor="middle">π</text>
+      <text class="label" x="250" y="145" text-anchor="middle">4π/3</text>
+      <text class="label" x="300" y="145" text-anchor="middle">5π/3</text>
+      <text class="label" x="350" y="145" text-anchor="middle">2π</text>
+      <text class="label" x="400" y="145" text-anchor="middle">7π/3</text>
+      <text class="label" x="450" y="145" text-anchor="middle">8π/3</text>
+      <text class="label" x="500" y="145" text-anchor="middle">3π</text>
+    </g>
+    
+    <!-- Phase Waveforms -->
+    <path id="phaseA" class="phase-a" d="">
+      <animate attributeName="d" 
+               dur="10s"
+               repeatCount="indefinite"
+               values="M50,70 C100,50 150,70 200,120 S300,170 350,120 S450,70 500,120 S550,170 600,120;
+                       M50,70 C100,50 150,70 200,120 S300,170 350,120 S450,70 500,120 S550,170 600,120"
+               calcMode="linear"/>
+    </path>
+    
+    <path id="phaseB" class="phase-b" d="">
+      <animate attributeName="d" 
+               dur="10s"
+               repeatCount="indefinite"
+               values="M50,170 C100,120 150,70 200,70 S300,120 350,170 S450,170 500,120 S550,70 600,70;
+                       M50,170 C100,120 150,70 200,70 S300,120 350,170 S450,170 500,120 S550,70 600,70"
+               calcMode="linear"/>
+    </path>
+    
+    <path id="phaseC" class="phase-c" d="">
+      <animate attributeName="d" 
+               dur="10s"
+               repeatCount="indefinite"
+               values="M50,120 C100,170 150,170 200,120 S300,70 350,70 S450,120 500,170 S550,170 600,120;
+                       M50,120 C100,170 150,170 200,120 S300,70 350,70 S450,120 500,170 S550,170 600,120"
+               calcMode="linear"/>
+    </path>
+    
+    <!-- Highlight for 120° phase shift -->
+    <g>
+      <line class="grid" x1="150" y1="50" x2="150" y2="190" opacity="0.7"/>
+      <line class="grid" x1="250" y1="50" x2="250" y2="190" opacity="0.7"/>
+      <text class="label" x="200" y="200" text-anchor="middle">120° Phase Shift</text>
+    </g>
+    
+    <!-- Legend -->
+    <g transform="translate(450, 60)">
+      <line class="phase-a" x1="0" y1="0" x2="30" y2="0"/>
+      <text class="label" x="40" y="0" dominant-baseline="middle">Phase A</text>
+      
+      <line class="phase-b" x1="0" y1="20" x2="30" y2="20"/>
+      <text class="label" x="40" y="20" dominant-baseline="middle">Phase B</text>
+      
+      <line class="phase-c" x1="0" y1="40" x2="30" y2="40"/>
+      <text class="label" x="40" y="40" dominant-baseline="middle">Phase C</text>
+    </g>
+  </g>
+  
+  <!-- Connection Diagrams -->
+  <g transform="translate(0, 240)">
+    <g id="wyeConnection">
+      <text class="label" x="150" y="20" text-anchor="middle" font-size="16px">Wye (Y) Connection</text>
+      
+      <!-- Wye Schematic -->
+      <g transform="translate(150, 120)">
+        <!-- Connection Lines -->
+        <line class="phase-a connection" x1="0" y1="0" x2="0" y2="-70"/>
+        <line class="phase-b connection" x1="0" y1="0" x2="-60" y2="35"/>
+        <line class="phase-c connection" x1="0" y1="0" x2="60" y2="35"/>
+        
+        <!-- Load Impedances -->
+        <rect x="-10" y="-50" width="20" height="30" class="component"/>
+        <rect x="-50" y="25" width="30" height="20" class="component" transform="rotate(30 -35 35)"/>
+        <rect x="20" y="25" width="30" height="20" class="component" transform="rotate(-30 35 35)"/>
+        
+        <!-- Neutral -->
+        <circle cx="0" cy="0" r="5" fill="#333"/>
+        <line class="connection" x1="0" y1="0" x2="0" y2="40" stroke-dasharray="5,3"/>
+        <text class="label" x="10" y="25" dominant-baseline="middle">N</text>
+        
+        <!-- Phase Labels -->
+        <text class="label" x="0" y="-80" text-anchor="middle">A</text>
+        <text class="label" x="-70" y="40" text-anchor="middle">B</text>
+        <text class="label" x="70" y="40" text-anchor="middle">C</text>
+        
+        <!-- Relationship Formulas -->
+        <text class="label" x="0" y="80" text-anchor="middle">
+          <tspan x="0" dy="0">V₁ = V₀/√3</tspan>
+          <tspan x="0" dy="20">I₁ = I₀</tspan>
+        </text>
+      </g>
+    </g>
+    
+    <g id="deltaConnection">
+      <text class="label" x="450" y="20" text-anchor="middle" font-size="16px">Delta (Δ) Connection</text>
+      
+      <!-- Delta Schematic -->
+      <g transform="translate(450, 120)">
+        <!-- Connection Triangle -->
+        <line class="phase-a connection" x1="-50" y1="-40" x2="50" y2="-40"/>
+        <line class="phase-b connection" x1="50" y1="-40" x2="0" y2="50"/>
+        <line class="phase-c connection" x1="0" y1="50" x2="-50" y2="-40"/>
+        
+        <!-- Load Impedances -->
+        <rect x="-40" y="-50" width="80" height="20" class="component"/>
+        <rect x="15" y="-20" width="20" height="60" class="component" transform="rotate(60 25 10)"/>
+        <rect x="-35" y="-20" width="20" height="60" class="component" transform="rotate(-60 -25 10)"/>
+        
+        <!-- Line Connections -->
+        <line class="connection" x1="-50" y1="-40" x2="-80" y2="-40" stroke="#333"/>
+        <line class="connection" x1="50" y1="-40" x2="80" y2="-40" stroke="#333"/>
+        <line class="connection" x1="0" y1="50" x2="0" y2="80" stroke="#333"/>
+        
+        <!-- Phase Labels -->
+        <text class="label" x="0" y="-60" text-anchor="middle">AB</text>
+        <text class="label" x="65" y="0" text-anchor="middle">BC</text>
+        <text class="label" x="-65" y="0" text-anchor="middle">CA</text>
+        
+        <!-- Line Labels -->
+        <text class="label" x="-80" y="-55" text-anchor="middle">A</text>
+        <text class="label" x="80" y="-55" text-anchor="middle">B</text>
+        <text class="label" x="0" y="95" text-anchor="middle">C</text>
+        
+        <!-- Relationship Formulas -->
+        <text class="label" x="0" y="80" text-anchor="middle">
+          <tspan x="0" dy="0">V₁ = V₀</tspan>
+          <tspan x="0" dy="20">I₁ = I₀/√3</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Power Comparison -->
+  <g transform="translate(300, 430)">
+    <rect x="-250" y="0" width="500" height="50" fill="#f5f5f5" rx="5" ry="5"/>
+    <text class="label" x="0" y="15" text-anchor="middle" font-weight="bold" dominant-baseline="middle">
+      Three-Phase Power: P = √3·V·I·cos(φ)
+    </text>
+    <text class="label" x="0" y="35" text-anchor="middle" dominant-baseline="middle">
+      Both Y and Δ deliver the same power for the same line voltages and currents
+    </text>
+  </g>
+  
+  <!-- Animated Power Flow -->
+  <g>
+    <path id="powerFlow" class="power" d="M150,360 Q225,380 300,360 Q375,340 450,360" stroke-dasharray="10,10">
+      <animate attributeName="stroke-dashoffset"
+               from="200"
+               to="0"
+               dur="4s"
+               repeatCount="indefinite"/>
+    </path>
+    <text class="label" x="300" y="385" text-anchor="middle" font-weight="bold">
+      Constant Power Flow
+    </text>
+  </g>
+</svg> 

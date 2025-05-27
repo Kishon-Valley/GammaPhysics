@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font: bold 20px sans-serif; }
+        .unit { font: bold 16px sans-serif; }
+        .equation { font: italic 16px sans-serif; }
+    </style>
+    
+    <!-- Title -->
+    <text x="200" y="40" text-anchor="middle" class="title">Units of Power</text>
+    
+    <!-- Watt -->
+    <rect x="50" y="70" width="300" height="50" fill="#f0f0f0" stroke="#000"/>
+    <text x="70" y="100" class="unit">Watt (W)</text>
+    <text x="200" y="100" class="equation">1 W = 1 J/s</text>
+    
+    <!-- Kilowatt -->
+    <rect x="50" y="140" width="300" height="50" fill="#e0e0e0" stroke="#000"/>
+    <text x="70" y="170" class="unit">Kilowatt (kW)</text>
+    <text x="200" y="170" class="equation">1 kW = 1000 W</text>
+    
+    <!-- Horsepower -->
+    <rect x="50" y="210" width="300" height="50" fill="#d0d0d0" stroke="#000"/>
+    <text x="70" y="240" class="unit">Horsepower (hp)</text>
+    <text x="200" y="240" class="equation">1 hp ≈ 746 W</text>
+</svg>

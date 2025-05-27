@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="500" viewBox="0 0 600 500">
+  <style>
+    .axis { stroke: #333; stroke-width: 2; }
+    .grid { stroke: #ccc; stroke-width: 0.5; stroke-dasharray: 5,5; }
+    .fundamental { stroke: #3498db; stroke-width: 3; fill: none; }
+    .third-harmonic { stroke: #e74c3c; stroke-width: 2; fill: none; }
+    .fifth-harmonic { stroke: #2ecc71; stroke-width: 2; fill: none; }
+    .distorted { stroke: #8e44ad; stroke-width: 3; fill: none; }
+    .component { stroke: #333; stroke-width: 2; fill: white; }
+    .highlight { stroke: #f39c12; stroke-width: 3; fill: none; }
+    .label { font-family: Arial; font-size: 14px; }
+    .item { font-family: Arial; font-size: 12px; }
+    .bar { fill: #3498db; stroke: #2980b9; stroke-width: 1; }
+    .bar-odd { fill: #e74c3c; stroke: #c0392b; stroke-width: 1; }
+    .bar-even { fill: #2ecc71; stroke: #27ae60; stroke-width: 1; }
+  </style>
+  
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Title -->
+  <text class="label" x="300" y="25" text-anchor="middle" font-size="18px" font-weight="bold">Harmonics in AC Power Systems</text>
+  
+  <!-- Waveform Section -->
+  <g transform="translate(0, 50)">
+    <text class="label" x="300" y="20" text-anchor="middle" font-size="16px">Harmonic Components and Distorted Waveform</text>
+    
+    <!-- Axes -->
+    <g>
+      <line class="axis" x1="50" y1="120" x2="550" y2="120"/>
+      <line class="axis" x1="50" y1="50" x2="50" y2="190"/>
+      
+      <text class="label" x="560" y="120" dominant-baseline="middle">Time</text>
+      <text class="label" x="50" y="40" text-anchor="middle">Amplitude</text>
+      
+      <text class="label" x="100" y="135" text-anchor="middle">π/2</text>
+      <text class="label" x="200" y="135" text-anchor="middle">π</text>
+      <text class="label" x="300" y="135" text-anchor="middle">3π/2</text>
+      <text class="label" x="400" y="135" text-anchor="middle">2π</text>
+      <text class="label" x="500" y="135" text-anchor="middle">5π/2</text>
+    </g>
+    
+    <!-- Waveforms -->
+    <path id="fundamental" class="fundamental" d="">
+      <animate attributeName="d" 
+               dur="10s"
+               repeatCount="indefinite"
+               values="M50,120 C125,70 175,70 200,120 S275,170 300,120 S375,70 400,120 S475,170 500,120 S575,70 600,120;
+                       M50,120 C125,70 175,70 200,120 S275,170 300,120 S375,70 400,120 S475,170 500,120 S575,70 600,120"
+               calcMode="linear"/>
+    </path>
+    
+    <path id="thirdHarmonic" class="third-harmonic" d="">
+      <animate attributeName="d" 
+               dur="10s"
+               repeatCount="indefinite"
+               values="M50,120 C75,100 100,140 125,120 S150,100 175,120 S200,140 225,120 S250,100 275,120 S300,140 325,120 S350,100 375,120 S400,140 425,120 S450,100 475,120 S500,140 525,120;
+                       M50,120 C75,100 100,140 125,120 S150,100 175,120 S200,140 225,120 S250,100 275,120 S300,140 325,120 S350,100 375,120 S400,140 425,120 S450,100 475,120 S500,140 525,120"
+               calcMode="linear"/>
+    </path>
+    
+    <path id="fifthHarmonic" class="fifth-harmonic" d="">
+      <animate attributeName="d" 
+               dur="10s"
+               repeatCount="indefinite"
+               values="M50,120 C65,105 80,135 95,120 S110,105 125,120 S140,135 155,120 S170,105 185,120 S200,135 215,120 S230,105 245,120 S260,135 275,120 S290,105 305,120 S320,135 335,120 S350,105 365,120 S380,135 395,120 S410,105 425,120 S440,135 455,120 S470,105 485,120 S500,135 515,120 S530,105 545,120;
+                       M50,120 C65,105 80,135 95,120 S110,105 125,120 S140,135 155,120 S170,105 185,120 S200,135 215,120 S230,105 245,120 S260,135 275,120 S290,105 305,120 S320,135 335,120 S350,105 365,120 S380,135 395,120 S410,105 425,120 S440,135 455,120 S470,105 485,120 S500,135 515,120 S530,105 545,120"
+               calcMode="linear"/>
+    </path>
+    
+    <path id="distortedWave" class="distorted" d="">
+      <animate attributeName="d" 
+               dur="10s"
+               repeatCount="indefinite"
+               values="M50,120 C75,50 100,90 125,120 S150,190 175,150 S200,100 225,120 S250,180 275,120 S300,70 325,120 S350,190 375,120 S400,60 425,120 S450,180 475,120 S500,70 525,120;
+                       M50,120 C75,50 100,90 125,120 S150,190 175,150 S200,100 225,120 S250,180 275,120 S300,70 325,120 S350,190 375,120 S400,60 425,120 S450,180 475,120 S500,70 525,120"
+               calcMode="linear"/>
+    </path>
+    
+    <g id="waveVisibility">
+      <animate attributeName="opacity"
+               dur="15s"
+               repeatCount="indefinite"
+               values="1;1;0;1;1"
+               calcMode="discrete"/>
+    </g>
+    
+    <!-- Legend -->
+    <g transform="translate(450, 70)">
+      <line class="fundamental" x1="0" y1="0" x2="30" y2="0"/>
+      <text class="label" x="40" y="0" dominant-baseline="middle">Fundamental (60Hz)</text>
+      
+      <line class="third-harmonic" x1="0" y1="20" x2="30" y2="20"/>
+      <text class="label" x="40" y="20" dominant-baseline="middle">3rd Harmonic (180Hz)</text>
+      
+      <line class="fifth-harmonic" x1="0" y1="40" x2="30" y2="40"/>
+      <text class="label" x="40" y="40" dominant-baseline="middle">5th Harmonic (300Hz)</text>
+      
+      <line class="distorted" x1="0" y1="60" x2="30" y2="60"/>
+      <text class="label" x="40" y="60" dominant-baseline="middle">Resultant Distorted Wave</text>
+    </g>
+  </g>
+  
+  <!-- Harmonic Spectrum -->
+  <g transform="translate(50, 270)">
+    <text class="label" x="250" y="20" text-anchor="middle" font-size="16px">Harmonic Spectrum</text>
+    
+    <!-- Axes -->
+    <g>
+      <line class="axis" x1="0" y1="150" x2="500" y2="150"/>
+      <line class="axis" x1="0" y1="150" x2="0" y2="0"/>
+      
+      <text class="label" x="250" y="180" text-anchor="middle">Harmonic Order</text>
+      <text class="label" x="-10" y="75" text-anchor="middle" transform="rotate(-90 -10 75)">Magnitude (%)</text>
+      
+      <!-- X-axis labels -->
+      <text class="label" x="50" y="165" text-anchor="middle">1</text>
+      <text class="label" x="100" y="165" text-anchor="middle">2</text>
+      <text class="label" x="150" y="165" text-anchor="middle">3</text>
+      <text class="label" x="200" y="165" text-anchor="middle">4</text>
+      <text class="label" x="250" y="165" text-anchor="middle">5</text>
+      <text class="label" x="300" y="165" text-anchor="middle">6</text>
+      <text class="label" x="350" y="165" text-anchor="middle">7</text>
+      <text class="label" x="400" y="165" text-anchor="middle">8</text>
+      <text class="label" x="450" y="165" text-anchor="middle">9</text>
+      
+      <!-- Y-axis labels -->
+      <text class="label" x="-10" y="150" text-anchor="end">0</text>
+      <text class="label" x="-10" y="120" text-anchor="end">20</text>
+      <text class="label" x="-10" y="90" text-anchor="end">40</text>
+      <text class="label" x="-10" y="60" text-anchor="end">60</text>
+      <text class="label" x="-10" y="30" text-anchor="end">80</text>
+      <text class="label" x="-10" y="0" text-anchor="end">100</text>
+      
+      <!-- Grid lines -->
+      <line class="grid" x1="0" y1="120" x2="500" y2="120"/>
+      <line class="grid" x1="0" y1="90" x2="500" y2="90"/>
+      <line class="grid" x1="0" y1="60" x2="500" y2="60"/>
+      <line class="grid" x1="0" y1="30" x2="500" y2="30"/>
+      
+      <line class="grid" x1="50" y1="0" x2="50" y2="150"/>
+      <line class="grid" x1="100" y1="0" x2="100" y2="150"/>
+      <line class="grid" x1="150" y1="0" x2="150" y2="150"/>
+      <line class="grid" x1="200" y1="0" x2="200" y2="150"/>
+      <line class="grid" x1="250" y1="0" x2="250" y2="150"/>
+      <line class="grid" x1="300" y1="0" x2="300" y2="150"/>
+      <line class="grid" x1="350" y1="0" x2="350" y2="150"/>
+      <line class="grid" x1="400" y1="0" x2="400" y2="150"/>
+      <line class="grid" x1="450" y1="0" x2="450" y2="150"/>
+    </g>
+    
+    <!-- Bars -->
+    <rect id="bar1" class="bar" x="35" y="0" width="30" height="150">
+      <animate attributeName="y" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="150;0;0;0;0;0;0"
+               calcMode="linear"/>
+      <animate attributeName="height" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="0;150;150;150;150;150;150"
+               calcMode="linear"/>
+    </rect>
+    
+    <rect id="bar2" class="bar-even" x="85" y="150" width="30" height="0">
+      <animate attributeName="y" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="150;150;135;135;135;135;135"
+               calcMode="linear"/>
+      <animate attributeName="height" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="0;0;15;15;15;15;15"
+               calcMode="linear"/>
+    </rect>
+    
+    <rect id="bar3" class="bar-odd" x="135" y="150" width="30" height="0">
+      <animate attributeName="y" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="150;150;150;90;90;90;90"
+               calcMode="linear"/>
+      <animate attributeName="height" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="0;0;0;60;60;60;60"
+               calcMode="linear"/>
+    </rect>
+    
+    <rect id="bar4" class="bar-even" x="185" y="150" width="30" height="0">
+      <animate attributeName="y" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="150;150;150;150;138;138;138"
+               calcMode="linear"/>
+      <animate attributeName="height" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="0;0;0;0;12;12;12"
+               calcMode="linear"/>
+    </rect>
+    
+    <rect id="bar5" class="bar-odd" x="235" y="150" width="30" height="0">
+      <animate attributeName="y" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="150;150;150;150;150;105;105"
+               calcMode="linear"/>
+      <animate attributeName="height" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="0;0;0;0;0;45;45"
+               calcMode="linear"/>
+    </rect>
+    
+    <rect id="bar7" class="bar-odd" x="335" y="150" width="30" height="0">
+      <animate attributeName="y" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="150;150;150;150;150;150;120"
+               calcMode="linear"/>
+      <animate attributeName="height" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="0;0;0;0;0;0;30"
+               calcMode="linear"/>
+    </rect>
+  </g>
+  
+  <!-- Impact Section -->
+  <g transform="translate(300, 450)">
+    <text class="label" x="0" y="0" text-anchor="middle" font-size="16px" font-weight="bold">
+      <animate attributeName="textContent"
+               dur="10s"
+               repeatCount="indefinite"
+               values="Effects of Harmonics;Increased Heating;Resonance Issues;Equipment Malfunction;Nuisance Tripping;Effects of Harmonics"
+               calcMode="discrete"/>
+    </text>
+    
+    <text class="label" x="0" y="25" text-anchor="middle" font-size="14px">
+      <animate attributeName="textContent"
+               dur="10s"
+               repeatCount="indefinite"
+               values="Non-linear loads introduce harmonics that affect power quality;Transformers and motors experience additional heating from harmonic currents;System capacitance and inductance can create resonance, amplifying harmonics;Electronic equipment may malfunction due to voltage distortion;Circuit breakers and protective devices may trip unexpectedly;Non-linear loads introduce harmonics that affect power quality"
+               calcMode="discrete"/>
+    </text>
+  </g>
+</svg> 

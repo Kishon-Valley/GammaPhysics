@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Law of Reflection</text>
+    
+    <!-- Reflecting Surface -->
+    <line x1="100" y1="200" x2="700" y2="200" stroke="black" stroke-width="2"/>
+    <text x="400" y="230" text-anchor="middle" font-size="14">Reflecting Surface</text>
+    
+    <!-- Normal Line -->
+    <line x1="400" y1="50" x2="400" y2="350" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="410" y="70" font-size="14">Normal</text>
+    
+    <!-- Incident Ray -->
+    <line x1="300" y1="100" x2="400" y2="200" stroke="#2196F3" stroke-width="2"/>
+    <path d="M390,190 L400,200 L390,210" fill="none" stroke="#2196F3" stroke-width="2"/>
+    <text x="320" y="110" font-size="14">Incident Ray</text>
+    
+    <!-- Reflected Ray -->
+    <line x1="400" y1="200" x2="500" y2="100" stroke="#4CAF50" stroke-width="2"/>
+    <path d="M490,90 L500,100 L490,110" fill="none" stroke="#4CAF50" stroke-width="2"/>
+    <text x="480" y="110" font-size="14">Reflected Ray</text>
+    
+    <!-- Angles -->
+    <path d="M400,200 A40,40 0 0 1 430,170" fill="none" stroke="#2196F3" stroke-width="1"/>
+    <text x="440" y="175" font-size="16">θᵢ</text>
+    
+    <path d="M400,200 A40,40 0 0 0 370,170" fill="none" stroke="#4CAF50" stroke-width="1"/>
+    <text x="360" y="175" font-size="16">θᵣ</text>
+    
+    <!-- Formula -->
+    <text x="400" y="350" text-anchor="middle" font-size="18">θᵢ = θᵣ</text>
+</svg>

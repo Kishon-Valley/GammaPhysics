@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="450" viewBox="0 0 600 450">
+  <style>
+    .axis { stroke: #333; stroke-width: 2; }
+    .grid { stroke: #ccc; stroke-width: 0.5; stroke-dasharray: 5,5; }
+    .inductive { stroke: #e74c3c; stroke-width: 3; fill: none; }
+    .capacitive { stroke: #3498db; stroke-width: 3; fill: none; }
+    .resultant { stroke: #2ecc71; stroke-width: 3; fill: none; }
+    .circuit { stroke: #333; stroke-width: 2; fill: none; }
+    .component { stroke: #333; stroke-width: 2; fill: white; }
+    .label { font-family: Arial; font-size: 14px; }
+    .arrow { stroke: #333; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    .angle-arc { fill: #f39c12; fill-opacity: 0.3; stroke: #f39c12; stroke-width: 1; }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Top section: Phasor Diagram -->
+  <g transform="translate(0, 0)">
+    <text class="label" x="300" y="25" text-anchor="middle" font-size="18px" font-weight="bold">Power Factor Correction</text>
+    <text class="label" x="150" y="50" text-anchor="middle" font-size="16px">Before Correction</text>
+    <text class="label" x="450" y="50" text-anchor="middle" font-size="16px">After Correction</text>
+    
+    <!-- Before Correction -->
+    <g transform="translate(150, 150)">
+      <!-- Axes -->
+      <line class="axis" x1="0" y1="0" x2="120" y2="0"/>
+      <line class="axis" x1="0" y1="0" x2="0" y2="-120"/>
+      <text class="label" x="130" y="0" dominant-baseline="middle">Real</text>
+      <text class="label" x="0" y="-130" text-anchor="middle">Reactive</text>
+      
+      <!-- Inductive Current -->
+      <line id="inductiveCurrent" class="inductive" x1="0" y1="0" x2="80" y2="-60">
+        <animate attributeName="x2" 
+                 dur="5s"
+                 repeatCount="indefinite"
+                 values="80;80"
+                 calcMode="linear"/>
+        <animate attributeName="y2" 
+                 dur="5s"
+                 repeatCount="indefinite"
+                 values="-60;-60"
+                 calcMode="linear"/>
+      </line>
+      
+      <!-- Angle Arc -->
+      <path id="beforeAngle" class="angle-arc" d="M20,0 A20,20 0 0,1 14,-14">
+        <animate attributeName="d"
+                 dur="5s"
+                 repeatCount="indefinite"
+                 values="M20,0 A20,20 0 0,1 14,-14;M20,0 A20,20 0 0,1 14,-14"
+                 calcMode="linear"/>
+      </path>
+      
+      <text class="label" x="25" y="-15" text-anchor="middle">φ₁</text>
+      <text id="beforePF" class="label" x="0" y="50" text-anchor="start">Power Factor = 0.8 lagging</text>
+    </g>
+    
+    <!-- After Correction -->
+    <g transform="translate(450, 150)">
+      <!-- Axes -->
+      <line class="axis" x1="0" y1="0" x2="120" y2="0"/>
+      <line class="axis" x1="0" y1="0" x2="0" y2="-120"/>
+      <text class="label" x="130" y="0" dominant-baseline="middle">Real</text>
+      <text class="label" x="0" y="-130" text-anchor="middle">Reactive</text>
+      
+      <!-- Inductive Current -->
+      <line id="inductiveCurrent2" class="inductive" x1="0" y1="0" x2="80" y2="-60">
+        <animate attributeName="x2" 
+                 dur="5s"
+                 repeatCount="indefinite"
+                 values="80;80"
+                 calcMode="linear"/>
+        <animate attributeName="y2" 
+                 dur="5s"
+                 repeatCount="indefinite"
+                 values="-60;-60"
+                 calcMode="linear"/>
+      </line>
+      
+      <!-- Capacitive Current -->
+      <line id="capacitiveCurrent" class="capacitive" x1="0" y1="0" x2="0" y2="45">
+        <animate attributeName="y2" 
+                 dur="5s"
+                 repeatCount="indefinite"
+                 values="0;45"
+                 calcMode="linear"/>
+      </line>
+      
+      <!-- Resultant Current -->
+      <line id="resultantCurrent" class="resultant" x1="0" y1="0" x2="80" y2="-15">
+        <animate attributeName="y2" 
+                 dur="5s"
+                 repeatCount="indefinite"
+                 values="-60;-15"
+                 calcMode="linear"/>
+      </line>
+      
+      <!-- Angle Arc -->
+      <path id="afterAngle" class="angle-arc" d="M20,0 A20,20 0 0,1 14,-14">
+        <animate attributeName="d"
+                 dur="5s"
+                 repeatCount="indefinite"
+                 values="M20,0 A20,20 0 0,1 14,-14;M20,0 A20,20 0 0,1 19,-6"
+                 calcMode="linear"/>
+      </path>
+      
+      <text class="label" x="25" y="-15" text-anchor="middle">
+        <animate attributeName="textContent"
+                 dur="5s"
+                 repeatCount="indefinite"
+                 values="φ₁;φ₂"
+                 calcMode="discrete"/>
+      </text>
+      
+      <text id="afterPF" class="label" x="0" y="50" text-anchor="start">
+        <animate attributeName="textContent"
+                 dur="5s"
+                 repeatCount="indefinite"
+                 values="Power Factor = 0.8 lagging;Power Factor = 0.95 lagging"
+                 calcMode="discrete"/>
+      </text>
+    </g>
+  </g>
+  
+  <!-- Bottom section: Circuit Diagram -->
+  <g transform="translate(0, 250)">
+    <text class="label" x="300" y="30" text-anchor="middle" font-size="16px">Circuit Diagram</text>
+    
+    <!-- Circuit -->
+    <g transform="translate(100, 100)">
+      <!-- Source -->
+      <circle cx="0" cy="0" r="15" class="component"/>
+      <text class="label" x="0" y="0" text-anchor="middle" dominant-baseline="middle">~</text>
+      <text class="label" x="0" y="-25" text-anchor="middle">AC Source</text>
+      
+      <!-- Load (Motor/Inductive) -->
+      <rect x="300" y="-30" width="60" height="60" class="component"/>
+      <text class="label" x="330" y="0" text-anchor="middle" dominant-baseline="middle">M</text>
+      <text class="label" x="330" y="-40" text-anchor="middle">Inductive Load</text>
+      
+      <!-- Capacitor Bank -->
+      <g id="capacitorBank" opacity="0">
+        <animate attributeName="opacity"
+                 dur="5s"
+                 repeatCount="indefinite"
+                 values="0;1"
+                 calcMode="discrete"
+                 begin="2.5s"/>
+                 
+        <rect x="200" y="40" width="50" height="80" class="component"/>
+        <line x1="215" y1="60" x2="215" y2="100" class="component"/>
+        <line x1="235" y1="60" x2="235" y2="100" class="component"/>
+        <text class="label" x="225" y="130" text-anchor="middle">Capacitor Bank</text>
+        
+        <line x1="225" y1="40" x2="225" y2="0" class="circuit"/>
+        <line x1="225" y1="120" x2="225" y2="150" class="circuit"/>
+      </g>
+      
+      <!-- Connecting Wires -->
+      <line x1="15" y1="0" x2="300" y2="0" class="circuit"/>
+      <line x1="0" y1="15" x2="0" y2="150" class="circuit"/>
+      <line x1="0" y1="150" x2="400" y2="150" class="circuit"/>
+      <line x1="360" y1="0" x2="400" y2="0" class="circuit"/>
+      <line x1="400" y1="0" x2="400" y2="150" class="circuit"/>
+    </g>
+    
+    <!-- Legend -->
+    <g transform="translate(450, 80)">
+      <line class="inductive" x1="0" y1="0" x2="30" y2="0"/>
+      <text class="label" x="40" y="0" dominant-baseline="middle">Inductive Current</text>
+      
+      <line class="capacitive" x1="0" y1="20" x2="30" y2="20"/>
+      <text class="label" x="40" y="20" dominant-baseline="middle">Capacitive Current</text>
+      
+      <line class="resultant" x1="0" y1="40" x2="30" y2="40"/>
+      <text class="label" x="40" y="40" dominant-baseline="middle">Resultant Current</text>
+    </g>
+    
+    <text id="explanation" class="label" x="300" y="180" text-anchor="middle">
+      <animate attributeName="textContent"
+               dur="5s"
+               repeatCount="indefinite"
+               values="Inductive load creates lagging power factor;Adding capacitor bank improves power factor"
+               calcMode="discrete"/>
+    </text>
+  </g>
+</svg> 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Interface -->
+    <line x1="50" y1="150" x2="350" y2="150" stroke="black" stroke-width="2"/>
+    
+    <!-- Incident ray -->
+    <line x1="200" y1="50" x2="200" y2="150" stroke="blue" stroke-width="2"/>
+    <text x="210" y="30" font-size="12">Incident Ray</text>
+    
+    <!-- Reflected ray -->
+    <line x1="200" y1="150" x2="200" y2="250" stroke="red" stroke-width="2"/>
+    <text x="210" y="270" font-size="12">Reflected Ray</text>
+    
+    <!-- Refracted ray -->
+    <line x1="200" y1="150" x2="300" y2="200" stroke="green" stroke-width="2"/>
+    <text x="310" y="210" font-size="12">Refracted Ray</text>
+    
+    <!-- Angle markers -->
+    <path d="M 200 150 L 220 150 L 200 130" stroke="black" stroke-width="1" fill="none"/>
+    <path d="M 200 150 L 220 150 L 200 170" stroke="black" stroke-width="1" fill="none"/>
+    <path d="M 200 150 L 220 170 L 200 150" stroke="black" stroke-width="1" fill="none"/>
+    
+    <!-- Labels -->
+    <text x="220" y="140" font-size="12">θ₁</text>
+    <text x="220" y="160" font-size="12">θ₁'</text>
+    <text x="220" y="180" font-size="12">θ₂</text>
+    <text x="180" y="140" font-size="12">Brewster's Angle</text>
+</svg> 

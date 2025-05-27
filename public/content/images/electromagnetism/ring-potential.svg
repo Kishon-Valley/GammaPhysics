@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="220" height="180" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+  <rect width="220" height="180" fill="white"/>
+  <!-- Ring -->
+  <ellipse cx="110" cy="110" rx="60" ry="60" fill="none" stroke="#4444ff" stroke-width="3"/>
+  <text x="160" y="120" font-size="13" fill="#4444ff">Q</text>
+  <!-- Axis -->
+  <line x1="110" y1="110" x2="110" y2="30" stroke="#888" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="115" y="50" font-size="12" fill="#888">z</text>
+  <!-- Point on axis -->
+  <circle cx="110" cy="50" r="6" fill="#00cc66"/>
+  <text x="120" y="55" font-size="13" fill="#00cc66">P</text>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
+    </marker>
+  </defs>
+</svg>

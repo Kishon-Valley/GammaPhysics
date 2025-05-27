@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Input Channels -->
+    <rect x="50" y="50" width="150" height="300" fill="#f0f0f0" stroke="black"/>
+    
+    <!-- WDM Multiplexer -->
+    <path d="M 200 200 L 350 200 L 500 50 L 500 350 L 350 200 Z" 
+          fill="#e0e0ff" stroke="black"/>
+    
+    <!-- Output Fiber -->
+    <rect x="500" y="175" width="250" height="50" fill="#d0d0ff" stroke="black"/>
+    
+    <!-- Input Beams -->
+    <line x1="100" y1="100" x2="200" y2="200" stroke="red" stroke-width="2"/>
+    <line x1="100" y1="150" x2="200" y2="200" stroke="green" stroke-width="2"/>
+    <line x1="100" y1="200" x2="200" y2="200" stroke="blue" stroke-width="2"/>
+    <line x1="100" y1="250" x2="200" y2="200" stroke="purple" stroke-width="2"/>
+    
+    <!-- Combined Output -->
+    <line x1="500" y1="200" x2="750" y2="200" stroke="black" stroke-width="3"/>
+    
+    <!-- Labels -->
+    <text x="250" y="30" font-family="Arial" font-size="16">Wavelength Division Multiplexing (WDM)</text>
+    <text x="60" y="90" font-family="Arial" font-size="12">λ₁</text>
+    <text x="60" y="140" font-family="Arial" font-size="12">λ₂</text>
+    <text x="60" y="190" font-family="Arial" font-size="12">λ₃</text>
+    <text x="60" y="240" font-family="Arial" font-size="12">λ₄</text>
+    <text x="600" y="190" font-family="Arial" font-size="12">Combined Signal</text>
+</svg>

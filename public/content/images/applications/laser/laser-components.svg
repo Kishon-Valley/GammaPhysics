@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Basic Laser Components and Structure</text>
+  
+  <!-- Laser cavity -->
+  <rect x="150" y="150" width="500" height="100" fill="#f8f8f8" stroke="black" stroke-width="2"/>
+  
+  <!-- Gain medium -->
+  <rect x="250" y="150" width="300" height="100" fill="#FFD580" stroke="black" stroke-width="2"/>
+  <text x="400" y="200" font-family="Arial" font-size="18" text-anchor="middle">Gain Medium</text>
+  
+  <!-- Pumping mechanism -->
+  <rect x="250" y="100" width="300" height="50" fill="#90EE90" stroke="black" stroke-width="2"/>
+  <text x="400" y="130" font-family="Arial" font-size="16" text-anchor="middle">Pumping Mechanism</text>
+  
+  <!-- Mirrors -->
+  <rect x="150" y="150" width="10" height="100" fill="#C0C0C0" stroke="black" stroke-width="2"/>
+  <rect x="640" y="150" width="10" height="100" fill="#C0C0C0" stroke="black" stroke-width="2" fill-opacity="0.7"/>
+  
+  <!-- Mirror labels -->
+  <text x="155" y="270" font-family="Arial" font-size="14" text-anchor="middle">HR</text>
+  <text x="155" y="290" font-family="Arial" font-size="12" text-anchor="middle">R ≈ 100%</text>
+  
+  <text x="645" y="270" font-family="Arial" font-size="14" text-anchor="middle">OC</text>
+  <text x="645" y="290" font-family="Arial" font-size="12" text-anchor="middle">R < 100%</text>
+  
+  <!-- Laser beam -->
+  <line x1="160" y1="200" x2="640" y2="200" stroke="red" stroke-width="2" stroke-dasharray="5,3"/>
+  <line x1="650" y1="200" x2="700" y2="200" stroke="red" stroke-width="3"/>
+  <polygon points="700,200 690,195 690,205" fill="red"/>
+  
+  <!-- Pump energy arrows -->
+  <line x1="400" y1="100" x2="400" y2="150" stroke="green" stroke-width="3" stroke-dasharray="5,3"/>
+  <polygon points="400,150 395,140 405,140" fill="green"/>
+  
+  <line x1="350" y1="100" x2="350" y2="150" stroke="green" stroke-width="3" stroke-dasharray="5,3"/>
+  <polygon points="350,150 345,140 355,140" fill="green"/>
+  
+  <line x1="450" y1="100" x2="450" y2="150" stroke="green" stroke-width="3" stroke-dasharray="5,3"/>
+  <polygon points="450,150 445,140 455,140" fill="green"/>
+  
+  <!-- Annotations -->
+  <text x="700" y="190" font-family="Arial" font-size="14">Laser Output</text>
+  <text x="400" y="80" font-family="Arial" font-size="14" text-anchor="middle">Pump Energy</text>
+  <text x="400" y="320" font-family="Arial" font-size="16" text-anchor="middle">Optical Resonator (Cavity Length L)</text>
+  
+  <!-- Cavity length annotation -->
+  <line x1="160" y1="300" x2="640" y2="300" stroke="black" stroke-width="1"/>
+  <line x1="160" y1="295" x2="160" y2="305" stroke="black" stroke-width="1"/>
+  <line x1="640" y1="295" x2="640" y2="305" stroke="black" stroke-width="1"/>
+  
+  <!-- Key equations -->
+  <text x="150" y="350" font-family="Arial" font-size="14">Resonant Frequencies: νq = q·c/2L</text>
+  <text x="150" y="370" font-family="Arial" font-size="14">Threshold Condition: R₁R₂exp(2γL) = 1</text>
+  
+  <!-- Legend -->
+  <rect x="650" y="320" width="15" height="15" fill="#FFD580" stroke="black"/>
+  <text x="675" y="332" font-family="Arial" font-size="12">Active Medium</text>
+  
+  <rect x="650" y="340" width="15" height="15" fill="#90EE90" stroke="black"/>
+  <text x="675" y="352" font-family="Arial" font-size="12">Pump Source</text>
+  
+  <rect x="650" y="360" width="15" height="15" fill="#C0C0C0" stroke="black"/>
+  <text x="675" y="372" font-family="Arial" font-size="12">Mirrors (HR: High Reflector, OC: Output Coupler)</text>
+</svg>

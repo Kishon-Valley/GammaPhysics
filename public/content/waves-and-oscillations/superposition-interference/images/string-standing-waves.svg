@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Standing Waves on a String</text>
+    
+    <!-- String at rest -->
+    <line x1="100" y1="100" x2="700" y2="100" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Vibrating string -->
+    <path d="M100,100 Q200,50 300,100 T500,100 T700,100" fill="none" stroke="#2196F3" stroke-width="2"/>
+    <path d="M100,100 Q200,150 300,100 T500,100 T700,100" fill="none" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <!-- Fixed ends -->
+    <rect x="90" y="80" width="20" height="40" fill="#666"/>
+    <rect x="690" y="80" width="20" height="40" fill="#666"/>
+    
+    <!-- Labels -->
+    <text x="100" y="140" text-anchor="middle" font-size="14">Fixed End</text>
+    <text x="700" y="140" text-anchor="middle" font-size="14">Fixed End</text>
+    
+    <!-- Node points -->
+    <circle cx="100" cy="100" r="4" fill="#E91E63"/>
+    <circle cx="300" cy="100" r="4" fill="#E91E63"/>
+    <circle cx="500" cy="100" r="4" fill="#E91E63"/>
+    <circle cx="700" cy="100" r="4" fill="#E91E63"/>
+    <text x="300" y="80" text-anchor="middle" font-size="12">Node</text>
+    
+    <!-- Antinode points -->
+    <text x="200" y="60" text-anchor="middle" font-size="12">Antinode</text>
+    <text x="400" y="60" text-anchor="middle" font-size="12">Antinode</text>
+    <text x="600" y="60" text-anchor="middle" font-size="12">Antinode</text>
+    
+    <!-- Formulas -->
+    <text x="400" y="200" text-anchor="middle" font-size="16">f = (n/2L)√(T/μ)</text>
+    <text x="400" y="230" text-anchor="middle" font-size="14">T = tension, μ = mass per unit length</text>
+    <text x="400" y="260" text-anchor="middle" font-size="14">n = mode number, L = string length</text>
+</svg>

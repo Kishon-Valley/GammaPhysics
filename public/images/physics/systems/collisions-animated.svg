@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+    <defs>
+        <style type="text/css">
+            /* Elastic Collision */
+            @keyframes elastic1 {
+                0% { transform: translateX(0); }
+                45% { transform: translateX(180px); }
+                50% { transform: translateX(180px); }
+                100% { transform: translateX(-20px); }
+            }
+            @keyframes elastic2 {
+                0% { transform: translateX(0); }
+                45% { transform: translateX(0); }
+                50% { transform: translateX(0); }
+                100% { transform: translateX(200px); }
+            }
+            
+            /* Partially Elastic */
+            @keyframes partial1 {
+                0% { transform: translateX(0); }
+                45% { transform: translateX(180px); }
+                50% { transform: translateX(180px); }
+                100% { transform: translateX(60px); }
+            }
+            @keyframes partial2 {
+                0% { transform: translateX(0); }
+                45% { transform: translateX(0); }
+                50% { transform: translateX(0); }
+                100% { transform: translateX(120px); }
+            }
+            
+            /* Improved Inelastic Collision */
+            @keyframes inelastic1 {
+                0% { transform: translateX(0); opacity: 1; }
+                45% { transform: translateX(180px); opacity: 1; }
+                50% { transform: translateX(180px); opacity: 0; }
+                100% { transform: translateX(180px); opacity: 0; }
+            }
+            @keyframes inelastic2 {
+                0% { transform: translateX(0); opacity: 1; }
+                45% { transform: translateX(0); opacity: 1; }
+                50% { transform: translateX(0); opacity: 0; }
+                100% { transform: translateX(0); opacity: 0; }
+            }
+            @keyframes combined {
+                0%, 45% { 
+                    opacity: 0;
+                }
+                50% { 
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                100% { 
+                    transform: translateX(30px);
+                    opacity: 1;
+                }
+            }
+            
+            .elastic1 { animation: elastic1 4s linear infinite; }
+            .elastic2 { animation: elastic2 4s linear infinite; }
+            .partial1 { animation: partial1 4s linear infinite; }
+            .partial2 { animation: partial2 4s linear infinite; }
+            .inelastic1 { animation: inelastic1 4s linear infinite; }
+            .inelastic2 { animation: inelastic2 4s linear infinite; }
+            .combined { animation: combined 4s linear infinite; }
+            
+            /* Velocity arrows */
+            @keyframes arrow1 {
+                0% { opacity: 1; }
+                45% { opacity: 1; }
+                50% { opacity: 0; }
+                100% { opacity: 0; }
+            }
+            @keyframes arrowCombined {
+                0% { opacity: 0; }
+                45% { opacity: 0; }
+                50% { opacity: 1; }
+                100% { opacity: 1; }
+            }
+            .arrow1 { animation: arrow1 4s linear infinite; }
+            .arrowCombined { animation: arrowCombined 4s linear infinite; }
+        </style>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#444"/>
+        </marker>
+    </defs>
+
+    <!-- White background -->
+    <rect width="800" height="400" fill="white"/>
+    <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">Types of Collisions</text>
+    
+    <!-- Elastic -->
+    <g transform="translate(0,100)">
+        <text x="400" y="0" font-family="Arial" font-size="18" text-anchor="middle">Elastic Collision</text>
+        <text x="400" y="25" font-family="Arial" font-size="14" text-anchor="middle">Total kinetic energy is conserved</text>
+        <line x1="100" y1="50" x2="700" y2="50" stroke="#888" stroke-width="1"/>
+        <g transform="translate(200,50)">
+            <circle class="elastic1" cx="0" cy="0" r="20" fill="#ff4444"/>
+            <circle class="elastic2" cx="200" cy="0" r="20" fill="#4444ff"/>
+        </g>
+    </g>
+    
+    <!-- Partially Elastic -->
+    <g transform="translate(0,200)">
+        <text x="400" y="0" font-family="Arial" font-size="18" text-anchor="middle">Partially Elastic Collision</text>
+        <text x="400" y="25" font-family="Arial" font-size="14" text-anchor="middle">Some kinetic energy is lost</text>
+        <line x1="100" y1="50" x2="700" y2="50" stroke="#888" stroke-width="1"/>
+        <g transform="translate(200,50)">
+            <circle class="partial1" cx="0" cy="0" r="20" fill="#ff8844"/>
+            <circle class="partial2" cx="200" cy="0" r="20" fill="#4488ff"/>
+        </g>
+    </g>
+    
+    <!-- Inelastic -->
+    <g transform="translate(0,300)">
+        <text x="400" y="0" font-family="Arial" font-size="18" text-anchor="middle">Perfectly Inelastic Collision</text>
+        <text x="400" y="25" font-family="Arial" font-size="14" text-anchor="middle">Objects merge together with maximum energy loss</text>
+        <line x1="100" y1="50" x2="700" y2="50" stroke="#888" stroke-width="1"/>
+        <g transform="translate(200,50)">
+            <!-- Velocity arrow for first ball -->
+            <line class="arrow1" x1="-30" y1="-25" x2="30" y2="-25" stroke="#444" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <text class="arrow1" x="0" y="-30" font-family="Arial" font-size="12" text-anchor="middle">v₁</text>
+            
+            <!-- Velocity arrow for combined ball -->
+            <line class="arrowCombined" x1="180" y1="-25" x2="210" y2="-25" stroke="#444" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <text class="arrowCombined" x="195" y="-30" font-family="Arial" font-size="12" text-anchor="middle">v'</text>
+            
+            <!-- Balls -->
+            <circle class="inelastic1" cx="0" cy="0" r="20" fill="#ff4444"/>
+            <circle class="inelastic2" cx="200" cy="0" r="20" fill="#4444ff"/>
+            <g transform="translate(180,0)">
+                <circle class="combined" cx="0" cy="0" r="25" fill="#884488"/>
+            </g>
+            
+            <!-- Formula -->
+            <text x="350" y="0" font-family="Arial" font-size="14" text-anchor="start">v' = (m₁v₁)/(m₁+m₂)</text>
+        </g>
+    </g>
+    
+    <!-- Physics explanation -->
+    <text x="400" y="380" font-family="Arial" font-size="14" text-anchor="middle">
+        In all collisions, momentum is conserved: m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'
+    </text>
+</svg>

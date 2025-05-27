@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg" style="background-color: white;">
+  <style>
+    svg { background-color: white; }
+  </style>
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Capacitor plates -->
+  <rect x="50" y="50" width="20" height="300" fill="#666"/>
+  <rect x="730" y="50" width="20" height="300" fill="#666"/>
+  
+  <!-- Field lines -->
+  <g stroke="#2196F3" stroke-width="1" stroke-dasharray="5,5">
+    <line x1="70" y1="75" x2="730" y2="75"/>
+    <line x1="70" y1="125" x2="730" y2="125"/>
+    <line x1="70" y1="175" x2="730" y2="175"/>
+    <line x1="70" y1="225" x2="730" y2="225"/>
+    <line x1="70" y1="275" x2="730" y2="275"/>
+    <line x1="70" y1="325" x2="730" y2="325"/>
+  </g>
+  
+  <!-- Dipoles before polarization -->
+  <g transform="translate(150,0)">
+    <text x="200" y="30" font-family="Arial" font-size="16" fill="black">Before Applied Field</text>
+    <!-- Random dipoles -->
+    <g stroke="#000" stroke-width="2">
+      <line x1="150" y1="100" x2="170" y2="120"/>
+      <line x1="200" y1="150" x2="180" y2="170"/>
+      <line x1="160" y1="200" x2="180" y2="220"/>
+      <line x1="190" y1="250" x2="170" y2="270"/>
+      <line x1="150" y1="300" x2="170" y2="280"/>
+    </g>
+    <!-- Dipole charges -->
+    <g fill="#F44336">
+      <circle cx="170" cy="120" r="4"/>
+    </g>
+    <g fill="#2196F3">
+      <circle cx="150" cy="100" r="4"/>
+    </g>
+    <!-- Repeat for other dipoles -->
+  </g>
+  
+  <!-- Dipoles after polarization -->
+  <g transform="translate(450,0)">
+    <text x="200" y="30" font-family="Arial" font-size="16" fill="black">After Applied Field</text>
+    <!-- Aligned dipoles -->
+    <g stroke="#000" stroke-width="2">
+      <line x1="150" y1="100" x2="180" y2="100"/>
+      <line x1="150" y1="150" x2="180" y2="150"/>
+      <line x1="150" y1="200" x2="180" y2="200"/>
+      <line x1="150" y1="250" x2="180" y2="250"/>
+      <line x1="150" y1="300" x2="180" y2="300"/>
+    </g>
+    <!-- Dipole charges -->
+    <g fill="#F44336">
+      <circle cx="180" cy="100" r="4"/>
+      <circle cx="180" cy="150" r="4"/>
+      <circle cx="180" cy="200" r="4"/>
+      <circle cx="180" cy="250" r="4"/>
+      <circle cx="180" cy="300" r="4"/>
+    </g>
+    <g fill="#2196F3">
+      <circle cx="150" cy="100" r="4"/>
+      <circle cx="150" cy="150" r="4"/>
+      <circle cx="150" cy="200" r="4"/>
+      <circle cx="150" cy="250" r="4"/>
+      <circle cx="150" cy="300" r="4"/>
+    </g>
+  </g>
+  
+  <!-- Labels -->
+  <text x="40" y="30" font-family="Arial" font-size="16" fill="black">+</text>
+  <text x="740" y="30" font-family="Arial" font-size="16" fill="black">−</text>
+  <text x="400" y="380" font-family="Arial" font-size="16" fill="black">Applied Electric Field</text>
+</svg>

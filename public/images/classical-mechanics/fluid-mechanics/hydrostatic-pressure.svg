@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="550" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-family="Arial, sans-serif">Hydrostatic Pressure Variation with Depth</text>
+    
+    <!-- Container with fluid -->
+    <g transform="translate(100,50)">
+        <!-- Container -->
+        <rect x="100" y="50" width="200" height="350" fill="none" stroke="black"/>
+        
+        <!-- Water gradient -->
+        <defs>
+            <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#ADD8E6;stop-opacity:0.3"/>
+                <stop offset="100%" style="stop-color:#00008B;stop-opacity:0.5"/>
+            </linearGradient>
+        </defs>
+        <rect x="100" y="50" width="200" height="350" fill="url(#waterGradient)"/>
+        
+        <!-- Pressure points -->
+        <g>
+            <!-- Surface -->
+            <circle cx="200" cy="50" r="5" fill="red"/>
+            <text x="350" y="55" font-size="18" font-family="Arial, sans-serif" fill="#000000">P₀ (Atmospheric Pressure)</text>
+            
+            <!-- Mid point -->
+            <circle cx="200" cy="225" r="5" fill="red"/>
+            <text x="350" y="230" font-size="18" font-family="Arial, sans-serif" fill="#000000">P = P₀ + ρgh₁</text>
+            
+            <!-- Bottom -->
+            <circle cx="200" cy="400" r="5" fill="red"/>
+            <text x="350" y="405" font-size="18" font-family="Arial, sans-serif" fill="#000000">P = P₀ + ρgh₂</text>
+        </g>
+        
+        <!-- Depth measurements -->
+        <g stroke="black" stroke-dasharray="5,5">
+            <line x1="50" y1="50" x2="50" y2="225"/>
+            <line x1="45" y1="50" x2="55" y2="50"/>
+            <line x1="45" y1="225" x2="55" y2="225"/>
+            <text x="20" y="137.5" font-size="18" font-family="Arial, sans-serif" fill="#000000">h₁</text>
+            
+            <line x1="70" y1="50" x2="70" y2="400"/>
+            <line x1="65" y1="50" x2="75" y2="50"/>
+            <line x1="65" y1="400" x2="75" y2="400"/>
+            <text x="90" y="225" font-size="18" font-family="Arial, sans-serif" fill="#000000">h₂</text>
+        </g>
+        
+        <!-- Pressure scale -->
+        <g transform="translate(250,50)">
+            <rect x="0" y="0" width="20" height="350" fill="url(#pressureGradient)"/>
+            <text x="-60" y="20" font-size="16" font-family="Arial, sans-serif" fill="#000000">Low pressure</text>
+            <text x="-60" y="330" font-size="16" font-family="Arial, sans-serif" fill="#000000">High pressure</text>
+        </g>
+    </g>
+    
+    <!-- Pressure gradient -->
+    <defs>
+        <linearGradient id="pressureGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:yellow"/>
+            <stop offset="100%" style="stop-color:red"/>
+        </linearGradient>
+    </defs>
+    
+    <!-- Formula -->
+    <g transform="translate(500,450)">
+        <text x="0" y="0" font-size="20" font-family="Arial, sans-serif" fill="#000000">P = P₀ + ρgh</text>
+        <text x="0" y="30" font-size="16" font-family="Arial, sans-serif" fill="#000000">where:</text>
+        <text x="20" y="55" font-size="16" font-family="Arial, sans-serif" fill="#000000">P = Pressure at depth h</text>
+        <text x="20" y="80" font-size="16" font-family="Arial, sans-serif" fill="#000000">P₀ = Atmospheric pressure</text>
+        <text x="20" y="105" font-size="16" font-family="Arial, sans-serif" fill="#000000">ρ = Fluid density</text>
+        <text x="20" y="130" font-size="16" font-family="Arial, sans-serif" fill="#000000">g = Acceleration due to gravity</text>
+        <text x="20" y="155" font-size="16" font-family="Arial, sans-serif" fill="#000000">h = Depth below surface</text>
+    </g>
+</svg>

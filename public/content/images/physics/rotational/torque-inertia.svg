@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font: bold 16px sans-serif; }
+        .label { font: 14px sans-serif; }
+        .math { font-style: italic; }
+        .equation { font: italic 16px serif; }
+    </style>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" class="title">Torque and Moment of Inertia</text>
+    
+    <!-- Torque -->
+    <g transform="translate(50,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Torque</text>
+        
+        <!-- Pivot Point -->
+        <circle cx="100" cy="100" r="4" fill="#000"/>
+        
+        <!-- Lever Arm -->
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#000" stroke-width="2"/>
+        
+        <!-- Force Vector -->
+        <line x1="160" y1="100" x2="160" y2="60" stroke="#ff4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Radius Vector -->
+        <path d="M 100,100 L 160,100" stroke="#4444ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Angle -->
+        <path d="M 160,100 A 20,20 0 0,1 160,80" fill="none" stroke="#000" stroke-width="1"/>
+        
+        <!-- Labels -->
+        <text x="170" y="80" class="math">F</text>
+        <text x="130" y="95" class="math">r</text>
+        <text x="165" y="90" class="math">θ</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">τ = r × F</text>
+    </g>
+    
+    <!-- Moment of Inertia -->
+    <g transform="translate(300,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Moment of Inertia</text>
+        
+        <!-- Axis -->
+        <line x1="100" y1="40" x2="100" y2="160" stroke="#000" stroke-width="2"/>
+        
+        <!-- Mass Elements -->
+        <circle cx="60" cy="80" r="10" fill="#ff4444"/>
+        <circle cx="140" cy="120" r="15" fill="#4444ff"/>
+        
+        <!-- Distance Lines -->
+        <line x1="100" y1="80" x2="60" y2="80" stroke="#000" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="100" y1="120" x2="140" y2="120" stroke="#000" stroke-width="1" stroke-dasharray="4,4"/>
+        
+        <!-- Labels -->
+        <text x="80" y="75" class="math">r₁</text>
+        <text x="120" y="115" class="math">r₂</text>
+        <text x="55" y="85" class="math">m₁</text>
+        <text x="155" y="125" class="math">m₂</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">I = Σmᵢrᵢ²</text>
+    </g>
+    
+    <!-- Common Objects -->
+    <g transform="translate(550,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Common Objects</text>
+        
+        <!-- Disk -->
+        <circle cx="60" cy="80" r="20" fill="none" stroke="#000" stroke-width="2"/>
+        <text x="60" y="110" text-anchor="middle" class="equation">½MR²</text>
+        
+        <!-- Rod -->
+        <line x1="100" y1="60" x2="100" y2="100" stroke="#000" stroke-width="4"/>
+        <text x="100" y="110" text-anchor="middle" class="equation">⅓ML²</text>
+        
+        <!-- Ring -->
+        <circle cx="140" cy="80" r="20" fill="none" stroke="#000" stroke-width="4"/>
+        <text x="140" y="110" text-anchor="middle" class="equation">MR²</text>
+    </g>
+    
+    <!-- Equations -->
+    <g transform="translate(0,300)">
+        <text x="200" y="20" class="equation">τ = Iα</text>
+        <text x="400" y="20" class="equation">L = Iω</text>
+        <text x="600" y="20" class="equation">E = ½Iω²</text>
+    </g>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+        </marker>
+    </defs>
+</svg>

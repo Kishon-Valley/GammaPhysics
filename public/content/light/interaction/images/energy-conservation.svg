@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="400" height="300" fill="white"/>
+    
+    <!-- Material block -->
+    <rect x="150" y="100" width="100" height="100" fill="#f0f0f0" stroke="black"/>
+    
+    <!-- Incident beam -->
+    <line x1="50" y1="150" x2="150" y2="150" stroke="yellow" stroke-width="4"/>
+    <text x="80" y="140" font-family="Arial" font-size="14">I₀</text>
+    
+    <!-- Reflected beam -->
+    <line x1="150" y1="150" x2="120" y2="120" stroke="blue" stroke-width="3"/>
+    <text x="100" y="110" font-family="Arial" font-size="14">Iᵣ (30%)</text>
+    
+    <!-- Transmitted beam -->
+    <line x1="250" y1="150" x2="350" y2="150" stroke="green" stroke-width="3"/>
+    <text x="280" y="140" font-family="Arial" font-size="14">Iₜ (60%)</text>
+    
+    <!-- Absorbed energy -->
+    <circle cx="200" cy="150" r="10" fill="red"/>
+    <text x="190" y="180" font-family="Arial" font-size="14">Iₐ (10%)</text>
+    
+    <!-- Energy conservation equation -->
+    <text x="120" y="250" font-family="Arial" font-size="16">I₀ = Iᵣ + Iₐ + Iₜ</text>
+    <text x="120" y="270" font-family="Arial" font-size="16">1 = R + A + T</text>
+</svg>

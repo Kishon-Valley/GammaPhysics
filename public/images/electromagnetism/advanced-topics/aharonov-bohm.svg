@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Definitions for animations and styles -->
+    <style type="text/css">
+      .title-text { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; text-anchor: middle; }
+      .subtitle-text { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .label-text { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+      .small-text { font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+      .formula-text { font-family: Arial, sans-serif; font-size: 16px; font-style: italic; text-anchor: middle; }
+      
+      .background { fill: #f0f8ff; }
+      .apparatus { fill: #e0e0e0; stroke: #606060; stroke-width: 2; }
+      .solenoid { fill: #c0c0c0; stroke: #606060; stroke-width: 2; }
+      .solenoid-core { fill: #a0a0a0; }
+      
+      .electron { fill: #4080ff; stroke: #2060e0; stroke-width: 1; }
+      .electron-path { fill: none; stroke: #80a0ff; stroke-width: 1.5; stroke-dasharray: 4,2; }
+      .interference-pattern { fill: none; stroke: #4080ff; stroke-width: 2; }
+      
+      .magnetic-field { fill: none; stroke: #ff8080; stroke-width: 1.5; stroke-dasharray: 5,3; }
+      .magnetic-field-region { fill: #ffecec; stroke: none; }
+      
+      .wave { fill: none; stroke: #4040ff; stroke-width: 1.5; }
+      .wave-front { fill: none; stroke: #4040ff; stroke-width: 1; stroke-dasharray: 3,2; }
+      
+      .phase-difference { font-family: Arial, sans-serif; font-size: 14px; fill: #ff4040; font-weight: bold; }
+      
+      @keyframes moveElectron1 {
+        0% { transform: translate(0, 0); }
+        100% { transform: translate(320, 0); }
+      }
+      
+      @keyframes moveElectron2 {
+        0% { transform: translate(0, 0); }
+        25% { transform: translate(80, -100); }
+        75% { transform: translate(240, -100); }
+        100% { transform: translate(320, 0); }
+      }
+      
+      @keyframes moveElectron3 {
+        0% { transform: translate(0, 0); }
+        25% { transform: translate(80, 100); }
+        75% { transform: translate(240, 100); }
+        100% { transform: translate(320, 0); }
+      }
+      
+      @keyframes rotateField {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      @keyframes wavePulse {
+        0%, 100% { stroke-width: 1; opacity: 0.6; }
+        50% { stroke-width: 2; opacity: 1; }
+      }
+      
+      @keyframes fadeInOut {
+        0%, 100% { opacity: 0; }
+        25%, 75% { opacity: 1; }
+      }
+      
+      .electron1 {
+        animation: moveElectron1 6s linear infinite;
+      }
+      
+      .electron2 {
+        animation: moveElectron2 6s linear infinite;
+      }
+      
+      .electron3 {
+        animation: moveElectron3 6s linear infinite;
+      }
+      
+      .field-rotate {
+        animation: rotateField 4s linear infinite;
+      }
+      
+      .wave-pulse {
+        animation: wavePulse 2s infinite;
+      }
+      
+      .fade-effect {
+        animation: fadeInOut 6s infinite;
+      }
+    </style>
+    
+    <!-- Arrow marker definition -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#606060"/>
+    </marker>
+    
+    <!-- Magnetic field marker -->
+    <marker id="fieldArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <circle cx="4" cy="4" r="2" fill="#ff8080"/>
+    </marker>
+    
+    <!-- Wave patterns -->
+    <pattern id="wavePattern1" patternUnits="userSpaceOnUse" width="60" height="20" patternTransform="rotate(0)">
+      <path d="M0,10 C5,5 15,15 20,10 C25,5 35,15 40,10 C45,5 55,15 60,10" class="wave"/>
+    </pattern>
+    
+    <pattern id="wavePattern2" patternUnits="userSpaceOnUse" width="60" height="20" patternTransform="rotate(0)">
+      <path d="M0,10 C5,15 15,5 20,10 C25,15 35,5 40,10 C45,15 55,5 60,10" class="wave"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="450" class="background"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title-text">Aharonov-Bohm Effect</text>
+  
+  <!-- Electron source and detector -->
+  <rect x="50" y="200" width="50" height="60" rx="5" class="apparatus"/>
+  <text x="75" y="240" class="small-text">Source</text>
+  
+  <rect x="700" y="200" width="50" height="60" rx="5" class="apparatus"/>
+  <text x="725" y="240" class="small-text">Detector</text>
+  
+  <!-- Solenoid (confined magnetic field) -->
+  <circle cx="400" cy="220" r="70" class="magnetic-field-region"/>
+  <circle cx="400" cy="220" r="40" class="solenoid"/>
+  <circle cx="400" cy="220" r="30" class="solenoid-core"/>
+  
+  <!-- Magnetic field representation (inside solenoid) -->
+  <g transform="translate(400, 220)" class="field-rotate">
+    <line x1="-25" y1="0" x2="25" y2="0" class="magnetic-field" marker-end="url(#fieldArrow)"/>
+    <line x1="0" y1="-25" x2="0" y2="25" class="magnetic-field" marker-end="url(#fieldArrow)"/>
+    <line x1="-20" y1="-20" x2="20" y2="20" class="magnetic-field" marker-end="url(#fieldArrow)"/>
+    <line x1="-20" y1="20" x2="20" y2="-20" class="magnetic-field" marker-end="url(#fieldArrow)"/>
+  </g>
+  
+  <text x="400" y="150" class="label-text">Magnetic field B</text>
+  <text x="400" y="170" class="label-text">confined inside solenoid</text>
+  
+  <!-- Electron paths -->
+  <path d="M100,230 L700,230" class="electron-path"/>
+  <path d="M100,230 C150,230 200,130 400,130 C600,130 650,230 700,230" class="electron-path"/>
+  <path d="M100,230 C150,230 200,330 400,330 C600,330 650,230 700,230" class="electron-path"/>
+  
+  <!-- Electrons traveling different paths -->
+  <g transform="translate(100, 230)">
+    <circle cx="0" cy="0" r="6" class="electron electron1"/>
+    <text x="0" y="-10" class="small-text">e-</text>
+  </g>
+  
+  <g transform="translate(100, 230)">
+    <circle cx="0" cy="0" r="6" class="electron electron2"/>
+    <text x="0" y="-10" class="small-text">e-</text>
+  </g>
+  
+  <g transform="translate(100, 230)">
+    <circle cx="0" cy="0" r="6" class="electron electron3"/>
+    <text x="0" y="-10" class="small-text">e-</text>
+  </g>
+  
+  <!-- Vector potential representation -->
+  <g>
+    <path d="M400,220 m-60,0 a60,60 0 1,0 120,0 a60,60 0 1,0 -120,0" fill="none" stroke="#ff6040" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="500" y="220" class="label-text">Vector potential A</text>
+    <text x="500" y="240" class="label-text">exists outside solenoid</text>
+  </g>
+  
+  <!-- Phase shift visualization -->
+  <g transform="translate(640, 200)">
+    <rect x="-30" y="-30" width="60" height="60" fill="#ffffff" stroke="#606060" stroke-width="1" opacity="0.8" class="fade-effect"/>
+    <text x="0" y="-10" class="phase-difference fade-effect">Phase</text>
+    <text x="0" y="10" class="phase-difference fade-effect">Shift</text>
+    <text x="0" y="30" class="phase-difference fade-effect">Δφ</text>
+  </g>
+  
+  <!-- Interference pattern at detector -->
+  <g transform="translate(720, 230)">
+    <path d="M-15,0 C-10,-15 -5,15 0,0 C5,-15 10,15 15,0" class="interference-pattern wave-pulse"/>
+  </g>
+  
+  <!-- Formula and explanation -->
+  <rect x="150" y="370" width="500" height="60" rx="10" fill="#ffffff" stroke="#404040" stroke-width="1"/>
+  <text x="400" y="395" class="formula-text">Δφ = (e/ℏ)∮A·dl = (e/ℏ)ΦB</text>
+  <text x="400" y="420" class="small-text">Phase shift depends on magnetic flux ΦB even though electrons never encounter the B field</text>
+</svg> 

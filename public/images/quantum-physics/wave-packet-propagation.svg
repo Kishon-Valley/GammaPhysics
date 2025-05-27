@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions for gradients, filters, and markers -->
+  <defs>
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#8e44ad" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="potentialGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f1c40f" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#e67e22" stop-opacity="0.7"/>
+    </linearGradient>
+    
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/>
+    </marker>
+  </defs>
+  
+  <!-- Style definitions -->
+  <style>
+    .title { font: bold 22px sans-serif; fill: #2c3e50; }
+    .subtitle { font: bold 18px sans-serif; fill: #34495e; }
+    .axis-label { font: 16px sans-serif; fill: #2c3e50; }
+    .equation { font: italic 16px sans-serif; fill: #2c3e50; }
+    .annotation { font: 14px sans-serif; fill: #7f8c8d; }
+    
+    @keyframes propagate {
+      0% { transform: translateX(0) scaleX(1); }
+      100% { transform: translateX(120px) scaleX(2.5); }
+    }
+    
+    @keyframes oscillate {
+      0%, 100% { transform: scaleY(1); }
+      50% { transform: scaleY(1.2); }
+    }
+    
+    @keyframes phase {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -50; }
+    }
+    
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes highlightUncertainty {
+      0%, 100% { stroke-width: 1; }
+      50% { stroke-width: 3; }
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#ecf0f1"/>
+  
+  <!-- Title and subtitle -->
+  <text x="400" y="40" class="title" text-anchor="middle">Wave Packet Propagation</text>
+  <text x="400" y="70" class="subtitle" text-anchor="middle">Time-Dependent Schrödinger Equation</text>
+  
+  <!-- Schrödinger equation -->
+  <text x="400" y="110" class="equation" text-anchor="middle">i&#8463; ∂Ψ(x,t)/∂t = [-&#8463;²/2m ∂²/∂x² + V(x)]Ψ(x,t)</text>
+  
+  <!-- X-axis for position -->
+  <line x1="100" y1="400" x2="700" y2="400" stroke="#2c3e50" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="710" y="405" class="axis-label">x</text>
+  <text x="400" y="430" class="axis-label" text-anchor="middle">Position</text>
+  
+  <!-- Time indicators -->
+  <text x="150" y="470" class="axis-label" text-anchor="middle">t = 0</text>
+  <text x="400" y="470" class="axis-label" text-anchor="middle">t = t₁</text>
+  <text x="650" y="470" class="axis-label" text-anchor="middle">t = t₂</text>
+  
+  <!-- Initial wave packet (Gaussian) -->
+  <g transform="translate(150, 400) scale(1, -1)">
+    <path d="M-70,0 C-50,0 -40,100 0,100 C40,100 50,0 70,0" 
+          fill="url(#waveGradient)" 
+          stroke="#3498db" 
+          stroke-width="2"
+          filter="url(#glow)"
+          opacity="0.9">
+      <!-- Animation for initial wave packet -->
+      <animate attributeName="opacity" 
+               values="0.9;0.7;0.9" 
+               dur="3s" 
+               repeatCount="indefinite"/>
+    </path>
+    
+    <!-- Uncertainty in position (initial) -->
+    <line x1="-40" y1="0" x2="40" y2="0" 
+          stroke="#e74c3c" 
+          stroke-width="2" 
+          stroke-dasharray="5,3"/>
+    <text x="0" y="-10" class="annotation" text-anchor="middle" transform="scale(1, -1)">Δx</text>
+  </g>
+  
+  <!-- Wave packet at time t₁ -->
+  <g transform="translate(400, 400) scale(1, -1)">
+    <path d="M-90,0 C-70,0 -50,70 0,70 C50,70 70,0 90,0" 
+          fill="url(#waveGradient)" 
+          stroke="#3498db" 
+          stroke-width="2"
+          filter="url(#glow)"
+          opacity="0.7"
+          style="animation: oscillate 4s ease-in-out infinite">
+    </path>
+    
+    <!-- Uncertainty in position (t₁) -->
+    <line x1="-60" y1="0" x2="60" y2="0" 
+          stroke="#e74c3c" 
+          stroke-width="2" 
+          stroke-dasharray="5,3"
+          style="animation: highlightUncertainty 4s ease-in-out infinite"/>
+    <text x="0" y="-10" class="annotation" text-anchor="middle" transform="scale(1, -1)">Δx > Δx₀</text>
+  </g>
+  
+  <!-- Wave packet at time t₂ -->
+  <g transform="translate(650, 400) scale(1, -1)">
+    <path d="M-110,0 C-90,0 -60,50 0,50 C60,50 90,0 110,0" 
+          fill="url(#waveGradient)" 
+          stroke="#3498db" 
+          stroke-width="2"
+          filter="url(#glow)"
+          opacity="0.5">
+    </path>
+    
+    <!-- Uncertainty in position (t₂) -->
+    <line x1="-80" y1="0" x2="80" y2="0" 
+          stroke="#e74c3c" 
+          stroke-width="2" 
+          stroke-dasharray="5,3"/>
+    <text x="0" y="-10" class="annotation" text-anchor="middle" transform="scale(1, -1)">Δx >> Δx₀</text>
+  </g>
+  
+  <!-- Propagation arrows -->
+  <path d="M190,350 C270,320 320,320 380,350" 
+        fill="none" 
+        stroke="#2c3e50" 
+        stroke-width="2" 
+        stroke-dasharray="5,3" 
+        marker-end="url(#arrowhead)"/>
+  
+  <path d="M440,350 C520,320 570,320 630,350" 
+        fill="none" 
+        stroke="#2c3e50" 
+        stroke-width="2" 
+        stroke-dasharray="5,3" 
+        marker-end="url(#arrowhead)"/>
+  
+  <!-- Key concepts -->
+  <g transform="translate(400, 180)">
+    <rect x="-250" y="0" width="500" height="120" rx="10" ry="10" fill="#fff" stroke="#bdc3c7" stroke-width="1"/>
+    
+    <text x="-230" y="30" class="subtitle">Key Features:</text>
+    
+    <text x="-230" y="60" class="annotation">• Wave packet spreads over time (dispersion)</text>
+    <text x="-230" y="85" class="annotation">• Position uncertainty increases (Δx grows)</text>
+    <text x="-230" y="110" class="annotation">• Momentum uncertainty decreases (Δp narrows)</text>
+  </g>
+  
+  <!-- Momentum representation (small inset) -->
+  <g transform="translate(650, 180)">
+    <rect x="-120" y="-65" width="240" height="130" rx="5" ry="5" fill="#fff" stroke="#bdc3c7" stroke-width="1"/>
+    
+    <text x="0" y="-40" class="annotation" text-anchor="middle">Momentum Space</text>
+    
+    <!-- Initial momentum distribution (wide) -->
+    <path d="M-80,-20 C-60,-20 -40,30 0,30 C40,30 60,-20 80,-20" 
+          fill="none" 
+          stroke="#e74c3c" 
+          stroke-width="2"
+          stroke-dasharray="3,2"
+          transform="scale(0.8, 0.8)"/>
+    <text x="-70" y="-10" class="annotation" font-size="10">t = 0</text>
+    
+    <!-- Final momentum distribution (narrower) -->
+    <path d="M-60,-20 C-40,-20 -30,50 0,50 C30,50 40,-20 60,-20" 
+          fill="none" 
+          stroke="#e74c3c" 
+          stroke-width="2"
+          transform="scale(0.8, 0.8)"/>
+    <text x="55" y="-10" class="annotation" font-size="10">t = t₂</text>
+    
+    <!-- Momentum axis -->
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="#7f8c8d" stroke-width="1"/>
+    <text x="0" y="20" class="annotation" text-anchor="middle" font-size="12">p</text>
+  </g>
+  
+  <!-- Animation indicators -->
+  <g transform="translate(200, 520)">
+    <text class="annotation">
+      <tspan x="0" y="0">Animation illustrates:</tspan>
+      <tspan x="0" y="20">• Spreading of wave packet with time</tspan>
+      <tspan x="0" y="40">• Increase in position uncertainty</tspan>
+      <tspan x="0" y="60">• Heisenberg uncertainty relation ΔxΔp ≥ ℏ/2</tspan>
+    </text>
+  </g>
+
+  <!-- Moving wave animation -->
+  <g transform="translate(0, 400)">
+    <!-- Animated wave packet moving across -->
+    <path d="M120,-20 Q170,-100 220,-20 Q270,-100 320,-20" 
+          fill="none" 
+          stroke="#3498db" 
+          stroke-width="2" 
+          stroke-dasharray="5,3"
+          opacity="0.3"
+          style="animation: propagate 10s linear infinite, fadeInOut 5s ease-in-out infinite, phase 5s linear infinite">
+    </path>
+  </g>
+</svg> 

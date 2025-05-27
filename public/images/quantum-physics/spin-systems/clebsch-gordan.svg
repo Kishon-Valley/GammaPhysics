@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height="400" viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="500" height="400" fill="white"/>
+  
+  <!-- Title -->
+  <text x="250" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">Clebsch-Gordan Coefficients and Angular Momentum Addition</text>
+  
+  <!-- Vector diagram -->
+  <g transform="translate(125, 150)">
+    <!-- Coordinate system -->
+    <line x1="-80" y1="0" x2="80" y2="0" stroke="#999999" stroke-width="1" />
+    <line x1="0" y1="-80" x2="0" y2="80" stroke="#999999" stroke-width="1" />
+    
+    <!-- J1 vector -->
+    <line x1="0" y1="0" x2="50" y2="-30" stroke="#0066CC" stroke-width="2.5" />
+    <polygon points="53,-32 45,-32 50,-25" fill="#0066CC" />
+    <text x="35" y="-35" font-family="Arial" font-size="14" fill="#0066CC">j₁</text>
+    
+    <!-- J2 vector -->
+    <line x1="0" y1="0" x2="-20" y2="-50" stroke="#CC3300" stroke-width="2.5" />
+    <polygon points="-22,-53 -25,-45 -15,-45" fill="#CC3300" />
+    <text x="-35" y="-40" font-family="Arial" font-size="14" fill="#CC3300">j₂</text>
+    
+    <!-- J total vector -->
+    <line x1="0" y1="0" x2="30" y2="-80" stroke="#006600" stroke-width="3" />
+    <polygon points="30,-85 25,-75 35,-75" fill="#006600" />
+    <text x="40" y="-75" font-family="Arial" font-size="16" fill="#006600">j</text>
+    
+    <!-- Triangle visualization -->
+    <line x1="50" y1="-30" x2="30" y2="-80" stroke="#999999" stroke-width="1.5" stroke-dasharray="5,3" />
+    <line x1="-20" y1="-50" x2="30" y2="-80" stroke="#999999" stroke-width="1.5" stroke-dasharray="5,3" />
+    
+    <!-- Label -->
+    <text x="0" y="100" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Vector Addition Diagram</text>
+  </g>
+  
+  <!-- Basis transformation -->
+  <g transform="translate(375, 150)">
+    <!-- Uncoupled basis -->
+    <rect x="-90" y="-60" width="180" height="40" fill="#E6F2FF" stroke="#0066CC" stroke-width="1.5" rx="5" ry="5" />
+    <text x="0" y="-35" font-family="Arial" font-size="14" text-anchor="middle">|j₁, m₁; j₂, m₂⟩</text>
+    
+    <!-- Arrow down -->
+    <line x1="0" y1="-10" x2="0" y2="10" stroke="#333333" stroke-width="1.5" />
+    <polygon points="0,15 -5,5 5,5" fill="#333333" />
+    <text x="50" y="0" font-family="Arial" font-size="14">Clebsch-Gordan</text>
+    <text x="50" y="20" font-family="Arial" font-size="14">Coefficients</text>
+    
+    <!-- Coupled basis -->
+    <rect x="-90" y="25" width="180" height="40" fill="#F2FFE6" stroke="#006600" stroke-width="1.5" rx="5" ry="5" />
+    <text x="0" y="50" font-family="Arial" font-size="14" text-anchor="middle">|j, m⟩</text>
+    
+    <!-- Formula -->
+    <text x="0" y="90" font-family="Arial" font-size="14" text-anchor="middle" font-style="italic">C^{j,m}_{j₁,m₁;j₂,m₂}</text>
+    
+    <!-- Label -->
+    <text x="0" y="120" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Basis Transformation</text>
+  </g>
+  
+  <!-- Triangle rule -->
+  <g transform="translate(250, 300)">
+    <rect x="-200" y="-20" width="400" height="40" fill="#FFFAE6" stroke="#CC9900" stroke-width="1.5" rx="5" ry="5" />
+    <text x="0" y="5" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Triangle Rule: |j₁ - j₂| ≤ j ≤ j₁ + j₂</text>
+    <text x="0" y="30" font-family="Arial" font-size="14" text-anchor="middle">The values j₁, j₂, and j must be able to form a triangle</text>
+  </g>
+  
+  <!-- Additional note -->
+  <text x="250" y="370" font-family="Arial" font-size="14" text-anchor="middle">Coefficients are non-zero only when m = m₁ + m₂</text>
+</svg>

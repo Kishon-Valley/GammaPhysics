@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Coordinate system -->
+  <g transform="translate(400,200)">
+    <!-- Magnetic field lines (into the page) -->
+    <g stroke="#2196F3" fill="#2196F3">
+      <circle cx="-150" cy="-50" r="5"/>
+      <circle cx="-150" cy="0" r="5"/>
+      <circle cx="-150" cy="50" r="5"/>
+      <circle cx="0" cy="-50" r="5"/>
+      <circle cx="0" cy="0" r="5"/>
+      <circle cx="0" cy="50" r="5"/>
+      <circle cx="150" cy="-50" r="5"/>
+      <circle cx="150" cy="0" r="5"/>
+      <circle cx="150" cy="50" r="5"/>
+      <!-- X marks for "into the page" -->
+      <path d="M-153,-53 L-147,-47 M-153,-47 L-147,-53" stroke="white" stroke-width="2"/>
+      <path d="M-153,-3 L-147,3 M-153,3 L-147,-3" stroke="white" stroke-width="2"/>
+      <path d="M-153,47 L-147,53 M-153,53 L-147,47" stroke="white" stroke-width="2"/>
+      <path d="M-3,-53 L3,-47 M-3,-47 L3,-53" stroke="white" stroke-width="2"/>
+      <path d="M-3,-3 L3,3 M-3,3 L3,-3" stroke="white" stroke-width="2"/>
+      <path d="M-3,47 L3,53 M-3,53 L3,47" stroke="white" stroke-width="2"/>
+      <path d="M147,-53 L153,-47 M147,-47 L153,-53" stroke="white" stroke-width="2"/>
+      <path d="M147,-3 L153,3 M147,3 L153,-3" stroke="white" stroke-width="2"/>
+      <path d="M147,47 L153,53 M147,53 L153,47" stroke="white" stroke-width="2"/>
+    </g>
+    
+    <!-- Charged particle trajectory -->
+    <path d="M-200,-100 Q 0,0 200,100" stroke="#E91E63" stroke-width="3" fill="none"/>
+    
+    <!-- Velocity vector -->
+    <g stroke="#E91E63" stroke-width="2">
+      <line x1="-50" y1="-50" x2="0" y2="-25"/>
+      <polygon points="0,-25 -8,-28 -6,-22" fill="#E91E63"/>
+    </g>
+    
+    <!-- Force vector -->
+    <g stroke="#4CAF50" stroke-width="2">
+      <line x1="-50" y1="-50" x2="-50" y2="-90"/>
+      <polygon points="-50,-90 -53,-82 -47,-82" fill="#4CAF50"/>
+    </g>
+    
+    <!-- Labels -->
+    <text x="-40" y="-15" font-family="Arial" font-size="16" fill="#E91E63">v</text>
+    <text x="-70" y="-70" font-family="Arial" font-size="16" fill="#4CAF50">F</text>
+    <text x="0" y="-100" font-family="Arial" font-size="20" text-anchor="middle">Magnetic Force on a Moving Charged Particle</text>
+    <text x="0" y="120" font-family="Arial" font-size="16" text-anchor="middle">B (into page)</text>
+  </g>
+</svg>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="300" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background that covers the entire viewport -->
+    <rect width="100%" height="100%" fill="white"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+    </marker>
+  </defs>
+
+  <!-- Object -->
+  <rect x="100" y="150" width="50" height="50" fill="#3b82f6"/>
+
+  <!-- Force Vector -->
+  <line x1="125" y1="175" x2="325" y2="100" stroke="#e11d48" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="220" y="120" font-family="Arial" font-size="16">F</text>
+
+  <!-- Displacement Vector -->
+  <line x1="125" y1="175" x2="325" y2="175" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="220" y="195" font-family="Arial" font-size="16">d</text>
+
+  <!-- Angle Arc -->
+  <path d="M 175,175 A 30,30 0 0,0 190,160" fill="none" stroke="#000" stroke-width="1"/>
+  <text x="185" y="170" font-family="Arial" font-size="16">θ</text>
+
+  <!-- Equation -->
+  <text x="100" y="50" font-family="Arial" font-size="16">Work = F·d·cos(θ)</text>
+
+  <!-- Legend -->
+  <g transform="translate(350,50)">
+    <text x="0" y="0" font-family="Arial" font-size="14">Legend:</text>
+    <rect x="0" y="20" width="20" height="20" fill="#3b82f6"/>
+    <text x="30" y="35" font-family="Arial" font-size="12">Object</text>
+    
+    <line x1="0" y1="60" x2="20" y2="60" stroke="#e11d48" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="30" y="65" font-family="Arial" font-size="12">Force (F)</text>
+    
+    <line x1="0" y1="90" x2="20" y2="90" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="30" y="95" font-family="Arial" font-size="12">Displacement (d)</text>
+  </g>
+
+  <!-- Notes -->
+  <text x="50" y="250" font-family="Arial" font-size="12">• Work is maximum when force and displacement are parallel (θ = 0°)</text>
+  <text x="50" y="270" font-family="Arial" font-size="12">• Work is zero when force and displacement are perpendicular (θ = 90°)</text>
+</svg>

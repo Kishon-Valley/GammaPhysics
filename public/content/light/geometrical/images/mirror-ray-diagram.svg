@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Mirror surface -->
+    <path d="M 200,200 Q 400,100 600,200" stroke="black" stroke-width="2" fill="none"/>
+    
+    <!-- Principal axis -->
+    <line x1="100" y1="200" x2="700" y2="200" stroke="#666" stroke-width="1"/>
+    
+    <!-- Object -->
+    <line x1="250" y1="200" x2="250" y2="100" stroke="#4285f4" stroke-width="2"/>
+    <polygon points="250,100 245,110 255,110" fill="#4285f4"/>
+    
+    <!-- Image -->
+    <line x1="450" y1="200" x2="450" y2="300" stroke="#ea4335" stroke-width="2" stroke-dasharray="5,5"/>
+    <polygon points="450,300 445,290 455,290" fill="#ea4335"/>
+    
+    <!-- Ray 1: Through center -->
+    <line x1="250" y1="100" x2="400" y2="200" stroke="#fbbc05" stroke-width="1"/>
+    <line x1="400" y1="200" x2="450" y2="300" stroke="#fbbc05" stroke-width="1"/>
+    
+    <!-- Ray 2: Parallel to principal axis -->
+    <line x1="250" y1="100" x2="500" y2="100" stroke="#34a853" stroke-width="1"/>
+    <line x1="500" y1="100" x2="450" y2="300" stroke="#34a853" stroke-width="1"/>
+    
+    <!-- Labels -->
+    <text x="230" y="90" font-family="Arial" font-size="14">Object</text>
+    <text x="460" y="320" font-family="Arial" font-size="14">Image</text>
+    <text x="600" y="220" font-family="Arial" font-size="14">Principal Axis</text>
+</svg>

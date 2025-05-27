@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+    <defs>
+        <marker id="magnetic-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+        <marker id="current-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+        <marker id="induced-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+    </defs>
+
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+
+    <!-- Title and Main Explanation -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Mutual Inductance</text>
+
+    <!-- Step by Step Process -->
+    <g transform="translate(50,80)">
+        <text x="0" y="0" font-size="16" font-weight="bold">Understanding the Process:</text>
+        <text x="0" y="30" font-size="14">1. Primary coil (left) carries changing current</text>
+        <text x="0" y="50" font-size="14">2. This creates a changing magnetic field (green)</text>
+        <text x="0" y="70" font-size="14">3. Secondary coil (right) experiences this changing field</text>
+        <text x="0" y="90" font-size="14">4. EMF is induced in the secondary coil (orange)</text>
+    </g>
+
+    <!-- Main content with added labels -->
+    <g transform="translate(400,220)">
+        <!-- Primary Coil -->
+        <g transform="translate(-50,0)">
+            <rect x="-40" y="-60" width="80" height="120" fill="none" stroke="#666" stroke-width="2"/>
+            <path d="M -40,-40 L 40,-40" stroke="#2196F3" stroke-width="2" marker-end="url(#current-arrow)">
+                <animate attributeName="stroke-dashoffset"
+                         values="0;100"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Secondary Coil -->
+        <g transform="translate(50,0)">
+            <rect x="-40" y="-60" width="80" height="120" fill="none" stroke="#666" stroke-width="2"/>
+            <path d="M -40,40 L 40,40" stroke="#FF5722" stroke-width="2" marker-end="url(#induced-arrow)">
+                <animate attributeName="stroke-dashoffset"
+                         values="0;100"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Magnetic field lines -->
+        <g stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5">
+            <path d="M -50,-80 C 0,-80 0,80 -50,80" marker-end="url(#magnetic-arrow)">
+                <animate attributeName="d"
+                         values="M -50,-80 C 0,-80 0,80 -50,80;
+                                M -50,-100 C 0,-100 0,100 -50,100;
+                                M -50,-80 C 0,-80 0,80 -50,80"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+            <path d="M 50,-80 C 0,-80 0,80 50,80" marker-end="url(#magnetic-arrow)">
+                <animate attributeName="d"
+                         values="M 50,-80 C 0,-80 0,80 50,80;
+                                M 50,-100 C 0,-100 0,100 50,100;
+                                M 50,-80 C 0,-80 0,80 50,80"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Added Labels -->
+        <text x="-150" y="-100" fill="#2196F3" font-size="14">Primary Current (I₁)</text>
+        <text x="150" y="-100" fill="#FF5722" font-size="14">Induced Current (I₂)</text>
+        <text x="0" y="-120" fill="#4CAF50" font-size="14">Shared Magnetic Field</text>
+
+        <!-- Key Concepts -->
+        <g transform="translate(0,140)">
+            <text x="0" y="20" text-anchor="middle" font-size="12">• M = k√(L₁L₂) where k is coupling coefficient</text>
+            <text x="0" y="40" text-anchor="middle" font-size="12">• Induced EMF: ε₂ = -M(dI₁/dt)</text>
+            <text x="0" y="60" text-anchor="middle" font-size="12">• k ranges from 0 (no coupling) to 1 (perfect coupling)</text>
+        </g>
+    </g>
+
+    <!-- Equation -->
+    <text x="400" y="350" text-anchor="middle" font-family="math" font-size="16">
+        M = k√(L₁L₂)
+    </text>
+
+    <!-- Enhanced Visualization -->
+    <g transform="translate(400,300)">
+        <!-- Dynamic Coupling Indicator -->
+        <g transform="translate(0,-120)">
+            <text x="-50" y="0" text-anchor="middle" font-size="14">Coupling Strength</text>
+            <rect x="-25" y="10" width="50" height="20" fill="none" stroke="#666"/>
+            <rect x="-25" y="10" width="50" height="20" fill="#4CAF50" opacity="0.5">
+                <animate attributeName="width"
+                         values="0;50;0"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </rect>
+        </g>
+    </g>
+
+    <!-- Real-world Applications -->
+    <g transform="translate(50,450)">
+        <rect x="0" y="0" width="700" height="120" fill="#f5f5f5" stroke="#666"/>
+        <text x="20" y="30" font-size="16" font-weight="bold">Applications:</text>
+        <text x="20" y="60" font-size="14">• Transformers: Voltage conversion in power distribution</text>
+        <text x="20" y="80" font-size="14">• Wireless charging: Phone chargers and electric toothbrushes</text>
+        <text x="20" y="100" font-size="14">• Signal coupling: Audio transformers and data transmission</text>
+    </g>
+</svg> 

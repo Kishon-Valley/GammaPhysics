@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <rect width="800" height="700" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Wave Equation Derivation</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">From Maxwell's Equations to Wave Equation</text>
+
+    <!-- Explanation Box -->
+    <rect x="50" y="80" width="700" height="50" fill="#f8f8f8" stroke="#666"/>
+    <text x="400" y="105" text-anchor="middle" font-size="14">Visualization shows how changing E field creates B field and vice versa</text>
+    <text x="400" y="120" text-anchor="middle" font-size="14">Leading to self-sustaining wave propagation</text>
+
+    <!-- Main Visualization -->
+    <g transform="translate(400,300)">
+        <!-- Time Evolution Steps -->
+        <g class="step1">
+            <text x="-250" y="-150" font-size="14">1. Changing E creates curl B</text>
+            <path d="M -200,0 L -100,0" stroke="#FF5722" stroke-width="3">
+                <animate attributeName="transform"
+                         values="scale(1,1);scale(1,1.5);scale(1,1)"
+                         dur="4s"
+                         repeatCount="indefinite"/>
+            </path>
+            <path d="M -150,-30 A 30,30 0 0 1 -150,30" fill="none" stroke="#2196F3" stroke-width="2">
+                <animate attributeName="stroke-width"
+                         values="2;3;2"
+                         dur="4s"
+                         begin="1s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <g class="step2" transform="translate(150,0)">
+            <text x="-250" y="-150" font-size="14">2. Changing B creates curl E</text>
+            <path d="M -150,-30 A 30,30 0 0 1 -150,30" fill="none" stroke="#2196F3" stroke-width="2">
+                <animate attributeName="transform"
+                         values="scale(1,1);scale(1.2,1.2);scale(1,1)"
+                         dur="4s"
+                         repeatCount="indefinite"/>
+            </path>
+            <path d="M -200,0 L -100,0" stroke="#FF5722" stroke-width="3">
+                <animate attributeName="stroke-width"
+                         values="2;3;2"
+                         dur="4s"
+                         begin="2s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Wave Formation -->
+        <g class="wave-formation" transform="translate(0,100)">
+            <text x="0" y="-50" text-anchor="middle" font-size="14">Resulting Wave Equation:</text>
+            <path d="M -200,0 Q -150,-50 -100,0 T 0,0 T 100,0" fill="none" stroke="#4CAF50" stroke-width="2">
+                <animate attributeName="d"
+                         values="M -200,0 Q -150,-50 -100,0 T 0,0 T 100,0;
+                                M -200,0 Q -150,50 -100,0 T 0,0 T 100,0;
+                                M -200,0 Q -150,-50 -100,0 T 0,0 T 100,0"
+                         dur="4s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+    </g>
+
+    <!-- Mathematical Steps -->
+    <g transform="translate(50,500)">
+        <rect width="700" height="150" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Derivation Steps:</text>
+        <text x="20" y="55" font-size="14">1. Take curl of Faraday's law: ∇×(∇×E) = -∇×(∂B/∂t)</text>
+        <text x="20" y="80" font-size="14">2. Use Ampère's law with displacement current: ∂B/∂t = -μ₀ε₀(∂²E/∂t²)</text>
+        <text x="20" y="105" font-size="14">3. Apply vector identity: ∇×(∇×E) = ∇(∇·E) - ∇²E</text>
+        <text x="20" y="130" font-size="14">4. Result: ∇²E = μ₀ε₀(∂²E/∂t²)</text>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(600,200)">
+        <rect width="150" height="100" fill="#f8f8f8" stroke="#666"/>
+        <text x="10" y="30" font-size="12">Red: Electric Field</text>
+        <text x="10" y="50" font-size="12">Blue: Magnetic Field</text>
+        <text x="10" y="70" font-size="12">Green: Resulting Wave</text>
+    </g>
+</svg> 

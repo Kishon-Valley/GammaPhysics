@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid lines -->
+    <g stroke="#eee" stroke-width="1">
+        <path d="M 50 50 L 750 50" />
+        <path d="M 50 150 L 750 150" />
+        <path d="M 50 250 L 750 250" />
+        <path d="M 50 350 L 750 350" />
+    </g>
+
+    <!-- Start and end points -->
+    <circle cx="100" cy="300" r="8" fill="#4CAF50"/>
+    <circle cx="700" cy="300" r="8" fill="#F44336"/>
+    
+    <!-- Possible paths -->
+    <path d="M 100 300 Q 400 100 700 300" stroke="#ccc" stroke-width="2" fill="none"/>
+    <path d="M 100 300 Q 400 450 700 300" stroke="#ccc" stroke-width="2" fill="none"/>
+    
+    <!-- Path of least action -->
+    <path d="M 100 300 L 700 300" stroke="#2196F3" stroke-width="3" fill="none"/>
+    
+    <!-- Labels -->
+    <text x="85" y="330" text-anchor="middle" font-family="Arial" font-size="14">A</text>
+    <text x="715" y="330" text-anchor="middle" font-family="Arial" font-size="14">B</text>
+    <text x="400" y="280" text-anchor="middle" font-family="Arial" font-size="14">Path of Least Action</text>
+    <text x="400" y="80" text-anchor="middle" font-family="Arial" font-size="14">Higher Energy Path</text>
+    <text x="400" y="380" text-anchor="middle" font-family="Arial" font-size="14">Higher Energy Path</text>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold">Principle of Least Action</text>
+</svg>

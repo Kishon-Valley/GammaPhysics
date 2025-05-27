@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <rect width="800" height="700" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Wave Propagation in Matter</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">v = c/n, n = √(εᵣμᵣ)</text>
+
+    <!-- Main Visualization -->
+    <g transform="translate(400,300)">
+        <!-- Medium Interface -->
+        <line x1="0" y1="-200" x2="0" y2="200" stroke="#666" stroke-dasharray="5,5"/>
+        <text x="-100" y="-180" font-size="16">Vacuum (n=1)</text>
+        <text x="100" y="-180" font-size="16">Medium (n>1)</text>
+
+        <!-- Wave in Vacuum -->
+        <g transform="translate(-200,0)">
+            <path d="M 0,0 Q 50,-50 100,0 T 200,0" fill="none" stroke="#FF5722" stroke-width="2">
+                <animate attributeName="d"
+                         values="M 0,0 Q 50,-50 100,0 T 200,0;
+                                M 0,0 Q 50,50 100,0 T 200,0;
+                                M 0,0 Q 50,-50 100,0 T 200,0"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+            <text x="100" y="-70" text-anchor="middle" fill="#FF5722" font-size="14">λ₁</text>
+        </g>
+
+        <!-- Wave in Medium -->
+        <g transform="translate(0,0)">
+            <path d="M 0,0 Q 25,-50 50,0 T 100,0 T 150,0" fill="none" stroke="#2196F3" stroke-width="2">
+                <animate attributeName="d"
+                         values="M 0,0 Q 25,-50 50,0 T 100,0 T 150,0;
+                                M 0,0 Q 25,50 50,0 T 100,0 T 150,0;
+                                M 0,0 Q 25,-50 50,0 T 100,0 T 150,0"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+            <text x="75" y="-70" text-anchor="middle" fill="#2196F3" font-size="14">λ₂ = λ₁/n</text>
+        </g>
+
+        <!-- Velocity Vectors -->
+        <g class="velocities">
+            <path d="M -150,-100 L -100,-100" stroke="#FF5722" stroke-width="2" marker-end="url(#arrow1)"/>
+            <text x="-125" y="-120" text-anchor="middle" fill="#FF5722" font-size="14">v = c</text>
+            
+            <path d="M 50,-100 L 75,-100" stroke="#2196F3" stroke-width="2" marker-end="url(#arrow2)"/>
+            <text x="62" y="-120" text-anchor="middle" fill="#2196F3" font-size="14">v = c/n</text>
+        </g>
+    </g>
+
+    <!-- Properties Box -->
+    <g transform="translate(50,500)">
+        <rect width="700" height="150" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Wave Properties in Medium:</text>
+        <text x="20" y="55" font-size="14">1. Wavelength decreases: λ₂ = λ₁/n</text>
+        <text x="20" y="80" font-size="14">2. Frequency remains constant: f₁ = f₂</text>
+        <text x="20" y="105" font-size="14">3. Phase velocity reduces: v = c/n</text>
+        <text x="20" y="130" font-size="14">4. Wave energy partially reflected at interface</text>
+    </g>
+
+    <!-- Definitions -->
+    <defs>
+        <marker id="arrow1" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+        <marker id="arrow2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+    </defs>
+</svg> 

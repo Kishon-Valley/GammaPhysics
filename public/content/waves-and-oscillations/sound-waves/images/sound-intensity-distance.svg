@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-family="Arial" font-weight="bold">
+        Sound Intensity vs Distance
+    </text>
+    
+    <!-- Sound Source -->
+    <circle cx="400" cy="250" r="20" fill="#FF5722"/>
+    <text x="400" y="220" text-anchor="middle" font-size="14">Sound Source</text>
+    
+    <!-- Spherical Wavefronts -->
+    <circle cx="400" cy="250" r="50" fill="none" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+    <circle cx="400" cy="250" r="100" fill="none" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+    <circle cx="400" cy="250" r="150" fill="none" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <!-- Intensity Labels -->
+    <text x="460" y="250" font-size="14">I₁</text>
+    <text x="510" y="250" font-size="14">I₂ = I₁/4</text>
+    <text x="560" y="250" font-size="14">I₃ = I₁/9</text>
+    
+    <!-- Distance Labels -->
+    <line x1="400" y1="250" x2="450" y2="250" stroke="#666" stroke-width="1"/>
+    <text x="425" y="270" text-anchor="middle" font-size="12">r</text>
+    <line x1="400" y1="250" x2="500" y2="250" stroke="#666" stroke-width="1"/>
+    <text x="475" y="270" text-anchor="middle" font-size="12">2r</text>
+    <line x1="400" y1="250" x2="550" y2="250" stroke="#666" stroke-width="1"/>
+    <text x="525" y="270" text-anchor="middle" font-size="12">3r</text>
+    
+    <!-- Inverse Square Law -->
+    <g transform="translate(100,400)">
+        <rect x="-10" y="-60" width="300" height="80" fill="white" stroke="#ccc"/>
+        <text font-family="Arial" font-size="16">
+            <tspan x="0" dy="0">Inverse Square Law:</tspan>
+            <tspan x="0" dy="25">I = P/(4πr²)</tspan>
+        </text>
+    </g>
+</svg>

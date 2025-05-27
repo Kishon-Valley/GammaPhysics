@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Definitions for animations and styles -->
+    <style type="text/css">
+      .title-text { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; text-anchor: middle; }
+      .subtitle-text { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .label-text { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+      .small-text { font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+      .formula-text { font-family: Arial, sans-serif; font-size: 16px; font-style: italic; text-anchor: middle; }
+      
+      .background { fill: #f8f8ff; }
+      .field-container { fill: #e8e8ff; stroke: #9090d0; stroke-width: 2; }
+      .energy-level { stroke: #404080; stroke-width: 2; stroke-dasharray: none; }
+      .energy-level-label { font-family: Arial, sans-serif; font-size: 12px; fill: #404080; text-anchor: end; }
+      
+      .atom { fill: #80c0ff; stroke: #4080c0; stroke-width: 2; }
+      .electron { fill: #4080ff; }
+      .nucleus { fill: #ff8080; }
+      
+      .photon { fill: #ffff40; stroke: #e0c000; stroke-width: 1; }
+      .photon-path { stroke: #ffff80; stroke-width: 1.5; stroke-dasharray: 5,3; }
+      
+      .wave { stroke: #4040ff; stroke-width: 2; fill: none; }
+      .wave-container { fill: #f0f0ff; stroke: #c0c0ff; stroke-width: 1; }
+      
+      .pointer { fill: #ff6040; stroke: #802000; stroke-width: 1; }
+      
+      @keyframes emitPhoton {
+        0%, 100% { transform: translateX(0) translateY(0); opacity: 0; r: 0; }
+        10% { transform: translateX(0) translateY(0); opacity: 1; r: 5; }
+        90% { transform: translateX(100px) translateY(-60px); opacity: 1; r: 5; }
+        100% { transform: translateX(100px) translateY(-60px); opacity: 0; r: 0; }
+      }
+      
+      @keyframes absorbPhoton {
+        0%, 100% { transform: translateX(0) translateY(0); opacity: 0; r: 0; }
+        10% { transform: translateX(-100px) translateY(60px); opacity: 1; r: 5; }
+        90% { transform: translateX(0) translateY(0); opacity: 1; r: 5; }
+        100% { transform: translateX(0) translateY(0); opacity: 0; r: 0; }
+      }
+      
+      @keyframes electronJumpUp {
+        0%, 40%, 100% { cy: 20; }
+        45%, 95% { cy: -40; }
+      }
+      
+      @keyframes electronJumpDown {
+        0%, 40%, 100% { cy: -40; }
+        45%, 95% { cy: 20; }
+      }
+      
+      @keyframes fadeInOut {
+        0%, 100% { opacity: 0; }
+        20%, 80% { opacity: 1; }
+      }
+      
+      @keyframes oscillateField {
+        0%, 100% { d: "M0,0 C16.7,-15 33.3,15 50,0 C66.7,-15 83.3,15 100,0"; }
+        25% { d: "M0,0 C16.7,15 33.3,-15 50,0 C66.7,15 83.3,-15 100,0"; }
+        50% { d: "M0,0 C16.7,-15 33.3,15 50,0 C66.7,-15 83.3,15 100,0"; }
+        75% { d: "M0,0 C16.7,15 33.3,-15 50,0 C66.7,15 83.3,-15 100,0"; }
+      }
+      
+      @keyframes oscillateQuantized {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+      }
+      
+      .photon-emit {
+        animation: emitPhoton 4s infinite;
+      }
+      
+      .photon-absorb {
+        animation: absorbPhoton 4s infinite;
+      }
+      
+      .electron-up {
+        animation: electronJumpUp 4s infinite;
+      }
+      
+      .electron-down {
+        animation: electronJumpDown 4s infinite;
+      }
+      
+      .wave-oscillate {
+        animation: oscillateField 2s infinite;
+      }
+      
+      .quantum-oscillator {
+        animation: oscillateQuantized 1s infinite ease-in-out;
+      }
+      
+      .fade-effect {
+        animation: fadeInOut 4s infinite;
+      }
+    </style>
+    
+    <!-- Arrow marker definition -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#606060"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="450" class="background"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title-text">Quantization of the Electromagnetic Field</text>
+  
+  <!-- Left panel: Classical field -->
+  <rect x="50" y="100" width="300" height="230" rx="10" class="field-container"/>
+  <text x="200" y="130" class="subtitle-text">Classical EM Field</text>
+  
+  <!-- Classical wave visualization -->
+  <rect x="80" y="160" width="240" height="120" rx="5" class="wave-container"/>
+  <path d="M80,220 C96.7,200 113.3,240 130,220 C146.7,200 163.3,240 180,220 C196.7,200 213.3,240 230,220 C246.7,200 263.3,240 280,220" class="wave wave-oscillate"/>
+  
+  <text x="200" y="300" class="label-text">Continuous Energy Spectrum</text>
+  <line x1="120" y1="320" x2="280" y2="320" stroke="#606060" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <text x="120" y="340" class="small-text">Energy</text>
+  
+  <!-- Right panel: Quantum field -->
+  <rect x="450" y="100" width="300" height="230" rx="10" class="field-container"/>
+  <text x="600" y="130" class="subtitle-text">Quantized EM Field</text>
+  
+  <!-- Energy levels -->
+  <line x1="500" y1="280" x2="700" y2="280" class="energy-level"/>
+  <text x="480" y="285" class="energy-level-label">n = 0</text>
+  
+  <line x1="500" y1="240" x2="700" y2="240" class="energy-level"/>
+  <text x="480" y="245" class="energy-level-label">n = 1</text>
+  
+  <line x1="500" y1="200" x2="700" y2="200" class="energy-level"/>
+  <text x="480" y="205" class="energy-level-label">n = 2</text>
+  
+  <line x1="500" y1="160" x2="700" y2="160" class="energy-level"/>
+  <text x="480" y="165" class="energy-level-label">n = 3</text>
+  
+  <!-- Quantum field visualization - harmonic oscillator representation -->
+  <g transform="translate(600, 260)">
+    <circle cx="0" cy="0" r="15" class="atom quantum-oscillator"/>
+    <text x="0" y="40" class="small-text">Zero-point energy</text>
+    <text x="0" y="55" class="small-text">E₀ = ℏω/2</text>
+  </g>
+  
+  <!-- Atom and photon interaction -->
+  <g transform="translate(200, 400)">
+    <circle cx="0" cy="0" r="20" class="atom"/>
+    <circle cx="0" cy="-5" r="6" class="nucleus"/>
+    <circle cx="0" cy="20" r="4" class="electron electron-up"/>
+    
+    <circle cx="100" cy="-60" r="4" class="electron electron-down"/>
+    <circle cx="100" cy="-60" r="20" class="atom"/>
+    <circle cx="100" cy="-65" r="6" class="nucleus"/>
+    
+    <!-- Photon emission/absorption -->
+    <circle cx="0" cy="0" r="0" class="photon photon-emit"/>
+    <text x="50" y="-30" class="label-text fade-effect">Photon Emission</text>
+    <path d="M10,10 L90,-50" class="photon-path fade-effect"/>
+  </g>
+  
+  <g transform="translate(500, 400)">
+    <circle cx="0" cy="0" r="20" class="atom"/>
+    <circle cx="0" cy="-5" r="6" class="nucleus"/>
+    <circle cx="0" cy="-40" r="4" class="electron electron-down"/>
+    
+    <circle cx="100" cy="-60" r="4" class="electron electron-up"/>
+    <circle cx="100" cy="-60" r="20" class="atom"/>
+    <circle cx="100" cy="-65" r="6" class="nucleus"/>
+    
+    <!-- Photon emission/absorption -->
+    <circle cx="0" cy="0" r="0" class="photon photon-absorb"/>
+    <text x="50" y="-30" class="label-text fade-effect">Photon Absorption</text>
+    <path d="M10,-50 L90,-10" class="photon-path fade-effect"/>
+  </g>
+  
+  <!-- Formula for quantized energy -->
+  <rect x="250" y="350" width="300" height="70" rx="10" fill="#ffffff" stroke="#404040" stroke-width="1"/>
+  <text x="400" y="380" class="formula-text">E = (n + ½)ℏω</text>
+  <text x="400" y="410" class="small-text">Energy comes in discrete quanta: E = ℏω</text>
+</svg> 

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <rect width="800" height="700" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Energy and Momentum Transport</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">S = (1/μ₀)(E×B), u = ½(ε₀E² + B²/μ₀)</text>
+
+    <!-- Explanation Box -->
+    <rect x="50" y="80" width="700" height="50" fill="#f8f8f8" stroke="#666"/>
+    <text x="400" y="105" text-anchor="middle" font-size="14">Poynting vector S shows energy flow direction and magnitude</text>
+    <text x="400" y="120" text-anchor="middle" font-size="14">Energy density u combines electric and magnetic field contributions</text>
+
+    <!-- Main Visualization -->
+    <g transform="translate(400,300)">
+        <!-- Coordinate System -->
+        <line x1="-250" y1="0" x2="250" y2="0" stroke="#666" stroke-width="1"/>
+        <line x1="0" y1="-150" x2="0" y2="150" stroke="#666" stroke-width="1"/>
+        
+        <!-- E-field -->
+        <path d="M -200,0 Q -150,-50 -100,0 T 0,0 T 100,0" 
+              fill="none" stroke="#FF5722" stroke-width="2">
+            <animate attributeName="d"
+                     values="M -200,0 Q -150,-50 -100,0 T 0,0 T 100,0;
+                            M -200,0 Q -150,50 -100,0 T 0,0 T 100,0;
+                            M -200,0 Q -150,-50 -100,0 T 0,0 T 100,0"
+                     dur="3s"
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- B-field -->
+        <path d="M -200,0 Q -150,-50 -100,0 T 0,0 T 100,0" 
+              transform="rotate(90)"
+              fill="none" stroke="#2196F3" stroke-width="2">
+            <animate attributeName="d"
+                     values="M -200,0 Q -150,-50 -100,0 T 0,0 T 100,0;
+                            M -200,0 Q -150,50 -100,0 T 0,0 T 100,0;
+                            M -200,0 Q -150,-50 -100,0 T 0,0 T 100,0"
+                     dur="3s"
+                     repeatCount="indefinite"/>
+        </path>
+
+        <!-- Poynting Vector -->
+        <g class="poynting-vector">
+            <path d="M 0,0 L 100,0" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrow)">
+                <animate attributeName="stroke-width"
+                         values="2;4;2"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+            <text x="120" y="15" fill="#4CAF50" font-size="14">S = E×B/μ₀</text>
+        </g>
+
+        <!-- Energy Density Visualization -->
+        <g class="energy-density" transform="translate(-150,-100)">
+            <rect width="50" height="50" fill="rgba(255,87,34,0.3)" stroke="#FF5722"/>
+            <text x="60" y="25" font-size="12">½ε₀E²</text>
+            <rect y="60" width="50" height="50" fill="rgba(33,150,243,0.3)" stroke="#2196F3"/>
+            <text x="60" y="85" font-size="12">½B²/μ₀</text>
+        </g>
+    </g>
+
+    <!-- Properties Box -->
+    <g transform="translate(50,500)">
+        <rect width="700" height="150" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Key Concepts:</text>
+        <text x="20" y="55" font-size="14">1. Energy flows perpendicular to both E and B fields</text>
+        <text x="20" y="80" font-size="14">2. Energy density oscillates but has constant average</text>
+        <text x="20" y="105" font-size="14">3. Momentum density p = S/c²</text>
+        <text x="20" y="130" font-size="14">4. Radiation pressure P = 2I/c (perfect reflection)</text>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(600,200)">
+        <rect width="150" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="10" y="30" font-size="12">Red: E-field</text>
+        <text x="10" y="50" font-size="12">Blue: B-field</text>
+        <text x="10" y="70" font-size="12">Green: Energy Flow</text>
+        <text x="10" y="90" font-size="12">Boxes: Energy</text>
+        <text x="10" y="110" font-size="12">Density Components</text>
+    </g>
+
+    <!-- Definitions -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+    </defs>
+</svg> 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="300" viewBox="0 0 800 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="300" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="20" fill="#333">Newton's First Law: Law of Inertia</text>
+    
+    <!-- Object at Rest -->
+    <g transform="translate(200, 150)">
+        <rect x="-40" y="-30" width="80" height="60" fill="#4CAF50" stroke="#333" stroke-width="2"/>
+        <line x1="-60" y1="30" x2="60" y2="30" stroke="#333" stroke-width="2"/>
+        <text x="0" y="60" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">Object at Rest</text>
+    </g>
+    
+    <!-- Object in Motion -->
+    <g transform="translate(600, 150)">
+        <rect x="-40" y="-30" width="80" height="60" fill="#2196F3" stroke="#333" stroke-width="2"/>
+        <line x1="-150" y1="30" x2="150" y2="30" stroke="#333" stroke-width="2"/>
+        <!-- Motion arrows -->
+        <path d="M -120,30 L -80,30" stroke="#ff4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <path d="M -60,30 L -20,30" stroke="#ff4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <path d="M 0,30 L 40,30" stroke="#ff4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <path d="M 60,30 L 100,30" stroke="#ff4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="0" y="60" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">Object in Motion</text>
+        <text x="0" y="80" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">Constant Velocity</text>
+    </g>
+    
+    <!-- Arrowhead marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#ff4444"/>
+        </marker>
+    </defs>
+</svg>

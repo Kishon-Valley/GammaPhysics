@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="400" fill="#f8f9fa"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-family="Arial" font-size="20" fill="#333">Connected Objects Systems</text>
+    
+    <!-- Atwood Machine -->
+    <g transform="translate(200, 200)">
+        <text x="0" y="-140" text-anchor="middle" font-family="Arial" font-size="16" fill="#333">Atwood Machine</text>
+        
+        <!-- Support -->
+        <rect x="-100" y="-120" width="200" height="10" fill="#666"/>
+        
+        <!-- Pulley -->
+        <circle cx="0" cy="-80" r="20" fill="#ddd" stroke="#333" stroke-width="2"/>
+        <circle cx="0" cy="-80" r="4" fill="#333"/>
+        
+        <!-- Strings -->
+        <line x1="-20" y1="-80" x2="-60" y2="40" stroke="#333" stroke-width="2"/>
+        <line x1="20" y1="-80" x2="60" y2="40" stroke="#333" stroke-width="2"/>
+        
+        <!-- Masses -->
+        <rect x="-70" y="40" width="20" height="40" fill="#2196F3" stroke="#333" stroke-width="2"/>
+        <rect x="50" y="40" width="20" height="40" fill="#4CAF50" stroke="#333" stroke-width="2"/>
+        
+        <!-- Forces -->
+        <path d="M -60,60 L -60,100" stroke="#ff4444" stroke-width="3" marker-end="url(#arrowhead)"/>
+        <path d="M 60,60 L 60,100" stroke="#ff4444" stroke-width="3" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="-60" y="120" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">m₁g</text>
+        <text x="60" y="120" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">m₂g</text>
+    </g>
+    
+    <!-- Objects on Inclined Plane -->
+    <g transform="translate(600, 200)">
+        <text x="0" y="-140" text-anchor="middle" font-family="Arial" font-size="16" fill="#333">Connected Objects on Incline</text>
+        
+        <!-- Inclined plane -->
+        <g transform="rotate(-30)">
+            <rect x="-120" y="0" width="240" height="10" fill="#666"/>
+        </g>
+        
+        <!-- Objects -->
+        <rect x="-60" y="-20" width="40" height="40" fill="#2196F3" stroke="#333" stroke-width="2"/>
+        <rect x="20" y="-20" width="40" height="40" fill="#4CAF50" stroke="#333" stroke-width="2"/>
+        
+        <!-- String -->
+        <line x1="-20" y1="0" x2="20" y2="0" stroke="#333" stroke-width="2"/>
+        
+        <!-- Forces -->
+        <!-- Object 1 -->
+        <path d="M -40,0 L -40,-40" stroke="#9C27B0" stroke-width="3" marker-end="url(#arrowhead)"/>
+        <path d="M -40,0 L -40,40" stroke="#ff4444" stroke-width="3" marker-end="url(#arrowhead)"/>
+        <path d="M -40,0 L -80,0" stroke="#FF9800" stroke-width="3" marker-end="url(#arrowhead)"/>
+        
+        <!-- Object 2 -->
+        <path d="M 40,0 L 40,-40" stroke="#9C27B0" stroke-width="3" marker-end="url(#arrowhead)"/>
+        <path d="M 40,0 L 40,40" stroke="#ff4444" stroke-width="3" marker-end="url(#arrowhead)"/>
+        <path d="M 40,0 L 80,0" stroke="#FF9800" stroke-width="3" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="-40" y="-50" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">N₁</text>
+        <text x="40" y="-50" text-anchor="middle" font-family="Arial" font-size="14" fill="#666">N₂</text>
+        <text x="-85" y="0" text-anchor="end" font-family="Arial" font-size="14" fill="#666">f₁</text>
+        <text x="85" y="0" text-anchor="start" font-family="Arial" font-size="14" fill="#666">f₂</text>
+    </g>
+    
+    <!-- Equations -->
+    <g transform="translate(400, 350)">
+        <text x="0" y="0" text-anchor="middle" font-family="Arial" font-size="14" fill="#333">a = (m₁ - m₂)g/(m₁ + m₂)</text>
+        <text x="0" y="20" text-anchor="middle" font-family="Arial" font-size="14" fill="#333">T = 2m₁m₂g/(m₁ + m₂)</text>
+    </g>
+    
+    <!-- Arrowhead marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+        </marker>
+    </defs>
+</svg>

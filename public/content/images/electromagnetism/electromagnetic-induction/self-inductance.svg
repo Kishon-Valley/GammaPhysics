@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+    <defs>
+        <marker id="magnetic-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+        <marker id="current-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+    </defs>
+
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+
+    <!-- Title and Main Explanation -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Self-Inductance</text>
+    
+    <!-- Step by Step Explanation -->
+    <g transform="translate(50,80)">
+        <text x="0" y="0" font-size="16" font-weight="bold">What's happening here?</text>
+        <text x="0" y="30" font-size="14">1. Current flows through the coil (blue arrows)</text>
+        <text x="0" y="50" font-size="14">2. This creates a magnetic field (green field lines)</text>
+        <text x="0" y="70" font-size="14">3. When current changes, the magnetic field changes</text>
+        <text x="0" y="90" font-size="14">4. The changing field induces an EMF that opposes the change</text>
+    </g>
+
+    <!-- Main visualization enhanced -->
+    <g transform="translate(400,300)">
+        <!-- Solenoid -->
+        <g id="coil-turn" stroke="#666" stroke-width="3" fill="none">
+            <path d="M -100,0 C -90,-20 -70,-20 -60,0 C -50,20 -30,20 -20,0">
+                <animate attributeName="stroke-width"
+                         values="3;4;3"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+        <use href="#coil-turn" transform="translate(80,0)"/>
+        <use href="#coil-turn" transform="translate(160,0)"/>
+
+        <!-- Current flow -->
+        <path d="M -120,0 L 120,0" stroke="#2196F3" stroke-width="2" marker-end="url(#current-arrow)">
+            <animate attributeName="stroke-dashoffset"
+                     values="0;100"
+                     dur="1s"
+                     repeatCount="indefinite"/>
+        </path>
+
+        <!-- Magnetic field lines -->
+        <g stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5">
+            <path d="M 0,-50 C 30,-50 30,50 0,50" marker-end="url(#magnetic-arrow)">
+                <animate attributeName="d"
+                         values="M 0,-40 C 20,-40 20,40 0,40;
+                                M 0,-60 C 40,-60 40,60 0,60;
+                                M 0,-40 C 20,-40 20,40 0,40"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Dynamic Current Indicator -->
+        <g transform="translate(-200,-50)">
+            <text x="0" y="0" font-size="14">Current Strength:</text>
+            <rect x="0" y="10" width="100" height="20" fill="none" stroke="#2196F3"/>
+            <rect x="0" y="10" width="100" height="20" fill="#2196F3" opacity="0.5">
+                <animate attributeName="width"
+                         values="0;100;0"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </rect>
+        </g>
+
+        <!-- Field Strength Indicator -->
+        <g transform="translate(100,-50)">
+            <text x="0" y="0" font-size="14">Magnetic Field Strength:</text>
+            <rect x="0" y="10" width="100" height="20" fill="none" stroke="#4CAF50"/>
+            <rect x="0" y="10" width="100" height="20" fill="#4CAF50" opacity="0.5">
+                <animate attributeName="width"
+                         values="0;100;0"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </rect>
+        </g>
+    </g>
+
+    <!-- Key Concepts Box -->
+    <g transform="translate(50,450)">
+        <rect x="0" y="0" width="700" height="120" fill="#f5f5f5" stroke="#666"/>
+        <text x="20" y="30" font-size="16" font-weight="bold">Important Concepts:</text>
+        <text x="20" y="60" font-size="14">• Self-inductance (L) measures how strongly the coil resists current changes</text>
+        <text x="20" y="80" font-size="14">• Larger inductance = Stronger opposition to current changes</text>
+        <text x="20" y="100" font-size="14">• Energy is stored in the magnetic field: U = ½LI²</text>
+    </g>
+</svg> 

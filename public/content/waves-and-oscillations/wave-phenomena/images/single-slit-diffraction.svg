@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Single-Slit Diffraction</text>
+    
+    <!-- Barrier with slit -->
+    <line x1="300" y1="50" x2="300" y2="175" stroke="black" stroke-width="4"/>
+    <line x1="300" y1="225" x2="300" y2="350" stroke="black" stroke-width="4"/>
+    <text x="280" y="200" text-anchor="end" font-size="14">a</text>
+    
+    <!-- Incident waves -->
+    <path d="M200,175 L300,175" stroke="#2196F3" stroke-width="2"/>
+    <path d="M200,200 L300,200" stroke="#2196F3" stroke-width="2"/>
+    <path d="M200,225 L300,225" stroke="#2196F3" stroke-width="2"/>
+    
+    <!-- Diffracted waves -->
+    <path d="M300,200 Q400,150 500,100" stroke="#4CAF50" stroke-width="1" fill="none"/>
+    <path d="M300,200 Q400,175 500,150" stroke="#4CAF50" stroke-width="1" fill="none"/>
+    <path d="M300,200 Q400,200 500,200" stroke="#4CAF50" stroke-width="2" fill="none"/>
+    <path d="M300,200 Q400,225 500,250" stroke="#4CAF50" stroke-width="1" fill="none"/>
+    <path d="M300,200 Q400,250 500,300" stroke="#4CAF50" stroke-width="1" fill="none"/>
+    
+    <!-- Intensity pattern -->
+    <path d="M600,50 Q625,125 600,200 Q625,275 600,350" stroke="#9C27B0" stroke-width="2" fill="none"/>
+    <text x="650" y="200" font-size="14">Intensity</text>
+    
+    <!-- Angle -->
+    <path d="M300,200 A40,40 0 0 0 330,230" fill="none" stroke="#666" stroke-width="1"/>
+    <text x="340" y="240" font-size="16">θ</text>
+    
+    <!-- Formula -->
+    <text x="400" y="380" text-anchor="middle" font-size="16">I(θ) = I₀(sin(β)/β)²</text>
+    <text x="400" y="360" text-anchor="middle" font-size="14">β = πasin(θ)/λ</text>
+</svg>

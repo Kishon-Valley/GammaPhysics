@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-family="Arial" font-weight="bold">
+        Sound Perception vs Physical Intensity
+    </text>
+    
+    <!-- Coordinate System -->
+    <g transform="translate(100,400)">
+        <!-- Axes -->
+        <line x1="0" y1="0" x2="600" y2="0" stroke="black" stroke-width="2"/>
+        <line x1="0" y1="0" x2="0" y2="-300" stroke="black" stroke-width="2"/>
+        
+        <!-- Labels -->
+        <text x="300" y="40" text-anchor="middle" font-size="16">Physical Intensity (W/m²)</text>
+        <text x="-40" y="-150" text-anchor="middle" font-size="16" transform="rotate(-90,-40,-150)">
+            Perceived Loudness
+        </text>
+    </g>
+    
+    <!-- Curves -->
+    <!-- Physical Intensity -->
+    <path d="M 100,400 L 700,100" 
+          stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="650" y="150" fill="#2196F3" font-size="14">Linear Scale</text>
+    
+    <!-- Perceived Loudness -->
+    <path d="M 100,400 Q 300,300 700,250" 
+          stroke="#FF5722" stroke-width="3" fill="none"/>
+    <text x="650" y="270" fill="#FF5722" font-size="14">Perceived Scale</text>
+    
+    <!-- Key Points -->
+    <g transform="translate(150,150)">
+        <rect x="-10" y="-60" width="300" height="100" fill="white" stroke="#ccc"/>
+        <text font-family="Arial" font-size="14">
+            <tspan x="0" dy="0">Stevens' Power Law:</tspan>
+            <tspan x="0" dy="25">Loudness ∝ I⁰·³</tspan>
+            <tspan x="0" dy="25">• 10× intensity ≈ 2× perceived loudness</tspan>
+        </text>
+    </g>
+    
+    <!-- Example Points -->
+    <g transform="translate(100,400)">
+        <!-- Point 1 -->
+        <circle cx="200" cy="-100" r="4" fill="#FF5722"/>
+        <text x="220" y="-100" font-size="12">60 dB</text>
+        
+        <!-- Point 2 -->
+        <circle cx="400" cy="-150" r="4" fill="#FF5722"/>
+        <text x="420" y="-150" font-size="12">70 dB</text>
+        
+        <!-- Annotation -->
+        <path d="M 200,-100 L 400,-150" 
+              stroke="#666" stroke-width="1" stroke-dasharray="2,2"/>
+        <text x="300" y="-140" font-size="12">10× intensity</text>
+        <text x="300" y="-125" font-size="12">≈2× loudness</text>
+    </g>
+</svg>

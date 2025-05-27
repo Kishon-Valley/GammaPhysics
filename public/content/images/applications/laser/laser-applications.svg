@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Laser Applications and Techniques</text>
+  
+  <!-- Materials Processing Section -->
+  <g transform="translate(50, 100)">
+    <text x="150" y="-20" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Materials Processing</text>
+    
+    <!-- Laser cutting diagram -->
+    <rect x="50" y="0" width="200" height="40" fill="#C0C0C0" stroke="black" stroke-width="2"/>
+    <line x1="150" y1="0" x2="150" y2="-30" stroke="red" stroke-width="3"/>
+    <polygon points="150,-30 145,-20 155,-20" fill="red"/>
+    
+    <ellipse cx="150" cy="0" rx="10" ry="5" fill="yellow" stroke="orange" stroke-width="1"/>
+    <path d="M 145,0 Q 150,20 155,0" fill="orange" stroke="orange" stroke-width="1"/>
+    
+    <text x="150" y="60" font-family="Arial" font-size="14" text-anchor="middle">Laser Cutting/Welding</text>
+    <text x="150" y="80" font-family="Arial" font-size="12" text-anchor="middle">I = 2P/πw²</text>
+    <text x="150" y="100" font-family="Arial" font-size="12" text-anchor="middle">v ∝ P/ρd√(πα)</text>
+  </g>
+  
+  <!-- Optical Communications Section -->
+  <g transform="translate(350, 100)">
+    <text x="150" y="-20" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Optical Communications</text>
+    
+    <!-- Fiber optic communication diagram -->
+    <rect x="20" y="20" width="60" height="40" fill="#A0A0A0" stroke="black" stroke-width="1"/>
+    <text x="50" y="45" font-family="Arial" font-size="10" text-anchor="middle">Laser</text>
+    
+    <rect x="220" y="20" width="60" height="40" fill="#A0A0A0" stroke="black" stroke-width="1"/>
+    <text x="250" y="45" font-family="Arial" font-size="10" text-anchor="middle">Detector</text>
+    
+    <path d="M 80,40 L 220,40" fill="none" stroke="#A0D0FF" stroke-width="8"/>
+    <text x="150" y="30" font-family="Arial" font-size="10" text-anchor="middle">Optical Fiber</text>
+    
+    <!-- Data pulses -->
+    <rect x="90" y="50" width="10" height="10" fill="red" stroke="none"/>
+    <rect x="120" y="50" width="10" height="10" fill="red" stroke="none"/>
+    <rect x="170" y="50" width="10" height="10" fill="red" stroke="none"/>
+    <rect x="190" y="50" width="10" height="10" fill="red" stroke="none"/>
+    
+    <text x="150" y="80" font-family="Arial" font-size="14" text-anchor="middle">Fiber-Optic Communications</text>
+    <text x="150" y="100" font-family="Arial" font-size="12" text-anchor="middle">B·L ≤ c/(2λ²|D|Δλ)</text>
+  </g>
+  
+  <!-- Medical Applications Section -->
+  <g transform="translate(50, 250)">
+    <text x="150" y="-20" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Medical Applications</text>
+    
+    <!-- Laser surgery diagram -->
+    <ellipse cx="150" cy="30" rx="100" ry="30" fill="#FFD0D0" stroke="#FF8080" stroke-width="1"/>
+    <line x1="150" y1="-10" x2="150" y2="30" stroke="red" stroke-width="2"/>
+    <polygon points="150,30 145,20 155,20" fill="red"/>
+    
+    <path d="M 120,30 C 120,50 180,50 180,30" fill="none" stroke="#800000" stroke-width="2"/>
+    
+    <text x="150" y="70" font-family="Arial" font-size="14" text-anchor="middle">Laser Surgery/Therapy</text>
+    <text x="150" y="90" font-family="Arial" font-size="12" text-anchor="middle">τth = d²/4α</text>
+    <text x="150" y="110" font-family="Arial" font-size="12" text-anchor="middle">D = E·t [J/cm²]</text>
+  </g>
+  
+  <!-- Scientific Research Section -->
+  <g transform="translate(350, 250)">
+    <text x="150" y="-20" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Scientific Research</text>
+    
+    <!-- Ultrafast laser diagram -->
+    <rect x="50" y="0" width="200" height="40" fill="#E0E0E0" stroke="black" stroke-width="1"/>
+    
+    <!-- Pulse train -->
+    <rect x="70" y="50" width="5" height="20" fill="red" stroke="none"/>
+    <rect x="120" y="50" width="5" height="20" fill="red" stroke="none"/>
+    <rect x="170" y="50" width="5" height="20" fill="red" stroke="none"/>
+    <rect x="220" y="50" width="5" height="20" fill="red" stroke="none"/>
+    
+    <line x1="50" y1="60" x2="250" y2="60" stroke="black" stroke-width="1" stroke-dasharray="2,2"/>
+    
+    <text x="150" y="90" font-family="Arial" font-size="14" text-anchor="middle">Ultrafast Laser Spectroscopy</text>
+    <text x="150" y="110" font-family="Arial" font-size="12" text-anchor="middle">Δν·Δt ≥ 0.441</text>
+  </g>
+  
+  <!-- Q-Switching Section -->
+  <g transform="translate(50, 400)">
+    <text x="150" y="-20" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Q-Switching</text>
+    
+    <!-- Q-switching diagram -->
+    <rect x="20" y="0" width="60" height="40" fill="#FFD580" stroke="black" stroke-width="1"/>
+    <text x="50" y="25" font-family="Arial" font-size="10" text-anchor="middle">Gain</text>
+    <text x="50" y="40" font-family="Arial" font-size="10" text-anchor="middle">Medium</text>
+    
+    <rect x="220" y="0" width="60" height="40" fill="#C0C0C0" stroke="black" stroke-width="1"/>
+    <text x="250" y="25" font-family="Arial" font-size="10" text-anchor="middle">Output</text>
+    <text x="250" y="40" font-family="Arial" font-size="10" text-anchor="middle">Coupler</text>
+    
+    <rect x="120" y="0" width="60" height="40" fill="#A0A0A0" stroke="black" stroke-width="1"/>
+    <text x="150" y="25" font-family="Arial" font-size="10" text-anchor="middle">Q-Switch</text>
+    
+    <!-- Pulse formation graph -->
+    <line x1="20" y1="120" x2="280" y2="120" stroke="black" stroke-width="1"/> <!-- x-axis -->
+    <line x1="20" y1="120" x2="20" y2="60" stroke="black" stroke-width="1"/> <!-- y-axis -->
+    
+    <text x="150" y="135" font-family="Arial" font-size="10" text-anchor="middle">Time</text>
+    <text x="10" y="90" font-family="Arial" font-size="10" text-anchor="middle">Intensity</text>
+    
+    <!-- Population inversion curve -->
+    <path d="M 20,110 C 40,110 60,105 80,95 C 100,85 120,70 140,70" fill="none" stroke="blue" stroke-width="1.5"/>
+    <text x="80" y="85" font-family="Arial" font-size="10" fill="blue">Inversion</text>
+    
+    <!-- Q-switching point -->
+    <line x1="140" y1="60" x2="140" y2="120" stroke="black" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="140" y="55" font-family="Arial" font-size="10" text-anchor="middle">Q-switch opens</text>
+    
+    <!-- Output pulse -->
+    <path d="M 140,120 C 150,120 155,100 160,80 C 165,60 170,65 175,80 C 180,100 185,120 200,120" fill="none" stroke="red" stroke-width="1.5"/>
+    <text x="170" y="70" font-family="Arial" font-size="10" fill="red">Pulse</text>
+    
+    <text x="150" y="150" font-family="Arial" font-size="12" text-anchor="middle">τp ≈ τrt/ln(G₀)</text>
+  </g>
+  
+  <!-- Mode-Locking Section -->
+  <g transform="translate(350, 400)">
+    <text x="150" y="-20" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Mode-Locking</text>
+    
+    <!-- Mode-locking diagram -->
+    <rect x="20" y="0" width="260" height="40" fill="#E0E0E0" stroke="black" stroke-width="1"/>
+    <rect x="120" y="0" width="60" height="40" fill="#A0A0A0" stroke="black" stroke-width="1"/>
+    <text x="150" y="25" font-family="Arial" font-size="10" text-anchor="middle">Mode-Locker</text>
+    
+    <!-- Frequency domain representation -->
+    <line x1="20" y1="80" x2="280" y2="80" stroke="black" stroke-width="1"/> <!-- x-axis -->
+    <text x="150" y="95" font-family="Arial" font-size="10" text-anchor="middle">Frequency</text>
+    
+    <!-- Longitudinal modes -->
+    <line x1="50" y1="80" x2="50" y2="60" stroke="blue" stroke-width="1.5"/>
+    <line x1="80" y1="80" x2="80" y2="60" stroke="blue" stroke-width="1.5"/>
+    <line x1="110" y1="80" x2="110" y2="60" stroke="blue" stroke-width="1.5"/>
+    <line x1="140" y1="80" x2="140" y2="60" stroke="blue" stroke-width="1.5"/>
+    <line x1="170" y1="80" x2="170" y2="60" stroke="blue" stroke-width="1.5"/>
+    <line x1="200" y1="80" x2="200" y2="60" stroke="blue" stroke-width="1.5"/>
+    <line x1="230" y1="80" x2="230" y2="60" stroke="blue" stroke-width="1.5"/>
+    <line x1="260" y1="80" x2="260" y2="60" stroke="blue" stroke-width="1.5"/>
+    
+    <text x="150" y="55" font-family="Arial" font-size="10" fill="blue">Locked Modes</text>
+    
+    <!-- Time domain representation -->
+    <line x1="20" y1="120" x2="280" y2="120" stroke="black" stroke-width="1"/> <!-- x-axis -->
+    <text x="150" y="135" font-family="Arial" font-size="10" text-anchor="middle">Time</text>
+    
+    <!-- Ultrashort pulses -->
+    <path d="M 50,120 C 55,120 55,105 60,105 C 65,105 65,120 70,120" fill="none" stroke="red" stroke-width="1.5"/>
+    <path d="M 110,120 C 115,120 115,105 120,105 C 125,105 125,120 130,120" fill="none" stroke="red" stroke-width="1.5"/>
+    <path d="M 170,120 C 175,120 175,105 180,105 C 185,105 185,120 190,120" fill="none" stroke="red" stroke-width="1.5"/>
+    <path d="M 230,120 C 235,120 235,105 240,105 C 245,105 245,120 250,120" fill="none" stroke="red" stroke-width="1.5"/>
+    
+    <text x="150" y="150" font-family="Arial" font-size="12" text-anchor="middle">frep = c/2L</text>
+    <text x="150" y="165" font-family="Arial" font-size="12" text-anchor="middle">Ppeak = Pavg/D</text>
+  </g>
+</svg>

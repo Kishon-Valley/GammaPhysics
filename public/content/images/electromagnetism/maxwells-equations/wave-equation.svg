@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <rect width="800" height="700" fill="white"/>
+    
+    <!-- Title and Main Equation -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Electromagnetic Wave Equation</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">∇²E = (1/c²)∂²E/∂t²</text>
+
+    <!-- Key Concept Box -->
+    <rect x="50" y="80" width="700" height="50" fill="#f8f8f8" stroke="#666"/>
+    <text x="400" y="105" text-anchor="middle" font-size="14">Wave equation shows how electromagnetic waves propagate through space</text>
+    <text x="400" y="120" text-anchor="middle" font-size="14">Speed of propagation equals speed of light: c = 1/√(μ₀ε₀)</text>
+
+    <!-- Main Visualization -->
+    <g transform="translate(400,300)">
+        <!-- Wave Propagation -->
+        <g class="wave-propagation">
+            <!-- Time Evolution -->
+            <g class="time-slices">
+                <path d="M -300,0 Q -200,-50 -100,0 T 100,0 T 300,0" 
+                      fill="none" stroke="#FF5722" stroke-width="2">
+                    <animate attributeName="d"
+                             values="M -300,0 Q -200,-50 -100,0 T 100,0 T 300,0;
+                                    M -300,0 Q -200,50 -100,0 T 100,0 T 300,0;
+                                    M -300,0 Q -200,-50 -100,0 T 100,0 T 300,0"
+                             dur="3s"
+                             repeatCount="indefinite"/>
+                </path>
+                <text x="-320" y="0" text-anchor="end" font-size="14">t = 0</text>
+            </g>
+
+            <!-- Spatial Evolution -->
+            <g class="space-slices" transform="translate(0,100)">
+                <path d="M -300,0 Q -200,-50 -100,0 T 100,0 T 300,0" 
+                      fill="none" stroke="#2196F3" stroke-width="2"
+                      stroke-dasharray="5,5">
+                    <animate attributeName="d"
+                             values="M -300,0 Q -200,-50 -100,0 T 100,0 T 300,0;
+                                    M -300,0 Q -200,50 -100,0 T 100,0 T 300,0;
+                                    M -300,0 Q -200,-50 -100,0 T 100,0 T 300,0"
+                             dur="3s"
+                             repeatCount="indefinite"/>
+                </path>
+                <text x="-320" y="0" text-anchor="end" font-size="14">t = Δt</text>
+            </g>
+        </g>
+
+        <!-- Coordinate System -->
+        <line x1="-350" y1="0" x2="350" y2="0" stroke="#666" stroke-width="1"/>
+        <text x="360" y="15" font-size="14">x</text>
+        
+        <!-- Wave Properties -->
+        <g class="wave-properties" transform="translate(-250,-150)">
+            <path d="M 0,0 L 50,0" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrow)"/>
+            <text x="70" y="5" font-size="14">c = 3×10⁸ m/s</text>
+        </g>
+    </g>
+
+    <!-- Interactive Learning Points -->
+    <g transform="translate(50,550)">
+        <rect width="700" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Understanding the Wave Equation:</text>
+        <text x="20" y="55" font-size="14">1. Second spatial derivative (∇²E) relates to wave shape</text>
+        <text x="20" y="80" font-size="14">2. Second time derivative (∂²E/∂t²) describes acceleration of field</text>
+        <text x="20" y="105" font-size="14">3. Ratio c² connects space and time evolution of waves</text>
+    </g>
+
+    <!-- Animation Legend -->
+    <g transform="translate(600,200)">
+        <rect width="150" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="10" y="30" font-size="12">Red Wave:</text>
+        <text x="10" y="45" font-size="12">Initial Wave Form</text>
+        <text x="10" y="70" font-size="12">Blue Wave:</text>
+        <text x="10" y="85" font-size="12">Wave After Δt</text>
+        <text x="10" y="110" font-size="12">Green Arrow:</text>
+        <text x="10" y="125" font-size="12">Propagation Speed</text>
+    </g>
+
+    <!-- Definitions -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+    </defs>
+</svg> 

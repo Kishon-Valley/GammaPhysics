@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg" style="background-color: white;">
+  <style>
+    svg { background-color: white; }
+  </style>
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+    </marker>
+  </defs>
+  
+  <!-- Capacitor plates -->
+  <rect x="100" y="100" width="600" height="20" fill="#666"/>
+  <rect x="100" y="280" width="600" height="20" fill="#666"/>
+  
+  <!-- Central field lines -->
+  <path d="M 200 120 C 200 160, 200 240, 200 280" stroke="#2196F3" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 300 120 C 300 160, 300 240, 300 280" stroke="#2196F3" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 400 120 C 400 160, 400 240, 400 280" stroke="#2196F3" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 500 120 C 500 160, 500 240, 500 280" stroke="#2196F3" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Fringing field lines left -->
+  <path d="M 120 120 C 120 160, 80 200, 80 280" stroke="#2196F3" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 150 120 C 150 160, 120 200, 120 280" stroke="#2196F3" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Fringing field lines right -->
+  <path d="M 650 120 C 650 160, 680 200, 680 280" stroke="#2196F3" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 680 120 C 680 160, 720 200, 720 280" stroke="#2196F3" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Labels -->
+  <text x="350" y="90" text-anchor="middle" font-family="Arial" font-size="16" fill="black">Positive Plate</text>
+  <text x="350" y="340" text-anchor="middle" font-family="Arial" font-size="16" fill="black">Negative Plate</text>
+  <text x="720" y="200" text-anchor="start" font-family="Arial" font-size="14" fill="black">Fringing Fields</text>
+  <text x="400" y="200" text-anchor="middle" font-family="Arial" font-size="14" fill="black">Uniform Field Region</text>
+</svg>

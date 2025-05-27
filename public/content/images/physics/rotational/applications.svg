@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font: bold 16px sans-serif; }
+        .label { font: 14px sans-serif; }
+        .math { font-style: italic; }
+        .equation { font: italic 16px serif; }
+    </style>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" class="title">Applications of Rotational Motion</text>
+    
+    <!-- Bicycle Wheel -->
+    <g transform="translate(50,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Bicycle Wheel</text>
+        
+        <!-- Wheel -->
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <circle cx="100" cy="100" r="10" fill="#000"/>
+        
+        <!-- Spokes -->
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#000" stroke-width="1"/>
+        <line x1="100" y1="100" x2="40" y2="100" stroke="#000" stroke-width="1"/>
+        <line x1="100" y1="100" x2="100" y2="160" stroke="#000" stroke-width="1"/>
+        <line x1="100" y1="100" x2="100" y2="40" stroke="#000" stroke-width="1"/>
+        
+        <!-- Motion Arrow -->
+        <path d="M 160,100 A 60,60 0 0,1 130,50" fill="none" stroke="#4444ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="100" y="180" text-anchor="middle" class="equation">ω = v/r</text>
+    </g>
+    
+    <!-- Clock -->
+    <g transform="translate(300,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Clock Hands</text>
+        
+        <!-- Clock Face -->
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        
+        <!-- Hour Marks -->
+        <line x1="100" y1="40" x2="100" y2="50" stroke="#000" stroke-width="2"/>
+        <line x1="160" y1="100" x2="150" y2="100" stroke="#000" stroke-width="2"/>
+        <line x1="100" y1="160" x2="100" y2="150" stroke="#000" stroke-width="2"/>
+        <line x1="40" y1="100" x2="50" y2="100" stroke="#000" stroke-width="2"/>
+        
+        <!-- Hands -->
+        <line x1="100" y1="100" x2="140" y2="70" stroke="#ff4444" stroke-width="2"/>
+        <line x1="100" y1="100" x2="70" y2="120" stroke="#4444ff" stroke-width="3"/>
+        
+        <!-- Labels -->
+        <text x="100" y="180" text-anchor="middle" class="equation">θ = ωt</text>
+    </g>
+    
+    <!-- Gears -->
+    <g transform="translate(550,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Gear System</text>
+        
+        <!-- First Gear -->
+        <circle cx="80" cy="100" r="40" fill="none" stroke="#000" stroke-width="2"/>
+        <circle cx="80" cy="100" r="5" fill="#000"/>
+        
+        <!-- Second Gear -->
+        <circle cx="140" cy="100" r="20" fill="none" stroke="#000" stroke-width="2"/>
+        <circle cx="140" cy="100" r="5" fill="#000"/>
+        
+        <!-- Motion Arrows -->
+        <path d="M 120,100 A 20,20 0 0,1 140,80" fill="none" stroke="#4444ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <path d="M 40,100 A 40,40 0 0,0 80,60" fill="none" stroke="#ff4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="100" y="180" text-anchor="middle" class="equation">ω₁r₁ = ω₂r₂</text>
+    </g>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+        </marker>
+    </defs>
+</svg>

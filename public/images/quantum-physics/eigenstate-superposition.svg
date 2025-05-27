@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="eigenstate1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#2980b9" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="eigenstate2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#c0392b" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="superpositionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8e44ad" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="energyLevelGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2ecc71" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#27ae60" stop-opacity="0.5"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    
+    <!-- Markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <style>
+    @keyframes eigenstatePulse1 {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+      100% { transform: translateY(0); }
+    }
+    
+    @keyframes eigenstatePulse2 {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
+      100% { transform: translateY(0); }
+    }
+    
+    @keyframes superpositionBeat {
+      0% { 
+        d: M100,250 Q200,250 300,250 T500,250 T700,250;
+        stroke-width: 2;
+        opacity: 0.5;
+      }
+      25% { 
+        d: M100,250 Q200,200 300,300 T500,200 T700,250;
+        stroke-width: 3;
+        opacity: 0.8;
+      }
+      50% { 
+        d: M100,250 Q200,180 300,320 T500,180 T700,250;
+        stroke-width: 4;
+        opacity: 1;
+      }
+      75% { 
+        d: M100,250 Q200,200 300,300 T500,200 T700,250;
+        stroke-width: 3;
+        opacity: 0.8;
+      }
+      100% { 
+        d: M100,250 Q200,250 300,250 T500,250 T700,250;
+        stroke-width: 2;
+        opacity: 0.5;
+      }
+    }
+    
+    @keyframes phaseRotate1 {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes phaseRotate2 {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(720deg); }
+    }
+    
+    @keyframes probabilityPulse {
+      0% { height: 40px; opacity: 0.5; }
+      50% { height: 80px; opacity: 0.8; }
+      100% { height: 40px; opacity: 0.5; }
+    }
+    
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .axis-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+    }
+    
+    .formula {
+      font-family: 'Arial', sans-serif;
+      font-size: 20px;
+      font-style: italic;
+      fill: #333;
+    }
+    
+    .caption {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    .eigenstate1 {
+      fill: none;
+      stroke: url(#eigenstate1Gradient);
+      stroke-width: 3;
+      animation: eigenstatePulse1 6s infinite ease-in-out;
+    }
+    
+    .eigenstate2 {
+      fill: none;
+      stroke: url(#eigenstate2Gradient);
+      stroke-width: 3;
+      animation: eigenstatePulse2 6s infinite ease-in-out;
+    }
+    
+    .superposition {
+      fill: none;
+      stroke: url(#superpositionGradient);
+      stroke-width: 3;
+      animation: superpositionBeat 8s infinite ease-in-out;
+    }
+    
+    .phase-indicator1 {
+      animation: phaseRotate1 8s linear infinite;
+      transform-origin: center;
+    }
+    
+    .phase-indicator2 {
+      animation: phaseRotate2 8s linear infinite;
+      transform-origin: center;
+    }
+    
+    .probability {
+      fill: url(#superpositionGradient);
+      animation: probabilityPulse 4s infinite ease-in-out;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title and Subtitle -->
+  <text x="400" y="40" class="title">Superposition of Eigenstates</text>
+  <text x="400" y="70" class="subtitle">Quantum Beats and Time Evolution</text>
+  
+  <!-- Main equation -->
+  <rect x="150" y="90" width="500" height="40" rx="5" fill="#f0f0f0" stroke="#ddd"/>
+  <text x="400" y="118" class="formula" text-anchor="middle">
+    |Ψ(t)⟩ = c₁e⁻ⁱᴱ¹ᵗ/ħ|ψ₁⟩ + c₂e⁻ⁱᴱ²ᵗ/ħ|ψ₂⟩
+  </text>
+  
+  <!-- Energy level diagram -->
+  <g transform="translate(130, 250)">
+    <rect x="0" y="-80" width="120" height="160" rx="5" fill="#f0f0f0" stroke="#ddd"/>
+    <text x="60" y="-90" class="caption" text-anchor="middle">Energy Levels</text>
+    
+    <!-- E₂ level -->
+    <line x1="10" y1="-50" x2="110" y2="-50" stroke="#e74c3c" stroke-width="2"/>
+    <text x="20" y="-55" class="caption" text-anchor="start" fill="#e74c3c">E₂</text>
+    
+    <!-- E₁ level -->
+    <line x1="10" y1="10" x2="110" y2="10" stroke="#3498db" stroke-width="2"/>
+    <text x="20" y="5" class="caption" text-anchor="start" fill="#3498db">E₁</text>
+    
+    <!-- Energy difference -->
+    <line x1="80" y1="-50" x2="80" y2="10" stroke="#333" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="90" y="-20" class="caption" text-anchor="start">ΔE</text>
+    
+    <!-- Beat frequency -->
+    <text x="60" y="40" class="caption" text-anchor="middle">ωbeat = ΔE/ħ</text>
+  </g>
+  
+  <!-- Wave Function Visualization -->
+  <g transform="translate(300, 200)">
+    <!-- Eigenstates -->
+    <g transform="translate(0, -100)">
+      <text x="0" y="-10" class="caption" text-anchor="start">Eigenstate |ψ₁⟩ with E₁:</text>
+      <path class="eigenstate1" d="M50,0 Q125,-40 200,0 T350,0" />
+      
+      <g class="phase-indicator1" transform="translate(100, 0)">
+        <circle cx="0" cy="0" r="10" fill="none" stroke="#3498db" stroke-width="1.5"/>
+        <line x1="0" y1="0" x2="0" y2="-10" stroke="#3498db" stroke-width="1.5"/>
+        <circle cx="0" cy="-10" r="2" fill="#3498db"/>
+      </g>
+    </g>
+    
+    <g transform="translate(0, -40)">
+      <text x="0" y="-10" class="caption" text-anchor="start">Eigenstate |ψ₂⟩ with E₂:</text>
+      <path class="eigenstate2" d="M50,0 Q125,-20 200,0 Q275,20 350,0" />
+      
+      <g class="phase-indicator2" transform="translate(200, 0)">
+        <circle cx="0" cy="0" r="10" fill="none" stroke="#e74c3c" stroke-width="1.5"/>
+        <line x1="0" y1="0" x2="0" y2="-10" stroke="#e74c3c" stroke-width="1.5"/>
+        <circle cx="0" cy="-10" r="2" fill="#e74c3c"/>
+      </g>
+    </g>
+    
+    <g transform="translate(0, 40)">
+      <text x="0" y="-10" class="caption" text-anchor="start">Superposition |Ψ(t)⟩:</text>
+      <path class="superposition" d="M50,0 Q125,-30 200,30 Q275,-30 350,0" />
+      
+      <!-- Probability amplitude -->
+      <rect class="probability" x="150" y="20" width="100" height="40" rx="20" />
+      <text x="200" y="80" class="caption" text-anchor="middle">Quantum Beats in Probability</text>
+    </g>
+  </g>
+  
+  <!-- Explanation -->
+  <g transform="translate(400, 380)">
+    <rect x="-350" y="0" width="700" height="100" rx="10" fill="#f0f0f0" stroke="#ddd"/>
+    
+    <text x="-330" y="25" class="caption" text-anchor="start" font-weight="bold">Key Features of Eigenstate Superposition:</text>
+    
+    <text x="-330" y="50" class="caption" text-anchor="start">• Each eigenstate evolves with phase factor e⁻ⁱᴱᵗ/ħ (rotating indicators show phase)</text>
+    <text x="-330" y="75" class="caption" text-anchor="start">• Superposition exhibits beats at frequency ωbeat = (E₂-E₁)/ħ due to phase difference</text>
+  </g>
+</svg> 

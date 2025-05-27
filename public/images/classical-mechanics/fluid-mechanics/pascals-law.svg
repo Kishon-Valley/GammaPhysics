@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-family="Arial">Pascal's Law - Hydraulic System</text>
+    
+    <!-- Hydraulic system -->
+    <g transform="translate(100,80)">
+        <!-- Small piston -->
+        <g>
+            <rect x="100" y="50" width="50" height="20" fill="#A0A0A0"/>
+            <line x1="125" y1="70" x2="125" y2="150" stroke="black" stroke-width="2"/>
+            <path d="M100,150 L150,150 L140,200 L110,200 Z" fill="#808080"/>
+            
+            <!-- Force arrow -->
+            <path d="M125,20 L125,50" stroke="red" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <text x="140" y="40" font-size="16">F₁</text>
+            <text x="80" y="120" font-size="16">A₁</text>
+        </g>
+        
+        <!-- Large piston -->
+        <g>
+            <rect x="400" y="50" width="150" height="20" fill="#A0A0A0"/>
+            <line x1="475" y1="70" x2="475" y2="150" stroke="black" stroke-width="2"/>
+            <path d="M400,150 L550,150 L540,200 L410,200 Z" fill="#808080"/>
+            
+            <!-- Force arrow -->
+            <path d="M475,20 L475,50" stroke="red" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <text x="490" y="40" font-size="16">F₂</text>
+            <text x="380" y="120" font-size="16">A₂</text>
+        </g>
+        
+        <!-- Connecting tube -->
+        <path d="M125,200 L125,250 L475,250 L475,200" fill="#ADD8E6" fill-opacity="0.3" stroke="black"/>
+        
+        <!-- Fluid particles to show pressure transmission -->
+        <g fill="#0000FF" fill-opacity="0.5">
+            <circle cx="125" cy="225" r="3"/>
+            <circle cx="200" cy="250" r="3"/>
+            <circle cx="300" cy="250" r="3"/>
+            <circle cx="400" cy="250" r="3"/>
+            <circle cx="475" cy="225" r="3"/>
+        </g>
+        
+        <!-- Formula -->
+        <g transform="translate(250,300)">
+            <text x="0" y="0" font-size="18">F₁/A₁ = F₂/A₂</text>
+            <text x="0" y="30" font-size="14">Pressure is transmitted equally</text>
+            <text x="0" y="50" font-size="14">throughout the enclosed fluid</text>
+        </g>
+    </g>
+    
+    <!-- Arrow marker definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="red"/>
+        </marker>
+    </defs>
+</svg>

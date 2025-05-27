@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Crystal lattice -->
+  <g id="lattice" transform="translate(50,50)">
+    <!-- Grid lines -->
+    <g stroke="#ccc" stroke-width="1">
+      <line x1="0" y1="0" x2="700" y2="0"/>
+      <line x1="0" y1="100" x2="700" y2="100"/>
+      <line x1="0" y1="200" x2="700" y2="200"/>
+      <line x1="0" y1="300" x2="700" y2="300"/>
+      
+      <line x1="100" y1="0" x2="100" y2="300"/>
+      <line x1="200" y1="0" x2="200" y2="300"/>
+      <line x1="300" y1="0" x2="300" y2="300"/>
+      <line x1="400" y1="0" x2="400" y2="300"/>
+      <line x1="500" y1="0" x2="500" y2="300"/>
+      <line x1="600" y1="0" x2="600" y2="300"/>
+    </g>
+    
+    <!-- Lattice ions -->
+    <g fill="#666">
+      <circle cx="100" cy="100" r="15"/>
+      <circle cx="300" cy="100" r="15"/>
+      <circle cx="500" cy="100" r="15"/>
+      <circle cx="200" cy="200" r="15"/>
+      <circle cx="400" cy="200" r="15"/>
+      <circle cx="600" cy="200" r="15"/>
+    </g>
+    
+    <!-- Electron paths -->
+    <g stroke="#2196F3" stroke-width="2" fill="none">
+      <path d="M 50,150 Q 150,50 250,150 T 450,150" stroke-dasharray="5,5"/>
+      <path d="M 150,250 Q 250,150 350,250 T 550,250" stroke-dasharray="5,5"/>
+    </g>
+    
+    <!-- Electrons -->
+    <g fill="#2196F3">
+      <circle cx="250" cy="150" r="8"/>
+      <circle cx="350" cy="250" r="8"/>
+    </g>
+  </g>
+  
+  <!-- Labels -->
+  <text x="400" y="30" font-family="Arial" font-size="20" text-anchor="middle" fill="black">Electron-Lattice Interactions in a Conductor</text>
+  <text x="100" y="380" font-family="Arial" font-size="14" fill="#666">Lattice ions</text>
+  <text x="600" y="380" font-family="Arial" font-size="14" fill="#2196F3">Conduction electrons</text>
+</svg>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700" style="background-color: white;">
+    <!-- Explicit white background -->
+    <rect width="800" height="700" fill="white"/>
+
+    <!-- Title and Main Explanation -->
+    <rect x="0" y="0" width="800" height="140" fill="white"/>
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Power Loss Mechanisms</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">Ptotal = Physteresis + Peddy + Pcopper + Pmech</text>
+    
+    <!-- Key Concept Box -->
+    <rect x="50" y="80" width="700" height="50" fill="#f8f8f8" stroke="#666"/>
+    <text x="400" y="105" text-anchor="middle" font-size="14">Energy losses in electromagnetic systems occur through multiple mechanisms</text>
+    <text x="400" y="120" text-anchor="middle" font-size="14">Understanding these losses is crucial for efficient device design</text>
+
+    <!-- Main Visualization -->
+    <g transform="translate(400,300)">
+        <!-- Hysteresis Loss -->
+        <g transform="translate(-150,-100)">
+            <text x="0" y="-40" text-anchor="middle" font-size="16" fill="#9C27B0" font-weight="bold">Hysteresis Loss</text>
+            <text x="0" y="-20" text-anchor="middle" font-size="12">Domain Magnetization</text>
+            <path d="M -30,-10 C -20,0 -20,10 -30,20 C -40,30 -40,-20 -30,-10" 
+                  fill="none" stroke="#9C27B0" stroke-width="2">
+                <animate attributeName="stroke-dasharray"
+                         values="0,20;20,0"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+            <text x="0" y="40" text-anchor="middle" font-size="12">~25% of Total Loss</text>
+        </g>
+
+        <!-- Eddy Current Loss -->
+        <g transform="translate(150,-100)">
+            <text x="0" y="-40" text-anchor="middle" font-size="16" fill="#FF5722" font-weight="bold">Eddy Current Loss</text>
+            <text x="0" y="-20" text-anchor="middle" font-size="12">Induced Currents</text>
+            <g>
+                <animateTransform attributeName="transform"
+                                type="rotate"
+                                from="0 0 0"
+                                to="360 0 0"
+                                dur="3s"
+                                repeatCount="indefinite"/>
+                <path d="M -20,-20 C 0,-20 20,0 20,20 C 20,40 0,40 -20,20 Z" 
+                      fill="none" stroke="#FF5722" stroke-width="2"/>
+            </g>
+            <text x="0" y="40" text-anchor="middle" font-size="12">~30% of Total Loss</text>
+        </g>
+
+        <!-- Copper Loss -->
+        <g transform="translate(-150,100)">
+            <text x="0" y="-40" text-anchor="middle" font-size="16" fill="#2196F3" font-weight="bold">Copper Loss</text>
+            <text x="0" y="-20" text-anchor="middle" font-size="12">I²R Heating</text>
+            <path d="M -10,0 Q 0,-10 10,0 Q 20,10 30,0" 
+                  fill="none" stroke="#2196F3" stroke-width="2">
+                <animate attributeName="d"
+                         values="M -10,0 Q 0,-10 10,0 Q 20,10 30,0;
+                                M -10,0 Q 0,10 10,0 Q 20,-10 30,0;
+                                M -10,0 Q 0,-10 10,0 Q 20,10 30,0"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+            <text x="0" y="40" text-anchor="middle" font-size="12">~35% of Total Loss</text>
+        </g>
+
+        <!-- Mechanical Loss -->
+        <g transform="translate(150,100)">
+            <text x="0" y="-40" text-anchor="middle" font-size="16" fill="#4CAF50" font-weight="bold">Mechanical Loss</text>
+            <text x="0" y="-20" text-anchor="middle" font-size="12">Friction & Windage</text>
+            <g>
+                <animateTransform attributeName="transform"
+                                type="rotate"
+                                from="0 0 0"
+                                to="-360 0 0"
+                                dur="4s"
+                                repeatCount="indefinite"/>
+                <path d="M -20,0 L 20,0 M 0,-20 L 0,20" 
+                      stroke="#4CAF50" stroke-width="2"/>
+                <circle cx="0" cy="0" r="15" 
+                        fill="none" stroke="#4CAF50" stroke-width="2" 
+                        stroke-dasharray="4,4"/>
+            </g>
+            <text x="0" y="40" text-anchor="middle" font-size="12">~10% of Total Loss</text>
+        </g>
+    </g>
+
+    <!-- Loss Distribution Graph -->
+    <g transform="translate(50,550)">
+        <rect x="0" y="0" width="700" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Power Loss Distribution:</text>
+        <!-- Bar chart -->
+        <g transform="translate(20,50)">
+            <rect x="0" y="0" width="175" height="20" fill="#9C27B0" opacity="0.7"/>
+            <rect x="185" y="0" width="210" height="20" fill="#FF5722" opacity="0.7"/>
+            <rect x="405" y="0" width="175" height="20" fill="#2196F3" opacity="0.7"/>
+            <rect x="590" y="0" width="70" height="20" fill="#4CAF50" opacity="0.7"/>
+            
+            <text x="87" y="35" text-anchor="middle" font-size="12">Hysteresis</text>
+            <text x="290" y="35" text-anchor="middle" font-size="12">Eddy Current</text>
+            <text x="492" y="35" text-anchor="middle" font-size="12">Copper</text>
+            <text x="625" y="35" text-anchor="middle" font-size="12">Mechanical</text>
+        </g>
+    </g>
+
+    <!-- Definitions -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+</svg> 

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Wave Speed on a String</text>
+    
+    <!-- String at rest -->
+    <line x1="50" y1="100" x2="750" y2="100" stroke="#ccc" stroke-width="2"/>
+    
+    <!-- Vibrating string -->
+    <path d="M50,100 Q200,50 350,100 T650,100" fill="none" stroke="#2196F3" stroke-width="3"/>
+    
+    <!-- Arrows showing wave propagation -->
+    <path d="M350,130 L400,130 L390,125 M400,130 L390,135" stroke="#E91E63" stroke-width="2"/>
+    <text x="375" y="150" text-anchor="middle" font-size="14">v</text>
+    
+    <!-- Labels -->
+    <text x="150" y="180" text-anchor="middle" font-size="14">λ (wavelength)</text>
+    <path d="M50,170 L250,170 M50,165 L50,175 M250,165 L250,175" stroke="black" stroke-width="1"/>
+    
+    <!-- Formula -->
+    <text x="400" y="250" text-anchor="middle" font-size="16">v = √(T/μ)</text>
+    <text x="400" y="270" text-anchor="middle" font-size="14">T: tension, μ: mass per unit length</text>
+</svg>

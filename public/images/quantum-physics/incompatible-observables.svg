@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="positionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#2980b9" stop-opacity="0.7"/>
+    </linearGradient>
+    
+    <linearGradient id="momentumGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#c0392b" stop-opacity="0.7"/>
+    </linearGradient>
+    
+    <linearGradient id="measurementGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#8e44ad" stop-opacity="0.6"/>
+    </linearGradient>
+    
+    <linearGradient id="collapseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f1c40f" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#f39c12" stop-opacity="0.5"/>
+    </linearGradient>
+    
+    <linearGradient id="uncertaintyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2ecc71" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#27ae60" stop-opacity="0.4"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    
+    <!-- Marker definitions -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    
+    <marker id="blueArrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3498db"/>
+    </marker>
+    
+    <marker id="redArrow" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c"/>
+    </marker>
+  </defs>
+  
+  <style>
+    @keyframes fadeInOut {
+      0% { opacity: 0.1; }
+      50% { opacity: 1; }
+      100% { opacity: 0.1; }
+    }
+    
+    @keyframes pulseSize {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes rotateArrow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes nonCommuteLoop {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(50px, 0); }
+      50% { transform: translate(50px, 50px); }
+      75% { transform: translate(0, 50px); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    @keyframes gaussianNarrow {
+      0% { transform: scaleX(1.5) scaleY(0.8); }
+      50% { transform: scaleX(0.5) scaleY(2.5); }
+      100% { transform: scaleX(1.5) scaleY(0.8); }
+    }
+    
+    @keyframes gaussianWiden {
+      0% { transform: scaleX(0.5) scaleY(2.5); }
+      50% { transform: scaleX(1.5) scaleY(0.8); }
+      100% { transform: scaleX(0.5) scaleY(2.5); }
+    }
+    
+    @keyframes collapse {
+      0% { 
+        d: "M0,0 Q50,-60 100,0 T200,0"; 
+        opacity: 1;
+      }
+      40% { 
+        d: "M0,0 Q50,-30 100,0 T200,0";
+        opacity: 0.7;
+      }
+      50% {
+        d: "M0,0 Q50,-5 100,0 T200,0";
+        opacity: 0.3;
+      }
+      60% {
+        d: "M0,0 Q50,0 100,0 T200,0";
+        opacity: 0.1;
+      }
+      100% {
+        d: "M0,0 Q50,0 100,0 T200,0";
+        opacity: 0;
+      }
+    }
+    
+    @keyframes measurementFlash {
+      0%, 100% { opacity: 0; }
+      5%, 15% { opacity: 1; }
+      20% { opacity: 0; }
+    }
+    
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .caption {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    .formula {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      font-style: italic;
+      fill: #333;
+    }
+    
+    .small-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 12px;
+      fill: #777;
+    }
+    
+    .position-axis {
+      fill: none;
+      stroke: url(#positionGradient);
+      stroke-width: 2;
+      marker-end: url(#blueArrow);
+    }
+    
+    .momentum-axis {
+      fill: none;
+      stroke: url(#momentumGradient);
+      stroke-width: 2;
+      marker-end: url(#redArrow);
+    }
+    
+    .wavefunction {
+      fill: none;
+      stroke-width: 3;
+      filter: url(#glow);
+    }
+    
+    .position-wavefunction {
+      stroke: url(#positionGradient);
+    }
+    
+    .momentum-wavefunction {
+      stroke: url(#momentumGradient);
+    }
+    
+    .fade-in-out {
+      animation: fadeInOut 5s infinite ease-in-out;
+    }
+    
+    .pulse {
+      animation: pulseSize 4s infinite ease-in-out;
+      transform-origin: center;
+    }
+    
+    .rotate {
+      animation: rotateArrow 12s infinite linear;
+      transform-origin: center;
+    }
+    
+    .non-commute {
+      animation: nonCommuteLoop 10s infinite ease-in-out;
+    }
+    
+    .narrowing {
+      animation: gaussianNarrow 8s infinite ease-in-out;
+      transform-origin: center;
+    }
+    
+    .widening {
+      animation: gaussianWiden 8s infinite ease-in-out;
+      transform-origin: center;
+    }
+    
+    .measurement-flash {
+      animation: measurementFlash 10s infinite;
+    }
+    
+    .collapse-wave {
+      animation: collapse 10s infinite;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title and Subtitle -->
+  <text x="400" y="40" class="title">Incompatible Observables in Quantum Mechanics</text>
+  <text x="400" y="70" class="subtitle">The Uncertainty Principle and Measurement Consequences</text>
+  
+  <!-- Main equation -->
+  <rect x="150" y="90" width="500" height="40" rx="5" fill="#f0f0f0" stroke="#ddd"/>
+  <text x="400" y="118" class="formula" text-anchor="middle">
+    [x̂, p̂] = iħ ≠ 0 leads to ΔxΔp ≥ ħ/2
+  </text>
+  
+  <!-- Misaligned bases visualization -->
+  <g transform="translate(150, 220)">
+    <rect width="250" height="230" rx="10" fill="#f5f5f5" stroke="#ddd"/>
+    <text x="125" y="30" class="subtitle" text-anchor="middle">Incompatible Bases</text>
+    
+    <g transform="translate(125, 120)">
+      <!-- Coordinate system -->
+      <circle cx="0" cy="0" r="80" fill="none" stroke="#ddd" stroke-width="1" stroke-dasharray="3,3"/>
+      
+      <!-- Position basis -->
+      <line x1="-90" y1="0" x2="90" y2="0" class="position-axis"/>
+      <text x="95" y="5" class="small-text">x̂</text>
+      
+      <!-- Momentum basis -->
+      <g class="rotate">
+        <line x1="0" y1="-90" x2="0" y2="90" class="momentum-axis"/>
+        <text x="5" y="-95" class="small-text">p̂</text>
+      </g>
+      
+      <!-- Non-commutativity symbol -->
+      <g class="non-commute">
+        <path d="M10,0 L30,0 L30,30 L0,30 L0,10" fill="none" stroke="#8e44ad" stroke-width="2" stroke-dasharray="4,2"/>
+        <text x="15" y="20" class="formula" text-anchor="middle" fill="#8e44ad">[,]≠0</text>
+      </g>
+      
+      <text x="0" y="100" class="caption" text-anchor="middle">Operators have different eigenbases</text>
+    </g>
+  </g>
+  
+  <!-- Uncertainty relation visualization -->
+  <g transform="translate(450, 220)">
+    <rect width="250" height="230" rx="10" fill="#f5f5f5" stroke="#ddd"/>
+    <text x="125" y="30" class="subtitle" text-anchor="middle">Uncertainty Relation</text>
+    
+    <g transform="translate(30, 80)">
+      <!-- Position space gaussian -->
+      <text x="0" y="-10" class="small-text">Position space:</text>
+      <g class="narrowing" transform-origin="95 0">
+        <path d="M0,0 Q50,-60 100,0 T200,0" class="wavefunction position-wavefunction"/>
+        <rect x="60" y="10" width="70" height="20" rx="5" fill="url(#positionGradient)" fill-opacity="0.3"/>
+        <text x="95" y="25" class="small-text" text-anchor="middle" fill="#fff">Small Δx</text>
+      </g>
+    </g>
+    
+    <g transform="translate(30, 160)">
+      <!-- Momentum space gaussian -->
+      <text x="0" y="-10" class="small-text">Momentum space:</text>
+      <g class="widening" transform-origin="95 0">
+        <path d="M0,0 Q50,-20 100,0 T200,0" class="wavefunction momentum-wavefunction"/>
+        <rect x="60" y="10" width="70" height="20" rx="5" fill="url(#momentumGradient)" fill-opacity="0.3"/>
+        <text x="95" y="25" class="small-text" text-anchor="middle" fill="#fff">Large Δp</text>
+      </g>
+    </g>
+    
+    <!-- Uncertainty product -->
+    <rect x="70" y="190" width="110" height="30" rx="5" fill="url(#uncertaintyGradient)" class="pulse"/>
+    <text x="125" y="210" class="formula" text-anchor="middle">Δx·Δp ≥ ħ/2</text>
+  </g>
+  
+  <!-- Sequential measurement visualization -->
+  <g transform="translate(200, 470)">
+    <rect x="0" y="0" width="400" height="30" rx="5" fill="#f0f0f0" stroke="#ddd"/>
+    <text x="200" y="20" class="formula" text-anchor="middle">
+      Measuring one observable disturbs the other
+    </text>
+  </g>
+  
+  <!-- Measurement collapse illustration -->
+  <g transform="translate(400, 320)">
+    <g transform="translate(-180, 0)">
+      <text x="-40" y="0" class="small-text" text-anchor="end">Initial state:</text>
+      <path d="M0,0 Q50,-30 100,0 T200,0" class="wavefunction position-wavefunction"/>
+    </g>
+    
+    <!-- Measurement flash -->
+    <g transform="translate(0, 0)" class="measurement-flash">
+      <circle cx="0" cy="0" r="20" fill="url(#collapseGradient)" filter="url(#glow)"/>
+      <text x="0" y="5" class="small-text" text-anchor="middle">MEASURE</text>
+    </g>
+    
+    <g transform="translate(180, 0)">
+      <text x="40" y="0" class="small-text" text-anchor="start">After measurement:</text>
+      <path d="M0,0 Q50,-50 100,0 T200,0" class="wavefunction momentum-wavefunction collapse-wave"/>
+    </g>
+    
+    <!-- Sequential measurement path -->
+    <g transform="translate(0, 60)">
+      <path d="M-150,-10 L150,-10" fill="none" stroke="#555" stroke-width="1" stroke-dasharray="5,3"/>
+      
+      <g transform="translate(-150, 0)">
+        <circle cx="0" cy="0" r="10" fill="url(#positionGradient)"/>
+        <text x="0" y="25" class="small-text" text-anchor="middle">Measure x̂</text>
+      </g>
+      
+      <g transform="translate(0, 0)">
+        <circle cx="0" cy="0" r="10" fill="url(#momentumGradient)"/>
+        <text x="0" y="25" class="small-text" text-anchor="middle">Measure p̂</text>
+        <path d="M-130,-5 C-100,-40 -30,-40 -10,-5" fill="none" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+        <text x="-70" y="-25" class="small-text">State collapse</text>
+      </g>
+      
+      <g transform="translate(150, 0)">
+        <circle cx="0" cy="0" r="10" fill="url(#positionGradient)"/>
+        <text x="0" y="25" class="small-text" text-anchor="middle">Measure x̂ again</text>
+        <path d="M-130,-5 C-100,-40 -30,-40 -10,-5" fill="none" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+        <text x="-70" y="-25" class="small-text">State collapse</text>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Conclusions and implications -->
+  <g transform="translate(400, 430)">
+    <text x="0" y="0" class="caption" text-anchor="middle" font-style="italic">
+      "The more precisely the position is determined, the less precisely the momentum is known" - Heisenberg
+    </text>
+  </g>
+</svg> 

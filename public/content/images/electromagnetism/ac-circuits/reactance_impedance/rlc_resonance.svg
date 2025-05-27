@@ -1,0 +1,378 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 600" width="100%" height="auto">
+  <!-- Styles -->
+  <style>
+    text { font-family: Arial, sans-serif; }
+    .title { font-size: 20px; font-weight: bold; text-anchor: middle; }
+    .subtitle { font-size: 16px; text-anchor: middle; }
+    .axis-label { font-size: 14px; text-anchor: middle; }
+    .graph-label { font-size: 14px; font-weight: bold; }
+    .curve { fill: none; stroke-width: 3; }
+    .grid { stroke: #ddd; stroke-width: 0.5; }
+    .current-value { font-size: 14px; font-weight: bold; }
+    .circuit-element { font-size: 14px; }
+    .formula { font-size: 14px; font-style: italic; text-anchor: middle; }
+    .resonance-label { font-size: 13px; font-style: italic; text-anchor: middle; }
+    .slider-label { font-size: 14px; text-anchor: end; }
+    .slider-value { font-size: 14px; text-anchor: start; }
+    .connector-line { stroke: #888; stroke-width: 1; stroke-dasharray: 5,3; }
+    .component-value { font-size: 12px; text-anchor: middle; }
+    .highlight-text { font-size: 14px; fill: #d62728; font-weight: bold; text-anchor: middle; }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" class="title">Series RLC Resonance</text>
+  <text x="400" y="55" class="subtitle">Impedance, Current, and Phase vs. Frequency</text>
+  
+  <!-- Formulas -->
+  <text x="400" y="80" class="formula">Resonant frequency: f₀ = 1/(2π√(LC)), Impedance at resonance: Z = R</text>
+  
+  <!-- Circuit Diagram -->
+  <g transform="translate(150, 150)">
+    <!-- Resistor -->
+    <line x1="0" y1="0" x2="30" y2="0" stroke="black" stroke-width="2"/>
+    <path d="M 30,0 L 35,-7.5 L 45,7.5 L 55,-7.5 L 65,7.5 L 75,-7.5 L 85,7.5 L 90,0" fill="none" stroke="black" stroke-width="2"/>
+    <line x1="90" y1="0" x2="120" y2="0" stroke="black" stroke-width="2"/>
+    <text x="60" y="-15" class="circuit-element" text-anchor="middle">R</text>
+    <text id="resistorValue" x="60" y="-30" class="component-value">50Ω</text>
+    
+    <!-- Inductor -->
+    <line x1="120" y1="0" x2="150" y2="0" stroke="black" stroke-width="2"/>
+    <path d="M 150,0 Q 155,-10 160,0 Q 165,-10 170,0 Q 175,-10 180,0 Q 185,-10 190,0 Q 195,-10 200,0 Q 205,-10 210,0" fill="none" stroke="black" stroke-width="2"/>
+    <line x1="210" y1="0" x2="240" y2="0" stroke="black" stroke-width="2"/>
+    <text x="180" y="-15" class="circuit-element" text-anchor="middle">L</text>
+    <text id="inductorValue" x="180" y="-30" class="component-value">100mH</text>
+    
+    <!-- Capacitor -->
+    <line x1="240" y1="0" x2="270" y2="0" stroke="black" stroke-width="2"/>
+    <line x1="270" y1="-15" x2="270" y2="15" stroke="black" stroke-width="2"/>
+    <line x1="290" y1="-15" x2="290" y2="15" stroke="black" stroke-width="2"/>
+    <line x1="290" y1="0" x2="320" y2="0" stroke="black" stroke-width="2"/>
+    <text x="280" y="-25" class="circuit-element" text-anchor="middle">C</text>
+    <text id="capacitorValue" x="280" y="-40" class="component-value">47μF</text>
+    
+    <!-- Source and ground -->
+    <line x1="0" y1="0" x2="0" y2="50" stroke="black" stroke-width="2"/>
+    <line x1="320" y1="0" x2="320" y2="50" stroke="black" stroke-width="2"/>
+    <line x1="0" y1="50" x2="320" y2="50" stroke="black" stroke-width="2"/>
+    
+    <!-- Source -->
+    <circle cx="30" cy="25" r="20" fill="none" stroke="black" stroke-width="1.5"/>
+    <text x="30" y="30" class="circuit-element" text-anchor="middle">~</text>
+    
+    <!-- Ground -->
+    <line x1="150" y1="50" x2="150" y2="65" stroke="black" stroke-width="2"/>
+    <line x1="140" y1="65" x2="160" y2="65" stroke="black" stroke-width="2"/>
+    <line x1="143" y1="70" x2="157" y2="70" stroke="black" stroke-width="2"/>
+    <line x1="146" y1="75" x2="154" y2="75" stroke="black" stroke-width="2"/>
+  </g>
+  
+  <!-- Impedance Graph -->
+  <g transform="translate(100, 300)">
+    <!-- Axes -->
+    <line x1="0" y1="150" x2="600" y2="150" stroke="black" stroke-width="1.5"/>
+    <line x1="0" y1="150" x2="0" y2="0" stroke="black" stroke-width="1.5"/>
+    
+    <!-- Grid lines -->
+    <line x1="0" y1="50" x2="600" y2="50" class="grid"/>
+    <line x1="0" y1="100" x2="600" y2="100" class="grid"/>
+    <line x1="150" y1="0" x2="150" y2="150" class="grid"/>
+    <line x1="300" y1="0" x2="300" y2="150" class="grid"/>
+    <line x1="450" y1="0" x2="450" y2="150" class="grid"/>
+    
+    <!-- Axis labels -->
+    <text x="300" y="180" class="axis-label">Frequency (Hz)</text>
+    <text x="-40" y="75" class="axis-label" transform="rotate(-90,-40,75)">Impedance (Ω)</text>
+    
+    <!-- Resonance line -->
+    <line id="resonanceLine" x1="300" y1="0" x2="300" y2="150" stroke="#FBBC05" stroke-width="1" stroke-dasharray="5,3"/>
+    <text id="resonanceLabel" x="300" y="15" class="resonance-label" fill="#FBBC05">Resonance: 73.4 Hz</text>
+    
+    <!-- Curves -->
+    <path id="resistanceCurve" d="M0,100 L600,100" class="curve" stroke="#4285F4" stroke-opacity="0.7"/>
+    <path id="inductiveCurve" d="M0,150 L600,0" class="curve" stroke="#34A853" stroke-opacity="0.7"/>
+    <path id="capacitiveCurve" d="M0,0 Q150,50 600,150" class="curve" stroke="#EA4335" stroke-opacity="0.7"/>
+    <path id="impedanceCurve" d="M0,0 L150,50 L300,100 L450,120 L600,130" class="curve" stroke="#673AB7" stroke-width="4"/>
+    
+    <!-- Labels for curves -->
+    <text x="550" y="100" class="graph-label" fill="#4285F4">R</text>
+    <text x="550" y="20" class="graph-label" fill="#34A853">XL</text>
+    <text x="550" y="140" class="graph-label" fill="#EA4335">XC</text>
+    <text x="550" y="120" class="graph-label" fill="#673AB7">|Z|</text>
+    
+    <!-- Current frequency marker -->
+    <line id="frequencyMarker" x1="300" y1="0" x2="300" y2="150" stroke="black" stroke-width="1.5"/>
+    <circle id="impedanceMarker" cx="300" cy="100" r="5" fill="#673AB7"/>
+  </g>
+  
+  <!-- Current Magnitude Graph -->
+  <g transform="translate(100, 470)">
+    <!-- Axes -->
+    <line x1="0" y1="80" x2="600" y2="80" stroke="black" stroke-width="1.5"/>
+    <line x1="0" y1="80" x2="0" y2="10" stroke="black" stroke-width="1.5"/>
+    
+    <!-- Grid -->
+    <line x1="150" y1="10" x2="150" y2="80" class="grid"/>
+    <line x1="300" y1="10" x2="300" y2="80" class="grid"/>
+    <line x1="450" y1="10" x2="450" y2="80" class="grid"/>
+    
+    <!-- Axis Labels -->
+    <text x="-30" y="45" class="axis-label" transform="rotate(-90,-30,45)">Current</text>
+    
+    <!-- Current curve -->
+    <path id="currentCurve" d="M0,75 Q150,70 250,30 Q300,20 350,30 Q450,70 600,75" class="curve" stroke="#d62728" stroke-width="3"/>
+    <text x="550" y="40" class="graph-label" fill="#d62728">Current</text>
+    
+    <!-- Resonance indicator -->
+    <line id="currentResonanceLine" x1="300" y1="10" x2="300" y2="80" stroke="#FBBC05" stroke-width="1" stroke-dasharray="5,3"/>
+    
+    <!-- Current marker -->
+    <circle id="currentMarker" cx="300" cy="20" r="5" fill="#d62728"/>
+  </g>
+  
+  <!-- Phase Angle Indicator -->
+  <g transform="translate(730, 330)">
+    <text x="-30" y="0" class="axis-label" text-anchor="middle">Phase Angle:</text>
+    <text id="phaseValue" x="-30" y="25" class="current-value" text-anchor="middle">0°</text>
+    
+    <!-- Mini phasor diagram -->
+    <circle cx="-30" cy="60" r="25" fill="none" stroke="#888" stroke-width="1"/>
+    <line x1="-30" y1="60" x2="-5" y2="60" stroke="#888" stroke-width="1"/>
+    <line id="phasorLine" x1="-30" y1="60" x2="-5" y2="60" stroke="#d62728" stroke-width="2"/>
+    <text x="-10" y="55" class="axis-label" fill="#d62728">V</text>
+    <text x="-30" y="95" class="axis-label" fill="#224499">I</text>
+  </g>
+  
+  <!-- Resonance Explanation -->
+  <g transform="translate(720, 150)">
+    <rect x="-50" y="0" width="130" height="120" rx="5" fill="#f8f9fa" stroke="#ddd"/>
+    <text x="-40" y="20" class="graph-label">At Resonance:</text>
+    <text x="-40" y="40" class="resonance-label">• XL = XC</text>
+    <text x="-40" y="60" class="resonance-label">• Z = R (minimum)</text>
+    <text x="-40" y="80" class="resonance-label">• Current is maximum</text>
+    <text x="-40" y="100" class="resonance-label">• Phase angle = 0°</text>
+  </g>
+  
+  <!-- Frequency Slider -->
+  <g transform="translate(100, 560)">
+    <line x1="0" y1="0" x2="600" y2="0" stroke="#888" stroke-width="2"/>
+    <text x="-10" y="5" class="slider-label">Frequency:</text>
+    <text id="frequencyValue" x="610" y="5" class="slider-value">73.4 Hz</text>
+    <circle id="frequencySlider" cx="300" cy="0" r="8" fill="#673AB7" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- Current information -->
+  <g transform="translate(400, 510)">
+    <text id="currentInfo" x="0" y="0" class="highlight-text">Maximum Current at Resonance!</text>
+  </g>
+  
+  <!-- Animation script -->
+  <script type="text/ecmascript"><![CDATA[
+    // SVG elements
+    const frequencySlider = document.getElementById('frequencySlider');
+    const frequencyMarker = document.getElementById('frequencyMarker');
+    const resonanceLine = document.getElementById('resonanceLine');
+    const currentResonanceLine = document.getElementById('currentResonanceLine');
+    const impedanceMarker = document.getElementById('impedanceMarker');
+    const currentMarker = document.getElementById('currentMarker');
+    const frequencyValue = document.getElementById('frequencyValue');
+    const phaseValue = document.getElementById('phaseValue');
+    const phasorLine = document.getElementById('phasorLine');
+    const currentInfo = document.getElementById('currentInfo');
+    
+    // Set up impedance curves
+    const impedanceCurve = document.getElementById('impedanceCurve');
+    const currentCurve = document.getElementById('currentCurve');
+    
+    // Component values
+    const R = 50; // ohms
+    const L = 0.1; // Henry (100 mH)
+    const C = 0.000047; // Farad (47 µF)
+    
+    // Calculate resonant frequency
+    const resonantFreq = 1 / (2 * Math.PI * Math.sqrt(L * C));
+    document.getElementById('resonanceLabel').textContent = `Resonance: ${resonantFreq.toFixed(1)} Hz`;
+    
+    // Display component values
+    document.getElementById('resistorValue').textContent = `${R}Ω`;
+    document.getElementById('inductorValue').textContent = `${L * 1000}mH`;
+    document.getElementById('capacitorValue').textContent = `${C * 1000000}μF`;
+    
+    // Constants for scaling
+    const minFreq = 10;
+    const maxFreq = 150;
+    const minX = 0;
+    const maxX = 600;
+    
+    // Calculate impedance for a given frequency
+    function calculateImpedance(freq) {
+      const omega = 2 * Math.PI * freq;
+      const XL = omega * L;
+      const XC = 1 / (omega * C);
+      const X = XL - XC;
+      const Z = Math.sqrt(R * R + X * X);
+      const phaseAngle = Math.atan2(X, R) * 180 / Math.PI;
+      return { Z, XL, XC, X, phaseAngle };
+    }
+    
+    // Calculate relative current for a given impedance
+    function calculateCurrent(Z) {
+      // Assuming a constant voltage source, current is inversely proportional to impedance
+      return 1 / Z;
+    }
+    
+    // Convert frequency to x-coordinate
+    function freqToX(freq) {
+      return minX + (freq - minFreq) * (maxX - minX) / (maxFreq - minFreq);
+    }
+    
+    // Convert x-coordinate to frequency
+    function xToFreq(x) {
+      return minFreq + (x - minX) * (maxFreq - minFreq) / (maxX - minX);
+    }
+    
+    // Map impedance value to y-coordinate in the impedance graph (0-150 range, inverted)
+    function impedanceToY(Z) {
+      // Cap at 200 ohms for display purposes
+      const cappedZ = Math.min(Z, 200);
+      return 150 - (cappedZ / 200) * 150;
+    }
+    
+    // Map current value to y-coordinate in the current graph (10-80 range, inverted)
+    function currentToY(I) {
+      // Normalize current relative to maximum (at resonance)
+      const maxCurrent = 1 / R;
+      const normalizedI = I / maxCurrent;
+      return 80 - normalizedI * 60;
+    }
+    
+    // Update all visual elements based on frequency
+    function updateDisplay(freq) {
+      // Calculate electrical properties
+      const { Z, XL, XC, X, phaseAngle } = calculateImpedance(freq);
+      const current = calculateCurrent(Z);
+      
+      // Update frequency marker positions
+      const x = freqToX(freq);
+      frequencyMarker.setAttribute('x1', x);
+      frequencyMarker.setAttribute('x2', x);
+      currentResonanceLine.setAttribute('x1', x);
+      currentResonanceLine.setAttribute('x2', x);
+      
+      // Update marker positions
+      const impedanceY = impedanceToY(Z);
+      const currentY = currentToY(current);
+      
+      impedanceMarker.setAttribute('cx', x);
+      impedanceMarker.setAttribute('cy', impedanceY);
+      
+      currentMarker.setAttribute('cx', x);
+      currentMarker.setAttribute('cy', currentY);
+      
+      // Update text values
+      frequencyValue.textContent = `${freq.toFixed(1)} Hz`;
+      phaseValue.textContent = `${phaseAngle.toFixed(1)}°`;
+      
+      // Update phasor diagram
+      const phasorX = -30 + 25 * Math.cos(phaseAngle * Math.PI / 180);
+      const phasorY = 60 - 25 * Math.sin(phaseAngle * Math.PI / 180);
+      phasorLine.setAttribute('x2', phasorX);
+      phasorLine.setAttribute('y2', phasorY);
+      
+      // Update resonance highlight
+      if (Math.abs(freq - resonantFreq) < 2) {
+        currentInfo.textContent = "Maximum Current at Resonance!";
+        currentInfo.setAttribute('opacity', '1');
+      } else if (freq < resonantFreq) {
+        currentInfo.textContent = "Circuit is Capacitive (XC > XL)";
+        currentInfo.setAttribute('opacity', '0.7');
+      } else {
+        currentInfo.textContent = "Circuit is Inductive (XL > XC)";
+        currentInfo.setAttribute('opacity', '0.7');
+      }
+    }
+    
+    // Handle slider drag
+    let isDragging = false;
+    
+    frequencySlider.addEventListener('mousedown', startDrag);
+    frequencySlider.addEventListener('touchstart', startDrag);
+    
+    function startDrag(e) {
+      e.preventDefault();
+      isDragging = true;
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('touchmove', drag);
+      document.addEventListener('mouseup', endDrag);
+      document.addEventListener('touchend', endDrag);
+    }
+    
+    function drag(e) {
+      if (!isDragging) return;
+      
+      let clientX;
+      if (e.type === 'touchmove') {
+        clientX = e.touches[0].clientX;
+      } else {
+        clientX = e.clientX;
+      }
+      
+      const svgRect = frequencySlider.ownerSVGElement.getBoundingClientRect();
+      let mouseX = clientX - svgRect.left - 100; // Adjust for transform
+      
+      // Constrain x position to slider range
+      mouseX = Math.max(minX, Math.min(maxX, mouseX));
+      
+      // Update slider position
+      frequencySlider.setAttribute('cx', mouseX);
+      
+      // Convert to frequency and update display
+      const freq = xToFreq(mouseX);
+      updateDisplay(freq);
+    }
+    
+    function endDrag() {
+      isDragging = false;
+      document.removeEventListener('mousemove', drag);
+      document.removeEventListener('touchmove', drag);
+      document.removeEventListener('mouseup', endDrag);
+      document.removeEventListener('touchend', endDrag);
+    }
+    
+    // Generate impedance curve points
+    function generateCurvePoints() {
+      let impedancePath = '';
+      let currentPath = '';
+      
+      for (let x = 0; x <= maxX; x += 10) {
+        const freq = xToFreq(x);
+        const { Z } = calculateImpedance(freq);
+        const current = calculateCurrent(Z);
+        
+        const y = impedanceToY(Z);
+        const currentY = currentToY(current);
+        
+        if (x === 0) {
+          impedancePath += `M${x},${y}`;
+          currentPath += `M${x},${currentY}`;
+        } else {
+          impedancePath += ` L${x},${y}`;
+          currentPath += ` L${x},${currentY}`;
+        }
+      }
+      
+      impedanceCurve.setAttribute('d', impedancePath);
+      currentCurve.setAttribute('d', currentPath);
+    }
+    
+    // Initialize
+    generateCurvePoints();
+    updateDisplay(resonantFreq);
+    
+    // Position the slider at resonant frequency initially
+    const resonantX = freqToX(resonantFreq);
+    frequencySlider.setAttribute('cx', resonantX);
+  ]]></script>
+</svg> 

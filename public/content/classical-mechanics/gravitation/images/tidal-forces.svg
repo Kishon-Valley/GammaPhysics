@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Moon -->
+  <circle cx="320" cy="150" r="30" fill="#D3D3D3"/>
+  <text x="320" y="155" text-anchor="middle" fill="#444" font-family="Arial" font-size="14">Moon</text>
+  
+  <!-- Earth -->
+  <ellipse cx="150" cy="150" rx="50" ry="40" fill="#4169E1"/>
+  
+  <!-- Ocean bulges -->
+  <path d="M 150,110 Q 150,90 150,110" fill="none" stroke="#87CEEB" stroke-width="2"/>
+  <path d="M 150,190 Q 150,210 150,190" fill="none" stroke="#87CEEB" stroke-width="2"/>
+  
+  <!-- Force arrows -->
+  <g stroke="#50C878" stroke-width="1.5">
+    <!-- Stronger force on near side -->
+    <line x1="200" y1="150" x2="220" y2="150"/>
+    <polygon points="220,150 215,145 215,155" fill="#50C878"/>
+    
+    <!-- Weaker force on far side -->
+    <line x1="100" y1="150" x2="80" y2="150"/>
+    <polygon points="80,150 85,145 85,155" fill="#50C878"/>
+  </g>
+  
+  <!-- Labels -->
+  <text x="210" y="140" font-family="Arial" font-size="12">Stronger</text>
+  <text x="90" y="140" font-family="Arial" font-size="12">Weaker</text>
+  
+  <!-- Title -->
+  <text x="200" y="270" text-anchor="middle" font-family="Arial" font-size="14">Tidal Forces on Earth</text>
+</svg>

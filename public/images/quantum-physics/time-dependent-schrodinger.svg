@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#2980b9" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="probabilityGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#e74c3c" stop-opacity="0.2"/>
+    </linearGradient>
+    
+    <linearGradient id="hamiltonianGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8e44ad" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="potentialGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2ecc71" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#27ae60" stop-opacity="0.4"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    
+    <!-- Animation paths -->
+    <path id="wavePath" d="M100,250 Q200,100 300,250 T500,250 T700,250"/>
+    
+    <!-- Markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <style>
+    @keyframes wavePulse {
+      0% { 
+        d: M100,250 Q200,180 300,250 T500,250 T700,250;
+        stroke-width: 3;
+      }
+      25% { 
+        d: M100,250 Q200,200 300,220 T500,280 T700,250;
+        stroke-width: 4;
+      }
+      50% { 
+        d: M100,250 Q200,250 300,180 T500,230 T700,250;
+        stroke-width: 5;
+      }
+      75% { 
+        d: M100,250 Q200,230 300,250 T500,180 T700,250;
+        stroke-width: 4;
+      }
+      100% { 
+        d: M100,250 Q200,180 300,250 T500,250 T700,250;
+        stroke-width: 3;
+      }
+    }
+    
+    @keyframes wavePacketMove {
+      0% { transform: translateX(0px); }
+      100% { transform: translateX(300px); }
+    }
+    
+    @keyframes probabilityPulse {
+      0% { height: 80px; y: 210px; }
+      50% { height: 120px; y: 190px; }
+      100% { height: 80px; y: 210px; }
+    }
+    
+    @keyframes phaseRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes spreadWavePacket {
+      0% { transform: scaleX(1); }
+      100% { transform: scaleX(1.5); }
+    }
+    
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .axis-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+    }
+    
+    .formula {
+      font-family: 'Arial', sans-serif;
+      font-size: 20px;
+      font-style: italic;
+      fill: #333;
+    }
+    
+    .caption {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    .wave-function {
+      fill: none;
+      stroke: url(#waveGradient);
+      stroke-width: 3;
+      animation: wavePulse 8s infinite ease-in-out;
+    }
+    
+    .wave-packet {
+      animation: wavePacketMove 15s alternate infinite ease-in-out, 
+                 spreadWavePacket 15s infinite ease-in-out;
+      transform-origin: center;
+    }
+    
+    .probability-density {
+      fill: url(#probabilityGradient);
+      animation: probabilityPulse 8s infinite ease-in-out;
+    }
+    
+    .phase-indicator {
+      animation: phaseRotate 5s linear infinite;
+      transform-origin: center;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title and Subtitle -->
+  <text x="400" y="40" class="title">Time-Dependent Schrödinger Equation</text>
+  <text x="400" y="70" class="subtitle">Evolution of a Quantum Wave Packet</text>
+  
+  <!-- Main equation -->
+  <rect x="150" y="90" width="500" height="40" rx="5" fill="#f0f0f0" stroke="#ddd"/>
+  <text x="400" y="118" class="formula" text-anchor="middle">
+    iħ ∂Ψ(r,t)/∂t = ĤΨ(r,t) = [-ħ²/2m ∇² + V(r)]Ψ(r,t)
+  </text>
+  
+  <!-- Coordinate system for wave function -->
+  <g transform="translate(0, 250)">
+    <!-- x-axis -->
+    <line x1="50" y1="0" x2="750" y2="0" stroke="#333" stroke-width="1" marker-end="url(#arrowhead)"/>
+    <text x="770" y="5" class="axis-label">x</text>
+    
+    <!-- Potential well -->
+    <rect x="150" y="-150" width="500" height="150" fill="url(#potentialGradient)" opacity="0.3"/>
+    <path d="M150,-150 L150,0 M650,-150 L650,0" stroke="#2ecc71" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="400" y="-130" class="caption" text-anchor="middle">Potential Well V(x)</text>
+    
+    <!-- Wave packet and probability density visualization -->
+    <g class="wave-packet" transform="translate(250, 0)">
+      <!-- Real part of wave function -->
+      <path d="M-100,0 Q-50,-70 0,0 T100,0" class="wave-function"/>
+      
+      <!-- Probability density |Ψ|² -->
+      <rect x="-75" y="10" width="150" height="80" rx="40" class="probability-density"/>
+      
+      <!-- Phase indicator -->
+      <g class="phase-indicator" transform="translate(0, -50)">
+        <circle cx="0" cy="0" r="15" fill="none" stroke="#3498db" stroke-width="2"/>
+        <line x1="0" y1="0" x2="0" y2="-15" stroke="#3498db" stroke-width="2"/>
+        <circle cx="0" cy="-15" r="3" fill="#3498db"/>
+      </g>
+    </g>
+  </g>
+  
+  <!-- Key features labels -->
+  <g transform="translate(400, 350)">
+    <rect x="-350" y="0" width="700" height="120" rx="10" fill="#f0f0f0" stroke="#ddd"/>
+    
+    <text x="-325" y="25" class="caption" text-anchor="start" font-weight="bold">Key Features of Time-Dependent Quantum Evolution:</text>
+    
+    <text x="-325" y="50" class="caption" text-anchor="start">• Wave packet spreading due to different velocity components</text>
+    <text x="-325" y="75" class="caption" text-anchor="start">• Phase evolution at frequency ω = E/ħ (represented by rotating indicator)</text>
+    <text x="-325" y="100" class="caption" text-anchor="start">• Probability density |Ψ|² determines likelihood of finding particle at position x</text>
+  </g>
+  
+  <!-- Secondary Visualizations -->
+  <!-- Left: Hamiltonian operator -->
+  <g transform="translate(120, 250)">
+    <rect x="-50" y="-40" width="100" height="80" rx="10" fill="url(#hamiltonianGradient)" opacity="0.7"/>
+    <text x="0" y="5" class="formula" text-anchor="middle" fill="white">Ĥ</text>
+    <text x="0" y="55" class="caption" text-anchor="middle">Hamiltonian</text>
+  </g>
+  
+  <!-- Right: Time evolution -->
+  <g transform="translate(680, 250)">
+    <rect x="-50" y="-40" width="100" height="80" rx="10" fill="#3498db" opacity="0.7"/>
+    <text x="0" y="5" class="formula" text-anchor="middle" fill="white">t</text>
+    <text x="0" y="55" class="caption" text-anchor="middle">Time Evolution</text>
+  </g>
+  
+  <!-- Annotations for wave function -->
+  <text x="400" y="200" class="caption" text-anchor="middle">Complex Wave Function Ψ(x,t)</text>
+  <text x="400" y="325" class="caption" text-anchor="middle">Probability Density |Ψ(x,t)|²</text>
+</svg> 

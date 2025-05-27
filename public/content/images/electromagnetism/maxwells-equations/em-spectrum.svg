@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <rect width="800" height="700" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Electromagnetic Spectrum</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">f = c/λ, E = hf</text>
+
+    <!-- Spectrum Bar -->
+    <g transform="translate(50,150)">
+        <!-- Wavelength Scale -->
+        <g class="wavelength-bands">
+            <rect x="0" y="0" width="100" height="80" fill="#FF0000"/>
+            <rect x="100" y="0" width="100" height="80" fill="#FF7F00"/>
+            <rect x="200" y="0" width="100" height="80" fill="#FFFF00"/>
+            <rect x="300" y="0" width="100" height="80" fill="#00FF00"/>
+            <rect x="400" y="0" width="100" height="80" fill="#0000FF"/>
+            <rect x="500" y="0" width="100" height="80" fill="#4B0082"/>
+            <rect x="600" y="0" width="100" height="80" fill="#9400D3"/>
+        </g>
+
+        <!-- Labels -->
+        <g class="spectrum-labels" font-size="12">
+            <text x="50" y="100">Radio</text>
+            <text x="150" y="100">Microwave</text>
+            <text x="250" y="100">Infrared</text>
+            <text x="350" y="100">Visible</text>
+            <text x="450" y="100">UV</text>
+            <text x="550" y="100">X-Ray</text>
+            <text x="650" y="100">Gamma</text>
+        </g>
+
+        <!-- Wavelength Values -->
+        <g class="wavelength-values" font-size="10">
+            <text x="50" y="120">10³ m</text>
+            <text x="150" y="120">10⁻² m</text>
+            <text x="250" y="120">10⁻⁵ m</text>
+            <text x="350" y="120">500 nm</text>
+            <text x="450" y="120">10⁻⁸ m</text>
+            <text x="550" y="120">10⁻¹⁰ m</text>
+            <text x="650" y="120">10⁻¹² m</text>
+        </g>
+
+        <!-- Frequency Values -->
+        <g class="frequency-values" font-size="10">
+            <text x="50" y="-10">10⁵ Hz</text>
+            <text x="150" y="-10">10¹⁰ Hz</text>
+            <text x="250" y="-10">10¹³ Hz</text>
+            <text x="350" y="-10">10¹⁵ Hz</text>
+            <text x="450" y="-10">10¹⁶ Hz</text>
+            <text x="550" y="-10">10¹⁸ Hz</text>
+            <text x="650" y="-10">10²⁰ Hz</text>
+        </g>
+    </g>
+
+    <!-- Wave Visualization -->
+    <g transform="translate(50,300)">
+        <!-- Different wavelengths -->
+        <g class="waves">
+            <path d="M 0,50 Q 25,0 50,50 T 100,50" stroke="red" fill="none" stroke-width="2">
+                <animate attributeName="d"
+                         values="M 0,50 Q 25,0 50,50 T 100,50;
+                                M 0,50 Q 25,100 50,50 T 100,50;
+                                M 0,50 Q 25,0 50,50 T 100,50"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+            <!-- Add more waves with different frequencies -->
+        </g>
+    </g>
+
+    <!-- Information Box -->
+    <g transform="translate(50,500)">
+        <rect width="700" height="150" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Key Properties:</text>
+        <text x="20" y="55" font-size="14">1. Wavelength decreases from radio to gamma</text>
+        <text x="20" y="80" font-size="14">2. Frequency and energy increase from radio to gamma</text>
+        <text x="20" y="105" font-size="14">3. All waves travel at speed c in vacuum</text>
+        <text x="20" y="130" font-size="14">4. E = hf relates quantum energy to frequency</text>
+    </g>
+</svg> 

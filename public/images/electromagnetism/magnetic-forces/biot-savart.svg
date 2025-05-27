@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Main diagram -->
+  <g transform="translate(400,250)">
+    <!-- Current-carrying wire -->
+    <line x1="-200" y1="0" x2="200" y2="0" stroke="#E91E63" stroke-width="4"/>
+    
+    <!-- Current direction -->
+    <g stroke="#E91E63" stroke-width="2">
+      <line x1="150" y1="0" x2="180" y2="0"/>
+      <polygon points="180,0 172,-3 172,3" fill="#E91E63"/>
+    </g>
+    
+    <!-- Field point P -->
+    <circle cx="0" cy="-150" r="4" fill="#4CAF50"/>
+    
+    <!-- Distance vector r -->
+    <line x1="0" y1="0" x2="0" y2="-150" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Current element dl -->
+    <g stroke="#2196F3" stroke-width="2">
+      <line x1="-10" y1="0" x2="10" y2="0"/>
+      <polygon points="10,0 2,-3 2,3" fill="#2196F3"/>
+    </g>
+    
+    <!-- Magnetic field vector dB -->
+    <g stroke="#4CAF50" stroke-width="2">
+      <path d="M0,-150 A 30,30 0 0 1 26,-135" fill="none"/>
+      <polygon points="26,-135 22,-142 19,-134" fill="#4CAF50"/>
+    </g>
+    
+    <!-- Labels -->
+    <text x="0" y="30" font-family="Arial" font-size="16" text-anchor="middle">I</text>
+    <text x="20" y="0" font-family="Arial" font-size="16">dl</text>
+    <text x="0" y="-170" font-family="Arial" font-size="16">P</text>
+    <text x="-20" y="-75" font-family="Arial" font-size="16">r</text>
+    <text x="40" y="-140" font-family="Arial" font-size="16">dB</text>
+    
+    <!-- Title -->
+    <text x="0" y="-220" font-family="Arial" font-size="20" text-anchor="middle">Biot-Savart Law</text>
+    
+    <!-- Equation -->
+    <text x="0" y="100" font-family="Arial" font-size="16" text-anchor="middle">dB = (μ₀/4π) * (I dl × r̂)/r²</text>
+  </g>
+</svg>

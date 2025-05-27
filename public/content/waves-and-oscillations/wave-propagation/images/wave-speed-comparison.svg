@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Wave Speed in Different Media</text>
+    
+    <!-- Timeline -->
+    <line x1="50" y1="350" x2="750" y2="350" stroke="black" stroke-width="2"/>
+    <text x="400" y="380" text-anchor="middle" font-size="14">Distance</text>
+    
+    <!-- Light wave -->
+    <path d="M50,100 L700,100" stroke="#FFC107" stroke-width="3"/>
+    <text x="720" y="100" font-size="14">Light</text>
+    <text x="720" y="115" font-size="12">3×10⁸ m/s</text>
+    
+    <!-- Sound wave -->
+    <path d="M50,200 L250,200" stroke="#2196F3" stroke-width="3"/>
+    <text x="720" y="200" font-size="14">Sound in air</text>
+    <text x="720" y="215" font-size="12">343 m/s</text>
+    
+    <!-- Water wave -->
+    <path d="M50,300 L150,300" stroke="#4CAF50" stroke-width="3"/>
+    <text x="720" y="300" font-size="14">Water waves</text>
+    <text x="720" y="315" font-size="12">~5-50 m/s</text>
+    
+    <!-- Time markers -->
+    <line x1="50" y1="345" x2="50" y2="355" stroke="black" stroke-width="2"/>
+    <text x="50" y="370" text-anchor="middle" font-size="12">0 s</text>
+    
+    <line x1="250" y1="345" x2="250" y2="355" stroke="black" stroke-width="2"/>
+    <text x="250" y="370" text-anchor="middle" font-size="12">1 s</text>
+</svg>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font: bold 16px sans-serif; }
+        .label { font: 14px sans-serif; }
+        .math { font-style: italic; }
+        .equation { font: italic 16px serif; }
+    </style>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" class="title">Energy in Rotational Motion</text>
+    
+    <!-- Kinetic Energy -->
+    <g transform="translate(50,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Rotational Kinetic Energy</text>
+        
+        <!-- Disk -->
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <circle cx="100" cy="100" r="30" fill="none" stroke="#000" stroke-width="2"/>
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#000" stroke-width="1"/>
+        <line x1="100" y1="100" x2="100" y2="40" stroke="#000" stroke-width="1"/>
+        
+        <!-- Motion Arrows -->
+        <path d="M 160,100 A 60,60 0 0,1 130,50" fill="none" stroke="#4444ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <path d="M 130,100 A 30,30 0 0,1 115,75" fill="none" stroke="#ff4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="145" y="80" class="math">ω</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">KE = ½Iω²</text>
+    </g>
+    
+    <!-- Moment of Inertia -->
+    <g transform="translate(300,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Moment of Inertia</text>
+        
+        <!-- Objects -->
+        <circle cx="70" cy="100" r="20" fill="none" stroke="#000" stroke-width="2"/>
+        <rect x="110" y="80" width="40" height="40" fill="none" stroke="#000" stroke-width="2"/>
+        <path d="M 40,60 L 160,60 L 100,140 Z" fill="none" stroke="#000" stroke-width="2" transform="translate(300,0)"/>
+        
+        <!-- Labels -->
+        <text x="70" y="140" text-anchor="middle" class="equation">I = ½MR²</text>
+        <text x="130" y="140" text-anchor="middle" class="equation">I = 1/12ML²</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">I = Σmᵢrᵢ²</text>
+    </g>
+    
+    <!-- Work and Power -->
+    <g transform="translate(550,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Work and Power</text>
+        
+        <!-- Torque Diagram -->
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#ff4444" stroke-width="2"/>
+        <path d="M 160,100 A 60,60 0 0,1 130,50" fill="none" stroke="#4444ff" stroke-width="2"/>
+        
+        <!-- Force Arrow -->
+        <line x1="160" y1="100" x2="190" y2="100" stroke="#44ff44" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="175" y="90" class="math">F</text>
+        <text x="145" y="80" class="math">r</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">W = τθ, P = τω</text>
+    </g>
+    
+    <!-- Equations -->
+    <g transform="translate(0,300)">
+        <text x="200" y="20" class="equation">KE = ½Iω²</text>
+        <text x="400" y="20" class="equation">τ = Iα</text>
+        <text x="600" y="20" class="equation">P = τω</text>
+    </g>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+        </marker>
+    </defs>
+</svg>

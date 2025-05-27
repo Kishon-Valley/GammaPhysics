@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-family="Arial">Hydraulic Lift System</text>
+    
+    <!-- Main system -->
+    <g transform="translate(100,80)">
+        <!-- Small piston (input) -->
+        <g>
+            <text x="75" y="-20" text-anchor="middle" font-size="18">Input Piston</text>
+            <text x="75" y="-5" text-anchor="middle" font-size="14">(Area = 10 cm²)</text>
+            
+            <!-- Piston rod -->
+            <rect x="60" y="50" width="30" height="100" fill="#A0A0A0"/>
+            
+            <!-- Piston head -->
+            <rect x="50" y="150" width="50" height="20" fill="#808080"/>
+            
+            <!-- Force arrow -->
+            <path d="M75,20 L75,50" stroke="red" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <text x="90" y="40" font-size="16">F₁ = 100 N</text>
+        </g>
+        
+        <!-- Large piston (output) -->
+        <g transform="translate(300,0)">
+            <text x="100" y="-20" text-anchor="middle" font-size="18">Output Piston</text>
+            <text x="100" y="-5" text-anchor="middle" font-size="14">(Area = 200 cm²)</text>
+            
+            <!-- Piston rod -->
+            <rect x="75" y="50" width="50" height="100" fill="#A0A0A0"/>
+            
+            <!-- Piston head -->
+            <rect x="50" y="150" width="100" height="20" fill="#808080"/>
+            
+            <!-- Platform -->
+            <rect x="25" y="40" width="150" height="10" fill="#404040"/>
+            
+            <!-- Load -->
+            <rect x="50" y="10" width="100" height="30" fill="#FF6B6B"/>
+            
+            <!-- Force arrow -->
+            <path d="M100,20 L100,40" stroke="blue" stroke-width="2" marker-end="url(#arrowhead)"/>
+            <text x="115" y="35" font-size="16">F₂ = 2000 N</text>
+        </g>
+        
+        <!-- Connecting tube with fluid -->
+        <g>
+            <!-- Tube -->
+            <path d="M75,170 L75,250 L375,250 L375,170" 
+                  fill="none" stroke="black" stroke-width="2"/>
+            
+            <!-- Fluid -->
+            <path d="M75,170 L75,250 L375,250 L375,170" 
+                  fill="#ADD8E6" fill-opacity="0.3"/>
+            
+            <!-- Pressure indicators -->
+            <g fill="#0000FF" fill-opacity="0.5">
+                <circle cx="75" cy="210" r="3"/>
+                <circle cx="175" cy="250" r="3"/>
+                <circle cx="275" cy="250" r="3"/>
+                <circle cx="375" cy="210" r="3"/>
+            </g>
+        </g>
+    </g>
+    
+    <!-- Calculations -->
+    <g transform="translate(100,350)">
+        <text x="0" y="0" font-size="18" font-weight="bold">Pascal's Law:</text>
+        <text x="0" y="30" font-size="16">P₁ = P₂</text>
+        <text x="0" y="60" font-size="16">F₁/A₁ = F₂/A₂</text>
+        
+        <text x="300" y="0" font-size="18" font-weight="bold">Example Calculation:</text>
+        <text x="300" y="30" font-size="16">100 N/10 cm² = F₂/200 cm²</text>
+        <text x="300" y="60" font-size="16">F₂ = 2000 N</text>
+        
+        <text x="0" y="100" font-size="14">The larger piston provides a mechanical advantage of 20:1</text>
+        <text x="0" y="120" font-size="14">(ratio of output force to input force)</text>
+    </g>
+    
+    <!-- Arrow marker definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+        </marker>
+    </defs>
+</svg>

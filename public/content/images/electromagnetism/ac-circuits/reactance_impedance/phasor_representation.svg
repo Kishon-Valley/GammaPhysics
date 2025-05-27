@@ -1,0 +1,310 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 500" width="100%" height="auto">
+  <!-- Styles -->
+  <style>
+    text { font-family: Arial, sans-serif; }
+    .title { font-size: 20px; font-weight: bold; text-anchor: middle; }
+    .subtitle { font-size: 16px; text-anchor: middle; }
+    .axis-label { font-size: 14px; text-anchor: middle; }
+    .component-label { font-size: 14px; text-anchor: middle; }
+    .curve { fill: none; stroke-width: 2.5; }
+    .dashed { stroke-dasharray: 5,3; }
+    .grid { stroke: #ddd; stroke-width: 0.5; }
+    .info-text { font-size: 13px; }
+    .component-button { cursor: pointer; }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" class="title">Phasor Representation in AC Circuits</text>
+  <text x="400" y="55" class="subtitle">Voltage and Current Relationship for Different Load Types</text>
+  
+  <!-- Phasor Diagram (Left Side) -->
+  <g transform="translate(200, 250)">
+    <!-- Grid -->
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#eee" stroke-width="1"/>
+    <circle cx="0" cy="0" r="50" fill="none" stroke="#eee" stroke-width="1"/>
+    <line x1="-120" y1="0" x2="120" y2="0" stroke="#eee" stroke-width="1"/>
+    <line x1="0" y1="-120" x2="0" y2="120" stroke="#eee" stroke-width="1"/>
+    
+    <!-- Axes -->
+    <line x1="-120" y1="0" x2="120" y2="0" stroke="black" stroke-width="1.5"/>
+    <line x1="0" y1="-120" x2="0" y2="120" stroke="black" stroke-width="1.5"/>
+    
+    <!-- Axis Labels -->
+    <text x="125" y="15" class="axis-label">Real</text>
+    <text x="15" y="-110" class="axis-label">Imaginary</text>
+    
+    <!-- Reference phasor (voltage) -->
+    <line id="voltagePhasor" x1="0" y1="0" x2="100" y2="0" stroke="#4285F4" stroke-width="3"/>
+    <circle cx="100" cy="0" r="4" fill="#4285F4"/>
+    <text x="110" y="-10" class="component-label" fill="#4285F4">V</text>
+    
+    <!-- Current phasor (will be updated by script) -->
+    <line id="currentPhasor" x1="0" y1="0" x2="100" y2="0" stroke="#EA4335" stroke-width="3"/>
+    <circle id="currentDot" cx="100" cy="0" r="4" fill="#EA4335"/>
+    <text id="currentLabel" x="110" y="15" class="component-label" fill="#EA4335">I</text>
+    
+    <!-- Phase angle arc -->
+    <path id="phaseArc" d="M 30,0 A 30,30 0 0,0 30,0" fill="none" stroke="#FBBC05" stroke-width="2"/>
+    <text id="phaseAngleText" x="40" y="20" class="component-label" fill="#FBBC05">0°</text>
+    
+    <!-- Phasor diagram title -->
+    <text x="0" y="-140" class="subtitle">Phasor Diagram</text>
+  </g>
+  
+  <!-- Waveform Diagram (Right Side) -->
+  <g transform="translate(600, 250)">
+    <!-- Axes -->
+    <line x1="-180" y1="0" x2="120" y2="0" stroke="black" stroke-width="1.5"/>
+    <line x1="-180" y1="-120" x2="-180" y2="120" stroke="black" stroke-width="1.5"/>
+    
+    <!-- Axis Labels -->
+    <text x="-30" y="135" class="axis-label">Time (t)</text>
+    <text x="-210" y="0" class="axis-label" transform="rotate(-90,-210,0)">Amplitude</text>
+    
+    <!-- Grid -->
+    <line x1="-180" y1="-100" x2="120" y2="-100" stroke="#eee" stroke-width="1"/>
+    <line x1="-180" y1="100" x2="120" y2="100" stroke="#eee" stroke-width="1"/>
+    <line x1="-120" y1="-120" x2="-120" y2="120" stroke="#eee" stroke-width="1"/>
+    <line x1="-60" y1="-120" x2="-60" y2="120" stroke="#eee" stroke-width="1"/>
+    <line x1="0" y1="-120" x2="0" y2="120" stroke="#eee" stroke-width="1"/>
+    <line x1="60" y1="-120" x2="60" y2="120" stroke="#eee" stroke-width="1"/>
+    
+    <!-- Reference markers -->
+    <text x="-180" y="-105" class="axis-label" text-anchor="start">+1</text>
+    <text x="-180" y="115" class="axis-label" text-anchor="start">-1</text>
+    
+    <!-- Time markers -->
+    <text x="-180" y="15" class="axis-label">0</text>
+    <text x="-120" y="15" class="axis-label">π/2</text>
+    <text x="-60" y="15" class="axis-label">π</text>
+    <text x="0" y="15" class="axis-label">3π/2</text>
+    <text x="60" y="15" class="axis-label">2π</text>
+    
+    <!-- Voltage waveform (fixed sine wave) -->
+    <path id="voltageWave" d="M-180,0 C-165,-100 -135,-100 -120,0 C-105,100 -75,100 -60,0 C-45,-100 -15,-100 0,0 C15,100 45,100 60,0 C75,-100 105,-100 120,0" class="curve" stroke="#4285F4"/>
+    
+    <!-- Current waveform (will be updated by script) -->
+    <path id="currentWave" d="M-180,0 C-165,-100 -135,-100 -120,0 C-105,100 -75,100 -60,0 C-45,-100 -15,-100 0,0 C15,100 45,100 60,0 C75,-100 105,-100 120,0" class="curve" stroke="#EA4335"/>
+    
+    <!-- Waveform Legend -->
+    <line x1="90" y1="-95" x2="110" y2="-95" stroke="#4285F4" stroke-width="2.5"/>
+    <text x="85" y="-95" class="component-label" text-anchor="end" fill="#4285F4">V</text>
+    
+    <line x1="90" y1="-75" x2="110" y2="-75" stroke="#EA4335" stroke-width="2.5"/>
+    <text x="85" y="-75" class="component-label" text-anchor="end" fill="#EA4335">I</text>
+    
+    <!-- Waveform diagram title -->
+    <text x="-30" y="-140" class="subtitle">Waveform Diagram</text>
+  </g>
+  
+  <!-- Component Selector -->
+  <g transform="translate(400, 400)">
+    <text x="0" y="0" class="subtitle" text-anchor="middle">Select Circuit Type</text>
+    
+    <!-- Resistive load -->
+    <g id="resistiveButton" class="component-button" transform="translate(-150, 30)">
+      <rect x="-40" y="-15" width="80" height="30" rx="5" fill="#f0f0f0" stroke="#888"/>
+      <text x="0" y="5" class="component-label" text-anchor="middle">Resistive</text>
+    </g>
+    
+    <!-- Inductive load -->
+    <g id="inductiveButton" class="component-button" transform="translate(0, 30)">
+      <rect x="-40" y="-15" width="80" height="30" rx="5" fill="white" stroke="#888"/>
+      <text x="0" y="5" class="component-label" text-anchor="middle">Inductive</text>
+    </g>
+    
+    <!-- Capacitive load -->
+    <g id="capacitiveButton" class="component-button" transform="translate(150, 30)">
+      <rect x="-40" y="-15" width="80" height="30" rx="5" fill="white" stroke="#888"/>
+      <text x="0" y="5" class="component-label" text-anchor="middle">Capacitive</text>
+    </g>
+  </g>
+  
+  <!-- Info Box -->
+  <g transform="translate(400, 120)">
+    <rect x="-180" y="-40" width="360" height="100" rx="5" fill="#f8f9fa" stroke="#ddd"/>
+    <text id="componentTypeTitle" x="0" y="-20" class="component-label" text-anchor="middle" font-weight="bold">Resistive Load (R)</text>
+    <g id="loadDescription">
+      <text x="-170" y="0" class="info-text">• Voltage and current are in phase (θ = 0°)</text>
+      <text x="-170" y="20" class="info-text">• Power factor = 1 (unity)</text>
+      <text x="-170" y="40" class="info-text">• Only real power is consumed (P = VI)</text>
+      <text x="-170" y="60" class="info-text">• Examples: heaters, incandescent lamps</text>
+    </g>
+  </g>
+  
+  <!-- Animation script -->
+  <script type="text/ecmascript"><![CDATA[
+    // Get SVG elements
+    const currentPhasor = document.getElementById('currentPhasor');
+    const currentDot = document.getElementById('currentDot');
+    const currentLabel = document.getElementById('currentLabel');
+    const phaseArc = document.getElementById('phaseArc');
+    const phaseAngleText = document.getElementById('phaseAngleText');
+    const currentWave = document.getElementById('currentWave');
+    const componentTypeTitle = document.getElementById('componentTypeTitle');
+    const loadDescription = document.getElementById('loadDescription');
+    
+    // Get component buttons
+    const resistiveButton = document.getElementById('resistiveButton');
+    const inductiveButton = document.getElementById('inductiveButton');
+    const capacitiveButton = document.getElementById('capacitiveButton');
+    
+    // Current component type
+    let currentType = 'resistive';
+    
+    // Update the phasor and waveform based on component type
+    function updateDisplay(type) {
+      currentType = type;
+      
+      // Default values
+      let phaseAngle = 0;
+      let phaseAngleText = '0°';
+      let title = 'Resistive Load (R)';
+      let desc = [
+        '• Voltage and current are in phase (θ = 0°)',
+        '• Power factor = 1 (unity)',
+        '• Only real power is consumed (P = VI)',
+        '• Examples: heaters, incandescent lamps'
+      ];
+      
+      // Set values based on component type
+      if (type === 'inductive') {
+        phaseAngle = -90; // Current lags voltage by 90° in inductive load
+        phaseAngleText = '-90°';
+        title = 'Inductive Load (L)';
+        desc = [
+          '• Current lags voltage by 90° (θ = -90°)',
+          '• Power factor = 0 (lagging)',
+          '• Only reactive power (no real power consumed)',
+          '• Examples: motors, transformers'
+        ];
+      } else if (type === 'capacitive') {
+        phaseAngle = 90; // Current leads voltage by 90° in capacitive load
+        phaseAngleText = '+90°';
+        title = 'Capacitive Load (C)';
+        desc = [
+          '• Current leads voltage by 90° (θ = +90°)',
+          '• Power factor = 0 (leading)',
+          '• Only reactive power (no real power consumed)',
+          '• Examples: capacitor banks, some LED drivers'
+        ];
+      }
+      
+      // Update buttons appearance
+      resistiveButton.querySelector('rect').setAttribute('fill', type === 'resistive' ? '#f0f0f0' : 'white');
+      inductiveButton.querySelector('rect').setAttribute('fill', type === 'inductive' ? '#f0f0f0' : 'white');
+      capacitiveButton.querySelector('rect').setAttribute('fill', type === 'capacitive' ? '#f0f0f0' : 'white');
+      
+      // Update phasor
+      const radians = phaseAngle * Math.PI / 180;
+      const x = 100 * Math.cos(radians);
+      const y = 100 * Math.sin(radians);
+      
+      currentPhasor.setAttribute('x2', x);
+      currentPhasor.setAttribute('y2', y);
+      currentDot.setAttribute('cx', x);
+      currentDot.setAttribute('cy', y);
+      
+      // Update current label position
+      currentLabel.setAttribute('x', x + (x > 0 ? 10 : -10));
+      currentLabel.setAttribute('y', y + (y > 0 ? 15 : -10));
+      currentLabel.setAttribute('text-anchor', x > 0 ? 'start' : 'end');
+      
+      // Update phase angle arc
+      const largeArcFlag = Math.abs(phaseAngle) > 180 ? 1 : 0;
+      const sweepFlag = phaseAngle < 0 ? 1 : 0;
+      
+      // Only show arc if there is a phase difference
+      if (phaseAngle !== 0) {
+        const arcRadius = 30;
+        const arcEndX = arcRadius * Math.cos(radians);
+        const arcEndY = arcRadius * Math.sin(radians);
+        phaseArc.setAttribute('d', `M ${arcRadius},0 A ${arcRadius},${arcRadius} 0 ${largeArcFlag},${sweepFlag} ${arcEndX},${arcEndY}`);
+        phaseArc.style.display = 'inline';
+      } else {
+        phaseArc.style.display = 'none';
+      }
+      
+      // Update phase angle text
+      const phaseTextX = 45 * Math.cos(radians / 2);
+      const phaseTextY = 45 * Math.sin(radians / 2);
+      document.getElementById('phaseAngleText').setAttribute('x', phaseTextX);
+      document.getElementById('phaseAngleText').setAttribute('y', phaseTextY);
+      document.getElementById('phaseAngleText').textContent = phaseAngleText;
+      
+      // Update current waveform
+      const wavePhaseShift = -phaseAngle; // Negative because we're shifting the waveform
+      const shiftedWave = generateSineWave(wavePhaseShift);
+      currentWave.setAttribute('d', shiftedWave);
+      
+      // Update component info
+      componentTypeTitle.textContent = title;
+      
+      // Update description
+      while (loadDescription.firstChild) {
+        loadDescription.removeChild(loadDescription.firstChild);
+      }
+      
+      desc.forEach((line, i) => {
+        const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        text.setAttribute('x', -170);
+        text.setAttribute('y', i * 20);
+        text.setAttribute('class', 'info-text');
+        text.textContent = line;
+        loadDescription.appendChild(text);
+      });
+    }
+    
+    // Generate sine wave path with phase shift
+    function generateSineWave(phaseShiftDegrees) {
+      const phaseShift = phaseShiftDegrees * Math.PI / 180;
+      let path = 'M-180,';
+      
+      // Calculate start point
+      const startY = -100 * Math.sin(0 + phaseShift);
+      path += startY;
+      
+      // Generate bezier curve approximation of sine wave
+      // Each Bezier curve covers π/2 radians (quarter cycle)
+      for (let i = 0; i < 4; i++) {
+        const x1 = -180 + 60 * i;
+        const x2 = x1 + 15;
+        const x3 = x1 + 45;
+        const x4 = x1 + 60;
+        
+        const angle1 = (i * Math.PI/2) + phaseShift;
+        const angle2 = ((i+0.5) * Math.PI/2) + phaseShift;
+        const angle3 = ((i+1) * Math.PI/2) + phaseShift;
+        
+        const y1 = -100 * Math.sin(angle1);
+        let y2, y3;
+        
+        // Control points approximation
+        if (i % 2 === 0) { // Going from 0 to peak or from 0 to -peak
+          y2 = -100 * Math.sin(angle1); // Maintain the current amplitude
+          y3 = -100 * Math.sin(angle2); // Match the amplitude at midpoint
+        } else { // Going from peak to 0 or from -peak to 0
+          y2 = -100 * Math.sin(angle2); // Match the amplitude at midpoint
+          y3 = -100 * Math.sin(angle3); // Match the next point's amplitude
+        }
+        
+        const y4 = -100 * Math.sin(angle3);
+        
+        path += ` C${x2},${y2} ${x3},${y3} ${x4},${y4}`;
+      }
+      
+      return path;
+    }
+    
+    // Add event listeners to buttons
+    resistiveButton.addEventListener('click', () => updateDisplay('resistive'));
+    inductiveButton.addEventListener('click', () => updateDisplay('inductive'));
+    capacitiveButton.addEventListener('click', () => updateDisplay('capacitive'));
+    
+    // Initialize with resistive load
+    updateDisplay('resistive');
+  ]]></script>
+</svg> 

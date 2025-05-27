@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-family="Arial">Capillary Action in Tubes</text>
+    
+    <!-- Container with multiple tubes -->
+    <g transform="translate(100,50)">
+        <!-- Water container -->
+        <rect x="50" y="200" width="500" height="100" fill="#ADD8E6" fill-opacity="0.3"/>
+        <line x1="50" y1="200" x2="550" y2="200" stroke="black" stroke-width="2"/>
+        
+        <!-- Tubes of different diameters -->
+        <g>
+            <!-- Tube 1 (largest) -->
+            <rect x="100" y="50" width="60" height="300" fill="none" stroke="black"/>
+            <path d="M100,190 Q130,180 160,190" fill="#ADD8E6" fill-opacity="0.3"/>
+            <rect x="100" y="190" width="60" height="110" fill="#ADD8E6" fill-opacity="0.3"/>
+            
+            <!-- Tube 2 -->
+            <rect x="200" y="50" width="40" height="300" fill="none" stroke="black"/>
+            <path d="M200,170 Q220,155 240,170" fill="#ADD8E6" fill-opacity="0.3"/>
+            <rect x="200" y="170" width="40" height="130" fill="#ADD8E6" fill-opacity="0.3"/>
+            
+            <!-- Tube 3 -->
+            <rect x="300" y="50" width="30" height="300" fill="none" stroke="black"/>
+            <path d="M300,140 Q315,120 330,140" fill="#ADD8E6" fill-opacity="0.3"/>
+            <rect x="300" y="140" width="30" height="160" fill="#ADD8E6" fill-opacity="0.3"/>
+            
+            <!-- Tube 4 (smallest) -->
+            <rect x="400" y="50" width="20" height="300" fill="none" stroke="black"/>
+            <path d="M400,100 Q410,75 420,100" fill="#ADD8E6" fill-opacity="0.3"/>
+            <rect x="400" y="100" width="20" height="200" fill="#ADD8E6" fill-opacity="0.3"/>
+        </g>
+        
+        <!-- Height measurements -->
+        <g stroke="black" stroke-dasharray="5,5">
+            <line x1="80" y1="200" x2="80" y2="190"/>
+            <line x1="180" y1="200" x2="180" y2="170"/>
+            <line x1="280" y1="200" x2="280" y2="140"/>
+            <line x1="380" y1="200" x2="380" y2="100"/>
+            
+            <text x="70" y="195" font-size="14">h₁</text>
+            <text x="170" y="185" font-size="14">h₂</text>
+            <text x="270" y="170" font-size="14">h₃</text>
+            <text x="370" y="150" font-size="14">h₄</text>
+        </g>
+        
+        <!-- Tube labels -->
+        <g font-size="14">
+            <text x="130" y="370" text-anchor="middle">r₁</text>
+            <text x="220" y="370" text-anchor="middle">r₂</text>
+            <text x="315" y="370" text-anchor="middle">r₃</text>
+            <text x="410" y="370" text-anchor="middle">r₄</text>
+        </g>
+    </g>
+    
+    <!-- Equation and explanation -->
+    <g transform="translate(600,100)">
+        <text x="0" y="0" font-size="18" font-weight="bold">Capillary Rise:</text>
+        <text x="0" y="30" font-size="16">h = 2γcosθ/ρgr</text>
+        
+        <text x="0" y="70" font-size="14">where:</text>
+        <text x="20" y="95" font-size="14">h = height of rise</text>
+        <text x="20" y="120" font-size="14">γ = surface tension</text>
+        <text x="20" y="145" font-size="14">θ = contact angle</text>
+        <text x="20" y="170" font-size="14">ρ = fluid density</text>
+        <text x="20" y="195" font-size="14">g = gravity</text>
+        <text x="20" y="220" font-size="14">r = tube radius</text>
+        
+        <text x="0" y="260" font-size="14">Note: Height is inversely</text>
+        <text x="0" y="280" font-size="14">proportional to tube radius</text>
+    </g>
+</svg>

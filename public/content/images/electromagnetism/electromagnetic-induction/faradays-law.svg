@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+    <defs>
+        <!-- Background -->
+        <linearGradient id="bg-gradient">
+            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+        </linearGradient>
+        
+        <!-- Arrow markers -->
+        <marker id="B-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+        <marker id="E-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+    </defs>
+
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="url(#bg-gradient)" />
+
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" fill="#000000" font-family="Arial" font-size="20" font-weight="bold">
+        Faraday's Law of Electromagnetic Induction
+    </text>
+
+    <!-- Three mechanisms of flux change -->
+    <g transform="translate(0,0)">
+        <!-- 1. Temporal Variation -->
+        <g transform="translate(150,200)">
+            <text x="0" y="-20" fill="#000" font-size="14" font-weight="bold">Temporal Variation</text>
+            
+            <!-- Stationary coil -->
+            <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="#666" stroke-width="2"/>
+            
+            <!-- Magnetic field lines -->
+            <g class="magnetic-field">
+                <line x1="-60" y1="0" x2="60" y2="0" stroke="#4CAF50" stroke-width="2" marker-end="url(#B-arrow)">
+                    <animate attributeName="stroke-width" 
+                            values="2;4;2"
+                            dur="2s"
+                            repeatCount="indefinite"/>
+                </line>
+            </g>
+            
+            <!-- Induced EMF -->
+            <circle r="50" fill="none" stroke="#FF5722" stroke-width="2" stroke-dasharray="5,5">
+                <animate attributeName="r"
+                         values="40;60;40"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </circle>
+        </g>
+
+        <!-- 2. Spatial Variation -->
+        <g transform="translate(400,200)">
+            <text x="0" y="-20" fill="#000" font-size="14" font-weight="bold">Spatial Variation</text>
+            
+            <!-- Moving conductor -->
+            <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="#666" stroke-width="2">
+                <animateTransform
+                    attributeName="transform"
+                    type="translate"
+                    values="0,0; 30,0; 0,0"
+                    dur="3s"
+                    repeatCount="indefinite"/>
+            </rect>
+            
+            <!-- Static magnetic field -->
+            <g class="magnetic-field">
+                <line x1="-60" y1="0" x2="60" y2="0" stroke="#4CAF50" stroke-width="2" marker-end="url(#B-arrow)"/>
+            </g>
+            
+            <!-- Induced EMF -->
+            <line x1="0" y1="-50" x2="0" y2="50" stroke="#FF5722" stroke-width="2" marker-end="url(#E-arrow)">
+                <animate attributeName="stroke-width"
+                         values="2;4;2"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </line>
+        </g>
+
+        <!-- 3. Orientational Variation -->
+        <g transform="translate(650,200)">
+            <text x="0" y="-20" fill="#000" font-size="14" font-weight="bold">Orientational Variation</text>
+            
+            <!-- Rotating coil -->
+            <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="#666" stroke-width="2">
+                <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    values="0;360"
+                    dur="4s"
+                    repeatCount="indefinite"/>
+            </rect>
+            
+            <!-- Static magnetic field -->
+            <g class="magnetic-field">
+                <line x1="-60" y1="0" x2="60" y2="0" stroke="#4CAF50" stroke-width="2" marker-end="url(#B-arrow)"/>
+            </g>
+            
+            <!-- Induced EMF wave -->
+            <path d="M -60,100 Q -30,50 0,100 T 60,100" fill="none" stroke="#FF5722" stroke-width="2">
+                <animate attributeName="d"
+                         values="M -60,100 Q -30,50 0,100 T 60,100;
+                                M -60,100 Q -30,150 0,100 T 60,100;
+                                M -60,100 Q -30,50 0,100 T 60,100"
+                         dur="4s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+    </g>
+
+    <!-- Equation -->
+    <g transform="translate(400,400)">
+        <text x="0" y="0" text-anchor="middle" fill="#000" font-size="18" font-family="math">
+            ε = -N dΦ/dt
+        </text>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(50,500)">
+        <text x="0" y="0" fill="#000" font-size="14" font-weight="bold">Legend:</text>
+        <line x1="0" y1="20" x2="30" y2="20" stroke="#4CAF50" stroke-width="2" marker-end="url(#B-arrow)"/>
+        <text x="40" y="25" fill="#4CAF50" font-size="12">Magnetic Field (B)</text>
+        <line x1="200" y1="20" x2="230" y2="20" stroke="#FF5722" stroke-width="2" marker-end="url(#E-arrow)"/>
+        <text x="240" y="25" fill="#FF5722" font-size="12">Induced EMF (ε)</text>
+    </g>
+
+    <!-- Explanation -->
+    <g transform="translate(50,550)">
+        <rect width="700" height="40" fill="#f8f9fa" stroke="#e9ecef" stroke-width="1" rx="5"/>
+        <text x="10" y="25" fill="#000" font-size="12">
+            The induced EMF (ε) is proportional to the rate of change of magnetic flux (dΦ/dt). The negative sign (Lenz's law) indicates that
+        </text>
+        <text x="10" y="40" fill="#000" font-size="12">
+            the induced current opposes the change in magnetic flux that produced it.
+        </text>
+    </g>
+</svg> 

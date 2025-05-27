@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewBox="0 0 600 400">
+  <style>
+    .magnet { fill: #f44336; }
+    .magnet-north { fill: #3f51b5; }
+    .coil { fill: none; stroke: #333; stroke-width: 3; }
+    .flux-line { fill: none; stroke: #3f51b5; stroke-width: 1.5; stroke-dasharray: 5,3; opacity: 0.7; }
+    .arrow { fill: #3f51b5; }
+    .meter { fill: #eee; stroke: #333; stroke-width: 2; }
+    .meter-needle { fill: none; stroke: #f44336; stroke-width: 3; }
+    .text { font-family: Arial, sans-serif; font-size: 14px; }
+    .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; }
+    .equation { font-family: 'Times New Roman', serif; font-size: 20px; font-style: italic; }
+    
+    @keyframes moveRight {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(100px); }
+      100% { transform: translateX(0); }
+    }
+    
+    @keyframes moveLeft {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-100px); }
+      100% { transform: translateX(0); }
+    }
+    
+    @keyframes needleMove {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(30deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-30deg); }
+      100% { transform: rotate(0deg); }
+    }
+    
+    @keyframes pulseFlux {
+      0% { opacity: 0.2; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0.2; }
+    }
+    
+    #magnet-group { animation: moveRight 4s ease-in-out infinite; }
+    #coil-group { animation: moveLeft 4s ease-in-out infinite; }
+    #needle { animation: needleMove 4s ease-in-out infinite; }
+    #flux-lines { animation: pulseFlux 4s ease-in-out infinite; }
+  </style>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="#f9f9f9"/>
+  
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" class="title">Electromagnetic Induction</text>
+  
+  <!-- Equation -->
+  <text x="300" y="60" text-anchor="middle" class="equation">ℰ = -dΦ/dt</text>
+  
+  <!-- Flux Lines -->
+  <g id="flux-lines">
+    <path d="M150,150 C250,120 350,120 450,150" class="flux-line" />
+    <path d="M150,170 C250,140 350,140 450,170" class="flux-line" />
+    <path d="M150,190 C250,160 350,160 450,190" class="flux-line" />
+    <path d="M150,210 C250,180 350,180 450,210" class="flux-line" />
+    <path d="M150,230 C250,200 350,200 450,230" class="flux-line" />
+    <path d="M150,250 C250,220 350,220 450,250" class="flux-line" />
+  </g>
+  
+  <!-- Magnet -->
+  <g id="magnet-group">
+    <rect x="150" y="150" width="60" height="100" class="magnet" />
+    <rect x="150" y="150" width="60" height="50" class="magnet-north" />
+    <text x="180" y="175" text-anchor="middle" fill="white" class="text">N</text>
+    <text x="180" y="225" text-anchor="middle" fill="white" class="text">S</text>
+  </g>
+  
+  <!-- Coil -->
+  <g id="coil-group">
+    <path d="M350,150 C370,150 370,250 350,250" class="coil" />
+    <path d="M360,150 C380,150 380,250 360,250" class="coil" />
+    <path d="M370,150 C390,150 390,250 370,250" class="coil" />
+    <path d="M380,150 C400,150 400,250 380,250" class="coil" />
+    <path d="M390,150 C410,150 410,250 390,250" class="coil" />
+    
+    <!-- Connecting wires -->
+    <line x1="350" y1="150" x2="350" y2="120" stroke="#333" stroke-width="3" />
+    <line x1="350" y1="250" x2="350" y2="280" stroke="#333" stroke-width="3" />
+    <line x1="350" y1="120" x2="450" y2="120" stroke="#333" stroke-width="3" />
+    <line x1="350" y1="280" x2="450" y2="280" stroke="#333" stroke-width="3" />
+  </g>
+  
+  <!-- Galvanometer -->
+  <g transform="translate(450, 200)">
+    <circle cx="0" cy="0" r="50" class="meter" />
+    <line x1="-40" y1="0" x2="40" y2="0" stroke="#333" stroke-width="1" />
+    <line x1="0" y1="-40" x2="0" y2="40" stroke="#333" stroke-width="1" />
+    <g id="needle">
+      <line x1="0" y1="0" x2="35" y2="0" class="meter-needle" />
+      <polygon points="35,0 30,-5 30,5" class="arrow" />
+    </g>
+    <text x="0" y="-25" text-anchor="middle" class="text">+</text>
+    <text x="0" y="35" text-anchor="middle" class="text">-</text>
+  </g>
+  
+  <!-- Labels -->
+  <text x="180" y="280" text-anchor="middle" class="text">Moving Magnet</text>
+  <text x="380" y="310" text-anchor="middle" class="text">Coil</text>
+  <text x="450" y="310" text-anchor="middle" class="text">Galvanometer</text>
+  
+  <!-- Explanation -->
+  <text x="300" y="350" text-anchor="middle" class="text">When a magnet moves relative to a coil, the changing magnetic flux</text>
+  <text x="300" y="370" text-anchor="middle" class="text">induces an EMF in the coil according to Faraday's Law</text>
+</svg>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Standing Wave Formation</text>
+    
+    <!-- Incident Wave -->
+    <g transform="translate(0,0)">
+        <text x="200" y="80" text-anchor="middle" font-size="14">Incident Wave →</text>
+        <path d="M50,120 Q125,90 200,120 T350,120" fill="none" stroke="#2196F3" stroke-width="2"/>
+        <path d="M330,110 L350,120 L330,130" fill="none" stroke="#2196F3" stroke-width="2"/>
+    </g>
+    
+    <!-- Reflected Wave -->
+    <g transform="translate(400,0)">
+        <text x="200" y="80" text-anchor="middle" font-size="14">← Reflected Wave</text>
+        <path d="M50,120 Q125,150 200,120 T350,120" fill="none" stroke="#4CAF50" stroke-width="2"/>
+        <path d="M70,110 L50,120 L70,130" fill="none" stroke="#4CAF50" stroke-width="2"/>
+    </g>
+    
+    <!-- Resultant Standing Wave -->
+    <g transform="translate(0,200)">
+        <text x="400" y="80" text-anchor="middle" font-size="16">Resultant Standing Wave</text>
+        <!-- Envelope -->
+        <path d="M50,120 Q200,50 350,120 T650,120" fill="none" stroke="#E91E63" stroke-width="2" stroke-dasharray="5,5"/>
+        <path d="M50,120 Q200,190 350,120 T650,120" fill="none" stroke="#E91E63" stroke-width="2" stroke-dasharray="5,5"/>
+        <!-- Nodes -->
+        <circle cx="50" cy="120" r="4" fill="#E91E63"/>
+        <circle cx="350" cy="120" r="4" fill="#E91E63"/>
+        <circle cx="650" cy="120" r="4" fill="#E91E63"/>
+        <text x="50" y="140" text-anchor="middle" font-size="12">Node</text>
+        <!-- Antinodes -->
+        <text x="200" y="60" text-anchor="middle" font-size="12">Antinode</text>
+        <text x="500" y="60" text-anchor="middle" font-size="12">Antinode</text>
+    </g>
+</svg>

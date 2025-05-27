@@ -1,0 +1,28 @@
+<svg width="340" height="180" viewBox="0 0 340 180" xmlns="http://www.w3.org/2000/svg">
+  <rect width="340" height="180" fill="white"/>
+  <!-- Solenoid coils -->
+  <g>
+    <ellipse cx="40" cy="90" rx="20" ry="40" fill="none" stroke="#555" stroke-width="2"/>
+    <ellipse cx="70" cy="90" rx="20" ry="40" fill="none" stroke="#555" stroke-width="2"/>
+    <ellipse cx="100" cy="90" rx="20" ry="40" fill="none" stroke="#555" stroke-width="2"/>
+    <ellipse cx="130" cy="90" rx="20" ry="40" fill="none" stroke="#555" stroke-width="2"/>
+    <ellipse cx="160" cy="90" rx="20" ry="40" fill="none" stroke="#555" stroke-width="2"/>
+    <ellipse cx="190" cy="90" rx="20" ry="40" fill="none" stroke="#555" stroke-width="2"/>
+    <ellipse cx="220" cy="90" rx="20" ry="40" fill="none" stroke="#555" stroke-width="2"/>
+    <ellipse cx="250" cy="90" rx="20" ry="40" fill="none" stroke="#555" stroke-width="2"/>
+    <ellipse cx="280" cy="90" rx="20" ry="40" fill="none" stroke="#555" stroke-width="2"/>
+    <ellipse cx="310" cy="90" rx="20" ry="40" fill="none" stroke="#555" stroke-width="2"/>
+  </g>
+  <!-- Current direction -->
+  <polygon points="320,70 335,90 320,110" fill="#1e90ff"/>
+  <rect x="320" y="85" width="15" height="10" fill="#1e90ff"/>
+  <text x="325" y="80" font-size="16" fill="#1e90ff">I</text>
+  <!-- Magnetic field inside solenoid -->
+  <line x1="30" y1="90" x2="320" y2="90" stroke="#009688" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="200" y="70" font-size="14" fill="#009688">B</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0,0 10,5 0,10 3,5" fill="#009688"/>
+    </marker>
+  </defs>
+</svg>

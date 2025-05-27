@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" style="background-color: white;">
+    <!-- Explicit white background -->
+    <rect width="800" height="600" fill="white"/>
+    
+    <defs>
+        <marker id="magnetic-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+    </defs>
+
+    <!-- Title with white background -->
+    <rect x="0" y="0" width="800" height="60" fill="white"/>
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Transformer Operation</text>
+
+    <!-- Explanation -->
+    <g transform="translate(50,80)">
+        <text x="0" y="0" font-size="16" font-weight="bold">Principle:</text>
+        <text x="0" y="30" font-size="14">1. AC in primary creates changing magnetic field</text>
+        <text x="0" y="50" font-size="14">2. Field induces voltage in secondary</text>
+        <text x="0" y="70" font-size="14">3. Voltage ratio = Turns ratio (Vs/Vp = Ns/Np)</text>
+    </g>
+
+    <!-- Transformer Visualization -->
+    <g transform="translate(400,250)">
+        <!-- Core -->
+        <path d="M -150,-100 L -150,100 L 150,100 L 150,-100" 
+              fill="none" stroke="#666" stroke-width="3"/>
+
+        <!-- Primary Coil -->
+        <g transform="translate(-100,0)">
+            <!-- Coil turns -->
+            <path d="M -20,-80 C -10,-80 -10,-60 -20,-60" 
+                  fill="none" stroke="#2196F3" stroke-width="2"
+                  stroke-dasharray="4 2">
+                <animate attributeName="stroke-dashoffset"
+                         values="0;6"
+                         dur="0.5s"
+                         repeatCount="indefinite"/>
+            </path>
+            <!-- Repeat for multiple turns -->
+        </g>
+
+        <!-- Secondary Coil -->
+        <g transform="translate(100,0)">
+            <!-- Coil turns -->
+            <path d="M 20,-80 C 30,-80 30,-60 20,-60" 
+                  fill="none" stroke="#FF5722" stroke-width="2"
+                  stroke-dasharray="4 2">
+                <animate attributeName="stroke-dashoffset"
+                         values="0;6"
+                         dur="0.5s"
+                         repeatCount="indefinite"/>
+            </path>
+            <!-- Repeat for multiple turns -->
+        </g>
+
+        <!-- Magnetic Field Lines -->
+        <g stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5">
+            <path d="M -120,0 C -80,0 -40,0 0,0" marker-end="url(#magnetic-arrow)">
+                <animate attributeName="d"
+                         values="M -120,0 C -80,0 -40,0 0,0;
+                                M -120,20 C -80,20 -40,20 0,20;
+                                M -120,0 C -80,0 -40,0 0,0"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+    </g>
+
+    <!-- Formula Box -->
+    <g transform="translate(50,450)">
+        <rect x="0" y="0" width="700" height="120" fill="#f5f5f5" stroke="#666"/>
+        <text x="20" y="30" font-size="16" font-weight="bold">Key Relationships:</text>
+        <text x="20" y="60" font-family="math" font-size="14">• Vs/Vp = Ns/Np</text>
+        <text x="20" y="80" font-size="14">• Power: VpIp = VsIs (ideal)</text>
+        <text x="20" y="100" font-size="14">• Efficiency affected by core and copper losses</text>
+    </g>
+</svg> 

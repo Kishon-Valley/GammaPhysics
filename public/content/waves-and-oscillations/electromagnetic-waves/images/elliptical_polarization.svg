@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+    </marker>
+  </defs>
+  <!-- Propagation axis -->
+  <line x1="200" y1="50" x2="200" y2="250" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="210" y="270" font-size="14">z</text>
+  
+  <!-- Elliptical path -->
+  <ellipse cx="200" cy="150" rx="70" ry="40" stroke="#666" stroke-width="1" fill="none" stroke-dasharray="4"/>
+  
+  <!-- Electric field vector -->
+  <line x1="200" y1="150" x2="270" y2="170" stroke="#2196F3" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="280" y="175" font-size="14" fill="#2196F3">E</text>
+  
+  <!-- Major and minor axes -->
+  <line x1="130" y1="150" x2="270" y2="150" stroke="#666" stroke-width="1" stroke-dasharray="2"/>
+  <line x1="200" y1="110" x2="200" y2="190" stroke="#666" stroke-width="1" stroke-dasharray="2"/>
+  
+  <!-- Labels -->
+  <text x="140" y="30" font-size="14">Elliptical Polarization</text>
+  <text x="50" y="280" font-size="12">Electric field traces an elliptical path</text>
+</svg>

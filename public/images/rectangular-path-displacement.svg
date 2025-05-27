@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height="500" viewBox="-250 -250 500 500" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background that covers the entire viewport -->
+    <rect x="-250" y="-250" width="500" height="500" fill="white"/>
+    <!-- Background Grid -->
+    <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+        <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+    </pattern>
+    <rect x="-250" y="-250" width="500" height="500" fill="url(#grid)"/>
+    
+    <!-- Rectangle Path -->
+    <rect x="-100" y="-75" width="200" height="150" fill="none" stroke="#2196F3" stroke-width="3" stroke-dasharray="10,5"/>
+    
+    <!-- Start/End Point -->
+    <circle cx="-100" cy="-75" r="6" fill="#4CAF50"/>
+    <text x="-90" y="-90" fill="#4CAF50" font-family="Arial" font-size="20">P (start/end)</text>
+    
+    <!-- Path Arrows -->
+    <path d="M -100 -75 L 100 -75" fill="none" stroke="#2196F3" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 100 -75 L 100 75" fill="none" stroke="#2196F3" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M 100 75 L -100 75" fill="none" stroke="#2196F3" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M -100 75 L -100 -75" fill="none" stroke="#2196F3" stroke-width="3" marker-end="url(#arrowhead)"/>
+    
+    <!-- Side Labels -->
+    <text x="-10" y="-85" fill="#666" font-family="Arial" font-size="24">a</text>
+    <text x="110" y="0" fill="#666" font-family="Arial" font-size="24">b</text>
+    
+    <!-- Arrow Definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+    </defs>
+    
+    <!-- Information Labels -->
+    <text x="-230" y="-200" fill="#2196F3" font-family="Arial" font-size="16" font-weight="bold">Total Distance = 2(a + b)</text>
+    <text x="-230" y="-170" fill="#4CAF50" font-family="Arial" font-size="16" font-weight="bold">Net Displacement = 0</text>
+    <text x="-230" y="-150" fill="#666" font-family="Arial" font-size="14">(Start point = End point)</text>
+    
+    <!-- Path Description -->
+    <text x="-230" y="170" fill="#666" font-family="Arial" font-size="14">→ Direction of Motion</text>
+    <text x="-230" y="190" fill="#666" font-family="Arial" font-size="14">• Complete rectangular path</text>
+    <text x="-230" y="210" fill="#666" font-family="Arial" font-size="14">• Path length = perimeter = 2(a + b)</text>
+</svg>

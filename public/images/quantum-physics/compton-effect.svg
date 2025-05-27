@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions -->
+  <defs>
+    <!-- Gradients -->
+    <radialGradient id="electronGradient" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" style="stop-color:#80c0ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0066cc;stop-opacity:1" />
+    </radialGradient>
+    
+    <radialGradient id="photonGradient" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" style="stop-color:#ffffaa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffcc00;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" />
+    </filter>
+    
+    <!-- Arrow marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+    
+    <!-- Wave pattern -->
+    <pattern id="wavePattern" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(0)">
+      <path d="M0,10 C2.5,5 7.5,15 10,10 C12.5,5 17.5,15 20,10" fill="none" stroke="#9370DB" stroke-width="1.5"/>
+    </pattern>
+  </defs>
+  
+  <!-- Styles -->
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      fill: #333;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    .subtitle {
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    .label {
+      font-size: 14px;
+      text-anchor: middle;
+    }
+    .small-label {
+      font-size: 12px;
+      text-anchor: middle;
+    }
+    .equation {
+      font-size: 16px;
+      font-style: italic;
+      text-anchor: middle;
+    }
+    .axis {
+      stroke: #666;
+      stroke-width: 2;
+    }
+    .electron {
+      fill: url(#electronGradient);
+      stroke: #0066cc;
+      stroke-width: 1;
+    }
+    .photon {
+      fill: url(#photonGradient);
+      stroke: #ffcc00;
+      stroke-width: 1;
+    }
+    .photon-path {
+      fill: none;
+      stroke: #ffcc00;
+      stroke-width: 1.5;
+      stroke-dasharray: 5,3;
+    }
+    .electron-path {
+      fill: none;
+      stroke: #0066cc;
+      stroke-width: 1.5;
+      stroke-dasharray: 5,3;
+    }
+    .momentum-arrow {
+      fill: none;
+      stroke: #ff6b6b;
+      stroke-width: 2;
+      marker-end: url(#arrowhead);
+    }
+    .angle-arc {
+      fill: none;
+      stroke: #888;
+      stroke-width: 1;
+      stroke-dasharray: 3,2;
+    }
+    .wave {
+      fill: none;
+      stroke: #9370DB;
+      stroke-width: 1.5;
+    }
+    .wave-container {
+      fill: url(#wavePattern);
+      opacity: 0.6;
+    }
+    
+    /* Animations */
+    @keyframes moveIncidentPhoton {
+      0% { transform: translate(-200px, 0); opacity: 0; }
+      10% { opacity: 1; }
+      80% { opacity: 1; transform: translate(0, 0); }
+      90%, 100% { opacity: 0; transform: translate(0, 0); }
+    }
+    
+    @keyframes moveScatteredPhoton {
+      0%, 80% { transform: translate(0, 0); opacity: 0; }
+      90% { opacity: 1; }
+      100% { opacity: 1; transform: translate(150px, -100px); }
+    }
+    
+    @keyframes moveElectron {
+      0%, 80% { transform: translate(0, 0); opacity: 0; }
+      90% { opacity: 1; }
+      100% { opacity: 1; transform: translate(100px, 100px); }
+    }
+    
+    @keyframes waveToParticle {
+      0% { r: 0; opacity: 0; }
+      40% { r: 0; opacity: 0; }
+      60% { r: 7; opacity: 1; }
+      100% { r: 7; opacity: 1; }
+    }
+    
+    @keyframes wavelengthChange {
+      0% { transform: scaleX(1); }
+      100% { transform: scaleX(1.3); }
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+    
+    .incident-photon {
+      animation: moveIncidentPhoton 4s infinite;
+    }
+    
+    .scattered-photon {
+      animation: moveScatteredPhoton 4s infinite;
+    }
+    
+    .recoil-electron {
+      animation: moveElectron 4s infinite;
+    }
+    
+    .particle-transition {
+      animation: waveToParticle 4s infinite;
+    }
+    
+    .wavelength-change {
+      animation: wavelengthChange 4s infinite alternate;
+    }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="white" />
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Compton Effect (1923)</text>
+  <text x="400" y="70" class="subtitle">Evidence for the Particle Nature of Light</text>
+  
+  <!-- Compton scattering visualization -->
+  <g transform="translate(350, 220)">
+    <!-- Initial electron (at rest) -->
+    <circle cx="0" cy="0" r="15" class="electron" />
+    <text x="0" y="-25" class="label">Electron</text>
+    
+    <!-- Incident X-ray photon path -->
+    <line x1="-200" y1="0" x2="0" y2="0" class="photon-path" />
+    <text x="-180" y="-15" class="label">Incident X-ray</text>
+    <text x="-180" y="20" class="small-label">λ</text>
+    
+    <!-- Incident photon -->
+    <circle cx="-100" cy="0" r="7" class="photon incident-photon" />
+    
+    <!-- Scattered X-ray path -->
+    <line x1="0" y1="0" x2="150" y2="-100" class="photon-path" />
+    <text x="120" y="-110" class="label">Scattered X-ray</text>
+    <text x="120" y="-90" class="small-label">λ'</text>
+    
+    <!-- Scattered photon -->
+    <circle cx="50" cy="-33" r="7" class="photon scattered-photon" />
+    
+    <!-- Recoil electron path -->
+    <line x1="0" y1="0" x2="100" y2="100" class="electron-path" />
+    <text x="100" y="120" class="label">Recoil Electron</text>
+    
+    <!-- Recoil electron -->
+    <circle cx="33" cy="33" r="10" class="electron recoil-electron" />
+    
+    <!-- Scattering angle -->
+    <path d="M30,0 A30,30 0 0,0 21.21,-21.21" class="angle-arc" />
+    <text x="32" y="-12" class="small-label">θ</text>
+    
+    <!-- Momentum vectors -->
+    <line x1="-60" y1="50" x2="-20" y2="50" class="momentum-arrow" />
+    <text x="-60" y="70" class="small-label">p = h/λ</text>
+    
+    <line x1="-60" y1="100" x2="-30" y2="80" class="momentum-arrow" />
+    <text x="-60" y="120" class="small-label">p' = h/λ'</text>
+    
+    <!-- Wave representation of photons -->
+    <g transform="translate(-180, -60)">
+      <rect x="0" y="0" width="80" height="30" class="wave-container" />
+      <path d="M0,15 C6.67,5 13.33,25 20,15 C26.67,5 33.33,25 40,15 C46.67,5 53.33,25 60,15 C66.67,5 73.33,25 80,15" class="wave" />
+    </g>
+    
+    <g transform="translate(100, -140)" class="wavelength-change">
+      <rect x="0" y="0" width="80" height="30" class="wave-container" />
+      <path d="M0,15 C10,5 20,25 30,15 C40,5 50,25 60,15 C70,5 80,25 90,15" class="wave" />
+      <text x="40" y="45" class="small-label">Increased Wavelength</text>
+    </g>
+  </g>
+  
+  <!-- Compton Effect explanation -->
+  <g transform="translate(150, 400)">
+    <rect x="-80" y="-60" width="160" height="120" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="0" y="-40" class="subtitle">Wave vs. Particle</text>
+    <text x="0" y="-15" class="small-label">Wave theory:</text>
+    <text x="0" y="5" class="small-label">• No wavelength change</text>
+    <text x="0" y="25" class="small-label">• No preferred direction</text>
+    <text x="0" y="45" class="small-label">❌ Doesn't match experiment</text>
+  </g>
+  
+  <g transform="translate(400, 400)">
+    <rect x="-80" y="-60" width="160" height="120" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="0" y="-40" class="subtitle">Conservation Laws</text>
+    <text x="0" y="-15" class="small-label">Particle theory:</text>
+    <text x="0" y="5" class="small-label">• Energy conservation</text>
+    <text x="0" y="25" class="small-label">• Momentum conservation</text>
+    <text x="0" y="45" class="small-label">✓ Explains all observations</text>
+  </g>
+  
+  <!-- Compton formula -->
+  <g transform="translate(650, 400)">
+    <rect x="-150" y="-60" width="300" height="120" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="0" y="-40" class="subtitle">Compton Shift Formula</text>
+    <text x="0" y="-10" class="equation">Δλ = λ' - λ = (h/m₍e₎c)(1 - cos θ)</text>
+    <text x="0" y="20" class="small-label">h = Planck's constant</text>
+    <text x="0" y="40" class="small-label">m₍e₎ = electron mass</text>
+    <text x="0" y="60" class="small-label">θ = scattering angle</text>
+  </g>
+  
+  <!-- Photon energy and momentum -->
+  <g transform="translate(650, 180)">
+    <rect x="-120" y="-50" width="240" height="100" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="0" y="-30" class="subtitle">Photon Properties</text>
+    <text x="0" y="-5" class="equation">E = hν = hc/λ</text>
+    <text x="0" y="25" class="equation">p = h/λ</text>
+    <text x="0" y="55" class="small-label">Behaves as a particle in collision</text>
+  </g>
+</svg> 

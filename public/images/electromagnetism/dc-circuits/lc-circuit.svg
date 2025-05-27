@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions for markers and animations -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0077cc"/>
+    </marker>
+    <style>
+      @keyframes flowAnimation {
+        0% { stroke-dashoffset: 50; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes fadeInOut {
+        0% { opacity: 0.2; }
+        50% { opacity: 1; }
+        100% { opacity: 0.2; }
+      }
+      @keyframes charge {
+        0% { fill: #e0e0e0; }
+        50% { fill: #3498db; }
+        100% { fill: #e0e0e0; }
+      }
+      @keyframes magnetic {
+        0% { opacity: 0.2; }
+        50% { opacity: 0.8; }
+        100% { opacity: 0.2; }
+      }
+      @keyframes graphDraw {
+        0% { stroke-dashoffset: 1000; }
+        100% { stroke-dashoffset: 0; }
+      }
+      .current-flow-right {
+        stroke-dasharray: 5;
+        animation: flowAnimation 2s linear infinite;
+      }
+      .current-flow-left {
+        stroke-dasharray: 5;
+        animation: flowAnimation 2s linear infinite reverse;
+      }
+      .capacitor-plate {
+        animation: charge 4s ease-in-out infinite;
+      }
+      .magnetic-field {
+        animation: magnetic 4s ease-in-out infinite;
+      }
+      .energy-curve {
+        stroke-dasharray: 1000;
+        animation: graphDraw 8s ease-in-out infinite;
+      }
+      .capacitor-energy {
+        animation-delay: 0s;
+      }
+      .inductor-energy {
+        animation-delay: 2s;
+      }
+      .total-energy {
+        animation-delay: 4s;
+      }
+      .phase-text {
+        opacity: 0;
+        animation: fadeInOut 4s ease-in-out infinite;
+      }
+      .phase-1 {
+        animation-delay: 0s;
+      }
+      .phase-2 {
+        animation-delay: 1s;
+      }
+      .phase-3 {
+        animation-delay: 2s;
+      }
+      .phase-4 {
+        animation-delay: 3s;
+      }
+      text {
+        font-family: Arial, sans-serif;
+      }
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .subtitle {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .label {
+        font-size: 14px;
+      }
+      .equation {
+        font-size: 14px;
+        font-style: italic;
+      }
+    </style>
+  </defs>
+
+  <!-- Background and title -->
+  <rect width="800" height="600" fill="white"/>
+  <text x="400" y="40" class="title" text-anchor="middle" fill="#333">LC Circuit Oscillations</text>
+  <text x="400" y="70" font-size="16" text-anchor="middle" fill="#555">Energy Transfer Between Inductor and Capacitor</text>
+
+  <!-- Circuit Diagram -->
+  <g transform="translate(100, 160)">
+    <text x="0" y="0" class="subtitle" fill="#333">Circuit</text>
+    
+    <!-- Circuit components -->
+    <circle cx="50" cy="20" r="5" fill="#333"/>
+    <line x1="50" y1="20" x2="300" y2="20" stroke="#333" stroke-width="2"/>
+    <circle cx="300" cy="20" r="5" fill="#333"/>
+    
+    <!-- Inductor -->
+    <path d="M 50 20 L 50 100 M 300 20 L 300 100" stroke="#333" stroke-width="2"/>
+    <path d="M 50 100 C 60 100, 60 90, 70 90 C 80 90, 80 110, 90 110 C 100 110, 100 90, 110 90 C 120 90, 120 110, 130 110 C 140 110, 140 90, 150 90 C 160 90, 160 110, 170 110" 
+          stroke="#333" stroke-width="2" fill="none"/>
+    <text x="110" y="130" class="label" text-anchor="middle">L</text>
+    
+    <!-- Magnetic Field Lines -->
+    <ellipse cx="110" cy="80" rx="35" ry="15" fill="none" stroke="#0077cc" stroke-width="1" stroke-dasharray="3,2" class="magnetic-field" opacity="0.2"/>
+    <ellipse cx="110" cy="70" rx="45" ry="22" fill="none" stroke="#0077cc" stroke-width="1" stroke-dasharray="3,2" class="magnetic-field" opacity="0.2"/>
+    <ellipse cx="110" cy="60" rx="55" ry="28" fill="none" stroke="#0077cc" stroke-width="1" stroke-dasharray="3,2" class="magnetic-field" opacity="0.2"/>
+    
+    <!-- Capacitor -->
+    <path d="M 170 110 L 170 100 L 300 100" stroke="#333" stroke-width="2" fill="none"/>
+    <line x1="200" y1="70" x2="200" y2="130" stroke="#333" stroke-width="2"/>
+    <line x1="220" y1="70" x2="220" y2="130" stroke="#333" stroke-width="2"/>
+    <rect x="190" y="70" width="10" height="60" class="capacitor-plate" fill="#e0e0e0" stroke="#333" stroke-width="1"/>
+    <rect x="220" y="70" width="10" height="60" class="capacitor-plate" fill="#e0e0e0" stroke="#333" stroke-width="1"/>
+    <text x="250" y="130" class="label" text-anchor="middle">C</text>
+    
+    <!-- Current Flow Arrows -->
+    <path d="M 75 20 Q 85 15 95 20" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow-right"/>
+    <path d="M 175 20 Q 185 15 195 20" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow-right"/>
+    <path d="M 250 20 Q 260 15 270 20" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow-right"/>
+    
+    <path d="M 75 100 Q 85 105 95 100" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow-left"/>
+    <path d="M 175 100 Q 185 105 195 100" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow-left"/>
+    <path d="M 250 100 Q 260 105 270 100" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow-left"/>
+    
+    <!-- Cycle Phase Labels -->
+    <text x="350" y="40" class="label phase-text phase-1" fill="#0077cc" font-weight="bold">Phase 1: Capacitor Discharging</text>
+    <text x="350" y="70" class="label phase-text phase-2" fill="#0077cc" font-weight="bold">Phase 2: Inductor Charging</text>
+    <text x="350" y="100" class="label phase-text phase-3" fill="#0077cc" font-weight="bold">Phase 3: Capacitor Charging (Reverse)</text>
+    <text x="350" y="130" class="label phase-text phase-4" fill="#0077cc" font-weight="bold">Phase 4: Inductor Discharging</text>
+  </g>
+
+  <!-- Energy Graphs -->
+  <g transform="translate(100, 340)">
+    <text x="0" y="0" class="subtitle" fill="#333">Energy Transfer</text>
+    
+    <!-- Axes -->
+    <line x1="50" y1="50" x2="50" y2="200" stroke="#333" stroke-width="2"/>
+    <line x1="50" y1="200" x2="400" y2="200" stroke="#333" stroke-width="2"/>
+    
+    <!-- Axis Labels -->
+    <text x="225" y="230" class="label" text-anchor="middle">Time</text>
+    <text x="20" y="125" class="label" text-anchor="middle" transform="rotate(-90, 20, 125)">Energy</text>
+    
+    <!-- Time Markers -->
+    <line x1="100" y1="200" x2="100" y2="205" stroke="#333" stroke-width="1"/>
+    <text x="100" y="220" class="label" text-anchor="middle">T/4</text>
+    
+    <line x1="150" y1="200" x2="150" y2="205" stroke="#333" stroke-width="1"/>
+    <text x="150" y="220" class="label" text-anchor="middle">T/2</text>
+    
+    <line x1="200" y1="200" x2="200" y2="205" stroke="#333" stroke-width="1"/>
+    <text x="200" y="220" class="label" text-anchor="middle">3T/4</text>
+    
+    <line x1="250" y1="200" x2="250" y2="205" stroke="#333" stroke-width="1"/>
+    <text x="250" y="220" class="label" text-anchor="middle">T</text>
+    
+    <line x1="300" y1="200" x2="300" y2="205" stroke="#333" stroke-width="1"/>
+    <text x="300" y="220" class="label" text-anchor="middle">5T/4</text>
+    
+    <line x1="350" y1="200" x2="350" y2="205" stroke="#333" stroke-width="1"/>
+    <text x="350" y="220" class="label" text-anchor="middle">3T/2</text>
+    
+    <!-- Energy Curves -->
+    <path d="M 50 80 
+             Q 75 80, 100 200
+             T 150 80
+             T 200 200
+             T 250 80
+             T 300 200
+             T 350 80
+             T 400 200" 
+          stroke="#3498db" stroke-width="3" fill="none" class="energy-curve capacitor-energy"/>
+    
+    <path d="M 50 200 
+             Q 75 200, 100 80
+             T 150 200
+             T 200 80
+             T 250 200
+             T 300 80
+             T 350 200
+             T 400 80" 
+          stroke="#e74c3c" stroke-width="3" fill="none" class="energy-curve inductor-energy"/>
+    
+    <path d="M 50 80 
+             L 100 80
+             L 150 80
+             L 200 80
+             L 250 80
+             L 300 80
+             L 350 80
+             L 400 80" 
+          stroke="#2ecc71" stroke-width="2" stroke-dasharray="5,3" fill="none" class="energy-curve total-energy"/>
+    
+    <!-- Legend -->
+    <rect x="420" y="80" width="15" height="15" fill="#3498db"/>
+    <text x="440" y="93" class="label">Capacitor Energy</text>
+    
+    <rect x="420" y="110" width="15" height="15" fill="#e74c3c"/>
+    <text x="440" y="123" class="label">Inductor Energy</text>
+    
+    <line x1="420" y1="145" x2="435" y2="145" stroke="#2ecc71" stroke-width="2" stroke-dasharray="5,3"/>
+    <text x="440" y="150" class="label">Total Energy</text>
+  </g>
+
+  <!-- Equations Box -->
+  <g transform="translate(550, 150)">
+    <rect x="0" y="0" width="220" height="200" rx="10" ry="10" fill="#f0f7ff" stroke="#0077cc" stroke-width="1"/>
+    <text x="110" y="30" class="subtitle" text-anchor="middle" fill="#333">LC Oscillator Equations</text>
+    
+    <text x="20" y="60" class="equation">• Resonance frequency:</text>
+    <text x="40" y="85" class="equation">ω = 1/√(LC)</text>
+    
+    <text x="20" y="115" class="equation">• Time period:</text>
+    <text x="40" y="140" class="equation">T = 2π√(LC)</text>
+    
+    <text x="20" y="170" class="equation">• Energy conservation:</text>
+    <text x="40" y="195" class="equation">E = ½LI² + ½CV² = constant</text>
+  </g>
+  
+  <!-- Cycle Explanation Box -->
+  <g transform="translate(550, 380)">
+    <rect x="0" y="0" width="220" height="160" rx="10" ry="10" fill="#fff9f0" stroke="#e67e22" stroke-width="1"/>
+    <text x="110" y="30" class="subtitle" text-anchor="middle" fill="#333">Energy Oscillation Cycle</text>
+    
+    <text x="20" y="60" class="label">1. Capacitor discharges, creating</text>
+    <text x="30" y="80" class="label">current through inductor</text>
+    
+    <text x="20" y="105" class="label">2. Energy transfers between</text>
+    <text x="30" y="125" class="label">electric field (capacitor) and</text>
+    <text x="30" y="145" class="label">magnetic field (inductor)</text>
+  </g>
+</svg> 

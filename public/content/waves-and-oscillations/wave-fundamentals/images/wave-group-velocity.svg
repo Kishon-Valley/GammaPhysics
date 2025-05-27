@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid line -->
+    <line x1="0" y1="150" x2="600" y2="150" stroke="#ddd" stroke-width="1"/>
+    
+    <!-- Wave packet envelope -->
+    <path d="M 100,150 Q 150,130 200,150 Q 250,170 300,150 Q 350,130 400,150" 
+          fill="none" stroke="#FF5722" stroke-width="2" stroke-dasharray="4"/>
+    
+    <!-- Carrier wave -->
+    <path d="M 100,150 C 125,130 150,130 175,150 S 225,170 250,150 S 300,130 325,150 S 375,170 400,150" 
+          fill="none" stroke="#2196F3" stroke-width="3"/>
+    
+    <!-- Group velocity arrow -->
+    <line x1="250" y1="80" x2="350" y2="80" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <text x="280" y="70" font-size="16" fill="black">vg</text>
+    
+    <!-- Arrow marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+    </defs>
+    
+    <!-- Title -->
+    <text x="20" y="40" font-size="24" font-weight="bold" fill="black">Group Velocity</text>
+    
+    <!-- Description -->
+    <text x="20" y="250" font-size="16" fill="black">Wave packet envelope moves at group velocity (vg)</text>
+    <text x="20" y="275" font-size="16" fill="black">vg = dω/dk: Speed of energy transport</text>
+</svg>

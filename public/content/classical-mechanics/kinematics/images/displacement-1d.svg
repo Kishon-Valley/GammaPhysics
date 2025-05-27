@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Number line -->
+  <g transform="translate(0, 100)">
+    <!-- Main line -->
+    <line x1="50" y1="0" x2="350" y2="0" stroke="#444" stroke-width="2"/>
+    
+    <!-- Tick marks and labels -->
+    <g font-family="Arial" font-size="12" text-anchor="middle">
+      <!-- Origin -->
+      <line x1="50" y1="-10" x2="50" y2="10" stroke="#444" stroke-width="2"/>
+      <text x="50" y="25">0</text>
+      
+      <!-- Positive ticks -->
+      <line x1="100" y1="-5" x2="100" y2="5" stroke="#444"/>
+      <text x="100" y="25">2</text>
+      
+      <line x1="150" y1="-5" x2="150" y2="5" stroke="#444"/>
+      <text x="150" y="25">4</text>
+      
+      <line x1="200" y1="-5" x2="200" y2="5" stroke="#444"/>
+      <text x="200" y="25">6</text>
+      
+      <line x1="250" y1="-5" x2="250" y2="5" stroke="#444"/>
+      <text x="250" y="25">8</text>
+      
+      <line x1="300" y1="-5" x2="300" y2="5" stroke="#444"/>
+      <text x="300" y="25">10</text>
+    </g>
+    
+    <!-- Initial position -->
+    <g transform="translate(100, 0)">
+      <!-- Car -->
+      <rect x="-15" y="-30" width="30" height="20" fill="#4a90e2" rx="5" opacity="0.5"/>
+      <circle cx="-8" cy="-5" r="5" fill="#444" opacity="0.5"/>
+      <circle cx="8" cy="-5" r="5" fill="#444" opacity="0.5"/>
+      <text x="0" y="-40" font-family="Arial" font-size="12" text-anchor="middle">Initial (2m)</text>
+    </g>
+    
+    <!-- Final position -->
+    <g transform="translate(300, 0)">
+      <!-- Car -->
+      <rect x="-15" y="-30" width="30" height="20" fill="#4a90e2" rx="5"/>
+      <circle cx="-8" cy="-5" r="5" fill="#444"/>
+      <circle cx="8" cy="-5" r="5" fill="#444"/>
+      <text x="0" y="-40" font-family="Arial" font-size="12" text-anchor="middle">Final (10m)</text>
+    </g>
+    
+    <!-- Displacement arrow -->
+    <path d="M 100,-15 L 300,-15" stroke="#50C878" stroke-width="2" fill="none"/>
+    <polygon points="300,-15 290,-10 290,-20" fill="#50C878"/>
+    
+    <!-- Labels -->
+    <text x="200" y="-25" font-family="Arial" font-size="14" text-anchor="middle">Displacement (Δx = 8m)</text>
+  </g>
+</svg>

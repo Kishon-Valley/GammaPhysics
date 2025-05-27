@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .axis {
+      stroke: #333;
+      stroke-width: 2;
+    }
+    .grid {
+      stroke: #ccc;
+      stroke-width: 0.5;
+      stroke-dasharray: 4 2;
+    }
+    .sine-wave {
+      stroke: #3498db;
+      stroke-width: 3;
+      fill: none;
+    }
+    .amplitude-line {
+      stroke: #e74c3c;
+      stroke-width: 2;
+      stroke-dasharray: 6 3;
+    }
+    .period-line {
+      stroke: #27ae60;
+      stroke-width: 2;
+      stroke-dasharray: 6 3;
+    }
+    .marker {
+      fill: #e74c3c;
+    }
+    .tracing-marker {
+      fill: #e74c3c;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .label {
+      text-anchor: middle;
+    }
+  </style>
+  
+  <!-- Define gradients -->
+  <defs>
+    <linearGradient id="grid-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f8f9fa;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="600" height="300" fill="white" />
+  <rect x="50" y="30" width="500" height="200" fill="url(#grid-gradient)" />
+
+  <!-- Grid lines -->
+  <g>
+    <!-- Vertical grid lines -->
+    <line x1="125" y1="30" x2="125" y2="230" class="grid" />
+    <line x1="200" y1="30" x2="200" y2="230" class="grid" />
+    <line x1="275" y1="30" x2="275" y2="230" class="grid" />
+    <line x1="350" y1="30" x2="350" y2="230" class="grid" />
+    <line x1="425" y1="30" x2="425" y2="230" class="grid" />
+    <line x1="500" y1="30" x2="500" y2="230" class="grid" />
+    
+    <!-- Horizontal grid lines -->
+    <line x1="50" y1="80" x2="550" y2="80" class="grid" />
+    <line x1="50" y1="130" x2="550" y2="130" class="grid" />
+    <line x1="50" y1="180" x2="550" y2="180" class="grid" />
+  </g>
+
+  <!-- Axes -->
+  <line x1="50" y1="130" x2="550" y2="130" class="axis" />
+  <line x1="50" y1="30" x2="50" y2="230" class="axis" />
+  
+  <!-- Amplitude markers and label -->
+  <line x1="125" y1="130" x2="125" y2="40" class="amplitude-line" />
+  <circle cx="125" cy="40" r="4" class="marker" />
+  <text x="115" y="85" class="bold">A</text>
+  <text x="25" y="40" text-anchor="end">+V₍ₘ₎</text>
+  <text x="25" y="220" text-anchor="end">-V₍ₘ₎</text>
+  
+  <!-- Period marker and label -->
+  <line x1="50" y1="200" x2="350" y2="200" class="period-line" />
+  <text x="200" y="215" class="label bold">T = 1/f</text>
+  
+  <!-- Time axis labels -->
+  <text x="550" y="150" text-anchor="end">t</text>
+  <text x="50" y="15" class="bold" text-anchor="middle">v(t) = V₍ₘ₎sin(ωt + φ)</text>
+  
+  <!-- Phase labels -->
+  <text x="50" y="250" text-anchor="middle">0°</text>
+  <text x="125" y="250" text-anchor="middle">90°</text>
+  <text x="200" y="250" text-anchor="middle">180°</text>
+  <text x="275" y="250" text-anchor="middle">270°</text>
+  <text x="350" y="250" text-anchor="middle">360°</text>
+  
+  <!-- Sine wave path -->
+  <path id="sine-path" class="sine-wave" />
+  
+  <!-- Moving tracing marker -->
+  <circle id="tracing-marker" cx="50" cy="130" r="5" class="tracing-marker" />
+  
+  <script type="text/javascript"><![CDATA[
+    // Constants
+    const centerY = 130;
+    const amplitude = 90;
+    const startX = 50;
+    const endX = 550;
+    const period = 300; // X distance for one full wave
+    const totalTime = 8000; // Animation duration in ms
+    
+    // Get elements
+    const sinePath = document.getElementById('sine-path');
+    const tracingMarker = document.getElementById('tracing-marker');
+    
+    // Set up the animation
+    let startTime = null;
+    let progress = 0;
+    
+    // Generate the sine wave path
+    function generatePath(progress) {
+      let d = `M ${startX} ${centerY}`;
+      
+      for (let x = startX; x <= endX; x += 1) {
+        // Calculate how much of the wave to draw based on progress
+        const drawUpTo = startX + (endX - startX) * progress;
+        if (x > drawUpTo) break;
+        
+        const relativeX = x - startX;
+        const angle = (relativeX / period) * Math.PI * 2;
+        const y = centerY - amplitude * Math.sin(angle);
+        d += ` L ${x} ${y}`;
+      }
+      
+      return d;
+    }
+    
+    // Update the marker position
+    function updateMarker(progress) {
+      const x = startX + (endX - startX) * Math.min(progress, 1);
+      const relativeX = x - startX;
+      const angle = (relativeX / period) * Math.PI * 2;
+      const y = centerY - amplitude * Math.sin(angle);
+      
+      tracingMarker.setAttribute('cx', x);
+      tracingMarker.setAttribute('cy', y);
+    }
+    
+    // Animation function
+    function animate(timestamp) {
+      if (!startTime) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      progress = (elapsed % totalTime) / totalTime;
+      
+      // Draw wave
+      sinePath.setAttribute('d', generatePath(1)); // Draw full wave
+      
+      // Update marker
+      updateMarker(progress * (endX - startX) / (period / 2));
+      
+      // Continue animation
+      window.requestAnimationFrame(animate);
+    }
+    
+    // Start the animation
+    window.requestAnimationFrame(animate);
+  ]]></script>
+</svg> 

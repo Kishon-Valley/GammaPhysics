@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewBox="0 0 600 400">
+  <style>
+    .tower { fill: #90A4AE; stroke: #607D8B; stroke-width: 2; }
+    .nacelle { fill: #78909C; stroke: #455A64; stroke-width: 2; }
+    .blade { fill: #ECEFF1; stroke: #CFD8DC; stroke-width: 1; }
+    .hub { fill: #455A64; stroke: #263238; stroke-width: 1; }
+    .ground { fill: #8BC34A; stroke: #689F38; stroke-width: 1; }
+    .generator { fill: #FFCC80; stroke: #F57C00; stroke-width: 1; }
+    .wind { fill: none; stroke: #03A9F4; stroke-width: 1.5; stroke-dasharray: 5,3; }
+    .arrow { fill: #03A9F4; }
+    .text { font-family: Arial, sans-serif; font-size: 14px; }
+    .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; }
+    .equation { font-family: 'Times New Roman', serif; font-size: 16px; font-style: italic; }
+    .power-line { fill: none; stroke: #FF9800; stroke-width: 2; }
+    
+    @keyframes rotateTurbine {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes moveWind {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50px); }
+    }
+    
+    @keyframes pulsePower {
+      0% { stroke-width: 1; opacity: 0.5; }
+      50% { stroke-width: 3; opacity: 1; }
+      100% { stroke-width: 1; opacity: 0.5; }
+    }
+    
+    #blades { animation: rotateTurbine 8s linear infinite; }
+    #wind-lines { animation: moveWind 2s linear infinite; }
+    #power-lines { animation: pulsePower 2s linear infinite; }
+  </style>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="#E3F2FD"/>
+  
+  <!-- Sky -->
+  <rect width="600" height="300" fill="#BBDEFB"/>
+  
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" class="title">Wind Turbine Power Generation</text>
+  
+  <!-- Equations -->
+  <text x="300" y="55" text-anchor="middle" class="equation">P = ½ρAv³</text>
+  <text x="300" y="75" text-anchor="middle" class="equation">P_actual = C_p × P</text>
+  
+  <!-- Ground -->
+  <path d="M0,300 L600,300 L600,400 L0,400 Z" class="ground" />
+  
+  <!-- Wind Lines -->
+  <g id="wind-lines">
+    <path d="M50,100 C70,100 90,110 110,110 C130,110 150,100 170,100" class="wind" />
+    <path d="M50,150 C70,150 90,160 110,160 C130,160 150,150 170,150" class="wind" />
+    <path d="M50,200 C70,200 90,210 110,210 C130,210 150,200 170,200" class="wind" />
+    <path d="M50,250 C70,250 90,260 110,260 C130,260 150,250 170,250" class="wind" />
+    
+    <!-- Wind Arrows -->
+    <path d="M170,100 L160,95 L160,105 Z" class="arrow" />
+    <path d="M170,150 L160,145 L160,155 Z" class="arrow" />
+    <path d="M170,200 L160,195 L160,205 Z" class="arrow" />
+    <path d="M170,250 L160,245 L160,255 Z" class="arrow" />
+  </g>
+  
+  <!-- Tower -->
+  <path d="M300,300 L290,150 L310,150 L300,300 Z" class="tower" />
+  
+  <!-- Nacelle -->
+  <rect x="270" y="140" width="60" height="20" rx="5" class="nacelle" />
+  
+  <!-- Generator (inside nacelle, partially visible) -->
+  <rect x="280" y="145" width="30" height="10" rx="2" class="generator" />
+  
+  <!-- Hub -->
+  <circle cx="270" cy="150" r="8" class="hub" />
+  
+  <!-- Blades -->
+  <g id="blades" transform="translate(270, 150)">
+    <path d="M0,0 L-120,40 L-110,50 L0,0 Z" class="blade" />
+    <path d="M0,0 L40,120 L50,110 L0,0 Z" class="blade" transform="rotate(120)" />
+    <path d="M0,0 L80,-100 L70,-110 L0,0 Z" class="blade" transform="rotate(240)" />
+  </g>
+  
+  <!-- Swept Area Indicator (semi-transparent) -->
+  <circle cx="270" cy="150" r="120" fill="none" stroke="#03A9F4" stroke-width="1" stroke-dasharray="5,5" opacity="0.3" />
+  
+  <!-- Power Lines -->
+  <g id="power-lines">
+    <path d="M330,150 C350,150 370,170 390,170 C410,170 430,150 450,150" class="power-line" />
+    <path d="M330,160 C350,160 370,180 390,180 C410,180 430,160 450,160" class="power-line" />
+  </g>
+  
+  <!-- Power Flow Arrows -->
+  <path d="M450,150 L440,145 L440,155 Z" fill="#FF9800" />
+  <path d="M450,160 L440,155 L440,165 Z" fill="#FF9800" />
+  
+  <!-- Electrical Components -->
+  <g transform="translate(480, 155)">
+    <rect x="0" y="-20" width="40" height="40" rx="5" fill="#E1BEE7" stroke="#9C27B0" stroke-width="1" />
+    <text x="20" y="5" text-anchor="middle" class="text">Power</text>
+    <text x="20" y="20" text-anchor="middle" class="text">Electronics</text>
+  </g>
+  
+  <g transform="translate(550, 155)">
+    <rect x="0" y="-20" width="30" height="40" rx="5" fill="#C5CAE9" stroke="#3F51B5" stroke-width="1" />
+    <text x="15" y="5" text-anchor="middle" class="text">Grid</text>
+  </g>
+  
+  <!-- Connection to Grid -->
+  <path d="M520,155 L550,155" class="power-line" />
+  
+  <!-- Labels -->
+  <text x="100" y="180" text-anchor="middle" class="text">Wind Energy</text>
+  <text x="270" y="90" text-anchor="middle" class="text">Swept Area A</text>
+  <text x="270" y="320" text-anchor="middle" class="text">Tower</text>
+  <text x="400" y="200" text-anchor="middle" class="text">Electrical Output</text>
+  
+  <!-- Explanation -->
+  <text x="300" y="350" text-anchor="middle" class="text">Wind turbines convert kinetic energy of moving air into electrical energy</text>
+  <text x="300" y="370" text-anchor="middle" class="text">Power output is proportional to the cube of wind speed and the swept area</text>
+</svg>

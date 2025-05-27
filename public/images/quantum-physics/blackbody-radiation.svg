@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions -->
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="temperatureGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff0000;stop-opacity:0.2" />
+      <stop offset="50%" style="stop-color:#ff8800;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0.9" />
+    </linearGradient>
+    
+    <linearGradient id="blackbodyGradient1000K" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#440000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#990000;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="blackbodyGradient3000K" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#992200;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff4400;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="blackbodyGradient5000K" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6600;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffcc00;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="blackbodyGradient7000K" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffcc00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="catastropheGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff0000;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#ff0000;stop-opacity:0" />
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Animation paths -->
+    <path id="photonPath" d="M0,0 C10,-10 20,10 30,0" />
+    
+    <!-- Clip paths -->
+    <clipPath id="graphClip">
+      <rect x="0" y="0" width="350" height="200" />
+    </clipPath>
+  </defs>
+  
+  <!-- Styles -->
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      fill: #333;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    .subtitle {
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    .label {
+      font-size: 14px;
+      text-anchor: middle;
+    }
+    .small-label {
+      font-size: 12px;
+      text-anchor: middle;
+    }
+    .equation {
+      font-size: 16px;
+      font-style: italic;
+      text-anchor: middle;
+    }
+    .axis {
+      stroke: #666;
+      stroke-width: 2;
+    }
+    .axis-label {
+      font-size: 14px;
+      fill: #555;
+    }
+    .tick {
+      stroke: #ccc;
+      stroke-width: 1;
+      stroke-dasharray: 3,3;
+    }
+    .blackbody {
+      stroke: #444;
+      stroke-width: 1;
+    }
+    .rayleigh-jeans {
+      fill: none;
+      stroke: #ff4500;
+      stroke-width: 2;
+      stroke-dasharray: 5,3;
+    }
+    .planck {
+      fill: none;
+      stroke: #4d8bf5;
+      stroke-width: 2;
+    }
+    .catastrophe {
+      fill: url(#catastropheGradient);
+      opacity: 0.5;
+    }
+    .thermometer {
+      fill: white;
+      stroke: #666;
+      stroke-width: 1;
+    }
+    .temperature {
+      fill: url(#temperatureGradient);
+    }
+    .photon {
+      fill: yellow;
+      stroke: orange;
+      stroke-width: 1;
+    }
+    .region-label {
+      font-size: 14px;
+      font-style: italic;
+      fill: #555;
+    }
+    .annotation {
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    /* Animations */
+    @keyframes heatUp {
+      0%, 100% { height: 10px; fill: url(#blackbodyGradient1000K); }
+      25% { height: 40px; fill: url(#blackbodyGradient3000K); }
+      50% { height: 70px; fill: url(#blackbodyGradient5000K); }
+      75% { height: 100px; fill: url(#blackbodyGradient7000K); }
+    }
+    
+    @keyframes photonEmit {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+      10% { opacity: 1; transform: translate(0, 0) scale(1); }
+      90% { opacity: 1; transform: translate(40px, -40px) scale(1); }
+      100% { opacity: 0; transform: translate(50px, -50px) scale(0.5); }
+    }
+    
+    @keyframes tempRise {
+      0%, 100% { height: 20px; }
+      50% { height: 120px; }
+    }
+    
+    @keyframes catastrophePulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+    
+    @keyframes planckHighlight {
+      0%, 100% { stroke-width: 2; }
+      50% { stroke-width: 3; }
+    }
+    
+    .heat-animation {
+      animation: heatUp 8s infinite;
+    }
+    
+    .photon-emit {
+      animation: photonEmit 2s infinite;
+    }
+    
+    .temp-change {
+      animation: tempRise 8s infinite;
+    }
+    
+    .catastrophe-pulse {
+      animation: catastrophePulse 4s infinite;
+    }
+    
+    .planck-highlight {
+      animation: planckHighlight 4s infinite;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="white" />
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Blackbody Radiation and the Ultraviolet Catastrophe</text>
+  <text x="400" y="70" class="subtitle">Classical Physics vs. Quantum Theory</text>
+  
+  <!-- Blackbody and Thermometer -->
+  <g transform="translate(130, 170)">
+    <text x="0" y="-90" class="subtitle">Blackbody Cavity</text>
+    
+    <!-- Cavity -->
+    <rect x="-60" y="-50" width="120" height="100" rx="5" class="blackbody" fill="#333" />
+    <rect x="-50" y="-40" width="100" height="80" rx="3" class="blackbody" fill="#222" />
+    
+    <!-- Opening -->
+    <rect x="60" y="-10" width="20" height="20" class="blackbody heat-animation" fill="url(#blackbodyGradient1000K)" />
+    
+    <!-- Emitted radiation (photons) -->
+    <circle cx="90" cy="-10" r="4" class="photon photon-emit" style="animation-delay: 0s" />
+    <circle cx="90" cy="0" r="4" class="photon photon-emit" style="animation-delay: 0.5s" />
+    <circle cx="90" cy="10" r="4" class="photon photon-emit" style="animation-delay: 1s" />
+    
+    <!-- Thermometer -->
+    <rect x="-30" y="60" width="10" height="130" rx="5" class="thermometer" />
+    <circle cx="-25" cy="190" r="15" class="thermometer" />
+    <rect x="-28" y="70" width="6" height="120" rx="3" fill="#f8f9fa" />
+    <rect x="-28" y="170" width="6" class="temperature temp-change" fill="#ff4500" />
+    
+    <text x="-25" y="220" class="small-label">Temperature</text>
+    
+    <!-- Temperature values -->
+    <line x1="-20" y1="170" x2="-15" y2="170" stroke="#666" />
+    <text x="-10" y="175" class="small-label" text-anchor="start">1000 K</text>
+    
+    <line x1="-20" y1="140" x2="-15" y2="140" stroke="#666" />
+    <text x="-10" y="145" class="small-label" text-anchor="start">3000 K</text>
+    
+    <line x1="-20" y1="110" x2="-15" y2="110" stroke="#666" />
+    <text x="-10" y="115" class="small-label" text-anchor="start">5000 K</text>
+    
+    <line x1="-20" y1="80" x2="-15" y2="80" stroke="#666" />
+    <text x="-10" y="85" class="small-label" text-anchor="start">7000 K</text>
+  </g>
+  
+  <!-- Spectrum Visualization -->
+  <g transform="translate(500, 200)">
+    <!-- Axes -->
+    <line x1="0" y1="0" x2="0" y2="200" class="axis" />
+    <line x1="0" y1="200" x2="300" y2="200" class="axis" />
+    
+    <!-- Axis labels -->
+    <text x="150" y="230" class="axis-label">Frequency (ν)</text>
+    <text x="-40" y="100" class="axis-label" transform="rotate(-90 -40 100)">Energy Density</text>
+    
+    <!-- Grid lines -->
+    <line x1="0" y1="150" x2="300" y2="150" class="tick" />
+    <line x1="0" y1="100" x2="300" y2="100" class="tick" />
+    <line x1="0" y1="50" x2="300" y2="50" class="tick" />
+    
+    <line x1="75" y1="0" x2="75" y2="200" class="tick" />
+    <line x1="150" y1="0" x2="150" y2="200" class="tick" />
+    <line x1="225" y1="0" x2="225" y2="200" class="tick" />
+    
+    <!-- Region labels -->
+    <text x="37" y="215" class="region-label">IR</text>
+    <text x="112" y="215" class="region-label">Visible</text>
+    <text x="225" y="215" class="region-label">UV</text>
+    
+    <!-- Spectral regions -->
+    <rect x="0" y="0" width="75" height="200" fill="rgba(255, 0, 0, 0.05)" />
+    <rect x="75" y="0" width="75" height="200" fill="rgba(0, 255, 0, 0.05)" />
+    <rect x="150" y="0" width="150" height="200" fill="rgba(0, 0, 255, 0.05)" />
+    
+    <!-- Classical theory (Rayleigh-Jeans Law) -->
+    <path d="M0,199 L25,190 L50,170 L75,140 L100,100 L125,50 L150,0 L175,-50 L200,-100 L225,-150 L250,-200 L275,-250 L300,-300" class="rayleigh-jeans" clip-path="url(#graphClip)" />
+    
+    <!-- Ultraviolet Catastrophe region -->
+    <path d="M150,0 L175,-50 L200,-100 L225,-150 L250,-200 L275,-250 L300,-300 L300,0 Z" class="catastrophe catastrophe-pulse" clip-path="url(#graphClip)" />
+    
+    <!-- Quantum theory (Planck's Law) -->
+    <path d="M0,200 L25,199 L50,195 L75,180 L100,150 L125,110 L150,70 L175,40 L200,20 L225,10 L250,5 L275,2 L300,1" class="planck planck-highlight" />
+    
+    <!-- Legend -->
+    <g transform="translate(150, 30)">
+      <line x1="-50" y1="0" x2="-30" y2="0" class="rayleigh-jeans" />
+      <text x="-25" y="5" class="small-label" text-anchor="start">Rayleigh-Jeans Law</text>
+      
+      <line x1="-50" y1="20" x2="-30" y2="20" class="planck" />
+      <text x="-25" y="25" class="small-label" text-anchor="start">Planck's Law</text>
+      
+      <rect x="-50" y="35" width="20" height="10" class="catastrophe" />
+      <text x="-25" y="45" class="small-label" text-anchor="start">"Ultraviolet Catastrophe"</text>
+    </g>
+  </g>
+  
+  <!-- Explanation Boxes -->
+  <g transform="translate(150, 420)">
+    <rect x="-100" y="-40" width="200" height="80" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="0" y="-20" class="subtitle" text-anchor="middle">Classical Theory</text>
+    <text x="0" y="0" class="annotation" text-anchor="middle">• Energy distributed equally</text>
+    <text x="0" y="20" class="annotation" text-anchor="middle">• E → ∞ as λ → 0 (UV region)</text>
+  </g>
+  
+  <g transform="translate(400, 420)">
+    <rect x="-100" y="-40" width="200" height="80" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="0" y="-20" class="subtitle" text-anchor="middle">Planck's Solution</text>
+    <text x="0" y="0" class="annotation" text-anchor="middle">• Energy comes in discrete quanta</text>
+    <text x="0" y="20" class="annotation" text-anchor="middle">• E = hν (energy proportional to frequency)</text>
+  </g>
+  
+  <g transform="translate(650, 420)">
+    <rect x="-100" y="-40" width="200" height="80" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="0" y="-20" class="subtitle" text-anchor="middle">Implications</text>
+    <text x="0" y="0" class="annotation" text-anchor="middle">• Birth of quantum theory</text>
+    <text x="0" y="20" class="annotation" text-anchor="middle">• Revealed discrete nature of energy</text>
+  </g>
+  
+  <!-- Planck Formula -->
+  <g transform="translate(500, 110)">
+    <rect x="-150" y="-30" width="300" height="60" rx="5" fill="#f5f5f5" stroke="#ddd" />
+    <text x="0" y="-5" class="equation">Planck's Law: u(ν,T) = (8πhν³/c³) · (1/(e^(hν/kT) - 1))</text>
+    <text x="0" y="20" class="small-label">vs. Rayleigh-Jeans: u(ν,T) = (8πν²/c³) · kT</text>
+  </g>
+</svg> 

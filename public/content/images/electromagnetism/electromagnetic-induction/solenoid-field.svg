@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <rect width="800" height="700" fill="white"/>
+    
+    <!-- Title and Main Equation -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Magnetic Field in a Solenoid</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">B = μ₀nI (inside solenoid)</text>
+
+    <!-- Key Concept Box -->
+    <rect x="50" y="80" width="700" height="50" fill="#f8f8f8" stroke="#666"/>
+    <text x="400" y="105" text-anchor="middle" font-size="14">Current flowing through coils creates uniform magnetic field inside solenoid</text>
+    <text x="400" y="120" text-anchor="middle" font-size="14">Field strength depends on current (I) and turns per meter (n)</text>
+
+    <!-- Main Visualization -->
+    <g transform="translate(400,350)">
+        <!-- Solenoid Coils with Current -->
+        <g class="coils">
+            <path d="M -150,0 C -130,-30 -110,-30 -90,0 S -50,-30 -30,0 S 10,-30 30,0 S 70,-30 90,0 S 130,-30 150,0"
+                  fill="none" stroke="#666" stroke-width="3">
+                <animate attributeName="stroke-width"
+                         values="3;4;3"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+            <!-- Mirror coils -->
+            <path d="M -150,0 C -130,30 -110,30 -90,0 S -50,30 -30,0 S 10,30 30,0 S 70,30 90,0 S 130,30 150,0"
+                  fill="none" stroke="#666" stroke-width="3"/>
+            <!-- Current direction indicators -->
+            <g class="current-dots">
+                <!-- Add × and • symbols to show current direction -->
+            </g>
+        </g>
+
+        <!-- Magnetic Field Lines -->
+        <g class="field-lines">
+            <path d="M -140,-20 C -100,-20 100,-20 140,-20" 
+                  fill="none" stroke="#2196F3" stroke-width="2" marker-end="url(#arrowhead)">
+                <animate attributeName="stroke-dasharray"
+                         values="5,5;10,10;5,5"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Field Strength Indicators -->
+        <g class="field-strength">
+            <text x="0" y="-50" text-anchor="middle" font-size="14">B = 1.26 mT</text>
+            <text x="0" y="0" text-anchor="middle" font-size="14">(Uniform field inside)</text>
+        </g>
+    </g>
+
+    <!-- Interactive Learning Points -->
+    <g transform="translate(50,550)">
+        <rect width="700" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Understanding the Visualization:</text>
+        <text x="20" y="55" font-size="14">1. Current flows in coils (500 turns/meter)</text>
+        <text x="20" y="80" font-size="14">2. Blue arrows show uniform magnetic field inside solenoid</text>
+        <text x="20" y="105" font-size="14">3. Field strength B = μ₀nI = 1.26 mT for I = 2.0 A</text>
+    </g>
+
+    <!-- Animation Legend -->
+    <g transform="translate(600,200)">
+        <rect width="150" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="10" y="30" font-size="12">Pulsing Coils: Current</text>
+        <text x="10" y="50" font-size="12">Blue Arrows: B-field</text>
+        <text x="10" y="70" font-size="12">× : Current into page</text>
+        <text x="10" y="90" font-size="12">• : Current out of page</text>
+    </g>
+
+    <!-- Explanation Box -->
+    <g transform="translate(50,600)">
+        <rect width="700" height="80" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14">• Solenoid with 500 turns/meter</text>
+        <text x="20" y="55" font-size="14">• Uniform magnetic field inside: B = 1.26 mT</text>
+    </g>
+
+    <!-- Definitions -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+    </defs>
+</svg> 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Sun -->
+  <circle cx="200" cy="150" r="30" fill="#FFD700"/>
+  <text x="200" y="155" text-anchor="middle" fill="#444" font-family="Arial" font-size="14">Sun</text>
+  
+  <!-- Orbits -->
+  <g fill="none" stroke-dasharray="5,5">
+    <!-- Mercury -->
+    <ellipse cx="200" cy="150" rx="60" ry="40" stroke="#ddd" stroke-width="1"/>
+    <circle cx="260" cy="150" r="5" fill="#A0522D"/>
+    
+    <!-- Venus -->
+    <ellipse cx="200" cy="150" rx="90" ry="60" stroke="#ddd" stroke-width="1"/>
+    <circle cx="290" cy="150" r="8" fill="#DEB887"/>
+    
+    <!-- Earth -->
+    <ellipse cx="200" cy="150" rx="120" ry="80" stroke="#ddd" stroke-width="1"/>
+    <circle cx="320" cy="150" r="10" fill="#4169E1"/>
+    
+    <!-- Mars -->
+    <ellipse cx="200" cy="150" rx="150" ry="100" stroke="#ddd" stroke-width="1"/>
+    <circle cx="350" cy="150" r="7" fill="#CD5C5C"/>
+  </g>
+  
+  <!-- Labels -->
+  <text x="260" y="140" font-family="Arial" font-size="10">Mercury</text>
+  <text x="290" y="140" font-family="Arial" font-size="10">Venus</text>
+  <text x="320" y="140" font-family="Arial" font-size="10">Earth</text>
+  <text x="350" y="140" font-family="Arial" font-size="10">Mars</text>
+  
+  <!-- Formula -->
+  <text x="200" y="270" text-anchor="middle" font-family="Arial" font-size="14">T² ∝ r³ (Kepler's Third Law)</text>
+</svg>

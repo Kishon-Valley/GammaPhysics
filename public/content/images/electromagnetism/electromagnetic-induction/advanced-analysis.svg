@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700" style="background-color: white;">
+    <!-- Explicit white background -->
+    <rect width="800" height="700" fill="white"/>
+
+    <!-- Title and Main Explanation -->
+    <rect x="0" y="0" width="800" height="140" fill="white"/>
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Advanced Electromagnetic Analysis</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">∇ × E = -∂B/∂t,  ∇ × B = μ₀J + μ₀ε₀∂E/∂t</text>
+    
+    <!-- Key Concept Box -->
+    <rect x="50" y="80" width="700" height="50" fill="#f8f8f8" stroke="#666"/>
+    <text x="400" y="105" text-anchor="middle" font-size="14">Maxwell's equations describe the complete behavior of electromagnetic fields</text>
+    <text x="400" y="120" text-anchor="middle" font-size="14">and their interactions with matter</text>
+
+    <!-- Main Visualization -->
+    <g transform="translate(400,300)">
+        <!-- Coordinate System -->
+        <line x1="-200" y1="0" x2="200" y2="0" stroke="#666" stroke-width="1"/>
+        <line x1="0" y1="-150" x2="0" y2="150" stroke="#666" stroke-width="1"/>
+        <text x="210" y="15" font-size="12">x</text>
+        <text x="-15" y="-160" font-size="12">y</text>
+
+        <!-- Electric Field Wave -->
+        <g class="electric-field">
+            <text x="-180" y="-130" font-size="14" fill="#FF5722">Electric Field (E)</text>
+            <path d="M -150,0 Q -100,-50 -50,0 T 50,0 T 150,0" 
+                  fill="none" stroke="#FF5722" stroke-width="2">
+                <animate attributeName="d"
+                         values="M -150,0 Q -100,-50 -50,0 T 50,0 T 150,0;
+                                M -150,0 Q -100,50 -50,0 T 50,0 T 150,0;
+                                M -150,0 Q -100,-50 -50,0 T 50,0 T 150,0"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Magnetic Field Wave -->
+        <g class="magnetic-field">
+            <text x="-180" y="130" font-size="14" fill="#2196F3">Magnetic Field (B)</text>
+            <path d="M -150,0 Q -100,50 -50,0 T 50,0 T 150,0" 
+                  fill="none" stroke="#2196F3" stroke-width="2">
+                <animate attributeName="d"
+                         values="M -150,0 Q -100,50 -50,0 T 50,0 T 150,0;
+                                M -150,0 Q -100,-50 -50,0 T 50,0 T 150,0;
+                                M -150,0 Q -100,50 -50,0 T 50,0 T 150,0"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Field Vectors -->
+        <g class="field-vectors">
+            <g transform="translate(0,0)">
+                <animateTransform attributeName="transform"
+                                type="translate"
+                                values="-150,0; 150,0; -150,0"
+                                dur="6s"
+                                repeatCount="indefinite"/>
+                <!-- E-field vector -->
+                <line x1="0" y1="0" x2="0" y2="-30" stroke="#FF5722" stroke-width="2" marker-end="url(#e-arrow)"/>
+                <!-- B-field vector -->
+                <line x1="0" y1="0" x2="30" y2="0" stroke="#2196F3" stroke-width="2" marker-end="url(#b-arrow)"/>
+                <!-- Poynting vector -->
+                <line x1="0" y1="0" x2="20" y2="-20" stroke="#4CAF50" stroke-width="2" marker-end="url(#s-arrow)"/>
+            </g>
+        </g>
+    </g>
+
+    <!-- Explanation Box -->
+    <g transform="translate(50,550)">
+        <rect x="0" y="0" width="700" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Wave Propagation and Field Interactions:</text>
+        <text x="20" y="55" font-size="14">1. Electric field (red) and magnetic field (blue) oscillate perpendicular to each other</text>
+        <text x="20" y="80" font-size="14">2. Fields propagate in the direction of Poynting vector S = E × B (green)</text>
+        <text x="20" y="105" font-size="14">3. Wave propagation demonstrates electromagnetic energy transport</text>
+    </g>
+
+    <!-- Definitions -->
+    <defs>
+        <marker id="e-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+        <marker id="b-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+        <marker id="s-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+    </defs>
+</svg> 

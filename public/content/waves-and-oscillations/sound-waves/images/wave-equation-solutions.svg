@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-family="Arial" font-weight="bold">
+        Wave Equation Solutions
+    </text>
+    
+    <!-- Standing Wave Modes -->
+    <g transform="translate(100,150)">
+        <!-- Pipe representation -->
+        <rect x="0" y="0" width="600" height="100" fill="#f5f5f5" stroke="#666"/>
+        
+        <!-- First mode (n=1) -->
+        <path d="M 0,50 Q 150,0 300,50 T 600,50" 
+              stroke="#2196F3" stroke-width="2" fill="none"/>
+        <text x="-30" y="50" text-anchor="end" font-size="14">n=1</text>
+        
+        <!-- Second mode (n=2) -->
+        <g transform="translate(0,150)">
+            <rect x="0" y="0" width="600" height="100" fill="#f5f5f5" stroke="#666"/>
+            <path d="M 0,50 Q 75,0 150,50 T 300,50 T 450,50 T 600,50" 
+                  stroke="#4CAF50" stroke-width="2" fill="none"/>
+            <text x="-30" y="50" text-anchor="end" font-size="14">n=2</text>
+        </g>
+    </g>
+    
+    <!-- Equations -->
+    <g transform="translate(100,450)">
+        <rect x="-10" y="-60" width="400" height="80" fill="white" stroke="#ccc"/>
+        <text font-family="Arial" font-size="16">
+            <tspan x="0" dy="0">Standing Wave Frequencies:</tspan>
+            <tspan x="0" dy="25">f_n = nv/2L, n = 1,2,3,...</tspan>
+        </text>
+    </g>
+    
+    <!-- Wave Properties -->
+    <g transform="translate(550,450)">
+        <text font-family="Arial" font-size="14">
+            <tspan x="0" dy="0">• Nodes at ends</tspan>
+            <tspan x="0" dy="20">• Antinodes at center</tspan>
+            <tspan x="0" dy="20">• Harmonics: f₂ = 2f₁, f₃ = 3f₁</tspan>
+        </text>
+    </g>
+</svg>

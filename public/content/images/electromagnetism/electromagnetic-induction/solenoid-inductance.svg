@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" style="background-color: white;">
+    <!-- Explicit white background -->
+    <rect width="800" height="600" fill="white"/>
+    
+    <defs>
+        <marker id="magnetic-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+    </defs>
+
+    <!-- Title with white background -->
+    <rect x="0" y="0" width="800" height="60" fill="white"/>
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Solenoid Inductance</text>
+
+    <!-- Step-by-Step Guide -->
+    <g transform="translate(50,80)">
+        <text x="0" y="0" font-size="16" font-weight="bold">Understanding Solenoid Inductance:</text>
+        <text x="0" y="30" font-size="14">1. Length (ℓ) affects inductance inversely</text>
+        <text x="0" y="50" font-size="14">2. Number of turns (N) affects inductance quadratically</text>
+        <text x="0" y="70" font-size="14">3. Cross-sectional area (A) affects inductance linearly</text>
+    </g>
+
+    <!-- Solenoid Visualization -->
+    <g transform="translate(400,250)">
+        <!-- Solenoid -->
+        <g id="solenoid">
+            <!-- Coil turns -->
+            <path d="M -150,0 C -140,-20 -120,-20 -110,0 C -100,20 -80,20 -70,0" 
+                  fill="none" stroke="#666" stroke-width="3" 
+                  transform="translate(0,0)">
+                <animate attributeName="stroke-width"
+                         values="3;4;3"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+            <!-- Repeat for multiple turns -->
+            <use href="#solenoid" transform="translate(40,0)"/>
+            <use href="#solenoid" transform="translate(80,0)"/>
+            <use href="#solenoid" transform="translate(120,0)"/>
+
+            <!-- Dimension Lines -->
+            <line x1="-160" y1="50" x2="160" y2="50" stroke="#FF5722" stroke-width="2"/>
+            <text x="0" y="70" text-anchor="middle" fill="#FF5722">Length (ℓ)</text>
+
+            <line x1="-180" y1="-40" x2="-180" y2="40" stroke="#2196F3" stroke-width="2"/>
+            <text x="-200" y="0" text-anchor="end" fill="#2196F3">Area (A)</text>
+        </g>
+
+        <!-- Magnetic Field Lines -->
+        <g stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5">
+            <path d="M 0,-60 C 20,-60 20,60 0,60" marker-end="url(#magnetic-arrow)">
+                <animate attributeName="d"
+                         values="M 0,-60 C 20,-60 20,60 0,60;
+                                M 0,-80 C 30,-80 30,80 0,80;
+                                M 0,-60 C 20,-60 20,60 0,60"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+    </g>
+
+    <!-- Formula Box -->
+    <g transform="translate(50,450)">
+        <rect x="0" y="0" width="700" height="120" fill="#f5f5f5" stroke="#666"/>
+        <text x="20" y="30" font-size="16" font-weight="bold">Inductance Formula:</text>
+        <text x="20" y="60" font-family="math" font-size="16">L = μ₀N²A/ℓ</text>
+        <text x="20" y="90" font-size="14">• μ₀ is the permeability of free space</text>
+        <text x="20" y="110" font-size="14">• Inductance increases with N², A and decreases with ℓ</text>
+    </g>
+</svg> 

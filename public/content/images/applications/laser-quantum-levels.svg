@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="400" fill="white"/>
+    <!-- Energy Levels -->
+    <line x1="100" y1="300" x2="700" y2="300" stroke="black" stroke-width="2"/>
+    <line x1="100" y1="200" x2="700" y2="200" stroke="black" stroke-width="2"/>
+    <line x1="100" y1="100" x2="700" y2="100" stroke="black" stroke-width="2"/>
+    
+    <!-- Level Labels -->
+    <text x="50" y="305" font-family="Arial" font-size="16">E₁</text>
+    <text x="50" y="205" font-family="Arial" font-size="16">E₂</text>
+    <text x="50" y="105" font-family="Arial" font-size="16">E₃</text>
+    
+    <!-- Transitions -->
+    <line x1="200" y1="100" x2="200" y2="200" stroke="blue" stroke-width="2"/>
+    <text x="180" y="150" font-family="Arial" font-size="14">Pump</text>
+    
+    <line x1="400" y1="200" x2="400" y2="300" stroke="red" stroke-width="2"/>
+    <text x="410" y="250" font-family="Arial" font-size="14">Laser</text>
+    
+    <!-- Non-radiative transition -->
+    <path d="M 300 100 Q 350 150 300 200" fill="none" stroke="green" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="320" y="150" font-family="Arial" font-size="14">Non-rad</text>
+    
+    <!-- Title -->
+    <text x="250" y="50" font-family="Arial" font-size="20">Three-Level Laser System</text>
+</svg>

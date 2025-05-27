@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg" style="background-color: white;">
+  <style>
+    svg { background-color: white; }
+  </style>
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Capacitor plates -->
+  <rect x="100" y="50" width="20" height="300" fill="#666"/>
+  <rect x="680" y="50" width="20" height="300" fill="#666"/>
+  
+  <!-- Dielectric material -->
+  <rect x="120" y="50" width="560" height="300" fill="#E3F2FD" opacity="0.5"/>
+  
+  <!-- Breakdown path -->
+  <path d="M 150 150 L 200 200 L 250 170 L 300 220 L 350 180 L 400 230 L 450 190 L 500 240 L 550 200 L 600 250" 
+        stroke="#FF5722" stroke-width="3" fill="none"/>
+  
+  <!-- Electric field lines -->
+  <g stroke="#2196F3" stroke-width="1" stroke-dasharray="5,5">
+    <line x1="120" y1="75" x2="680" y2="75"/>
+    <line x1="120" y1="125" x2="680" y2="125"/>
+    <line x1="120" y1="275" x2="680" y2="275"/>
+    <line x1="120" y1="325" x2="680" y2="325"/>
+  </g>
+  
+  <!-- Electron avalanche -->
+  <g fill="#F44336">
+    <circle cx="200" cy="200" r="2"/>
+    <circle cx="220" cy="190" r="2"/>
+    <circle cx="240" cy="180" r="2"/>
+    <circle cx="260" cy="170" r="2"/>
+    <circle cx="280" cy="185" r="2"/>
+    <circle cx="300" cy="220" r="2"/>
+    <circle cx="320" cy="200" r="2"/>
+    <circle cx="340" cy="190" r="2"/>
+    <!-- More electrons in increasing density -->
+    <circle cx="360" cy="185" r="2"/>
+    <circle cx="380" cy="195" r="2"/>
+    <circle cx="400" cy="230" r="2"/>
+    <circle cx="420" cy="210" r="2"/>
+    <circle cx="440" cy="200" r="2"/>
+    <circle cx="460" cy="195" r="2"/>
+    <circle cx="480" cy="205" r="2"/>
+    <circle cx="500" cy="240" r="2"/>
+  </g>
+  
+  <!-- Labels -->
+  <text x="400" y="30" font-family="Arial" font-size="16" fill="black">Dielectric Breakdown Process</text>
+  <text x="200" y="380" font-family="Arial" font-size="14" fill="black">Electron Avalanche</text>
+  <text x="600" y="380" font-family="Arial" font-size="14" fill="black">Breakdown Path</text>
+</svg>

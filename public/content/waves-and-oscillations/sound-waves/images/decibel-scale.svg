@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-family="Arial" font-weight="bold">
+        Decibel Scale and Common Sounds
+    </text>
+    
+    <!-- Decibel Scale -->
+    <g transform="translate(100,100)">
+        <!-- Scale Line -->
+        <line x1="0" y1="0" x2="0" y2="300" stroke="black" stroke-width="2"/>
+        
+        <!-- Tick Marks and Labels -->
+        <g id="ticks">
+            <!-- 0 dB -->
+            <line x1="-5" y1="300" x2="5" y2="300" stroke="black" stroke-width="2"/>
+            <text x="-30" y="305" text-anchor="end" font-size="14">0 dB</text>
+            <text x="20" y="305" font-size="12">Threshold of hearing</text>
+            
+            <!-- 40 dB -->
+            <line x1="-5" y1="240" x2="5" y2="240" stroke="black" stroke-width="2"/>
+            <text x="-30" y="245" text-anchor="end" font-size="14">40 dB</text>
+            <text x="20" y="245" font-size="12">Quiet library</text>
+            
+            <!-- 60 dB -->
+            <line x1="-5" y1="200" x2="5" y2="200" stroke="black" stroke-width="2"/>
+            <text x="-30" y="205" text-anchor="end" font-size="14">60 dB</text>
+            <text x="20" y="205" font-size="12">Normal conversation</text>
+            
+            <!-- 80 dB -->
+            <line x1="-5" y1="160" x2="5" y2="160" stroke="black" stroke-width="2"/>
+            <text x="-30" y="165" text-anchor="end" font-size="14">80 dB</text>
+            <text x="20" y="165" font-size="12">City traffic</text>
+            
+            <!-- 100 dB -->
+            <line x1="-5" y1="120" x2="5" y2="120" stroke="black" stroke-width="2"/>
+            <text x="-30" y="125" text-anchor="end" font-size="14">100 dB</text>
+            <text x="20" y="125" font-size="12">Jackhammer</text>
+            
+            <!-- 120 dB -->
+            <line x1="-5" y1="80" x2="5" y2="80" stroke="black" stroke-width="2"/>
+            <text x="-30" y="85" text-anchor="end" font-size="14">120 dB</text>
+            <text x="20" y="85" font-size="12">Threshold of pain</text>
+            
+            <!-- 140 dB -->
+            <line x1="-5" y1="40" x2="5" y2="40" stroke="black" stroke-width="2"/>
+            <text x="-30" y="45" text-anchor="end" font-size="14">140 dB</text>
+            <text x="20" y="45" font-size="12">Jet engine</text>
+        </g>
+    </g>
+    
+    <!-- Key Information -->
+    <g transform="translate(400,150)">
+        <rect x="0" y="0" width="300" height="120" fill="#f8f8f8" stroke="#ccc"/>
+        <text font-family="Arial" font-size="14">
+            <tspan x="10" dy="20">Key Facts:</tspan>
+            <tspan x="10" dy="25">• +10 dB = 10× intensity</tspan>
+            <tspan x="10" dy="25">• +3 dB = 2× intensity</tspan>
+            <tspan x="10" dy="25">• Human ear range: 0-120 dB</tspan>
+            <tspan x="10" dy="25">• Safe exposure limit: 85 dB (8h)</tspan>
+        </text>
+    </g>
+    
+    <!-- Formula -->
+    <g transform="translate(400,300)">
+        <rect x="0" y="0" width="300" height="80" fill="#f8f8f8" stroke="#ccc"/>
+        <text font-family="Arial" font-size="16">
+            <tspan x="10" dy="30">β = 10 log₁₀(I/I₀) dB</tspan>
+            <tspan x="10" dy="25">I₀ = 10⁻¹² W/m²</tspan>
+        </text>
+    </g>
+</svg>

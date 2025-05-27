@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Conductor boundaries -->
+    <rect x="100" y="100" width="600" height="200" fill="#f0f0f0" stroke="#666" stroke-width="2"/>
+    
+    <!-- Metal lattice points -->
+    <g id="lattice">
+        <circle cx="150" cy="150" r="4" fill="#444"/>
+        <circle cx="250" cy="150" r="4" fill="#444"/>
+        <circle cx="350" cy="150" r="4" fill="#444"/>
+        <circle cx="450" cy="150" r="4" fill="#444"/>
+        <circle cx="550" cy="150" r="4" fill="#444"/>
+        <circle cx="650" cy="150" r="4" fill="#444"/>
+        
+        <circle cx="150" cy="250" r="4" fill="#444"/>
+        <circle cx="250" cy="250" r="4" fill="#444"/>
+        <circle cx="350" cy="250" r="4" fill="#444"/>
+        <circle cx="450" cy="250" r="4" fill="#444"/>
+        <circle cx="550" cy="250" r="4" fill="#444"/>
+        <circle cx="650" cy="250" r="4" fill="#444"/>
+    </g>
+    
+    <!-- Electrons with random motion paths -->
+    <g id="electrons">
+        <!-- Electron 1 -->
+        <circle cx="200" cy="180" r="6" fill="#2196F3"/>
+        <path d="M 190,180 Q 200,170 210,180 T 230,180" fill="none" stroke="#2196F3" stroke-width="1" opacity="0.5"/>
+        
+        <!-- Electron 2 -->
+        <circle cx="300" cy="220" r="6" fill="#2196F3"/>
+        <path d="M 290,220 Q 300,210 310,220 T 330,220" fill="none" stroke="#2196F3" stroke-width="1" opacity="0.5"/>
+        
+        <!-- Electron 3 -->
+        <circle cx="400" cy="170" r="6" fill="#2196F3"/>
+        <path d="M 390,170 Q 400,160 410,170 T 430,170" fill="none" stroke="#2196F3" stroke-width="1" opacity="0.5"/>
+        
+        <!-- Electron 4 -->
+        <circle cx="500" cy="230" r="6" fill="#2196F3"/>
+        <path d="M 490,230 Q 500,220 510,230 T 530,230" fill="none" stroke="#2196F3" stroke-width="1" opacity="0.5"/>
+    </g>
+    
+    <!-- Drift velocity arrow -->
+    <g id="drift-velocity">
+        <line x1="100" y1="200" x2="700" y2="200" stroke="#F44336" stroke-width="3" marker-end="url(#arrowhead)"/>
+        <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#F44336"/>
+            </marker>
+        </defs>
+    </g>
+    
+    <!-- Labels -->
+    <g id="labels" font-family="Arial" text-anchor="middle">
+        <text x="400" y="50" font-size="20" fill="#000">Electron Drift Velocity in a Conductor</text>
+        <text x="400" y="350" font-size="16" fill="#F44336">Net Drift Direction</text>
+        <text x="200" y="380" font-size="14" fill="#2196F3">Random Thermal Motion</text>
+        <text x="600" y="380" font-size="14" fill="#444">Metal Lattice Points</text>
+    </g>
+</svg>

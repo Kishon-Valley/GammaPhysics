@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Coordinate system -->
+  <g transform="translate(50,50)">
+    <!-- Axes -->
+    <line x1="50" y1="400" x2="700" y2="400" stroke="black" stroke-width="2"/>
+    <line x1="50" y1="400" x2="50" y2="50" stroke="black" stroke-width="2"/>
+    
+    <!-- Grid lines -->
+    <g stroke="#eee" stroke-width="1">
+      <line x1="50" y1="100" x2="700" y2="100"/>
+      <line x1="50" y1="200" x2="700" y2="200"/>
+      <line x1="50" y1="300" x2="700" y2="300"/>
+      
+      <line x1="200" y1="50" x2="200" y2="400"/>
+      <line x1="350" y1="50" x2="350" y2="400"/>
+      <line x1="500" y1="50" x2="500" y2="400"/>
+      <line x1="650" y1="50" x2="650" y2="400"/>
+    </g>
+    
+    <!-- Curves -->
+    <!-- Metal -->
+    <path d="M 50,200 L 700,350" stroke="#E91E63" stroke-width="3" fill="none"/>
+    
+    <!-- Semiconductor -->
+    <path d="M 50,350 Q 375,250 700,150" stroke="#4CAF50" stroke-width="3" fill="none"/>
+    
+    <!-- Superconductor -->
+    <path d="M 50,250 L 300,250 L 300,400 L 700,400" stroke="#2196F3" stroke-width="3" fill="none"/>
+    
+    <!-- Labels -->
+    <text x="375" y="30" font-family="Arial" font-size="20" text-anchor="middle">Temperature Dependence of Resistivity</text>
+    <text x="375" y="450" font-family="Arial" font-size="16" text-anchor="middle">Temperature (K)</text>
+    <text x="30" y="225" font-family="Arial" font-size="16" transform="rotate(-90,30,225)">Resistivity (Ω⋅m)</text>
+    
+    <!-- Legend -->
+    <g transform="translate(550,100)">
+      <rect x="-10" y="-20" width="150" height="100" fill="white" stroke="#ccc"/>
+      
+      <line x1="0" y1="0" x2="30" y2="0" stroke="#E91E63" stroke-width="3"/>
+      <text x="40" y="5" font-family="Arial" font-size="14">Metal</text>
+      
+      <line x1="0" y1="30" x2="30" y2="30" stroke="#4CAF50" stroke-width="3"/>
+      <text x="40" y="35" font-family="Arial" font-size="14">Semiconductor</text>
+      
+      <line x1="0" y1="60" x2="30" y2="60" stroke="#2196F3" stroke-width="3"/>
+      <text x="40" y="65" font-family="Arial" font-size="14">Superconductor</text>
+    </g>
+    
+    <!-- Temperature markers -->
+    <g font-family="Arial" font-size="12" text-anchor="middle">
+      <text x="300" y="420">Tc</text>
+      <text x="50" y="420">0</text>
+      <text x="700" y="420">T</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions -->
+  <defs>
+    <!-- Nucleus glow -->
+    <radialGradient id="nucleusGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" style="stop-color:#ff4500;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffaa00;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Orbit paths -->
+    <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4d8bf5;stop-opacity:0.7" />
+      <stop offset="50%" style="stop-color:#4d8bf5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4d8bf5;stop-opacity:0.7" />
+    </linearGradient>
+    
+    <!-- Energy level gradient -->
+    <linearGradient id="energyLevelGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9c27b0;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#3f51b5;stop-opacity:0.8" />
+    </linearGradient>
+    
+    <!-- Electron animation path for n=1 -->
+    <path id="orbit1Path" d="M 0,0 m -80,0 a 80,80 0 1,0 160,0 a 80,80 0 1,0 -160,0" />
+    
+    <!-- Electron animation path for n=2 -->
+    <path id="orbit2Path" d="M 0,0 m -140,0 a 140,140 0 1,0 280,0 a 140,140 0 1,0 -280,0" />
+    
+    <!-- Electron animation path for n=3 -->
+    <path id="orbit3Path" d="M 0,0 m -210,0 a 210,210 0 1,0 420,0 a 210,210 0 1,0 -420,0" />
+    
+    <!-- Electron animation path for n=4 -->
+    <path id="orbit4Path" d="M 0,0 m -290,0 a 290,290 0 1,0 580,0 a 290,290 0 1,0 -580,0" />
+    
+    <!-- Filter for glow effects -->
+    <filter id="electronGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" />
+    </filter>
+    
+    <!-- Markers for transitions -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ff4500" />
+    </marker>
+  </defs>
+  
+  <!-- Styles -->
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      fill: #333;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    .subtitle {
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    .orbit-label {
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .energy-label {
+      font-size: 14px;
+      font-weight: bold;
+      text-anchor: start;
+    }
+    .formula {
+      font-size: 16px;
+      font-style: italic;
+      text-anchor: middle;
+    }
+    .annotation {
+      font-size: 14px;
+      fill: #555;
+    }
+    .orbit {
+      fill: none;
+      stroke: url(#orbitGradient);
+      stroke-width: 2;
+    }
+    .orbit-dashed {
+      fill: none;
+      stroke: #4d8bf5;
+      stroke-width: 1;
+      stroke-dasharray: 5,3;
+    }
+    .energy-level {
+      fill: none;
+      stroke: url(#energyLevelGradient);
+      stroke-width: 2;
+    }
+    .transition {
+      fill: none;
+      stroke: #ff4500;
+      stroke-width: 2;
+      marker-end: url(#arrowhead);
+    }
+    .spectral-line {
+      stroke-width: 3;
+    }
+    
+    @keyframes orbitMotion1 {
+      from { offset-distance: 0%; }
+      to { offset-distance: 100%; }
+    }
+    .electron-1 {
+      offset-path: path('M 0,0 m -80,0 a 80,80 0 1,0 160,0 a 80,80 0 1,0 -160,0');
+      animation: orbitMotion1 4s linear infinite;
+    }
+    
+    @keyframes orbitMotion2 {
+      from { offset-distance: 0%; }
+      to { offset-distance: 100%; }
+    }
+    .electron-2 {
+      offset-path: path('M 0,0 m -140,0 a 140,140 0 1,0 280,0 a 140,140 0 1,0 -280,0');
+      animation: orbitMotion2 8s linear infinite;
+    }
+    
+    @keyframes orbitMotion3 {
+      from { offset-distance: 0%; }
+      to { offset-distance: 100%; }
+    }
+    .electron-3 {
+      offset-path: path('M 0,0 m -210,0 a 210,210 0 1,0 420,0 a 210,210 0 1,0 -420,0');
+      animation: orbitMotion3 12s linear infinite;
+    }
+    
+    @keyframes orbitMotion4 {
+      from { offset-distance: 0%; }
+      to { offset-distance: 100%; }
+    }
+    .electron-4 {
+      offset-path: path('M 0,0 m -290,0 a 290,290 0 1,0 580,0 a 290,290 0 1,0 -580,0');
+      animation: orbitMotion4 16s linear infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes photonEmit {
+      0% { opacity: 0; stroke-dashoffset: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; stroke-dashoffset: -50; }
+    }
+    .photon-animate {
+      stroke-dasharray: 5, 3;
+      animation: photonEmit 4s infinite;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="white" />
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Bohr's Atomic Model (1913)</text>
+  <text x="400" y="70" class="subtitle">Quantized Energy Levels</text>
+  
+  <!-- Bohr Atom -->
+  <g transform="translate(300, 300)">
+    <!-- Orbits -->
+    <circle cx="0" cy="0" r="80" class="orbit" />
+    <circle cx="0" cy="0" r="140" class="orbit" />
+    <circle cx="0" cy="0" r="210" class="orbit" />
+    <circle cx="0" cy="0" r="290" class="orbit" />
+    
+    <!-- Orbit labels -->
+    <text x="0" y="-85" class="orbit-label" text-anchor="middle">n=1</text>
+    <text x="0" y="-145" class="orbit-label" text-anchor="middle">n=2</text>
+    <text x="0" y="-215" class="orbit-label" text-anchor="middle">n=3</text>
+    <text x="0" y="-295" class="orbit-label" text-anchor="middle">n=4</text>
+    
+    <!-- Nucleus -->
+    <circle cx="0" cy="0" r="20" fill="#ff4500" />
+    <circle cx="0" cy="0" r="30" fill="url(#nucleusGlow)" class="pulse" />
+    <text x="0" cy="0" class="annotation" text-anchor="middle" dy="5">+Z</text>
+    
+    <!-- Electrons (with animation) -->
+    <g class="electron-group">
+      <circle class="electron-1" cx="0" cy="0" r="6" fill="#4d8bf5" />
+      <circle class="electron-2" cx="0" cy="0" r="6" fill="#4d8bf5" />
+      <circle class="electron-3" cx="0" cy="0" r="6" fill="#4d8bf5" />
+      <circle class="electron-4" cx="0" cy="0" r="6" fill="#4d8bf5" />
+    </g>
+    
+    <!-- Transitions (simulated electron jumps) -->
+    <path d="M -70,-180 C -30,-120 30,-120 70,-180" class="transition photon-animate" style="animation-delay: 0s" />
+    <path d="M -200,-100 C -120,-70 -80,-70 0,-140" class="transition photon-animate" style="animation-delay: 2s" />
+    <path d="M 50,-200 C 100,-150 150,-100 200,-50" class="transition photon-animate" style="animation-delay: 4s" />
+  </g>
+  
+  <!-- Energy Level Diagram -->
+  <g transform="translate(600, 300)">
+    <!-- Title -->
+    <text x="0" y="-250" class="subtitle">Energy Levels</text>
+    
+    <!-- Energy axis -->
+    <line x1="-20" y1="-230" x2="-20" y2="200" stroke="#333" stroke-width="2" />
+    <text x="-35" y="-150" class="annotation" transform="rotate(-90 -35 -150)">Energy (eV)</text>
+    
+    <!-- Energy levels -->
+    <line x1="-25" y1="150" x2="100" y2="150" class="energy-level" />
+    <line x1="-25" y1="50" x2="100" y2="50" class="energy-level" />
+    <line x1="-25" y1="-30" x2="100" y2="-30" class="energy-level" />
+    <line x1="-25" y1="-90" x2="100" y2="-90" class="energy-level" />
+    <line x1="-25" y1="-200" x2="100" y2="-200" class="energy-level" />
+    
+    <!-- Energy level labels -->
+    <text x="110" y="155" class="energy-label">n=1: -13.6 eV</text>
+    <text x="110" y="55" class="energy-label">n=2: -3.4 eV</text>
+    <text x="110" y="-25" class="energy-label">n=3: -1.5 eV</text>
+    <text x="110" y="-85" class="energy-label">n=4: -0.85 eV</text>
+    <text x="110" y="-195" class="energy-label">n=∞: 0 eV (ionization)</text>
+    
+    <!-- Transition arrows -->
+    <line x1="30" y1="50" x2="30" y2="150" stroke="#ff4500" stroke-width="2" marker-end="url(#arrowhead)" />
+    <text x="45" y="100" class="annotation">Lyman-α</text>
+    
+    <line x1="60" y1="-30" x2="60" y2="50" stroke="#9c27b0" stroke-width="2" marker-end="url(#arrowhead)" />
+    <text x="75" y="10" class="annotation">Balmer-α</text>
+    
+    <line x1="0" y1="-90" x2="0" y2="-30" stroke="#3f51b5" stroke-width="2" marker-end="url(#arrowhead)" />
+    <text x="15" y="-60" class="annotation">Paschen-α</text>
+  </g>
+  
+  <!-- Spectral Lines -->
+  <g transform="translate(400, 530)">
+    <text x="0" y="-20" class="subtitle" text-anchor="middle">Hydrogen Spectral Lines</text>
+    
+    <!-- Spectral series -->
+    <line x1="-200" y1="0" x2="200" y2="0" stroke="#333" stroke-width="2" />
+    <text x="0" y="25" class="annotation" text-anchor="middle">Wavelength (nm)</text>
+    
+    <!-- Lyman series (UV) -->
+    <line x1="-180" y1="-10" x2="-180" y2="10" class="spectral-line" stroke="#9400d3" />
+    <line x1="-170" y1="-10" x2="-170" y2="10" class="spectral-line" stroke="#8a2be2" />
+    <line x1="-160" y1="-10" x2="-160" y2="10" class="spectral-line" stroke="#9370db" />
+    <text x="-170" y="-20" class="annotation" text-anchor="middle">Lyman</text>
+    <text x="-170" y="30" class="annotation" text-anchor="middle">UV</text>
+    
+    <!-- Balmer series (Visible) -->
+    <line x1="-50" y1="-10" x2="-50" y2="10" class="spectral-line" stroke="#ff0000" />
+    <line x1="-30" y1="-10" x2="-30" y2="10" class="spectral-line" stroke="#ff7f00" />
+    <line x1="-10" y1="-10" x2="-10" y2="10" class="spectral-line" stroke="#ffff00" />
+    <line x1="10" y1="-10" x2="10" y2="10" class="spectral-line" stroke="#00ff00" />
+    <line x1="30" y1="-10" x2="30" y2="10" class="spectral-line" stroke="#0000ff" />
+    <line x1="50" y1="-10" x2="50" y2="10" class="spectral-line" stroke="#4b0082" />
+    <text x="0" y="-20" class="annotation" text-anchor="middle">Balmer</text>
+    <text x="0" y="30" class="annotation" text-anchor="middle">Visible</text>
+    
+    <!-- Paschen series (IR) -->
+    <line x1="150" y1="-10" x2="150" y2="10" class="spectral-line" stroke="#B22222" />
+    <line x1="160" y1="-10" x2="160" y2="10" class="spectral-line" stroke="#CD5C5C" />
+    <line x1="170" y1="-10" x2="170" y2="10" class="spectral-line" stroke="#F08080" />
+    <text x="160" y="-20" class="annotation" text-anchor="middle">Paschen</text>
+    <text x="160" y="30" class="annotation" text-anchor="middle">IR</text>
+  </g>
+  
+  <!-- Bohr's Formulas -->
+  <g transform="translate(150, 480)">
+    <rect x="-100" y="-50" width="200" height="130" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="0" y="-30" class="subtitle" text-anchor="middle">Bohr's Equations</text>
+    <text x="0" y="-5" class="formula" text-anchor="middle">En = -13.6 eV / n²</text>
+    <text x="0" y="20" class="formula" text-anchor="middle">rn = 0.53 Å · n²</text>
+    <text x="0" y="45" class="formula" text-anchor="middle">vn = 2.2×10⁶ m/s / n</text>
+    <text x="0" y="70" class="annotation" text-anchor="middle">Angular momentum: mvr = n·ℏ</text>
+  </g>
+</svg> 

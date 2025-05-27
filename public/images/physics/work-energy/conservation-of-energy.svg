@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background that covers the entire viewport -->
+    <rect width="100%" height="100%" fill="white"/>
+  <!-- Initial State -->
+  <rect x="50" y="100" width="150" height="200" fill="#f0f0f0" stroke="#000"/>
+  <text x="100" y="150" font-family="Arial" font-size="14">Initial State</text>
+  <text x="70" y="180" font-family="Arial" font-size="14">PE = mgh₁</text>
+  <text x="70" y="200" font-family="Arial" font-size="14">KE = ½mv₁²</text>
+  
+  <!-- Arrow -->
+  <line x1="200" y1="200" x2="300" y2="200" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Final State -->
+  <rect x="300" y="100" width="150" height="200" fill="#f0f0f0" stroke="#000"/>
+  <text x="350" y="150" font-family="Arial" font-size="14">Final State</text>
+  <text x="320" y="180" font-family="Arial" font-size="14">PE = mgh₂</text>
+  <text x="320" y="200" font-family="Arial" font-size="14">KE = ½mv₂²</text>
+  
+  <!-- Equation -->
+  <text x="100" y="350" font-family="Arial" font-size="16">E₁ = E₂</text>
+  <text x="50" y="370" font-family="Arial" font-size="14">mgh₁ + ½mv₁² = mgh₂ + ½mv₂²</text>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+    </marker>
+  </defs>
+</svg>

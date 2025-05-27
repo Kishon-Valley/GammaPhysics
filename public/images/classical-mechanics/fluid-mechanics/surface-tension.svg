@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-family="Arial">Surface Tension Effects</text>
+    
+    <!-- Water drop -->
+    <g transform="translate(100,100)">
+        <text x="75" y="-20" text-anchor="middle" font-size="18">Water Drop</text>
+        
+        <!-- Drop shape -->
+        <path d="M50,0 Q75,-25 100,0 Q125,25 100,50 Q75,75 50,50 Q25,25 50,0" 
+              fill="#ADD8E6" fill-opacity="0.6" stroke="blue"/>
+        
+        <!-- Surface molecules -->
+        <g fill="#0000FF">
+            <circle cx="50" cy="0" r="3"/>
+            <circle cx="75" cy="-10" r="3"/>
+            <circle cx="100" cy="0" r="3"/>
+        </g>
+        
+        <!-- Force arrows -->
+        <g stroke="red" stroke-width="1" marker-end="url(#arrowhead)">
+            <path d="M75,-10 L75,-25"/>
+            <path d="M75,-10 L60,-10"/>
+            <path d="M75,-10 L90,-10"/>
+        </g>
+    </g>
+    
+    <!-- Soap film -->
+    <g transform="translate(300,100)">
+        <text x="75" y="-20" text-anchor="middle" font-size="18">Soap Film</text>
+        
+        <!-- Wire frame -->
+        <line x1="25" y1="0" x2="125" y2="0" stroke="black" stroke-width="2"/>
+        <line x1="25" y1="100" x2="125" y2="100" stroke="black" stroke-width="2"/>
+        
+        <!-- Film -->
+        <rect x="25" y="0" width="100" height="100" fill="#ADD8E6" fill-opacity="0.2"/>
+        
+        <!-- Surface tension forces -->
+        <g stroke="red" stroke-width="1" marker-end="url(#arrowhead)">
+            <path d="M75,0 L75,-15"/>
+            <path d="M75,100 L75,115"/>
+        </g>
+        
+        <text x="85" y="50" font-size="14">γ</text>
+    </g>
+    
+    <!-- Capillary rise -->
+    <g transform="translate(500,100)">
+        <text x="75" y="-20" text-anchor="middle" font-size="18">Capillary Action</text>
+        
+        <!-- Tube -->
+        <rect x="50" y="0" width="50" height="150" fill="none" stroke="black"/>
+        
+        <!-- Water level -->
+        <path d="M50,100 Q75,60 100,100" fill="#ADD8E6" fill-opacity="0.3"/>
+        <rect x="50" y="100" width="50" height="50" fill="#ADD8E6" fill-opacity="0.3"/>
+        
+        <!-- Height marker -->
+        <line x1="40" y1="100" x2="40" y2="80" stroke="black" stroke-dasharray="5,5"/>
+        <text x="30" y="90" font-size="14">h</text>
+        
+        <!-- Contact angle -->
+        <path d="M50,100 A20,20 0 0,1 60,85" fill="none" stroke="black" stroke-dasharray="2,2"/>
+        <text x="65" y="95" font-size="14">θ</text>
+    </g>
+    
+    <!-- Equations -->
+    <g transform="translate(100,300)">
+        <text x="0" y="0" font-size="16" font-weight="bold">Surface Tension (γ):</text>
+        <text x="0" y="25" font-size="14">γ = F/L</text>
+        
+        <text x="200" y="0" font-size="16" font-weight="bold">Capillary Rise:</text>
+        <text x="200" y="25" font-size="14">h = 2γcosθ/ρgr</text>
+    </g>
+    
+    <!-- Arrow marker definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="red"/>
+        </marker>
+    </defs>
+</svg>

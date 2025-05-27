@@ -1,0 +1,21 @@
+<svg width="320" height="200" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="200" fill="white"/>
+  <!-- Straight wire -->
+  <rect x="155" y="20" width="10" height="160" fill="#555"/>
+  <!-- Current arrow -->
+  <polygon points="160,25 155,40 165,40" fill="#1e90ff"/>
+  <rect x="157" y="40" width="6" height="30" fill="#1e90ff"/>
+  <text x="170" y="55" font-size="16" fill="#1e90ff">I</text>
+  <!-- Magnetic field circles -->
+  <circle cx="160" cy="100" r="40" fill="none" stroke="#009688" stroke-width="2"/>
+  <circle cx="160" cy="100" r="65" fill="none" stroke="#009688" stroke-width="2" stroke-dasharray="6,6"/>
+  <circle cx="160" cy="100" r="90" fill="none" stroke="#009688" stroke-width="2" stroke-dasharray="4,8"/>
+  <!-- Right-hand rule -->
+  <path d="M 220 60 Q 230 100 220 140" stroke="#f39c12" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <text x="225" y="100" font-size="14" fill="#f39c12">B</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0,0 10,5 0,10 3,5" fill="#f39c12"/>
+    </marker>
+  </defs>
+</svg>

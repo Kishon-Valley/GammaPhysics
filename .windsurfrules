@@ -1,0 +1,45 @@
+Correct Process to Add a New Physics Concept
+To properly add a new physics concept to your application, follow these steps:
+
+Add the definition to physicsDefinitions.ts:
+
+'ConceptName': {
+  title: 'ConceptName',
+  category: 'CategoryName', // e.g., 'Mechanics', 'Magnetism', etc.
+  definition: 'Brief definition of the concept',
+  formula: 'Related formula if applicable',
+  hasNotes: true
+}
+
+Add the concept to the hardcoded list in DefinitionsPage.tsx:
+
+{
+  term: 'ConceptName',
+  definition: 'Brief definition of the concept',
+  formula: 'Related formula if applicable',
+  category: 'CategoryName'
+}
+
+
+Create detailed notes in an appropriate physicsNotes file:
+Use physicsNotes.ts for basic concepts
+Use physicsNotes2.ts or physicsNotes3.ts for more advanced concepts
+Create a new file (e.g., physicsNotes4.ts) if needed
+typescript
+CopyInsert
+'ConceptName': {
+  title: 'ConceptName',
+  description: 'Brief description of the concept',
+  sections: [
+    {
+      title: 'Section Title',
+      content: `Detailed content about the concept...`
+    }
+  ]
+}
+Import the notes file if it's new:
+In PhysicsDefinitionList.tsx
+In DefinitionsPage.tsx
+Update the combinedNotes object in both files to include the new notes file.
+Restart the application to see the changes.
+This process ensures your concept appears in the definitions list and has detailed notes accessible when users click on it.

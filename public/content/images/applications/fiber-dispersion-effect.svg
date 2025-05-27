@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="white"/>
+  
+  <!-- Title -->
+  <text x="120" y="40" font-family="Arial" font-size="24" font-weight="bold" fill="black">Chromatic Dispersion Effect on Pulse Shape</text>
+  
+  <!-- Coordinate system -->
+  <line x1="50" y1="350" x2="550" y2="350" stroke="black" stroke-width="2" marker-end="url(#arrow)"/> <!-- x-axis -->
+  <line x1="100" y1="380" x2="100" y2="80" stroke="black" stroke-width="2" marker-end="url(#arrow)"/> <!-- y-axis -->
+  
+  <!-- Axis labels -->
+  <text x="560" y="350" font-family="Arial" font-size="16" fill="black">t</text>
+  <text x="90" y="70" font-family="Arial" font-size="16" fill="black">A(t)</text>
+  
+  <!-- Input pulse (Gaussian) -->
+  <path d="M 100,350 
+           Q 100,200 150,200 
+           C 175,200 175,200 200,200 
+           Q 250,200 250,350" 
+        fill="#A0D0FF" fill-opacity="0.5" stroke="blue" stroke-width="2"/>
+  
+  <!-- Output pulse (broadened Gaussian) -->
+  <path d="M 300,350 
+           Q 300,250 350,250 
+           C 400,250 400,250 450,250 
+           Q 500,250 500,350" 
+        fill="#FFA0A0" fill-opacity="0.5" stroke="red" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Propagation arrow -->
+  <line x1="250" y1="300" x2="300" y2="300" stroke="black" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="260" y="290" font-family="Arial" font-size="14" fill="black">z</text>
+  
+  <!-- Pulse width indicators -->
+  <line x1="150" y1="275" x2="200" y2="275" stroke="blue" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="175" y="265" font-family="Arial" font-size="14" fill="blue" text-anchor="middle">T₀</text>
+  
+  <line x1="350" y1="325" x2="450" y2="325" stroke="red" stroke-width="1" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+  <text x="400" y="315" font-family="Arial" font-size="14" fill="red" text-anchor="middle">T(z)</text>
+  
+  <!-- Wavelength components -->
+  <path d="M 150,175 Q 175,165 200,175" stroke="#0000FF" stroke-width="1.5" fill="none"/>
+  <path d="M 150,200 Q 175,190 200,200" stroke="#00FF00" stroke-width="1.5" fill="none"/>
+  <path d="M 150,225 Q 175,215 200,225" stroke="#FF0000" stroke-width="1.5" fill="none"/>
+  
+  <path d="M 350,225 Q 375,215 400,225 Q 425,235 450,225" stroke="#0000FF" stroke-width="1.5" fill="none"/>
+  <path d="M 350,250 Q 375,240 400,250 Q 425,260 450,250" stroke="#00FF00" stroke-width="1.5" fill="none"/>
+  <path d="M 350,275 Q 375,265 400,275 Q 425,285 450,275" stroke="#FF0000" stroke-width="1.5" fill="none"/>
+  
+  <!-- Legend -->
+  <rect x="450" y="100" width="15" height="15" fill="#A0D0FF" fill-opacity="0.5" stroke="blue" stroke-width="1"/>
+  <text x="475" y="112" font-family="Arial" font-size="14" fill="black">Input Pulse</text>
+  
+  <rect x="450" y="125" width="15" height="15" fill="#FFA0A0" fill-opacity="0.5" stroke="red" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="475" y="137" font-family="Arial" font-size="14" fill="black">Output Pulse</text>
+  
+  <line x1="450" y1="150" x2="465" y2="150" stroke="#0000FF" stroke-width="1.5"/>
+  <line x1="450" y1="165" x2="465" y2="165" stroke="#00FF00" stroke-width="1.5"/>
+  <line x1="450" y1="180" x2="465" y2="180" stroke="#FF0000" stroke-width="1.5"/>
+  <text x="475" y="155" font-family="Arial" font-size="14" fill="black">λ₁</text>
+  <text x="475" y="170" font-family="Arial" font-size="14" fill="black">λ₂</text>
+  <text x="475" y="185" font-family="Arial" font-size="14" fill="black">λ₃</text>
+  
+  <!-- Dispersion equation -->
+  <text x="120" y="80" font-family="Arial" font-size="14" fill="black">T(z) = T₀√[1 + (Dλ∆λz/T₀²)²]</text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="black"/>
+    </marker>
+  </defs>
+</svg>

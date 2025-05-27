@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions -->
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    
+    <!-- Gradient for 3D surface -->
+    <linearGradient id="planeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e9ecef" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ced4da" stop-opacity="0.4"/>
+    </linearGradient>
+    
+    <!-- Vector gradients -->
+    <linearGradient id="vector1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4c51bf" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="vector2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e53e3e" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f56565" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="vector3Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38a169" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#48bb78" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="projectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#805ad5" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#9f7aea" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <!-- Filters for shadows -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset in="blur" dx="2" dy="2" result="offsetBlur"/>
+      <feBlend in="SourceGraphic" in2="offsetBlur" mode="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Styles -->
+  <style>
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .axis-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+      text-anchor: middle;
+    }
+    
+    .vector-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      font-style: italic;
+      text-anchor: start;
+    }
+    
+    .equation-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+      text-anchor: start;
+    }
+    
+    .axis-line {
+      stroke: #333;
+      stroke-width: 1.5;
+      marker-end: url(#arrowhead);
+    }
+    
+    .grid-line {
+      stroke: #ddd;
+      stroke-width: 0.5;
+      stroke-dasharray: 3,3;
+    }
+    
+    .plane {
+      fill: url(#planeGradient);
+      stroke: #adb5bd;
+      stroke-width: 1;
+      opacity: 0.6;
+    }
+    
+    .vector1 {
+      stroke: url(#vector1Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .vector2 {
+      stroke: url(#vector2Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .vector3 {
+      stroke: url(#vector3Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .vector-sum {
+      stroke: #000;
+      stroke-width: 2;
+      stroke-dasharray: 6,3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .projection {
+      stroke: url(#projectionGradient);
+      stroke-width: 2;
+      stroke-dasharray: 2,2;
+      marker-end: url(#arrowhead);
+    }
+    
+    .projection-line {
+      stroke: #805ad5;
+      stroke-width: 1;
+      stroke-dasharray: 2,2;
+    }
+    
+    .angle-arc {
+      fill: none;
+      stroke: #718096;
+      stroke-width: 1.5;
+    }
+    
+    .angle-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #718096;
+    }
+    
+    .inner-product {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #4a5568;
+      text-anchor: middle;
+    }
+    
+    @keyframes rotateSpace {
+      0%, 100% {
+        transform: rotateX(30deg) rotateY(15deg);
+      }
+      50% {
+        transform: rotateX(30deg) rotateY(-15deg);
+      }
+    }
+    
+    @keyframes vectorPulse {
+      0%, 100% {
+        stroke-width: 3;
+      }
+      50% {
+        stroke-width: 4.5;
+      }
+    }
+    
+    @keyframes projectionPulse {
+      0%, 100% {
+        stroke-width: 2;
+        opacity: 0.7;
+      }
+      50% {
+        stroke-width: 3;
+        opacity: 1;
+      }
+    }
+    
+    .space-rotation {
+      animation: rotateSpace 20s ease-in-out infinite;
+      transform-origin: 400px 250px;
+    }
+    
+    .vector-pulse {
+      animation: vectorPulse 3s ease-in-out infinite;
+    }
+    
+    .projection-pulse {
+      animation: projectionPulse 3s ease-in-out infinite;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Hilbert Space Vector Operations</text>
+  <text x="400" y="70" class="subtitle">Vector Addition, Inner Products, and Projections</text>
+  
+  <!-- 3D Coordinate System -->
+  <g transform="translate(400, 250)" class="space-rotation">
+    <!-- Grid Planes -->
+    <polygon points="0,0 150,-50 150,100 0,150" class="plane" opacity="0.3"/> <!-- xy plane -->
+    <polygon points="0,0 150,-50 50,-100 -100,-50" class="plane" opacity="0.3"/> <!-- xz plane -->
+    <polygon points="0,0 -100,-50 -100,100 0,150" class="plane" opacity="0.3"/> <!-- yz plane -->
+    
+    <!-- Coordinate Axes -->
+    <line x1="0" y1="0" x2="180" y2="-60" class="axis-line"/> <!-- x-axis -->
+    <line x1="0" y1="0" x2="0" y2="170" class="axis-line"/> <!-- y-axis -->
+    <line x1="0" y1="0" x2="-120" y2="-60" class="axis-line"/> <!-- z-axis -->
+    
+    <!-- Axis Labels -->
+    <text x="190" y="-60" class="axis-label">x</text>
+    <text x="0" y="190" class="axis-label">y</text>
+    <text x="-130" y="-60" class="axis-label">z</text>
+    
+    <!-- Vector |u⟩ -->
+    <line x1="0" y1="0" x2="120" y2="-30" class="vector1 vector-pulse"/>
+    <text x="130" y="-25" class="vector-label" fill="#4c51bf">|u⟩</text>
+    
+    <!-- Vector |v⟩ -->
+    <line x1="0" y1="0" x2="60" y2="90" class="vector2 vector-pulse"/>
+    <text x="65" y="100" class="vector-label" fill="#e53e3e">|v⟩</text>
+    
+    <!-- Vector Sum |u⟩ + |v⟩ -->
+    <line x1="120" y1="-30" x2="180" y2="60" class="vector-sum" stroke-dasharray="4,2"/>
+    <line x1="0" y1="0" x2="180" y2="60" class="vector3"/>
+    <text x="190" y="65" class="vector-label" fill="#38a169">|u⟩ + |v⟩</text>
+    
+    <!-- Angle between vectors -->
+    <path d="M 40,-10 A 40,40 0 0,1 30,30" class="angle-arc"/>
+    <text x="50" y="15" class="angle-label">θ</text>
+    
+    <!-- Projection of |v⟩ onto |u⟩ -->
+    <line x1="0" y1="0" x2="80" y2="-20" class="projection projection-pulse"/>
+    <text x="85" y="-10" class="vector-label" fill="#805ad5">proj|u⟩|v⟩</text>
+    
+    <!-- Projection line -->
+    <line x1="60" y1="90" x2="80" y2="-20" class="projection-line"/>
+    
+    <!-- Inner product visualization -->
+    <circle cx="80" cy="-20" r="5" fill="#805ad5"/>
+    <text x="100" y="40" class="inner-product">⟨u|v⟩ = |u|·|v|·cos θ</text>
+  </g>
+  
+  <!-- Equation Box -->
+  <g transform="translate(400, 410)">
+    <rect x="-360" y="-40" width="720" height="85" rx="10" fill="#f8f9fa" stroke="#ddd"/>
+    
+    <text x="-340" y="-15" class="equation-label">• Vector Addition: |ψ⟩ = α|u⟩ + β|v⟩ (Linear superposition in quantum mechanics)</text>
+    <text x="-340" y="15" class="equation-label">• Inner Product: ⟨u|v⟩ (Probability amplitude in quantum mechanics)</text>
+    <text x="-340" y="45" class="equation-label">• Projection: proj|u⟩|v⟩ = (⟨u|v⟩/⟨u|u⟩)|u⟩ (Measurement and collapse in quantum mechanics)</text>
+    
+    <rect x="140" y="-30" width="200" height="60" rx="5" fill="#fff" stroke="#ddd"/>
+    <text x="160" y="-10" class="equation-label" fill="#4c51bf">|u⟩ = (√0.8, 0.3, 0.2)</text>
+    <text x="160" y="15" class="equation-label" fill="#e53e3e">|v⟩ = (0.2, √0.7, 0.1)</text>
+    <text x="160" y="40" class="equation-label" fill="#805ad5">⟨u|v⟩ = 0.4 (not orthogonal)</text>
+  </g>
+  
+  <!-- Orthogonality Indicator -->
+  <g transform="translate(700, 300)">
+    <rect x="-80" y="-55" width="160" height="110" rx="5" fill="#f8f9fa" stroke="#ddd"/>
+    <text x="0" y="-35" class="subtitle" text-anchor="middle" font-size="16">Orthogonality</text>
+    
+    <!-- Orthogonal vectors visualization -->
+    <line x1="-55" y1="0" x2="0" y2="0" stroke="#4c51bf" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <line x1="-55" y1="0" x2="-55" y2="-45" stroke="#e53e3e" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="10" y="5" class="equation-label">⟨u|v⟩ = 0</text>
+    <text x="10" y="25" class="equation-label">Orthogonal</text>
+  </g>
+</svg> 

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="600" viewBox="0 0 600 600">
+  <style>
+    .wire { stroke: #333; stroke-width: 2; fill: none; }
+    .component { stroke: #333; stroke-width: 2; fill: white; }
+    .inductor { stroke: #333; stroke-width: 2; fill: none; }
+    .capacitor { stroke: #333; stroke-width: 2; fill: white; }
+    .resistor { stroke: #333; stroke-width: 2; fill: white; }
+    .electron { fill: #3498db; }
+    .current { stroke: #e74c3c; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    .voltage { stroke: #8e44ad; stroke-width: 2; fill: none; marker-end: url(#voltageArrow); }
+    .sine-wave { stroke: #2980b9; stroke-width: 2; fill: none; }
+    .formula { font-family: Arial; font-size: 14px; font-style: italic; }
+    .title { font-family: Arial; font-size: 20px; font-weight: bold; }
+    .subtitle { font-family: Arial; font-size: 16px; font-weight: bold; }
+    .label { font-family: Arial; font-size: 14px; }
+    .ground { stroke: #333; stroke-width: 2; }
+    .info-box { fill: #f5f5f5; stroke: #ddd; stroke-width: 1; rx: 10; ry: 10; }
+    .resonance { stroke: #27ae60; stroke-width: 2; fill: none; }
+    .phase-arrow { stroke: #e67e22; stroke-width: 2; fill: none; marker-end: url(#phaseArrow); }
+    .highlight { stroke: #e74c3c; stroke-width: 3; stroke-dasharray: 5,3; fill: none; }
+  </style>
+  
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c" />
+    </marker>
+    <marker id="voltageArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#8e44ad" />
+    </marker>
+    <marker id="phaseArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e67e22" />
+    </marker>
+    
+    <!-- Define sine wave path for reuse -->
+    <path id="sine-template" d="M0,0 C5,-10 15,-10 20,0 C25,10 35,10 40,0 C45,-10 55,-10 60,0" />
+  </defs>
+  
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Title -->
+  <text class="title" x="300" y="30" text-anchor="middle">Parallel RLC Circuit</text>
+  
+  <!-- Main Circuit -->
+  <g transform="translate(300, 200)">
+    <!-- AC Source -->
+    <circle cx="-160" cy="0" r="30" class="component"/>
+    <text class="label" x="-160" y="5" text-anchor="middle">AC</text>
+    <use xlink:href="#sine-template" transform="translate(-180,-5) scale(0.4)" class="sine-wave"/>
+    
+    <!-- Main Wires -->
+    <line x1="-130" y1="0" x2="130" y2="0" class="wire"/>
+    <line x1="-160" y1="30" x2="-160" y2="100" class="wire"/>
+    <line x1="-160" y1="100" x2="130" y2="100" class="wire"/>
+    <line x1="130" y1="0" x2="130" y2="100" class="wire"/>
+    
+    <!-- Resistor Branch -->
+    <line x1="-80" y1="0" x2="-80" y2="30" class="wire"/>
+    <rect x="-100" y="30" width="40" height="15" rx="2" class="resistor">
+      <animate attributeName="fill" 
+               dur="3s"
+               repeatCount="indefinite"
+               values="white;#ffcccc;white"
+               keyTimes="0;0.5;1"
+               calcMode="linear"/>
+    </rect>
+    <text class="label" x="-105" y="20" text-anchor="end">R</text>
+    <line x1="-80" y1="45" x2="-80" y2="100" class="wire"/>
+    
+    <!-- Current arrows -->
+    <path d="M-80,60 Q-85,70 -80,80" class="current" id="currentR">
+      <animate attributeName="d" 
+               dur="2s"
+               repeatCount="indefinite"
+               values="M-80,60 Q-85,70 -80,80;M-80,60 Q-75,70 -80,80;M-80,60 Q-85,70 -80,80"
+               keyTimes="0;0.5;1"
+               calcMode="linear"/>
+    </path>
+    <text class="label" x="-65" y="70" text-anchor="start">IR</text>
+    
+    <!-- Inductor Branch -->
+    <line x1="0" y1="0" x2="0" y2="20" class="wire"/>
+    <path d="M0,20 C5,20 5,30 0,30 C-5,30 -5,40 0,40 C5,40 5,50 0,50 C-5,50 -5,60 0,60 C5,60 5,70 0,70" class="inductor">
+      <animate attributeName="stroke-width" 
+               dur="2s"
+               repeatCount="indefinite"
+               values="2;3;2"
+               keyTimes="0;0.5;1"
+               calcMode="linear"/>
+    </path>
+    <text class="label" x="-5" y="20" text-anchor="end">L</text>
+    <line x1="0" y1="70" x2="0" y2="100" class="wire"/>
+    
+    <!-- Current arrows -->
+    <path d="M0,25 Q-5,35 0,45" class="current" id="currentL">
+      <animate attributeName="d" 
+               dur="2s"
+               repeatCount="indefinite"
+               values="M0,25 Q-5,35 0,45;M0,25 Q5,35 0,45;M0,25 Q-5,35 0,45"
+               keyTimes="0;0.5;1"
+               calcMode="linear"/>
+    </path>
+    <text class="label" x="10" y="45" text-anchor="start">IL</text>
+    
+    <!-- Capacitor Branch -->
+    <line x1="80" y1="0" x2="80" y2="35" class="wire"/>
+    <line x1="65" y1="35" x2="95" y2="35" class="capacitor"/>
+    <line x1="65" y1="45" x2="95" y2="45" class="capacitor"/>
+    <text class="label" x="60" y="25" text-anchor="end">C</text>
+    <line x1="80" y1="45" x2="80" y2="100" class="wire"/>
+    
+    <!-- Current arrows -->
+    <path d="M80,60 Q85,70 80,80" class="current" id="currentC">
+      <animate attributeName="d" 
+               dur="2s"
+               repeatCount="indefinite"
+               values="M80,60 Q85,70 80,80;M80,60 Q75,70 80,80;M80,60 Q85,70 80,80"
+               keyTimes="0;0.5;1"
+               calcMode="linear"/>
+    </path>
+    <text class="label" x="95" y="70" text-anchor="start">IC</text>
+    
+    <!-- Total Current -->
+    <path d="M-130,50 Q-120,55 -110,50" class="current" stroke="#27ae60" id="currentTotal">
+      <animate attributeName="d" 
+               dur="3s"
+               repeatCount="indefinite"
+               values="M-130,50 Q-120,55 -110,50;M-130,50 Q-120,45 -110,50;M-130,50 Q-120,55 -110,50"
+               keyTimes="0;0.5;1"
+               calcMode="linear"/>
+    </path>
+    <text class="label" x="-130" y="65" text-anchor="start" fill="#27ae60">IT</text>
+    
+    <!-- Voltage -->
+    <line x1="-160" y1="-20" x2="130" y2="-20" class="voltage" stroke-dasharray="5,3"/>
+    <text class="label" x="-20" y="-30" text-anchor="middle" fill="#8e44ad">V</text>
+    
+    <!-- Electron Animation -->
+    <g>
+      <!-- Top wire electrons -->
+      <circle class="electron" cx="-120" cy="0" r="3">
+        <animate attributeName="cx" 
+                 dur="3s"
+                 repeatCount="indefinite"
+                 values="-120;-80;0;80;120;120"
+                 keyTimes="0;0.2;0.4;0.6;0.8;1"
+                 calcMode="linear"/>
+      </circle>
+      
+      <circle class="electron" cx="-60" cy="0" r="3">
+        <animate attributeName="cx" 
+                 dur="3s"
+                 repeatCount="indefinite"
+                 values="-120;-80;0;80;120;120"
+                 keyTimes="0;0.2;0.4;0.6;0.8;1"
+                 calcMode="linear"
+                 begin="1s"/>
+      </circle>
+      
+      <!-- R branch electrons -->
+      <circle class="electron" cx="-80" cy="50" r="3">
+        <animate attributeName="cy" 
+                 dur="2s"
+                 repeatCount="indefinite"
+                 values="10;30;60;80;10"
+                 keyTimes="0;0.25;0.5;0.75;1"
+                 calcMode="linear"/>
+      </circle>
+      
+      <!-- L branch electrons -->
+      <circle class="electron" cx="0" cy="25" r="3">
+        <animate attributeName="cy" 
+                 dur="3s"
+                 repeatCount="indefinite"
+                 values="25;45;65;80;25"
+                 keyTimes="0;0.25;0.5;0.75;1"
+                 calcMode="linear"/>
+        <animate attributeName="r" 
+                 dur="3s"
+                 repeatCount="indefinite"
+                 values="3;4;3;2;3"
+                 keyTimes="0;0.25;0.5;0.75;1"
+                 calcMode="linear"/>
+      </circle>
+      
+      <!-- C branch electrons -->
+      <circle class="electron" cx="80" cy="25" r="3">
+        <animate attributeName="cy" 
+                 dur="2.5s"
+                 repeatCount="indefinite"
+                 values="25;34;38;42;50;65;80;25"
+                 keyTimes="0;0.15;0.3;0.45;0.6;0.75;0.9;1"
+                 calcMode="linear"/>
+        <animate attributeName="opacity" 
+                 dur="2.5s"
+                 repeatCount="indefinite"
+                 values="1;1;0.3;0.3;1;1;1;1"
+                 keyTimes="0;0.15;0.3;0.45;0.6;0.75;0.9;1"
+                 calcMode="linear"/>
+      </circle>
+      
+      <!-- Bottom wire electrons -->
+      <circle class="electron" cx="50" cy="100" r="3">
+        <animate attributeName="cx" 
+                 dur="3s"
+                 repeatCount="indefinite"
+                 values="120;80;0;-80;-120;-120"
+                 keyTimes="0;0.2;0.4;0.6;0.8;1"
+                 calcMode="linear"/>
+      </circle>
+      
+      <circle class="electron" cx="100" cy="100" r="3">
+        <animate attributeName="cx" 
+                 dur="3s"
+                 repeatCount="indefinite"
+                 values="120;80;0;-80;-120;-120"
+                 keyTimes="0;0.2;0.4;0.6;0.8;1"
+                 calcMode="linear"
+                 begin="1.5s"/>
+      </circle>
+    </g>
+  </g>
+  
+  <!-- Phase Diagram -->
+  <g transform="translate(150, 400)">
+    <rect x="-80" y="-60" width="160" height="120" class="info-box"/>
+    <text class="subtitle" x="0" y="-45" text-anchor="middle">Phase Relationships</text>
+    
+    <!-- Coordinate system -->
+    <line x1="-60" y1="0" x2="60" y2="0" class="wire"/>
+    <line x1="0" y1="-40" x2="0" y2="40" class="wire"/>
+    
+    <!-- Voltage vector (reference) -->
+    <line x1="0" y1="0" x2="40" y2="0" class="voltage"/>
+    <text class="label" x="35" y="-10" text-anchor="end" fill="#8e44ad">V</text>
+    
+    <!-- Current vectors -->
+    <line x1="0" y1="0" x2="30" y2="0" class="current" id="Ir">
+      <animate attributeName="x2" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="30;32;30;28;30"
+               keyTimes="0;0.25;0.5;0.75;1"
+               calcMode="linear"/>
+    </line>
+    <text class="label" x="25" y="10" text-anchor="middle" fill="#e74c3c">IR</text>
+    
+    <line x1="0" y1="0" x2="0" y2="-25" class="current" id="Il" stroke="#1abc9c">
+      <animate attributeName="y2" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="-25;-27;-25;-23;-25"
+               keyTimes="0;0.25;0.5;0.75;1"
+               calcMode="linear"/>
+    </line>
+    <text class="label" x="-10" y="-20" text-anchor="end" fill="#1abc9c">IL</text>
+    
+    <line x1="0" y1="0" x2="0" y2="25" class="current" id="Ic" stroke="#f39c12">
+      <animate attributeName="y2" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="25;27;25;23;25"
+               keyTimes="0;0.25;0.5;0.75;1"
+               calcMode="linear"/>
+    </line>
+    <text class="label" x="-10" y="20" text-anchor="end" fill="#f39c12">IC</text>
+    
+    <!-- Total current -->
+    <line x1="0" y1="0" x2="30" y2="3" class="current" id="It" stroke="#27ae60">
+      <animate attributeName="x2" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="30;32;30;28;30"
+               keyTimes="0;0.25;0.5;0.75;1"
+               calcMode="linear"/>
+      <animate attributeName="y2" 
+               dur="5s"
+               repeatCount="indefinite"
+               values="3;2;1;2;3"
+               keyTimes="0;0.25;0.5;0.75;1"
+               calcMode="linear"/>
+    </line>
+    <text class="label" x="35" y="15" text-anchor="middle" fill="#27ae60">IT</text>
+  </g>
+  
+  <!-- Impedance Formulas -->
+  <g transform="translate(450, 400)">
+    <rect x="-140" y="-60" width="280" height="120" class="info-box"/>
+    <text class="subtitle" x="0" y="-45" text-anchor="middle">Impedances</text>
+    
+    <text class="formula" x="-130" y="-20" text-anchor="start">Z<tspan baseline-shift="sub">R</tspan> = R</text>
+    <text class="formula" x="-130" y="0" text-anchor="start">Z<tspan baseline-shift="sub">L</tspan> = jωL</text>
+    <text class="formula" x="-130" y="20" text-anchor="start">Z<tspan baseline-shift="sub">C</tspan> = 1/(jωC)</text>
+    
+    <text class="formula" x="50" y="-20" text-anchor="start">Phase<tspan baseline-shift="sub">R</tspan> = 0°</text>
+    <text class="formula" x="50" y="0" text-anchor="start">Phase<tspan baseline-shift="sub">L</tspan> = +90°</text>
+    <text class="formula" x="50" y="20" text-anchor="start">Phase<tspan baseline-shift="sub">C</tspan> = -90°</text>
+  </g>
+  
+  <!-- Admittance Formulas -->
+  <g transform="translate(150, 540)">
+    <rect x="-140" y="-60" width="280" height="120" class="info-box"/>
+    <text class="subtitle" x="0" y="-45" text-anchor="middle">Admittances</text>
+    
+    <text class="formula" x="-130" y="-20" text-anchor="start">Y<tspan baseline-shift="sub">R</tspan> = 1/R</text>
+    <text class="formula" x="-130" y="0" text-anchor="start">Y<tspan baseline-shift="sub">L</tspan> = 1/(jωL)</text>
+    <text class="formula" x="-130" y="20" text-anchor="start">Y<tspan baseline-shift="sub">C</tspan> = jωC</text>
+    
+    <text class="formula" x="60" y="-20" text-anchor="start">Y<tspan baseline-shift="sub">total</tspan> = Y<tspan baseline-shift="sub">R</tspan> + Y<tspan baseline-shift="sub">L</tspan> + Y<tspan baseline-shift="sub">C</tspan></text>
+    <text class="formula" x="60" y="10" text-anchor="start">Z<tspan baseline-shift="sub">total</tspan> = 1/Y<tspan baseline-shift="sub">total</tspan></text>
+  </g>
+  
+  <!-- Resonance Formulas -->
+  <g transform="translate(450, 540)">
+    <rect x="-140" y="-60" width="280" height="120" class="info-box" stroke="#27ae60" stroke-width="2"/>
+    <text class="subtitle" x="0" y="-45" text-anchor="middle" fill="#27ae60">Resonance</text>
+    
+    <text class="formula" x="-130" y="-20" text-anchor="start">At resonance: ω<tspan baseline-shift="sub">0</tspan> = 1/√(LC)</text>
+    <text class="formula" x="-130" y="0" text-anchor="start">Y<tspan baseline-shift="sub">L</tspan> = Y<tspan baseline-shift="sub">C</tspan></text>
+    <text class="formula" x="-130" y="20" text-anchor="start">Z<tspan baseline-shift="sub">total</tspan> = R</text>
+    
+    <text class="formula" x="60" y="-10" text-anchor="start">Q = ω<tspan baseline-shift="sub">0</tspan>L/R</text>
+    <text class="formula" x="60" y="10" text-anchor="start">I<tspan baseline-shift="sub">total</tspan> in phase with V</text>
+  </g>
+  
+  <!-- Sine Wave Visual -->
+  <g transform="translate(300, 320)">
+    <!-- Axis -->
+    <line x1="-100" y1="0" x2="100" y2="0" stroke="#777" stroke-width="1"/>
+    <line x1="-100" y1="-30" x2="-100" y2="30" stroke="#777" stroke-width="1"/>
+    
+    <!-- Voltage sine wave -->
+    <path d="M-100,0 C-90,-20 -80,-20 -70,0 C-60,20 -50,20 -40,0 C-30,-20 -20,-20 -10,0 C0,20 10,20 20,0 C30,-20 40,-20 50,0 C60,20 70,20 80,0 C90,-20 100,-20 100,0" 
+          class="voltage" stroke-dasharray="none">
+      <animate attributeName="d" 
+             dur="3s"
+             repeatCount="indefinite"
+             values="M-100,0 C-90,-20 -80,-20 -70,0 C-60,20 -50,20 -40,0 C-30,-20 -20,-20 -10,0 C0,20 10,20 20,0 C30,-20 40,-20 50,0 C60,20 70,20 80,0 C90,-20 100,-20 100,0;
+                     M-100,0 C-90,20 -80,20 -70,0 C-60,-20 -50,-20 -40,0 C-30,20 -20,20 -10,0 C0,-20 10,-20 20,0 C30,20 40,20 50,0 C60,-20 70,-20 80,0 C90,20 100,20 100,0;
+                     M-100,0 C-90,-20 -80,-20 -70,0 C-60,20 -50,20 -40,0 C-30,-20 -20,-20 -10,0 C0,20 10,20 20,0 C30,-20 40,-20 50,0 C60,20 70,20 80,0 C90,-20 100,-20 100,0"
+             keyTimes="0;0.5;1"
+             calcMode="linear"/>
+    </path>
+    <text class="label" x="-110" y="-25" text-anchor="end" fill="#8e44ad">V</text>
+    
+    <!-- Current sine wave (total - in phase at resonance, slightly out of phase otherwise) -->
+    <path d="M-95,0 C-85,-18 -75,-18 -65,0 C-55,18 -45,18 -35,0 C-25,-18 -15,-18 -5,0 C5,18 15,18 25,0 C35,-18 45,-18 55,0 C65,18 75,18 85,0 C95,-18 105,-18 105,0" 
+          class="current" stroke="#27ae60" stroke-dasharray="none">
+      <animate attributeName="d" 
+             dur="3s"
+             repeatCount="indefinite"
+             values="M-95,0 C-85,-18 -75,-18 -65,0 C-55,18 -45,18 -35,0 C-25,-18 -15,-18 -5,0 C5,18 15,18 25,0 C35,-18 45,-18 55,0 C65,18 75,18 85,0 C95,-18 105,-18 105,0;
+                     M-95,0 C-85,18 -75,18 -65,0 C-55,-18 -45,-18 -35,0 C-25,18 -15,18 -5,0 C5,-18 15,-18 25,0 C35,18 45,18 55,0 C65,-18 75,-18 85,0 C95,18 105,18 105,0;
+                     M-95,0 C-85,-18 -75,-18 -65,0 C-55,18 -45,18 -35,0 C-25,-18 -15,-18 -5,0 C5,18 15,18 25,0 C35,-18 45,-18 55,0 C65,18 75,18 85,0 C95,-18 105,-18 105,0"
+             keyTimes="0;0.5;1"
+             calcMode="linear"/>
+    </path>
+    <text class="label" x="-110" y="15" text-anchor="end" fill="#27ae60">I</text>
+    
+    <!-- Phase text -->
+    <text class="label" x="0" y="40" text-anchor="middle">At Resonance: Voltage and Current in Phase</text>
+  </g>
+</svg> 

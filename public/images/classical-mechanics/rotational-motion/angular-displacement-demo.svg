@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <style type="text/css">
+      /* Rotation animation */
+      @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Animation for the object moving along the circle */
+      @keyframes moveObject {
+        0% { transform: rotate(0deg) translateX(150px); }
+        100% { transform: rotate(360deg) translateX(150px); }
+      }
+      
+      /* Animation for the velocity vector */
+      @keyframes rotateVelocity {
+        0% { transform: rotate(90deg); }
+        100% { transform: rotate(450deg); }
+      }
+      
+      /* Animation for the hand */
+      @keyframes rotateHand {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Apply animations */
+      .rotating-line {
+        transform-origin: 400px 300px;
+        animation: rotate 10s linear infinite;
+      }
+      
+      .moving-object {
+        transform-origin: 400px 300px;
+        animation: moveObject 10s linear infinite;
+      }
+      
+      .velocity-vector {
+        transform-origin: 0px 0px;
+        animation: rotateVelocity 10s linear infinite;
+      }
+      
+      .rotating-hand {
+        transform-origin: 400px 300px;
+        animation: rotateHand 10s linear infinite;
+      }
+      
+      /* Pause animations when SVG is clicked */
+      .paused {
+        animation-play-state: paused;
+      }
+      
+      /* Text styles */
+      text {
+        font-family: Arial, sans-serif;
+        text-anchor: middle;
+      }
+      
+      .title {
+        font-size: 20px;
+        fill: white;
+      }
+      
+      .subtitle {
+        font-size: 16px;
+        fill: white;
+      }
+      
+      .axis-label {
+        font-size: 16px;
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="800" height="600" fill="#1a1a2e" rx="10" ry="10" />
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Right Hand Rule for Angular Displacement</text>
+  
+  <!-- Coordinate system -->
+  <!-- X-axis -->
+  <line x1="150" y1="300" x2="650" y2="300" stroke="red" stroke-width="2" />
+  <text x="670" y="305" class="axis-label" fill="red">X</text>
+  
+  <!-- Y-axis -->
+  <line x1="400" y1="550" x2="400" y2="50" stroke="green" stroke-width="2" />
+  <text x="405" y="40" class="axis-label" fill="green">Y</text>
+  
+  <!-- Z-axis (represented with concentric circles for depth) -->
+  <circle cx="400" cy="300" r="5" fill="blue" />
+  <circle cx="400" cy="300" r="10" fill="none" stroke="blue" stroke-width="1" />
+  <circle cx="400" cy="300" r="15" fill="none" stroke="blue" stroke-width="1" stroke-dasharray="3,3" />
+  <text x="425" y="305" class="axis-label" fill="blue">Z</text>
+  
+  <!-- Rotation plane (circle) -->
+  <circle cx="400" cy="300" r="150" fill="none" stroke="#ffffff" stroke-width="2" stroke-opacity="0.3" />
+  
+  <!-- Radial line -->
+  <line x1="400" y1="300" x2="550" y2="300" stroke="#ff9900" stroke-width="2" class="rotating-line" />
+  
+  <!-- Moving object -->
+  <g class="moving-object">
+    <circle cx="550" cy="300" r="10" fill="#ff9900" />
+    
+    <!-- Tangential velocity vector -->
+    <g transform="translate(550, 300)">
+      <g class="velocity-vector">
+        <line x1="0" y1="0" x2="40" y2="0" stroke="#ff9900" stroke-width="2" />
+        <polygon points="40,0 25,-8 25,8" fill="#ff9900" stroke="#ff9900" stroke-width="1" />
+      </g>
+    </g>
+  </g>
+  
+  <!-- Angular displacement vector (along z-axis) -->
+  <g transform="translate(400, 300)">
+    <line x1="0" y1="0" x2="0" y2="-80" stroke="#00ffff" stroke-width="3" />
+    <polygon points="0,-80 -8,-65 8,-65" fill="#00ffff" stroke="#00ffff" stroke-width="1" />
+    <text x="15" y="-50" fill="#00ffff" font-size="16">ω</text>
+    <circle cx="0" cy="-100" r="15" fill="#00ffff" fill-opacity="0.2" />
+  </g>
+  
+  <!-- Right hand representation -->
+  <g class="rotating-hand" transform="translate(400, 300)">
+    <!-- Palm -->
+    <path d="M-30,-10 L30,-10 L40,60 L-40,60 Z" fill="#ffccaa" stroke="#e0a080" stroke-width="2" />
+    
+    <!-- Thumb - pointing along z-axis -->
+    <path d="M-40,0 C-50,-10 -55,-30 -45,-50 C-35,-70 -15,-60 -10,-40 L-20,0 Z" fill="#ffccaa" stroke="#e0a080" stroke-width="2" />
+    
+    <!-- Fingers - curled in direction of rotation -->
+    <path d="M-20,-10 C-15,-40 -5,-60 0,-80 C5,-100 20,-100 15,-80 L-5,-10 Z" fill="#ffccaa" stroke="#e0a080" stroke-width="2" />
+    <path d="M-5,-10 C0,-40 10,-60 15,-80 C20,-100 35,-100 30,-80 L10,-10 Z" fill="#ffccaa" stroke="#e0a080" stroke-width="2" />
+    <path d="M10,-10 C15,-40 25,-60 30,-80 C35,-100 50,-100 45,-80 L25,-10 Z" fill="#ffccaa" stroke="#e0a080" stroke-width="2" />
+    <path d="M25,-10 C30,-40 40,-60 45,-80 C50,-100 65,-100 60,-80 L40,-10 Z" fill="#ffccaa" stroke="#e0a080" stroke-width="2" />
+  </g>
+  
+  <!-- Explanatory text -->
+  <text x="400" y="540" class="subtitle">Curl fingers in direction of rotation,</text>
+  <text x="400" y="560" class="subtitle">thumb points in direction of angular displacement vector</text>
+  
+  <!-- Invisible rectangle to handle click events for pausing -->
+  <rect id="control-overlay" x="0" y="0" width="800" height="600" fill="transparent" opacity="0" onclick="toggleAnimation(evt)" />
+  
+  <!-- JavaScript to toggle animation -->
+  <script type="text/javascript"><![CDATA[
+    function toggleAnimation(evt) {
+      const svg = evt.target.ownerDocument.documentElement;
+      const elements = svg.querySelectorAll('.rotating-line, .moving-object, .velocity-vector, .rotating-hand');
+      
+      elements.forEach(el => {
+        if (el.classList.contains('paused')) {
+          el.classList.remove('paused');
+        } else {
+          el.classList.add('paused');
+        }
+      });
+    }
+  ]]></script>
+</svg>

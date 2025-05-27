@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Fundamental Principles of Photonics</text>
+  
+  <!-- Wave-Particle Duality Section -->
+  <g transform="translate(50, 80)">
+    <text x="150" y="-10" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Wave-Particle Duality</text>
+    
+    <!-- Wave representation -->
+    <path d="M 50,50 C 75,30 100,70 125,50 C 150,30 175,70 200,50 C 225,30 250,70 275,50" 
+          fill="none" stroke="#0066CC" stroke-width="2"/>
+    
+    <!-- Photon representation -->
+    <circle cx="125" cy="50" r="5" fill="#FF6600"/>
+    <circle cx="200" cy="50" r="5" fill="#FF6600"/>
+    
+    <!-- Energy equation -->
+    <text x="150" y="90" font-family="Arial" font-size="14" text-anchor="middle">E = hu03bd = hc/u03bb</text>
+    
+    <!-- Wavelength annotation -->
+    <line x1="125" y1="70" x2="200" y2="70" stroke="black" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="125" y1="65" x2="125" y2="75" stroke="black" stroke-width="1"/>
+    <line x1="200" y1="65" x2="200" y2="75" stroke="black" stroke-width="1"/>
+    <text x="162.5" y="85" font-family="Arial" font-size="12" text-anchor="middle">u03bb</text>
+  </g>
+  
+  <!-- Light-Matter Interaction Section -->
+  <g transform="translate(400, 80)">
+    <text x="150" y="-10" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Light-Matter Interaction</text>
+    
+    <!-- Material block -->
+    <rect x="100" y="20" width="100" height="60" fill="#E0E0E0" stroke="black" stroke-width="1" fill-opacity="0.5"/>
+    
+    <!-- Incident light -->
+    <line x1="50" y1="50" x2="100" y2="50" stroke="#FF0000" stroke-width="2"/>
+    <polygon points="100,50 90,45 90,55" fill="#FF0000"/>
+    
+    <!-- Transmitted light -->
+    <line x1="200" y1="50" x2="250" y2="50" stroke="#FF0000" stroke-width="2" stroke-opacity="0.5"/>
+    <polygon points="250,50 240,45 240,55" fill="#FF0000" fill-opacity="0.5"/>
+    
+    <!-- Reflected light -->
+    <line x1="100" y1="50" x2="75" y2="25" stroke="#FF0000" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <polygon points="75,25 80,35 85,25" fill="#FF0000"/>
+    
+    <!-- Refraction angle -->
+    <path d="M 100,50 A 20,20 0 0,1 115,35" fill="none" stroke="black" stroke-width="1" stroke-dasharray="2,2"/>
+    <text x="115" y="35" font-family="Arial" font-size="12">u03b8</text>
+    
+    <!-- Complex refractive index -->
+    <text x="150" y="100" font-family="Arial" font-size="14" text-anchor="middle">u00f1 = n + iu03ba</text>
+  </g>
+  
+  <!-- Maxwell's Equations Section -->
+  <g transform="translate(50, 220)">
+    <text x="150" y="-10" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Maxwell's Equations</text>
+    
+    <!-- Equations -->
+    <text x="150" y="20" font-family="Arial" font-size="14" text-anchor="middle">u2207 u00d7 u2113 = -u2202u2113/u2202t</text>
+    <text x="150" y="45" font-family="Arial" font-size="14" text-anchor="middle">u2207 u00d7 u2112 = u2112 + u2202u2113/u2202t</text>
+    <text x="150" y="70" font-family="Arial" font-size="14" text-anchor="middle">u2207 u00b7 u2113 = 0</text>
+    <text x="150" y="95" font-family="Arial" font-size="14" text-anchor="middle">u2207 u00b7 u2112 = u03c1</text>
+    
+    <!-- Wave equation -->
+    <text x="150" y="130" font-family="Arial" font-size="14" text-anchor="middle">u2207u00b2u2113 - (nu00b2/cu00b2)(u2202u00b2u2113/u2202tu00b2) = 0</text>
+  </g>
+  
+  <!-- Electromagnetic Wave Section -->
+  <g transform="translate(400, 220)">
+    <text x="150" y="-10" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Electromagnetic Wave</text>
+    
+    <!-- Coordinate system -->
+    <line x1="50" y1="100" x2="250" y2="100" stroke="black" stroke-width="1"/> <!-- x-axis -->
+    <line x1="150" y1="20" x2="150" y2="180" stroke="black" stroke-width="1"/> <!-- y-axis -->
+    <line x1="150" y1="100" x2="200" y2="50" stroke="black" stroke-width="1" stroke-dasharray="3,3"/> <!-- z-axis -->
+    
+    <text x="255" y="100" font-family="Arial" font-size="12">x</text>
+    <text x="150" y="15" font-family="Arial" font-size="12">y</text>
+    <text x="205" y="45" font-family="Arial" font-size="12">z (propagation)</text>
+    
+    <!-- Electric field wave -->
+    <path d="M 50,100 C 75,60 100,140 125,100 C 150,60 175,140 200,100 C 225,60 250,140 275,100" 
+          fill="none" stroke="#0066CC" stroke-width="2"/>
+    
+    <!-- Magnetic field wave -->
+    <path d="M 50,100 C 75,140 100,60 125,100 C 150,140 175,60 200,100 C 225,140 250,60 275,100" 
+          fill="none" stroke="#CC0066" stroke-width="2"/>
+    
+    <!-- Field labels -->
+    <text x="275" y="70" font-family="Arial" font-size="12" fill="#0066CC">E-field</text>
+    <text x="275" y="130" font-family="Arial" font-size="12" fill="#CC0066">H-field</text>
+    
+    <!-- Wave equation -->
+    <text x="150" y="200" font-family="Arial" font-size="14" text-anchor="middle">u2113(r,t) = u2113u2080eu2071(u2113u00b7u2113-u03c9t)</text>
+  </g>
+  
+  <!-- Nonlinear Optics Section -->
+  <g transform="translate(50, 370)">
+    <text x="150" y="-10" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Nonlinear Optics</text>
+    
+    <!-- Polarization equation -->
+    <text x="150" y="20" font-family="Arial" font-size="14" text-anchor="middle">P = u03b5u2080(u03c7u207du00b9u207eu2113 + u03c7u207du00b2u207eu2113u00b2 + u03c7u207du00b3u207eu2113u00b3 + ...)</text>
+    
+    <!-- Nonlinear effects diagram -->
+    <line x1="50" y1="70" x2="100" y2="70" stroke="#FF0000" stroke-width="2"/> <!-- Input u03c9 -->
+    <text x="75" y="60" font-family="Arial" font-size="12" text-anchor="middle">u03c9</text>
+    
+    <rect x="100" y="50" width="60" height="40" fill="#E0F0FF" stroke="black" stroke-width="1"/>
+    <text x="130" y="75" font-family="Arial" font-size="12" text-anchor="middle">u03c7u207du00b2u207e</text>
+    
+    <line x1="160" y1="60" x2="210" y2="60" stroke="#0000FF" stroke-width="1.5"/> <!-- Output 2u03c9 -->
+    <text x="185" y="50" font-family="Arial" font-size="12" text-anchor="middle">2u03c9</text>
+    
+    <line x1="160" y1="80" x2="210" y2="80" stroke="#FF0000" stroke-width="1.5" stroke-opacity="0.5"/> <!-- Output u03c9 -->
+    <text x="185" y="95" font-family="Arial" font-size="12" text-anchor="middle">u03c9</text>
+    
+    <text x="150" y="120" font-family="Arial" font-size="12" text-anchor="middle">Second Harmonic Generation</text>
+  </g>
+  
+  <!-- Quantum Optics Section -->
+  <g transform="translate(400, 370)">
+    <text x="150" y="-10" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Quantum Optics</text>
+    
+    <!-- Energy levels -->
+    <line x1="100" y1="100" x2="200" y2="100" stroke="black" stroke-width="2"/> <!-- Ground state -->
+    <line x1="100" y1="50" x2="200" y2="50" stroke="black" stroke-width="2"/> <!-- Excited state -->
+    
+    <text x="90" y="105" font-family="Arial" font-size="14">|0u27e9</text>
+    <text x="90" y="55" font-family="Arial" font-size="14">|1u27e9</text>
+    
+    <!-- Absorption/Emission -->
+    <line x1="125" y1="100" x2="125" y2="50" stroke="#0066CC" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <polygon points="125,50 120,60 130,60" fill="#0066CC"/>
+    <text x="115" y="75" font-family="Arial" font-size="12">au2020</text>
+    
+    <line x1="175" y1="50" x2="175" y2="100" stroke="#CC0066" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <polygon points="175,100 170,90 180,90" fill="#CC0066"/>
+    <text x="185" y="75" font-family="Arial" font-size="12">a</text>
+    
+    <!-- Qubit equation -->
+    <text x="150" y="130" font-family="Arial" font-size="14" text-anchor="middle">|u03c8u27e9 = u03b1|0u27e9 + u03b2|1u27e9</text>
+  </g>
+</svg>

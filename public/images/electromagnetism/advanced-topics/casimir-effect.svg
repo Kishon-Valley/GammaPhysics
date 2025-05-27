@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="450" viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Definitions for animations and styles -->
+    <style type="text/css">
+      .title-text { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; text-anchor: middle; }
+      .subtitle-text { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .label-text { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+      .small-text { font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+      .formula-text { font-family: Arial, sans-serif; font-size: 16px; font-style: italic; text-anchor: middle; }
+      
+      .background { fill: #f8f8ff; }
+      .plate { fill: #c0c0c0; stroke: #606060; stroke-width: 2; }
+      
+      .vacuum-outside { fill: #e6f2ff; }
+      .vacuum-inside { fill: #f0f7ff; }
+      
+      .field-mode { fill: none; stroke-width: 1.5; }
+      .field-mode-outside { stroke: #4080ff; }
+      .field-mode-inside { stroke: #80a0ff; }
+      
+      .virtual-photon { fill: #ffff60; stroke: #e0e040; stroke-width: 1; }
+      .attraction-arrow { fill: #ff6040; stroke: #802000; stroke-width: 1; }
+      
+      @keyframes modeVibrate1 {
+        0%, 100% { d: "M0,0 C20,-10 40,10 60,0 C80,-10 100,10 120,0"; }
+        50% { d: "M0,0 C20,10 40,-10 60,0 C80,10 100,-10 120,0"; }
+      }
+      
+      @keyframes modeVibrate2 {
+        0%, 100% { d: "M0,0 C10,-10 20,10 30,0 C40,-10 50,10 60,0"; }
+        50% { d: "M0,0 C10,10 20,-10 30,0 C40,10 50,-10 60,0"; }
+      }
+      
+      @keyframes modeVibrate3 {
+        0%, 100% { d: "M0,0 C6.7,-10 13.3,10 20,0 C26.7,-10 33.3,10 40,0"; }
+        50% { d: "M0,0 C6.7,10 13.3,-10 20,0 C26.7,10 33.3,-10 40,0"; }
+      }
+      
+      @keyframes fluctuate {
+        0%, 100% { opacity: 0; r: 0; }
+        50% { opacity: 1; r: 4; }
+      }
+      
+      @keyframes fluctuate-delayed {
+        0%, 30%, 70%, 100% { opacity: 0; r: 0; }
+        50% { opacity: 1; r: 4; }
+      }
+      
+      @keyframes pulseAttraction {
+        0%, 100% { opacity: 0.6; stroke-width: 1; }
+        50% { opacity: 1; stroke-width: 2; }
+      }
+      
+      @keyframes plateMove {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(-5px); }
+      }
+      
+      @keyframes plateMove2 {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(5px); }
+      }
+      
+      .mode1 {
+        animation: modeVibrate1 2s infinite ease-in-out;
+      }
+      
+      .mode2 {
+        animation: modeVibrate2 1.5s infinite ease-in-out;
+      }
+      
+      .mode3 {
+        animation: modeVibrate3 1s infinite ease-in-out;
+      }
+      
+      .photon-appear1 {
+        animation: fluctuate 2s infinite;
+      }
+      
+      .photon-appear2 {
+        animation: fluctuate-delayed 2.5s infinite;
+      }
+      
+      .photon-appear3 {
+        animation: fluctuate 3s infinite;
+      }
+      
+      .attraction {
+        animation: pulseAttraction 2s infinite;
+      }
+      
+      .plate-left {
+        animation: plateMove 4s infinite ease-in-out;
+      }
+      
+      .plate-right {
+        animation: plateMove2 4s infinite ease-in-out;
+      }
+    </style>
+    
+    <!-- Arrow marker definition -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#ff6040"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="450" class="background"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title-text">Casimir Effect</text>
+  
+  <!-- Upper diagram: Wide plate separation -->
+  <g transform="translate(200, 150)">
+    <text x="0" y="-80" class="subtitle-text">Widely Separated Plates</text>
+    
+    <!-- Vacuum region outside plates -->
+    <rect x="-150" y="-60" width="300" height="120" class="vacuum-outside"/>
+    
+    <!-- Plates -->
+    <rect x="-100" y="-60" width="10" height="120" class="plate"/>
+    <rect x="90" y="-60" width="10" height="120" class="plate"/>
+    
+    <!-- Vacuum region between plates with virtual photons -->
+    <rect x="-90" y="-60" width="180" height="120" class="vacuum-inside"/>
+    
+    <!-- Field modes with different wavelengths - outside -->
+    <g transform="translate(-150, -40)">
+      <path d="M0,0 C20,-10 40,10 60,0 C80,-10 100,10 120,0" class="field-mode field-mode-outside mode1"/>
+      <text x="60" y="20" class="small-text">λ₁</text>
+    </g>
+    
+    <g transform="translate(-150, 0)">
+      <path d="M0,0 C10,-10 20,10 30,0 C40,-10 50,10 60,0" class="field-mode field-mode-outside mode2"/>
+      <text x="30" y="20" class="small-text">λ₂</text>
+    </g>
+    
+    <g transform="translate(-150, 40)">
+      <path d="M0,0 C6.7,-10 13.3,10 20,0 C26.7,-10 33.3,10 40,0" class="field-mode field-mode-outside mode3"/>
+      <text x="20" y="20" class="small-text">λ₃</text>
+    </g>
+    
+    <!-- Field modes inside (only those fitting between plates) -->
+    <g transform="translate(-90, -40)">
+      <path d="M0,0 C20,-10 40,10 60,0 C80,-10 100,10 120,0" class="field-mode field-mode-inside mode1"/>
+    </g>
+    
+    <g transform="translate(-90, 0)">
+      <path d="M0,0 C10,-10 20,10 30,0 C40,-10 50,10 60,0" class="field-mode field-mode-inside mode2"/>
+    </g>
+    
+    <!-- Virtual photons - outside (more) -->
+    <circle cx="-130" cy="-20" r="4" class="virtual-photon photon-appear1"/>
+    <circle cx="-110" cy="30" r="4" class="virtual-photon photon-appear2"/>
+    <circle cx="120" cy="-40" r="4" class="virtual-photon photon-appear3"/>
+    <circle cx="140" cy="10" r="4" class="virtual-photon photon-appear1"/>
+    <circle cx="110" cy="50" r="4" class="virtual-photon photon-appear2"/>
+    
+    <!-- Virtual photons - inside (fewer) -->
+    <circle cx="-50" cy="-30" r="4" class="virtual-photon photon-appear2"/>
+    <circle cx="20" cy="10" r="4" class="virtual-photon photon-appear3"/>
+    <circle cx="60" cy="-10" r="4" class="virtual-photon photon-appear1"/>
+    
+    <text x="0" y="80" class="label-text">Many wavelengths allowed</text>
+  </g>
+  
+  <!-- Lower diagram: Closely spaced plates -->
+  <g transform="translate(600, 150)">
+    <text x="0" y="-80" class="subtitle-text">Closely Spaced Plates</text>
+    
+    <!-- Vacuum region outside plates -->
+    <rect x="-150" y="-60" width="300" height="120" class="vacuum-outside"/>
+    
+    <!-- Plates -->
+    <rect x="-50" y="-60" width="10" height="120" class="plate plate-left"/>
+    <rect x="40" y="-60" width="10" height="120" class="plate plate-right"/>
+    
+    <!-- Vacuum region between plates -->
+    <rect x="-40" y="-60" width="80" height="120" class="vacuum-inside"/>
+    
+    <!-- Field modes with different wavelengths - outside -->
+    <g transform="translate(-150, -40)">
+      <path d="M0,0 C20,-10 40,10 60,0 C80,-10 100,10 120,0" class="field-mode field-mode-outside mode1"/>
+    </g>
+    
+    <g transform="translate(-150, 0)">
+      <path d="M0,0 C10,-10 20,10 30,0 C40,-10 50,10 60,0" class="field-mode field-mode-outside mode2"/>
+    </g>
+    
+    <g transform="translate(-150, 40)">
+      <path d="M0,0 C6.7,-10 13.3,10 20,0 C26.7,-10 33.3,10 40,0" class="field-mode field-mode-outside mode3"/>
+    </g>
+    
+    <!-- Field modes inside (only longest wavelength fits) -->
+    <g transform="translate(-40, 0)">
+      <path d="M0,0 C20,-8 40,8 60,0" class="field-mode field-mode-inside mode1"/>
+    </g>
+    
+    <!-- Virtual photons - outside (more) -->
+    <circle cx="-130" cy="-20" r="4" class="virtual-photon photon-appear1"/>
+    <circle cx="-110" cy="30" r="4" class="virtual-photon photon-appear2"/>
+    <circle cx="90" cy="-40" r="4" class="virtual-photon photon-appear3"/>
+    <circle cx="120" cy="10" r="4" class="virtual-photon photon-appear1"/>
+    <circle cx="100" cy="50" r="4" class="virtual-photon photon-appear2"/>
+    
+    <!-- Virtual photons - inside (fewer) -->
+    <circle cx="0" cy="0" r="4" class="virtual-photon photon-appear3"/>
+    
+    <!-- Attraction arrows -->
+    <line x1="-40" y1="0" x2="-20" y2="0" class="attraction" stroke="#ff6040" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <line x1="40" y1="0" x2="20" y2="0" class="attraction" stroke="#ff6040" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <text x="0" y="80" class="label-text">Fewer modes allowed</text>
+    <text x="0" y="100" class="label-text">Attractive force develops</text>
+  </g>
+  
+  <!-- Central explanation -->
+  <g transform="translate(400, 150)">
+    <polygon points="-30,0 30,0 0,30" fill="#ff6040" class="attraction"/>
+    <text x="0" y="-20" class="label-text">Reduced vacuum</text>
+    <text x="0" y="0" class="label-text">energy between</text>
+    <text x="0" y="20" class="label-text">plates</text>
+  </g>
+  
+  <!-- Formula and explanation -->
+  <rect x="150" y="350" width="500" height="80" rx="10" fill="#ffffff" stroke="#404040" stroke-width="1"/>
+  <text x="400" y="375" class="formula-text">F/A = -π²ℏc/(240d⁴)</text>
+  <text x="400" y="400" class="small-text">Force per unit area between plates separated by distance d</text>
+  <text x="400" y="420" class="small-text">Negative sign indicates attraction</text>
+</svg> 

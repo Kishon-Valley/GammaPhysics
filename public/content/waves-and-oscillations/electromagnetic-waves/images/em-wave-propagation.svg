@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-family="Arial" font-weight="bold">
+        Electromagnetic Wave Propagation
+    </text>
+    
+    <!-- Coordinate System -->
+    <g transform="translate(100,200)">
+        <!-- Axes -->
+        <line x1="0" y1="0" x2="600" y2="0" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <line x1="0" y1="100" x2="0" y2="-100" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="590" y="20" font-size="14">z (propagation)</text>
+        <text x="-20" y="-90" font-size="14">y</text>
+        
+        <!-- Electric Field Wave (Blue) -->
+        <path d="M 0,0 Q 75,-50 150,0 T 300,0 T 450,0 T 600,0" 
+              fill="none" stroke="#2196F3" stroke-width="2"/>
+        <text x="550" y="-60" fill="#2196F3" font-size="14">E field</text>
+        
+        <!-- Magnetic Field Wave (Red) -->
+        <path d="M 0,0 Q 75,0 150,50 T 300,0 T 450,-50 T 600,0" 
+              fill="none" stroke="#F44336" stroke-width="2"/>
+        <text x="550" y="60" fill="#F44336" font-size="14">B field</text>
+        
+        <!-- Wave Properties -->
+        <path d="M 150,-50 L 150,50" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+        <text x="170" y="-70" font-size="14">λ (wavelength)</text>
+        
+        <!-- Phase Velocity -->
+        <line x1="50" y1="-80" x2="150" y2="-80" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="100" y="-90" font-size="14">c = λf</text>
+    </g>
+    
+    <!-- Properties Box -->
+    <g transform="translate(100,350)">
+        <rect x="0" y="0" width="600" height="30" fill="#f8f8f8" stroke="#ccc"/>
+        <text x="300" y="20" text-anchor="middle" font-size="14">
+            • E ⊥ B ⊥ propagation direction   • |E| = c|B|   • Energy density = ½ε₀E² = ½B²/μ₀
+        </text>
+    </g>
+    
+    <!-- Arrow marker definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+        </marker>
+    </defs>
+</svg>

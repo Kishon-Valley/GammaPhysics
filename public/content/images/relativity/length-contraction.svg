@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="500" height="300" fill="white"/>
+    
+    <!-- Rest frame ruler -->
+    <rect x="100" y="50" width="300" height="30" fill="none" stroke="black" stroke-width="2"/>
+    <text x="220" y="70" font-family="Arial" font-size="14">Rest Frame L₀</text>
+    
+    <!-- Moving frame ruler -->
+    <rect x="150" y="150" width="200" height="30" fill="none" stroke="red" stroke-width="2"/>
+    <text x="180" y="170" font-family="Arial" font-size="14">Moving Frame L = L₀/γ</text>
+    
+    <!-- Velocity arrow -->
+    <line x1="100" y1="200" x2="400" y2="200" stroke="blue" stroke-width="1"/>
+    <polygon points="400,200 390,195 390,205" fill="blue"/>
+    <text x="230" y="220" font-family="Arial" font-size="14">v = 0.866c (γ = 2)</text>
+    
+    <!-- Length markers -->
+    <line x1="100" y1="40" x2="100" y2="90" stroke="black" stroke-width="1"/>
+    <line x1="400" y1="40" x2="400" y2="90" stroke="black" stroke-width="1"/>
+    <line x1="150" y1="140" x2="150" y2="190" stroke="red" stroke-width="1"/>
+    <line x1="350" y1="140" x2="350" y2="190" stroke="red" stroke-width="1"/>
+</svg>

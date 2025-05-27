@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Metal lattice -->
+    <g id="lattice" stroke="#666" fill="#888">
+        <!-- Lattice points -->
+        <g id="lattice-points">
+            <circle cx="150" cy="150" r="8"/>
+            <circle cx="250" cy="150" r="8"/>
+            <circle cx="350" cy="150" r="8"/>
+            <circle cx="450" cy="150" r="8"/>
+            <circle cx="550" cy="150" r="8"/>
+            <circle cx="650" cy="150" r="8"/>
+            
+            <circle cx="150" cy="250" r="8"/>
+            <circle cx="250" cy="250" r="8"/>
+            <circle cx="350" cy="250" r="8"/>
+            <circle cx="450" cy="250" r="8"/>
+            <circle cx="550" cy="250" r="8"/>
+            <circle cx="650" cy="250" r="8"/>
+            
+            <!-- Vibrating lattice point -->
+            <circle cx="350" cy="150" r="8" fill="#F44336">
+                <animate attributeName="cy" 
+                         values="145;155;145" 
+                         dur="2s" 
+                         repeatCount="indefinite"/>
+            </circle>
+        </g>
+    </g>
+    
+    <!-- Electron path -->
+    <g id="electron-path">
+        <path d="M 100,200 Q 200,180 300,220 T 500,180 T 700,200" 
+              fill="none" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+        
+        <!-- Electron -->
+        <circle cx="300" cy="220" r="6" fill="#2196F3">
+            <animate attributeName="cx" 
+                     values="100;700" 
+                     dur="4s" 
+                     repeatCount="indefinite"/>
+            <animate attributeName="cy" 
+                     values="200;180;220;180;200" 
+                     dur="4s" 
+                     repeatCount="indefinite"/>
+        </circle>
+    </g>
+    
+    <!-- Electric field arrow -->
+    <g id="field-arrow">
+        <line x1="100" y1="320" x2="700" y2="320" 
+              stroke="#444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <defs>
+            <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                    refX="9" refY="3.5" orient="auto">
+                <polygon points="0 0, 10 3.5, 0 7" fill="#444"/>
+            </marker>
+        </defs>
+    </g>
+    
+    <!-- Labels -->
+    <g id="labels" font-family="Arial" text-anchor="middle">
+        <text x="400" y="50" font-size="20">Microscopic Origin of Electrical Resistance</text>
+        <text x="400" y="350" font-size="16">Electric Field Direction</text>
+        <text x="150" y="100" font-size="14">Lattice Vibrations</text>
+        <text x="650" y="100" font-size="14">Electron Scattering</text>
+    </g>
+</svg>

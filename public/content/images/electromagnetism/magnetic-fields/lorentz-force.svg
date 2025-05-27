@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <defs>
+        <!-- Background -->
+        <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+        </linearGradient>
+        
+        <!-- Arrow markers -->
+        <marker id="B-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+        <marker id="v-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+        <marker id="F-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+    </defs>
+
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="url(#bg-gradient)" />
+
+    <!-- Title -->
+    <text x="400" y="50" text-anchor="middle" fill="#000000" font-family="Arial" font-size="20" font-weight="bold">
+        Lorentz Force Law: F = qv × B
+    </text>
+
+    <!-- Coordinate system -->
+    <g transform="translate(400,300)">
+        <!-- Axes -->
+        <line x1="-200" y1="0" x2="200" y2="0" stroke="#000" stroke-width="1"/>
+        <line x1="0" y1="-200" x2="0" y2="200" stroke="#000" stroke-width="1"/>
+        <line x1="0" y1="0" x2="0" y2="-150" stroke="#000" stroke-width="1" stroke-dasharray="5,5"/>
+        
+        <!-- Axis labels -->
+        <text x="190" y="20" fill="#000">x</text>
+        <text x="-20" y="-180" fill="#000">z</text>
+        <text x="-20" y="190" fill="#000">y</text>
+    </g>
+
+    <!-- Magnetic field representation -->
+    <g transform="translate(400,300)">
+        <!-- B-field dots (coming out of screen) -->
+        <g id="b-field-dots">
+            <g transform="translate(-100,-100)">
+                <circle r="3" fill="#4CAF50"/>
+                <circle r="6" fill="none" stroke="#4CAF50">
+                    <animate attributeName="r" values="3;8;3" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="stroke-opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+                </circle>
+            </g>
+            <g transform="translate(0,-100)">
+                <circle r="3" fill="#4CAF50"/>
+                <circle r="6" fill="none" stroke="#4CAF50">
+                    <animate attributeName="r" values="3;8;3" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="stroke-opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+                </circle>
+            </g>
+            <g transform="translate(100,-100)">
+                <circle r="3" fill="#4CAF50"/>
+                <circle r="6" fill="none" stroke="#4CAF50">
+                    <animate attributeName="r" values="3;8;3" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="stroke-opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+                </circle>
+            </g>
+            <!-- Add more dots in grid pattern -->
+        </g>
+        <use href="#b-field-dots" transform="translate(0,100)"/>
+        <use href="#b-field-dots" transform="translate(0,200)"/>
+    </g>
+
+    <!-- Moving charged particle with vectors -->
+    <g transform="translate(400,300)">
+        <!-- Particle path -->
+        <path d="M -150,0 C -100,0 -50,-100 0,-100 S 50,0 100,0" 
+              fill="none" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5">
+            <animate attributeName="stroke-dashoffset" 
+                     from="1000" to="0" 
+                     dur="3s" 
+                     repeatCount="indefinite"/>
+        </path>
+
+        <!-- Particle and vectors -->
+        <g>
+            <animateMotion 
+                dur="3s"
+                repeatCount="indefinite"
+                path="M -150,0 C -100,0 -50,-100 0,-100 S 50,0 100,0">
+                <!-- Particle -->
+                <g>
+                    <circle r="10" fill="#FF5722"/>
+                    <text x="15" y="5" fill="#000" font-size="16">q</text>
+                    
+                    <!-- Velocity vector (v) -->
+                    <line x1="0" y1="0" x2="40" y2="0" stroke="#2196F3" stroke-width="2" marker-end="url(#v-arrow)"/>
+                    <text x="45" y="15" fill="#2196F3" font-size="16">v</text>
+                    
+                    <!-- Force vector (F) -->
+                    <line x1="0" y1="0" x2="0" y2="-40" stroke="#FF5722" stroke-width="2" marker-end="url(#F-arrow)"/>
+                    <text x="-15" y="-45" fill="#FF5722" font-size="16">F</text>
+                </g>
+            </animateMotion>
+        </g>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(50, 500)">
+        <text x="0" y="0" fill="#000" font-size="16" font-weight="bold">Legend:</text>
+        <g transform="translate(0, 20)">
+            <circle r="3" fill="#4CAF50"/>
+            <text x="20" y="5" fill="#4CAF50" font-size="14">B (into screen)</text>
+        </g>
+        <g transform="translate(150, 20)">
+            <line x1="0" y1="0" x2="30" y2="0" stroke="#2196F3" stroke-width="2" marker-end="url(#v-arrow)"/>
+            <text x="40" y="5" fill="#2196F3" font-size="14">Velocity (v)</text>
+        </g>
+        <g transform="translate(300, 20)">
+            <line x1="0" y1="0" x2="30" y2="0" stroke="#FF5722" stroke-width="2" marker-end="url(#F-arrow)"/>
+            <text x="40" y="5" fill="#FF5722" font-size="14">Force (F)</text>
+        </g>
+    </g>
+
+    <!-- Explanation Panel -->
+    <g transform="translate(50, 600)">
+        <rect width="700" height="80" fill="#f8f9fa" stroke="#e9ecef" stroke-width="1" rx="5"/>
+        <text x="10" y="20" fill="#000" font-family="Arial" font-size="14" font-weight="bold">
+            Lorentz Force Law Explanation:
+        </text>
+        <text x="10" y="40" fill="#000" font-family="Arial" font-size="12">
+            1. The magnetic field B (green dots) points into the screen
+        </text>
+        <text x="10" y="55" fill="#000" font-family="Arial" font-size="12">
+            2. The charged particle (q) moves with velocity v (blue vector)
+        </text>
+        <text x="10" y="70" fill="#000" font-family="Arial" font-size="12">
+            3. The resulting force F (red vector) is perpendicular to both v and B (F = qv × B)
+        </text>
+    </g>
+</svg> 

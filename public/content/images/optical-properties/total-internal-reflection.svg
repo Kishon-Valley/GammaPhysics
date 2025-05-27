@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="400" height="300" fill="white"/>
+    
+    <!-- Fiber core -->
+    <circle cx="200" cy="150" r="100" fill="none" stroke="black" stroke-width="2"/>
+    <text x="180" y="160" font-family="Arial" font-size="14">Core</text>
+    <text x="170" y="180" font-family="Arial" font-size="14">(n₁ = 1.48)</text>
+    
+    <!-- Cladding -->
+    <circle cx="200" cy="150" r="120" fill="none" stroke="blue" stroke-width="2"/>
+    <text x="330" y="150" font-family="Arial" font-size="14">Cladding</text>
+    <text x="330" y="170" font-family="Arial" font-size="14">(n₂ = 1.32)</text>
+    
+    <!-- Critical angle ray -->
+    <line x1="200" y1="150" x2="285" y2="65" stroke="red" stroke-width="2"/>
+    <text x="250" y="80" font-family="Arial" font-size="14">θc</text>
+    
+    <!-- Reflected ray -->
+    <line x1="200" y1="150" x2="285" y2="235" stroke="red" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <!-- Acceptance cone -->
+    <path d="M 200,150 L 300,50 A 150,150 0 0 1 300,250 Z" fill="rgba(255,255,0,0.1)" stroke="orange" stroke-width="1"/>
+    <text x="320" y="200" font-family="Arial" font-size="14">Acceptance</text>
+    <text x="320" y="220" font-family="Arial" font-size="14">cone</text>
+</svg>

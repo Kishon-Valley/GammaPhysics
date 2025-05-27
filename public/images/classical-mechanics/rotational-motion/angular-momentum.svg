@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="300" viewBox="0 0 600 300">
+  <!-- Add white background as the first element after the opening svg tag -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Title -->
+  <text x="150" y="30" font-size="16" font-weight="bold">Conservation of Angular Momentum</text>
+  
+  <!-- Figure Skater - Arms Extended -->
+  <g transform="translate(150,150)">
+    <!-- Body -->
+    <circle cx="0" cy="-50" r="15" fill="#FFD700"/> <!-- Head -->
+    <line x1="0" y1="-35" x2="0" y2="20" stroke="black" stroke-width="4"/> <!-- Body -->
+    <line x1="-60" y1="-20" x2="60" y2="-20" stroke="black" stroke-width="4"/> <!-- Arms -->
+    <line x1="-15" y1="20" x2="-15" y2="70" stroke="black" stroke-width="4"/> <!-- Left leg -->
+    <line x1="15" y1="20" x2="15" y2="70" stroke="black" stroke-width="4"/> <!-- Right leg -->
+    
+    <!-- Rotation arrows -->
+    <path d="M -80,0 A 80,80 0 0 1 80,0" fill="none" stroke="blue" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="-20" y="-80" fill="blue" font-size="14">ω₁</text>
+    
+    <!-- Labels -->
+    <text x="0" y="100" text-anchor="middle" font-size="14">Extended (I₁)</text>
+  </g>
+  
+  <!-- Arrow -->
+  <g transform="translate(300,150)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Figure Skater - Arms In -->
+  <g transform="translate(450,150)">
+    <!-- Body -->
+    <circle cx="0" cy="-50" r="15" fill="#FFD700"/> <!-- Head -->
+    <line x1="0" y1="-35" x2="0" y2="20" stroke="black" stroke-width="4"/> <!-- Body -->
+    <line x1="-20" y1="-20" x2="20" y2="-20" stroke="black" stroke-width="4"/> <!-- Arms -->
+    <line x1="-15" y1="20" x2="-15" y2="70" stroke="black" stroke-width="4"/> <!-- Left leg -->
+    <line x1="15" y1="20" x2="15" y2="70" stroke="black" stroke-width="4"/> <!-- Right leg -->
+    
+    <!-- Rotation arrows -->
+    <path d="M -80,0 A 80,80 0 0 1 80,0" fill="none" stroke="red" stroke-width="2"/>
+    <text x="-20" y="-80" fill="red" font-size="14">ω₂</text>
+    
+    <!-- Labels -->
+    <text x="0" y="100" text-anchor="middle" font-size="14">Compact (I₂)</text>
+  </g>
+  
+  <!-- Equation -->
+  <text x="150" y="270" font-size="16" text-anchor="middle">I₁ω₁ = I₂ω₂</text>
+  
+  <!-- Arrowhead marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+    </marker>
+  </defs>
+</svg>

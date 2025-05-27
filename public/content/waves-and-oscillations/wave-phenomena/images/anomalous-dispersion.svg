@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+    
+    <!-- Coordinate System -->
+    <line x1="100" y1="400" x2="700" y2="400" stroke="black" stroke-width="2"/>
+    <line x1="100" y1="400" x2="100" y2="100" stroke="black" stroke-width="2"/>
+    
+    <!-- Axis Labels -->
+    <text x="400" y="440" text-anchor="middle" font-size="20" font-family="Arial">Frequency (ω)</text>
+    <text x="50" y="250" text-anchor="middle" font-size="20" font-family="Arial" transform="rotate(-90,50,250)">Refractive Index (n)</text>
+    
+    <!-- Resonance Region -->
+    <path d="M 350,350 Q 400,100 450,350" stroke="#FF5722" stroke-width="4" fill="none"/>
+    
+    <!-- Anomalous Dispersion Equation -->
+    <text x="400" y="80" text-anchor="middle" font-family="Arial" font-size="18">
+        dn/dω < 0 (Anomalous Dispersion Region)
+    </text>
+    
+    <!-- Resonance Frequency -->
+    <line x1="400" y1="395" x2="400" y2="405" stroke="black" stroke-width="2"/>
+    <text x="400" y="425" font-size="16" text-anchor="middle">ω₀ (Resonance)</text>
+    
+    <!-- Absorption Band -->
+    <path d="M 350,450 Q 400,470 450,450" stroke="#666" stroke-width="2" fill="none"/>
+    <text x="400" y="480" font-size="14" text-anchor="middle">Absorption Band</text>
+    
+    <!-- Key Features -->
+    <text x="150" y="150" font-family="Arial" font-size="16" fill="#666">Normal Region</text>
+    <text x="600" y="150" font-family="Arial" font-size="16" fill="#666">Normal Region</text>
+    
+    <!-- Physical Explanation -->
+    <text x="150" y="200" font-family="Arial" font-size="14" fill="#666">
+        Strong interaction with
+    </text>
+    <text x="150" y="220" font-family="Arial" font-size="14" fill="#666">
+        material resonances
+    </text>
+    
+    <!-- Phase Relationship -->
+    <text x="600" y="200" font-family="Arial" font-size="14" fill="#666">
+        Phase shift between
+    </text>
+    <text x="600" y="220" font-family="Arial" font-size="14" fill="#666">
+        driving force and response
+    </text>
+    
+    <!-- Arrows indicating slope -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+    </defs>
+    <line x1="380" y1="250" x2="420" y2="250" 
+          stroke="#FF5722" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="380" y="240" font-family="Arial" font-size="14" fill="#FF5722">
+        Negative slope
+    </text>
+</svg>

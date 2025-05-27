@@ -1,0 +1,304 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 500" width="100%" height="auto">
+  <!-- Styles -->
+  <style>
+    text { font-family: Arial, sans-serif; }
+    .title { font-size: 20px; font-weight: bold; text-anchor: middle; }
+    .subtitle { font-size: 16px; text-anchor: middle; }
+    .axis-label { font-size: 14px; text-anchor: middle; }
+    .value-label { font-size: 14px; text-anchor: middle; }
+    .triangle-label { font-size: 14px; }
+    .slider-label { font-size: 14px; text-anchor: end; }
+    .slider-value { font-size: 14px; text-anchor: start; }
+    .formula { font-size: 14px; font-style: italic; }
+    .desc-text { font-size: 14px; text-anchor: start; }
+  </style>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" class="title">Impedance Triangle</text>
+  <text x="400" y="55" class="subtitle">Z = R + jX (Complex Impedance)</text>
+  
+  <!-- Formulas -->
+  <text x="400" y="80" class="formula">|Z| = √(R² + X²), θ = tan⁻¹(X/R)</text>
+
+  <!-- Complex plane -->
+  <g id="complexPlane" transform="translate(400, 250)">
+    <!-- Axes -->
+    <line x1="-200" y1="0" x2="200" y2="0" stroke="black" stroke-width="1.5"/>
+    <line x1="0" y1="150" x2="0" y2="-150" stroke="black" stroke-width="1.5"/>
+    
+    <!-- Axis labels -->
+    <text x="190" y="20" class="axis-label">Real (R)</text>
+    <text x="-20" y="-140" class="axis-label">Imaginary (X)</text>
+    
+    <!-- Grid (light) -->
+    <line x1="-200" y1="50" x2="200" y2="50" stroke="#eee" stroke-width="1"/>
+    <line x1="-200" y1="100" x2="200" y2="100" stroke="#eee" stroke-width="1"/>
+    <line x1="-200" y1="-50" x2="200" y2="-50" stroke="#eee" stroke-width="1"/>
+    <line x1="-200" y1="-100" x2="200" y2="-100" stroke="#eee" stroke-width="1"/>
+    <line x1="50" y1="-150" x2="50" y2="150" stroke="#eee" stroke-width="1"/>
+    <line x1="100" y1="-150" x2="100" y2="150" stroke="#eee" stroke-width="1"/>
+    <line x1="150" y1="-150" x2="150" y2="150" stroke="#eee" stroke-width="1"/>
+    <line x1="-50" y1="-150" x2="-50" y2="150" stroke="#eee" stroke-width="1"/>
+    <line x1="-100" y1="-150" x2="-100" y2="150" stroke="#eee" stroke-width="1"/>
+    <line x1="-150" y1="-150" x2="-150" y2="150" stroke="#eee" stroke-width="1"/>
+    
+    <!-- The impedance triangle will be drawn here dynamically -->
+    <line id="resistanceLine" x1="0" y1="0" x2="100" y2="0" stroke="#4285F4" stroke-width="3"/>
+    <line id="reactanceLine" x1="100" y1="0" x2="100" y2="50" stroke="#EA4335" stroke-width="3"/>
+    <line id="impedanceLine" x1="0" y1="0" x2="100" y2="50" stroke="#34A853" stroke-width="3"/>
+    
+    <!-- Right angle marker -->
+    <path id="rightAngle" d="M 100,0 L 105,0 L 105,5 L 100,5 Z" fill="none" stroke="black" stroke-width="1"/>
+    
+    <!-- Labels for triangle sides -->
+    <text id="resistanceValue" x="50" y="20" class="triangle-label" text-anchor="middle" fill="#4285F4">R = 100Ω</text>
+    <text id="reactanceValue" x="120" y="25" class="triangle-label" text-anchor="start" fill="#EA4335">X = 50Ω</text>
+    <text id="impedanceValue" x="60" y="-20" class="triangle-label" text-anchor="middle" fill="#34A853">|Z| = 112Ω</text>
+    
+    <!-- Phase angle arc and label -->
+    <path id="angleArc" d="M 30,0 A 30,30 0 0,0 26,15" fill="none" stroke="#FBBC05" stroke-width="2"/>
+    <text id="angleValue" x="40" y="15" class="triangle-label" fill="#FBBC05">θ = 26.6°</text>
+    
+    <!-- Vector dot -->
+    <circle id="impedanceDot" cx="100" cy="50" r="5" fill="#34A853"/>
+  </g>
+  
+  <!-- Sliders -->
+  <g transform="translate(0, 400)">
+    <!-- Resistance slider -->
+    <line x1="250" y1="0" x2="550" y2="0" stroke="#888" stroke-width="2"/>
+    <text x="240" y="5" class="slider-label">Resistance (R):</text>
+    <text id="resistanceSliderValue" x="560" y="5" class="slider-value">100Ω</text>
+    <circle id="resistanceSlider" cx="400" cy="0" r="8" fill="#4285F4" stroke="white" stroke-width="2"/>
+    
+    <!-- Reactance slider -->
+    <line x1="250" y1="30" x2="550" y2="30" stroke="#888" stroke-width="2"/>
+    <text x="240" y="35" class="slider-label">Reactance (X):</text>
+    <text id="reactanceSliderValue" x="560" y="35" class="slider-value">50Ω</text>
+    <circle id="reactanceSlider" cx="375" cy="30" r="8" fill="#EA4335" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- Component types selector -->
+  <g transform="translate(650, 180)">
+    <text x="0" y="0" class="desc-text" font-weight="bold">Reactive Component:</text>
+    <g id="inductorOption" transform="translate(0, 20)">
+      <circle cx="10" cy="0" r="8" fill="#EA4335" stroke="white" stroke-width="1"/>
+      <text x="25" y="5" class="desc-text">Inductor (XL)</text>
+    </g>
+    <g id="capacitorOption" transform="translate(0, 45)">
+      <circle cx="10" cy="0" r="8" fill="white" stroke="#EA4335" stroke-width="2"/>
+      <text x="25" y="5" class="desc-text">Capacitor (XC)</text>
+    </g>
+  </g>
+  
+  <!-- Description box -->
+  <g transform="translate(600, 250)">
+    <rect x="0" y="0" width="190" height="130" rx="5" fill="#f8f9fa" stroke="#ddd"/>
+    <text x="10" y="20" class="desc-text" font-weight="bold">Impedance Components:</text>
+    <text x="10" y="45" class="desc-text">• R: Energy dissipation</text>
+    <text x="10" y="70" class="desc-text">• X: Energy storage</text>
+    <text x="10" y="95" class="desc-text">• |Z|: Total opposition</text>
+    <text x="10" y="120" class="desc-text">• θ: Phase angle</text>
+  </g>
+  
+  <!-- Animation script -->
+  <script type="text/ecmascript"><![CDATA[
+    // SVG elements
+    const resistanceSlider = document.getElementById('resistanceSlider');
+    const reactanceSlider = document.getElementById('reactanceSlider');
+    const resistanceLine = document.getElementById('resistanceLine');
+    const reactanceLine = document.getElementById('reactanceLine');
+    const impedanceLine = document.getElementById('impedanceLine');
+    const rightAngle = document.getElementById('rightAngle');
+    const impedanceDot = document.getElementById('impedanceDot');
+    const angleArc = document.getElementById('angleArc');
+    
+    const resistanceValue = document.getElementById('resistanceValue');
+    const reactanceValue = document.getElementById('reactanceValue');
+    const impedanceValue = document.getElementById('impedanceValue');
+    const angleValue = document.getElementById('angleValue');
+    
+    const resistanceSliderValue = document.getElementById('resistanceSliderValue');
+    const reactanceSliderValue = document.getElementById('reactanceSliderValue');
+    
+    const inductorOption = document.getElementById('inductorOption');
+    const capacitorOption = document.getElementById('capacitorOption');
+    
+    // Initial values and constants
+    let resistance = 100;
+    let reactance = 50;
+    let isInductive = true;
+    
+    const minR = 0;
+    const maxR = 200;
+    const minX = 0;
+    const maxX = 150;
+    
+    const sliderMinX = 250;
+    const sliderMaxX = 550;
+    
+    // Convert component values to coordinates
+    function updateTriangle() {
+      const signedReactance = isInductive ? reactance : -reactance;
+      
+      // Update lines
+      resistanceLine.setAttribute('x2', resistance);
+      reactanceLine.setAttribute('x1', resistance);
+      reactanceLine.setAttribute('x2', resistance);
+      reactanceLine.setAttribute('y2', -signedReactance);
+      impedanceLine.setAttribute('x2', resistance);
+      impedanceLine.setAttribute('y2', -signedReactance);
+      
+      // Update right angle marker
+      rightAngle.setAttribute('d', `M ${resistance-5},0 L ${resistance},0 L ${resistance},-5 L ${resistance-5},-5 Z`);
+      
+      // Update dot
+      impedanceDot.setAttribute('cx', resistance);
+      impedanceDot.setAttribute('cy', -signedReactance);
+      
+      // Calculate impedance magnitude and phase angle
+      const magnitude = Math.sqrt(resistance * resistance + reactance * reactance);
+      const angle = Math.atan2(signedReactance, resistance) * 180 / Math.PI;
+      
+      // Update angle arc
+      const arcRadius = 30;
+      const arcEndX = arcRadius * Math.cos(angle * Math.PI / 180);
+      const arcEndY = -arcRadius * Math.sin(angle * Math.PI / 180);
+      
+      // Use different sweep flag based on whether reactance is positive or negative
+      const sweepFlag = signedReactance >= 0 ? 0 : 1;
+      
+      angleArc.setAttribute('d', `M ${arcRadius},0 A ${arcRadius},${arcRadius} 0 0,${sweepFlag} ${arcEndX},${arcEndY}`);
+      
+      // Update labels
+      resistanceValue.setAttribute('x', resistance / 2);
+      resistanceValue.textContent = `R = ${resistance}Ω`;
+      
+      reactanceValue.setAttribute('x', resistance + 20);
+      reactanceValue.setAttribute('y', -signedReactance / 2);
+      reactanceValue.textContent = `${isInductive ? 'XL' : 'XC'} = ${reactance}Ω`;
+      
+      // Position impedance label along the impedance line
+      const impedanceLabelX = resistance / 2;
+      const impedanceLabelY = -signedReactance / 2 - 20;
+      impedanceValue.setAttribute('x', impedanceLabelX);
+      impedanceValue.setAttribute('y', impedanceLabelY);
+      impedanceValue.textContent = `|Z| = ${Math.round(magnitude)}Ω`;
+      
+      // Update angle label position and value
+      const angleLabelDistance = 40;
+      const angleLabelX = angleLabelDistance * Math.cos(angle * Math.PI / 360);
+      const angleLabelY = -angleLabelDistance * Math.sin(angle * Math.PI / 360);
+      angleValue.setAttribute('x', angleLabelX);
+      angleValue.setAttribute('y', angleLabelY);
+      angleValue.textContent = `θ = ${Math.abs(angle).toFixed(1)}°`;
+      
+      // Update slider value displays
+      resistanceSliderValue.textContent = `${resistance}Ω`;
+      reactanceSliderValue.textContent = `${reactance}Ω`;
+    }
+    
+    // Convert slider position to component value
+    function sliderToResistance(x) {
+      return minR + (x - sliderMinX) * (maxR - minR) / (sliderMaxX - sliderMinX);
+    }
+    
+    function sliderToReactance(x) {
+      return minX + (x - sliderMinX) * (maxX - minX) / (sliderMaxX - sliderMinX);
+    }
+    
+    // Convert component value to slider position
+    function resistanceToSlider(r) {
+      return sliderMinX + (r - minR) * (sliderMaxX - sliderMinX) / (maxR - minR);
+    }
+    
+    function reactanceToSlider(x) {
+      return sliderMinX + (x - minX) * (sliderMaxX - sliderMinX) / (maxX - minX);
+    }
+    
+    // Handle slider drag
+    let isDraggingResistance = false;
+    let isDraggingReactance = false;
+    
+    resistanceSlider.addEventListener('mousedown', startDragResistance);
+    resistanceSlider.addEventListener('touchstart', startDragResistance);
+    
+    reactanceSlider.addEventListener('mousedown', startDragReactance);
+    reactanceSlider.addEventListener('touchstart', startDragReactance);
+    
+    function startDragResistance(e) {
+      e.preventDefault();
+      isDraggingResistance = true;
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('touchmove', drag);
+      document.addEventListener('mouseup', endDrag);
+      document.addEventListener('touchend', endDrag);
+    }
+    
+    function startDragReactance(e) {
+      e.preventDefault();
+      isDraggingReactance = true;
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('touchmove', drag);
+      document.addEventListener('mouseup', endDrag);
+      document.addEventListener('touchend', endDrag);
+    }
+    
+    function drag(e) {
+      if (!isDraggingResistance && !isDraggingReactance) return;
+      
+      let clientX;
+      if (e.type === 'touchmove') {
+        clientX = e.touches[0].clientX;
+      } else {
+        clientX = e.clientX;
+      }
+      
+      const svgRect = resistanceSlider.ownerSVGElement.getBoundingClientRect();
+      let mouseX = clientX - svgRect.left;
+      
+      // Constrain x position to slider range
+      mouseX = Math.max(sliderMinX, Math.min(sliderMaxX, mouseX));
+      
+      if (isDraggingResistance) {
+        resistanceSlider.setAttribute('cx', mouseX);
+        resistance = Math.round(sliderToResistance(mouseX));
+      } else if (isDraggingReactance) {
+        reactanceSlider.setAttribute('cx', mouseX);
+        reactance = Math.round(sliderToReactance(mouseX));
+      }
+      
+      updateTriangle();
+    }
+    
+    function endDrag() {
+      isDraggingResistance = false;
+      isDraggingReactance = false;
+      document.removeEventListener('mousemove', drag);
+      document.removeEventListener('touchmove', drag);
+      document.removeEventListener('mouseup', endDrag);
+      document.removeEventListener('touchend', endDrag);
+    }
+    
+    // Handle component type toggling
+    inductorOption.addEventListener('click', () => {
+      isInductive = true;
+      inductorOption.firstElementChild.setAttribute('fill', '#EA4335');
+      capacitorOption.firstElementChild.setAttribute('fill', 'white');
+      updateTriangle();
+    });
+    
+    capacitorOption.addEventListener('click', () => {
+      isInductive = false;
+      inductorOption.firstElementChild.setAttribute('fill', 'white');
+      capacitorOption.firstElementChild.setAttribute('fill', '#EA4335');
+      updateTriangle();
+    });
+    
+    // Initialize display
+    updateTriangle();
+  ]]></script>
+</svg> 

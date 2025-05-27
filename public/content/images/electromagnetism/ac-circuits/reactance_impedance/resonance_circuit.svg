@@ -1,0 +1,437 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 500" width="100%" height="auto">
+    <!-- Styles -->
+    <style>
+        text { font-family: Arial, sans-serif; }
+        .title { font-size: 20px; font-weight: bold; text-anchor: middle; }
+        .subtitle { font-size: 16px; text-anchor: middle; }
+        .axis-label { font-size: 14px; text-anchor: middle; }
+        .component-label { font-size: 14px; }
+        .value-label { font-size: 12px; }
+        .curve { fill: none; stroke-width: 2.5; }
+        .component { stroke: black; stroke-width: 1.5; }
+        .grid { stroke: #ddd; stroke-width: 0.5; }
+        .tick { stroke: black; stroke-width: 1; }
+        .slider-track { fill: #e0e0e0; stroke: #999; stroke-width: 1; }
+        .slider-thumb { fill: white; stroke: #666; stroke-width: 1.5; cursor: pointer; }
+    </style>
+
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" class="title">Series RLC Circuit Resonance</text>
+    <text x="400" y="55" class="subtitle">Impedance and Phase Response vs. Frequency</text>
+
+    <!-- Circuit Diagram (Top Left) -->
+    <g transform="translate(200, 170)">
+        <rect x="-160" y="-100" width="320" height="200" fill="#f8f9fa" stroke="#ddd" rx="5"/>
+        <text x="0" y="-80" class="subtitle">Series RLC Circuit</text>
+        
+        <!-- Source -->
+        <circle cx="-120" cy="0" r="4" fill="black"/>
+        <circle cx="-120" cy="60" r="4" fill="black"/>
+        <path d="M -120,-30 A 15,15 0 0 1 -120,30" fill="none" class="component"/>
+        <path d="M -140,-30 A 15,15 0 0 0 -140,30" fill="none" class="component"/>
+        <line x1="-120" y1="-30" x2="-120" y2="-50" class="component"/>
+        <line x1="-120" y1="30" x2="-120" y2="60" class="component"/>
+        <text x="-150" y="0" class="component-label" text-anchor="end">V∠0°</text>
+
+        <!-- Resistor -->
+        <line x1="-120" y1="-50" x2="-60" y2="-50" class="component"/>
+        <path d="M -60,-50 L -60,-60 -50,-60 -50,-40 -40,-40 -40,-60 -30,-60 -30,-40 -20,-40 -20,-50" fill="none" class="component"/>
+        <text x="-40" y="-70" class="component-label" text-anchor="middle">R</text>
+        <text id="resistorValue" x="-40" y="-85" class="value-label" text-anchor="middle">100 Ω</text>
+
+        <!-- Inductor -->
+        <line x1="-20" y1="-50" x2="0" y2="-50" class="component"/>
+        <path d="M 0,-50 C 5,-50 5,-40 10,-40 S 15,-50 20,-50 S 25,-40 30,-40 S 35,-50 40,-50 S 45,-40 50,-40 S 55,-50 60,-50" fill="none" class="component"/>
+        <text x="30" y="-70" class="component-label" text-anchor="middle">L</text>
+        <text id="inductorValue" x="30" y="-85" class="value-label" text-anchor="middle">100 mH</text>
+
+        <!-- Capacitor -->
+        <line x1="60" y1="-50" x2="80" y2="-50" class="component"/>
+        <line x1="80" y1="-70" x2="80" y2="-30" class="component"/>
+        <line x1="90" y1="-70" x2="90" y2="-30" class="component"/>
+        <line x1="90" y1="-50" x2="120" y2="-50" class="component"/>
+        <text x="85" y="-70" class="component-label" text-anchor="middle">C</text>
+        <text id="capacitorValue" x="85" y="-85" class="value-label" text-anchor="middle">25 μF</text>
+
+        <!-- Wire returning to source -->
+        <line x1="120" y1="-50" x2="120" y2="60" class="component"/>
+        <line x1="120" y1="60" x2="-120" y2="60" class="component"/>
+        
+        <!-- Current direction -->
+        <line x1="0" y1="25" x2="40" y2="25" stroke="#EA4335" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="20" y="45" class="component-label" text-anchor="middle" fill="#EA4335">I</text>
+        
+        <!-- Resonant frequency display -->
+        <text x="0" y="80" class="component-label" text-anchor="middle">Resonant Frequency (f₀):</text>
+        <text id="resonantFreq" x="130" y="80" class="component-label" text-anchor="start">318.3 Hz</text>
+    </g>
+
+    <!-- Impedance Graph (Bottom Left) -->
+    <g transform="translate(200, 350)">
+        <rect x="-160" y="-60" width="320" height="140" fill="#f8f9fa" stroke="#ddd" rx="5"/>
+        <text x="0" y="-40" class="subtitle">Impedance vs. Frequency</text>
+        
+        <!-- Axes -->
+        <line x1="-140" y1="60" x2="140" y2="60" class="component"/>
+        <line x1="-140" y1="-20" x2="-140" y2="60" class="component"/>
+        
+        <!-- Axis labels -->
+        <text x="0" y="80" class="axis-label">Frequency (Hz)</text>
+        <text x="-155" y="20" class="axis-label" transform="rotate(-90,-155,20)">|Z| (Ω)</text>
+        
+        <!-- Ticks -->
+        <line x1="-140" y1="60" x2="-140" y2="63" class="tick"/>
+        <line x1="-70" y1="60" x2="-70" y2="63" class="tick"/>
+        <line x1="0" y1="60" x2="0" y2="63" class="tick"/>
+        <line x1="70" y1="60" x2="70" y2="63" class="tick"/>
+        <line x1="140" y1="60" x2="140" y2="63" class="tick"/>
+        
+        <text id="freqTick1" x="-140" y="75" class="value-label" text-anchor="middle">0</text>
+        <text id="freqTick2" x="-70" y="75" class="value-label" text-anchor="middle">159</text>
+        <text id="freqTick3" x="0" y="75" class="value-label" text-anchor="middle">318</text>
+        <text id="freqTick4" x="70" y="75" class="value-label" text-anchor="middle">477</text>
+        <text id="freqTick5" x="140" y="75" class="value-label" text-anchor="middle">636</text>
+        
+        <!-- Vertical ticks -->
+        <line x1="-140" y1="-20" x2="-143" y2="-20" class="tick"/>
+        <line x1="-140" y1="20" x2="-143" y2="20" class="tick"/>
+        <line x1="-140" y1="60" x2="-143" y2="60" class="tick"/>
+        
+        <text id="impedanceTick1" x="-148" y="-20" class="value-label" text-anchor="end">200</text>
+        <text id="impedanceTick2" x="-148" y="20" class="value-label" text-anchor="end">100</text>
+        <text id="impedanceTick3" x="-148" y="60" class="value-label" text-anchor="end">0</text>
+        
+        <!-- Impedance curve -->
+        <path id="impedanceCurve" d="M -140,20 L -70,50 L 0,20 L 70,50 L 140,20" class="curve" stroke="#4285F4"/>
+        
+        <!-- Resonance indicator -->
+        <line id="resonanceMarker" x1="0" y1="-20" x2="0" y2="60" stroke="#FBBC05" stroke-width="1" stroke-dasharray="3,2"/>
+        <circle id="resonancePoint" cx="0" cy="20" r="4" fill="#FBBC05"/>
+    </g>
+
+    <!-- Phase Graph (Top Right) -->
+    <g transform="translate(600, 170)">
+        <rect x="-160" y="-100" width="320" height="200" fill="#f8f9fa" stroke="#ddd" rx="5"/>
+        <text x="0" y="-80" class="subtitle">Phase Angle vs. Frequency</text>
+        
+        <!-- Axes -->
+        <line x1="-140" y1="0" x2="140" y2="0" class="component"/>
+        <line x1="-140" y1="-80" x2="-140" y2="80" class="component"/>
+        
+        <!-- Axis labels -->
+        <text x="0" y="100" class="axis-label">Frequency (Hz)</text>
+        <text x="-155" y="0" class="axis-label" transform="rotate(-90,-155,0)">Phase Angle (°)</text>
+        
+        <!-- Ticks -->
+        <line x1="-140" y1="0" x2="-143" y2="0" class="tick"/>
+        <line x1="-140" y1="-40" x2="-143" y2="-40" class="tick"/>
+        <line x1="-140" y1="-80" x2="-143" y2="-80" class="tick"/>
+        <line x1="-140" y1="40" x2="-143" y2="40" class="tick"/>
+        <line x1="-140" y1="80" x2="-143" y2="80" class="tick"/>
+        
+        <text x="-148" y="-80" class="value-label" text-anchor="end">+90°</text>
+        <text x="-148" y="-40" class="value-label" text-anchor="end">+45°</text>
+        <text x="-148" y="0" class="value-label" text-anchor="end">0°</text>
+        <text x="-148" y="40" class="value-label" text-anchor="end">-45°</text>
+        <text x="-148" y="80" class="value-label" text-anchor="end">-90°</text>
+        
+        <!-- Horizontal ticks -->
+        <line x1="-140" y1="0" x2="-140" y2="3" class="tick"/>
+        <line x1="-70" y1="0" x2="-70" y2="3" class="tick"/>
+        <line x1="0" y1="0" x2="0" y2="3" class="tick"/>
+        <line x1="70" y1="0" x2="70" y2="3" class="tick"/>
+        <line x1="140" y1="0" x2="140" y2="3" class="tick"/>
+        
+        <text x="-140" y="15" class="value-label" text-anchor="middle">0</text>
+        <text x="-70" y="15" class="value-label" text-anchor="middle">159</text>
+        <text x="0" y="15" class="value-label" text-anchor="middle">318</text>
+        <text x="70" y="15" class="value-label" text-anchor="middle">477</text>
+        <text x="140" y="15" class="value-label" text-anchor="middle">636</text>
+        
+        <!-- Phase curve -->
+        <path id="phaseCurve" d="M -140,-80 L -70,-40 L 0,0 L 70,40 L 140,80" class="curve" stroke="#34A853"/>
+        
+        <!-- Resonance indicator -->
+        <line id="phaseResonanceMarker" x1="0" y1="-80" x2="0" y2="80" stroke="#FBBC05" stroke-width="1" stroke-dasharray="3,2"/>
+        <circle id="phaseResonancePoint" cx="0" cy="0" r="4" fill="#FBBC05"/>
+        
+        <!-- Phase explanation -->
+        <text x="-120" y="-60" class="component-label" fill="#34A853">Inductive (+θ)</text>
+        <text x="120" y="60" class="component-label" text-anchor="end" fill="#34A853">Capacitive (-θ)</text>
+    </g>
+
+    <!-- Impedance Triangle (Bottom Right) -->
+    <g transform="translate(600, 350)">
+        <rect x="-160" y="-60" width="320" height="140" fill="#f8f9fa" stroke="#ddd" rx="5"/>
+        <text x="0" y="-40" class="subtitle">Impedance Triangle</text>
+        
+        <!-- Triangle container -->
+        <g id="impedanceTriangle" transform="translate(0, 10)">
+            <!-- Will be dynamically updated by script -->
+            <line id="resistanceVector" x1="0" y1="0" x2="100" y2="0" stroke="#666" stroke-width="2"/>
+            <line id="reactanceVector" x1="100" y1="0" x2="100" y2="-50" stroke="#34A853" stroke-width="2"/>
+            <line id="impedanceVector" x1="0" y1="0" x2="100" y2="-50" stroke="#4285F4" stroke-width="2.5"/>
+            
+            <text id="resistanceLabel" x="50" y="15" class="component-label" text-anchor="middle">R = 100 Ω</text>
+            <text id="reactanceLabel" x="120" y="-25" class="component-label" text-anchor="start">X = -50 Ω</text>
+            <text id="impedanceLabel" x="30" y="-40" class="component-label" text-anchor="start">|Z| = 112 Ω</text>
+            <text id="phaseAngleLabel" x="30" y="-10" class="component-label" text-anchor="start">θ = -26.6°</text>
+            
+            <path id="phaseAngleArc" d="M 30,0 A 30,30 0 0,1 27,-13" fill="none" stroke="#FBBC05" stroke-width="1.5"/>
+        </g>
+    </g>
+
+    <!-- Frequency Slider -->
+    <g transform="translate(400, 450)">
+        <text x="0" y="0" class="subtitle" text-anchor="middle">Adjust Frequency</text>
+        <rect id="sliderTrack" x="-150" y="15" width="300" height="8" rx="4" class="slider-track"/>
+        <circle id="sliderThumb" cx="0" cy="19" r="10" class="slider-thumb"/>
+        <text x="-150" y="40" class="value-label" text-anchor="start">0 Hz</text>
+        <text x="150" y="40" class="value-label" text-anchor="end">636 Hz</text>
+        <text id="currentFrequency" x="0" y="40" class="value-label" text-anchor="middle">318 Hz</text>
+    </g>
+    
+    <!-- Arrow definition for current direction -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#EA4335"/>
+        </marker>
+    </defs>
+    
+    <!-- Animation script -->
+    <script type="text/ecmascript"><![CDATA[
+        // Component values
+        const R = 100; // Resistance in ohms
+        const L = 0.1; // Inductance in henry
+        const C = 25e-6; // Capacitance in farad
+        
+        // Calculate resonant frequency
+        const resonantFrequency = 1 / (2 * Math.PI * Math.sqrt(L * C));
+        document.getElementById('resonantFreq').textContent = resonantFrequency.toFixed(1) + " Hz";
+        
+        // Display component values
+        document.getElementById('resistorValue').textContent = R + " Ω";
+        document.getElementById('inductorValue').textContent = (L * 1000) + " mH";
+        document.getElementById('capacitorValue').textContent = (C * 1e6) + " μF";
+        
+        // Get DOM elements
+        const sliderTrack = document.getElementById('sliderTrack');
+        const sliderThumb = document.getElementById('sliderThumb');
+        const currentFrequency = document.getElementById('currentFrequency');
+        const impedanceCurve = document.getElementById('impedanceCurve');
+        const phaseCurve = document.getElementById('phaseCurve');
+        const resonanceMarker = document.getElementById('resonanceMarker');
+        const resonancePoint = document.getElementById('resonancePoint');
+        const phaseResonanceMarker = document.getElementById('phaseResonanceMarker');
+        const phaseResonancePoint = document.getElementById('phaseResonancePoint');
+        
+        // Impedance triangle elements
+        const resistanceVector = document.getElementById('resistanceVector');
+        const reactanceVector = document.getElementById('reactanceVector');
+        const impedanceVector = document.getElementById('impedanceVector');
+        const resistanceLabel = document.getElementById('resistanceLabel');
+        const reactanceLabel = document.getElementById('reactanceLabel');
+        const impedanceLabel = document.getElementById('impedanceLabel');
+        const phaseAngleLabel = document.getElementById('phaseAngleLabel');
+        const phaseAngleArc = document.getElementById('phaseAngleArc');
+        
+        // Slider state
+        let isDragging = false;
+        const minFreq = 0;
+        const maxFreq = 636; // About 2x resonant frequency
+        const sliderWidth = 300;
+        let currentFreq = resonantFrequency;
+        
+        // Set initial frequency to resonance
+        updateFrequency(resonantFrequency);
+        
+        // Slider event handlers
+        sliderThumb.addEventListener('mousedown', startDrag);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', endDrag);
+        sliderThumb.addEventListener('touchstart', startDragTouch);
+        document.addEventListener('touchmove', dragTouch);
+        document.addEventListener('touchend', endDragTouch);
+        
+        // Support for both mouse and touch
+        function startDrag(e) {
+            isDragging = true;
+            e.preventDefault();
+        }
+        
+        function startDragTouch(e) {
+            isDragging = true;
+            e.preventDefault();
+        }
+        
+        function drag(e) {
+            if (isDragging) {
+                const sliderRect = sliderTrack.getBoundingClientRect();
+                let position = Math.max(sliderRect.left, Math.min(e.clientX, sliderRect.right));
+                const ratio = (position - sliderRect.left) / sliderRect.width;
+                updateSlider(ratio);
+            }
+        }
+        
+        function dragTouch(e) {
+            if (isDragging && e.touches.length > 0) {
+                const touch = e.touches[0];
+                const sliderRect = sliderTrack.getBoundingClientRect();
+                let position = Math.max(sliderRect.left, Math.min(touch.clientX, sliderRect.right));
+                const ratio = (position - sliderRect.left) / sliderRect.width;
+                updateSlider(ratio);
+                e.preventDefault();
+            }
+        }
+        
+        function endDrag() {
+            isDragging = false;
+        }
+        
+        function endDragTouch() {
+            isDragging = false;
+        }
+        
+        function updateSlider(ratio) {
+            // Calculate frequency from slider position
+            const freq = minFreq + ratio * (maxFreq - minFreq);
+            updateFrequency(freq);
+            
+            // Update slider thumb position
+            const thumbPos = -150 + ratio * sliderWidth;
+            sliderThumb.setAttribute('cx', thumbPos);
+        }
+        
+        function updateFrequency(freq) {
+            currentFreq = freq;
+            currentFrequency.textContent = Math.round(freq) + " Hz";
+            
+            // Calculate impedance at this frequency
+            const omega = 2 * Math.PI * freq;
+            const XL = omega * L; // Inductive reactance
+            const XC = freq === 0 ? Infinity : 1 / (omega * C); // Capacitive reactance
+            const X = XL - XC; // Net reactance
+            
+            // Calculate total impedance magnitude and phase
+            const Z = Math.sqrt(R * R + X * X);
+            const phase = Math.atan2(X, R) * 180 / Math.PI; // Phase in degrees
+            
+            // Map the frequency to graph position
+            const freqRatio = freq / maxFreq;
+            const xPos = -140 + freqRatio * 280; // x-position on the graph
+            
+            // Update resonance markers
+            const resonanceRatio = resonantFrequency / maxFreq;
+            const resonanceXPos = -140 + resonanceRatio * 280;
+            
+            resonanceMarker.setAttribute('x1', resonanceXPos);
+            resonanceMarker.setAttribute('x2', resonanceXPos);
+            phaseResonanceMarker.setAttribute('x1', resonanceXPos);
+            phaseResonanceMarker.setAttribute('x2', resonanceXPos);
+            
+            // Calculate resonance impedance
+            const ZAtResonance = R; // At resonance, Z = R
+            
+            // Map impedance to graph y-position (inverted, with 200 ohms as max display)
+            const maxZForGraph = 200;
+            const yPosImpedance = 60 - (Math.min(Z, maxZForGraph) / maxZForGraph) * 80;
+            const yPosResonance = 60 - (Math.min(ZAtResonance, maxZForGraph) / maxZForGraph) * 80;
+            
+            resonancePoint.setAttribute('cy', yPosResonance);
+            resonancePoint.setAttribute('cx', resonanceXPos);
+            
+            // Map phase to graph y-position (-90 to +90 degrees)
+            const yPosPhase = phase * (80 / 90);
+            phaseResonancePoint.setAttribute('cy', 0); // At resonance, phase = 0
+            phaseResonancePoint.setAttribute('cx', resonanceXPos);
+            
+            // Generate impedance curve - we'll create a simple curve with 5 points
+            const impedancePoints = [];
+            const phasePoints = [];
+            
+            for (let i = 0; i <= 4; i++) {
+                const f = (i / 4) * maxFreq;
+                const w = 2 * Math.PI * f;
+                const xl = w * L;
+                const xc = f === 0 ? Infinity : 1 / (w * C);
+                const x = xl - xc;
+                const z = Math.sqrt(R * R + x * x);
+                const p = Math.atan2(x, R) * 180 / Math.PI;
+                
+                const xp = -140 + i * 70; // Evenly spaced x positions
+                const yp = 60 - (Math.min(z, maxZForGraph) / maxZForGraph) * 80;
+                impedancePoints.push([xp, yp]);
+                
+                const yph = p * (80 / 90);
+                phasePoints.push([xp, yph]);
+            }
+            
+            // Create path strings
+            impedanceCurve.setAttribute('d', 'M ' + impedancePoints.map(p => p[0] + ',' + p[1]).join(' L '));
+            phaseCurve.setAttribute('d', 'M ' + phasePoints.map(p => p[0] + ',' + p[1]).join(' L '));
+            
+            // Update impedance triangle
+            const triangleScale = 100; // Base scale for the triangle
+            const rLength = triangleScale; // Fixed resistor length
+            
+            // Scale reactance vector - limit to prevent excessive drawing
+            const reactanceScale = triangleScale / 200; // Scale factor for reactance
+            const reactanceLength = Math.min(Math.abs(X), 200) * reactanceScale;
+            
+            // Set vectors and labels
+            resistanceVector.setAttribute('x2', rLength);
+            
+            if (X >= 0) {
+                // Inductive: reactance points up
+                reactanceVector.setAttribute('x1', rLength);
+                reactanceVector.setAttribute('x2', rLength);
+                reactanceVector.setAttribute('y1', 0);
+                reactanceVector.setAttribute('y2', -reactanceLength);
+            } else {
+                // Capacitive: reactance points down
+                reactanceVector.setAttribute('x1', rLength);
+                reactanceVector.setAttribute('x2', rLength);
+                reactanceVector.setAttribute('y1', 0);
+                reactanceVector.setAttribute('y2', reactanceLength);
+            }
+            
+            // Impedance vector always goes from origin to end of reactance
+            impedanceVector.setAttribute('x2', rLength);
+            impedanceVector.setAttribute('y2', X >= 0 ? -reactanceLength : reactanceLength);
+            
+            // Update labels
+            resistanceLabel.textContent = "R = " + R + " Ω";
+            reactanceLabel.textContent = "X = " + Math.round(X) + " Ω";
+            impedanceLabel.textContent = "|Z| = " + Math.round(Z) + " Ω";
+            phaseAngleLabel.textContent = "θ = " + phase.toFixed(1) + "°";
+            
+            // Update phase angle arc
+            const arcRadius = 30;
+            const arcEndX = arcRadius * Math.cos(phase * Math.PI / 180);
+            const arcEndY = arcRadius * Math.sin(phase * Math.PI / 180);
+            
+            // Adjust arc direction based on phase sign
+            const largeArcFlag = Math.abs(phase) > 180 ? 1 : 0;
+            const sweepFlag = phase < 0 ? 1 : 0;
+            
+            phaseAngleArc.setAttribute('d', `M ${arcRadius},0 A ${arcRadius},${arcRadius} 0 ${largeArcFlag},${sweepFlag} ${arcEndX},${arcEndY}`);
+            
+            // Update reactance label position
+            if (X >= 0) {
+                reactanceLabel.setAttribute('x', rLength + 20);
+                reactanceLabel.setAttribute('y', -reactanceLength/2);
+                reactanceLabel.setAttribute('text-anchor', 'start');
+            } else {
+                reactanceLabel.setAttribute('x', rLength + 20);
+                reactanceLabel.setAttribute('y', reactanceLength/2);
+                reactanceLabel.setAttribute('text-anchor', 'start');
+            }
+        }
+        
+        // Initial update to set everything up
+        updateFrequency(resonantFrequency);
+    ]]></script>
+</svg> 

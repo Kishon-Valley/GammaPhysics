@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+    <!-- Spring Mass System -->
+    <rect x="150" y="20" width="100" height="10" fill="#666" /> <!-- Fixed support -->
+    <path d="M200,30 L200,50 L180,60 L220,70 L180,80 L220,90 L180,100 L220,110 L180,120 L220,130 L200,140" 
+          fill="none" stroke="#444" stroke-width="3" /> <!-- Spring -->
+    <circle cx="200" cy="170" r="20" fill="#1a73e8" /> <!-- Mass -->
+    
+    <!-- Equilibrium line -->
+    <line x1="100" y1="120" x2="300" y2="120" stroke="#999" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="310" y="125" font-family="Arial" font-size="12" fill="#666">Equilibrium</text>
+    
+    <!-- Displacement arrows -->
+    <path d="M220,120 L240,120 L235,115 M240,120 L235,125" stroke="#f44336" stroke-width="2"/>
+    <text x="245" y="115" font-family="Arial" font-size="14" fill="#f44336">x</text>
+    
+    <!-- Force arrows -->
+    <path d="M200,200 L200,220 L195,215 M200,220 L205,215" stroke="#4caf50" stroke-width="2"/>
+    <text x="205" y="215" font-family="Arial" font-size="14" fill="#4caf50">F</text>
+</svg>

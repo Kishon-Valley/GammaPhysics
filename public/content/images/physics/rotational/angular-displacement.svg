@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font: bold 16px sans-serif; }
+        .label { font: 14px sans-serif; }
+        .math { font-style: italic; }
+        .equation { font: italic 16px serif; }
+    </style>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" class="title">Angular Displacement and Period</text>
+    
+    <!-- Uniform Circular Motion -->
+    <g transform="translate(50,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Uniform Circular Motion</text>
+        
+        <!-- Circle -->
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        
+        <!-- Initial Position -->
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#ff4444" stroke-width="2"/>
+        <text x="170" y="95" class="math">θ₀</text>
+        
+        <!-- Final Position -->
+        <line x1="100" y1="100" x2="130" y2="50" stroke="#4444ff" stroke-width="2"/>
+        <text x="140" y="60" class="math">θ</text>
+        
+        <!-- Arc -->
+        <path d="M 160,100 A 60,60 0 0,1 130,50" fill="none" stroke="#44ff44" stroke-width="2"/>
+        <text x="150" y="80" class="math">Δθ</text>
+        
+        <!-- Labels -->
+        <text x="100" y="180" text-anchor="middle" class="equation">Δθ = θ - θ₀</text>
+    </g>
+    
+    <!-- Period -->
+    <g transform="translate(300,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Period of Motion</text>
+        
+        <!-- Circle -->
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        
+        <!-- Time Points -->
+        <circle cx="160" cy="100" r="3" fill="#ff4444"/>
+        <circle cx="100" cy="40" r="3" fill="#ff4444"/>
+        <circle cx="40" cy="100" r="3" fill="#ff4444"/>
+        <circle cx="100" cy="160" r="3" fill="#ff4444"/>
+        
+        <!-- Motion Path -->
+        <path d="M 160,100 A 60,60 0 1,1 160,100" fill="none" stroke="#4444ff" stroke-width="2" stroke-dasharray="4,4"/>
+        
+        <!-- Labels -->
+        <text x="170" y="100" class="math">t₀</text>
+        <text x="100" y="30" class="math">T/4</text>
+        <text x="30" y="100" class="math">T/2</text>
+        <text x="100" y="170" class="math">3T/4</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">T = 2π/ω</text>
+    </g>
+    
+    <!-- Frequency -->
+    <g transform="translate(550,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Frequency</text>
+        
+        <!-- Circle -->
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        
+        <!-- Radial Lines -->
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#000" stroke-width="1"/>
+        <line x1="100" y1="100" x2="100" y2="40" stroke="#000" stroke-width="1"/>
+        <line x1="100" y1="100" x2="40" y2="100" stroke="#000" stroke-width="1"/>
+        <line x1="100" y1="100" x2="100" y2="160" stroke="#000" stroke-width="1"/>
+        
+        <!-- Motion Arrow -->
+        <path d="M 160,100 A 60,60 0 0,1 130,50" fill="none" stroke="#4444ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="100" y="180" text-anchor="middle" class="equation">f = 1/T = ω/2π</text>
+    </g>
+    
+    <!-- Equations -->
+    <g transform="translate(0,300)">
+        <text x="200" y="20" class="equation">ω = 2πf</text>
+        <text x="400" y="20" class="equation">T = 1/f</text>
+        <text x="600" y="20" class="equation">θ = ωt</text>
+    </g>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+        </marker>
+    </defs>
+</svg>

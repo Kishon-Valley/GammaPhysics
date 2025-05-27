@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Grid -->
+    <line x1="50" y1="250" x2="350" y2="250" stroke="black" stroke-width="2"/>
+    <line x1="50" y1="50" x2="50" y2="250" stroke="black" stroke-width="2"/>
+    
+    <!-- Grid lines -->
+    <line x1="150" y1="245" x2="150" y2="255" stroke="black" stroke-width="1"/>
+    <line x1="250" y1="245" x2="250" y2="255" stroke="black" stroke-width="1"/>
+    <line x1="45" y1="150" x2="55" y2="150" stroke="black" stroke-width="1"/>
+    <line x1="45" y1="50" x2="55" y2="50" stroke="black" stroke-width="1"/>
+    
+    <!-- Path -->
+    <path d="M 50,250 Q 200,50 350,250" fill="none" stroke="blue" stroke-width="2"/>
+    
+    <!-- Initial velocity vector -->
+    <line x1="50" y1="250" x2="100" y2="200" stroke="red" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Maximum height indicator -->
+    <line x1="200" y1="50" x2="200" y2="250" stroke="gray" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Range indicator -->
+    <line x1="50" y1="245" x2="350" y2="245" stroke="green" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Arrowhead definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+        </marker>
+    </defs>
+    
+    <!-- Labels -->
+    <text x="30" y="45" font-family="Arial" font-size="12">h_max</text>
+    <text x="180" y="270" font-family="Arial" font-size="14">Range</text>
+    <text x="60" y="190" font-family="Arial" font-size="12">v₀</text>
+    <text x="70" y="210" font-family="Arial" font-size="12">θ</text>
+    
+    <!-- Angle arc -->
+    <path d="M 50,250 A 30,30 0 0,1 70,230" fill="none" stroke="black" stroke-width="1"/>
+</svg>

@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    
+    <!-- Gradients -->
+    <linearGradient id="ketGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#2980b9" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="braGradient" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#c0392b" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="operatorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8e44ad" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="innerProductGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f1c40f" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f39c12" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="outerProductGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2ecc71" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#27ae60" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <!-- Text background -->
+    <filter id="textBg" x="-10%" y="-10%" width="120%" height="120%">
+      <feFlood flood-color="white" flood-opacity="0.7" result="bg"/>
+      <feComposite in="SourceGraphic" in2="bg" operator="over"/>
+    </filter>
+    
+    <!-- Animation paths -->
+    <path id="ketPath" d="M400,150 C500,150 550,180 600,250"/>
+    <path id="braPath" d="M400,350 C300,350 250,320 200,250"/>
+    <path id="innerProductPath" d="M400,250 C300,250 250,220 200,150"/>
+    <path id="outerProductPath" d="M400,250 C500,250 550,280 600,350"/>
+  </defs>
+  
+  <!-- Style definitions -->
+  <style>
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .vector-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    .formula-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      font-style: italic;
+      fill: #333;
+    }
+    
+    .note-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    .ket-vector {
+      stroke: url(#ketGradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .bra-vector {
+      stroke: url(#braGradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .inner-product {
+      stroke: url(#innerProductGradient);
+      stroke-width: 3;
+      stroke-dasharray: 5,3;
+    }
+    
+    .outer-product {
+      stroke: url(#outerProductGradient);
+      stroke-width: 3;
+      stroke-dasharray: 5,3;
+    }
+    
+    .highlighted {
+      filter: drop-shadow(0px 0px 3px rgba(0,0,0,0.5));
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes expandWidth {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    @keyframes pulseOpacity {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    
+    @keyframes moveKet {
+      from { transform: translateX(0); }
+      to { transform: translateX(50px); }
+    }
+    
+    @keyframes moveBra {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50px); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 2s ease-in-out;
+    }
+    
+    .expand {
+      animation: expandWidth 3s ease-in-out;
+    }
+    
+    .pulse {
+      animation: pulseOpacity 3s infinite ease-in-out;
+    }
+    
+    .move-ket {
+      animation: moveKet 4s alternate infinite ease-in-out;
+    }
+    
+    .move-bra {
+      animation: moveBra 4s alternate infinite ease-in-out;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Dirac Notation: Bra-Ket Formalism</text>
+  
+  <!-- Main diagram -->
+  <g transform="translate(400, 250)">
+    <!-- Coordinate axes -->
+    <line x1="-250" y1="0" x2="250" y2="0" stroke="#ddd" stroke-width="1"/>
+    <line x1="0" y1="-180" x2="0" y2="180" stroke="#ddd" stroke-width="1"/>
+    
+    <!-- Ket vector |ψ⟩ -->
+    <g class="move-ket">
+      <line x1="0" y1="0" x2="100" y2="-50" class="ket-vector"/>
+      <rect x="110" y="-60" width="40" height="25" rx="5" fill="#3498db" opacity="0.2"/>
+      <text x="130" y="-42" class="vector-text" text-anchor="middle" fill="#3498db">|ψ⟩</text>
+    </g>
+    
+    <!-- Bra vector ⟨φ| -->
+    <g class="move-bra">
+      <line x1="0" y1="0" x2="-100" y2="-70" class="bra-vector"/>
+      <rect x="-140" y="-80" width="40" height="25" rx="5" fill="#e74c3c" opacity="0.2"/>
+      <text x="-120" y="-62" class="vector-text" text-anchor="middle" fill="#e74c3c">⟨φ|</text>
+    </g>
+    
+    <!-- Inner product ⟨φ|ψ⟩ -->
+    <g class="pulse">
+      <path d="M-100,-70 Q0,-140 100,-50" class="inner-product" fill="none"/>
+      <rect x="-10" y="-140" width="40" height="25" rx="5" fill="#f1c40f" opacity="0.2"/>
+      <text x="10" y="-122" class="vector-text" text-anchor="middle" fill="#f1c40f">⟨φ|ψ⟩</text>
+    </g>
+    
+    <!-- Outer product |ψ⟩⟨φ| -->
+    <g class="pulse">
+      <path d="M100,-50 Q0,20 -100,-70" class="outer-product" fill="none"/>
+      <rect x="-35" y="15" width="70" height="25" rx="5" fill="#2ecc71" opacity="0.2"/>
+      <text x="0" y="33" class="vector-text" text-anchor="middle" fill="#2ecc71">|ψ⟩⟨φ|</text>
+    </g>
+  </g>
+  
+  <!-- Explanation boxes -->
+  <g transform="translate(150, 100)">
+    <rect x="0" y="0" width="200" height="80" rx="10" fill="#3498db" opacity="0.1" stroke="#3498db" stroke-width="1"/>
+    <text x="100" y="20" text-anchor="middle" font-weight="bold" font-family="Arial" font-size="16" fill="#333">Ket Vector |ψ⟩</text>
+    <text x="20" y="45" font-family="Arial" font-size="14" fill="#555">• State vector in Hilbert space</text>
+    <text x="20" y="65" font-family="Arial" font-size="14" fill="#555">• Column vector representation</text>
+  </g>
+  
+  <g transform="translate(650, 100)">
+    <rect x="0" y="0" width="200" height="80" rx="10" fill="#e74c3c" opacity="0.1" stroke="#e74c3c" stroke-width="1"/>
+    <text x="100" y="20" text-anchor="middle" font-weight="bold" font-family="Arial" font-size="16" fill="#333">Bra Vector ⟨φ|</text>
+    <text x="20" y="45" font-family="Arial" font-size="14" fill="#555">• Dual vector (linear functional)</text>
+    <text x="20" y="65" font-family="Arial" font-size="14" fill="#555">• Row vector (conjugate transpose)</text>
+  </g>
+  
+  <g transform="translate(150, 380)">
+    <rect x="0" y="0" width="200" height="80" rx="10" fill="#f1c40f" opacity="0.1" stroke="#f1c40f" stroke-width="1"/>
+    <text x="100" y="20" text-anchor="middle" font-weight="bold" font-family="Arial" font-size="16" fill="#333">Inner Product ⟨φ|ψ⟩</text>
+    <text x="20" y="45" font-family="Arial" font-size="14" fill="#555">• Complex scalar (number)</text>
+    <text x="20" y="65" font-family="Arial" font-size="14" fill="#555">• |⟨φ|ψ⟩|² = probability amplitude</text>
+  </g>
+  
+  <g transform="translate(650, 380)">
+    <rect x="0" y="0" width="200" height="80" rx="10" fill="#2ecc71" opacity="0.1" stroke="#2ecc71" stroke-width="1"/>
+    <text x="100" y="20" text-anchor="middle" font-weight="bold" font-family="Arial" font-size="16" fill="#333">Outer Product |ψ⟩⟨φ|</text>
+    <text x="20" y="45" font-family="Arial" font-size="14" fill="#555">• Linear operator (matrix)</text>
+    <text x="20" y="65" font-family="Arial" font-size="14" fill="#555">• Projects onto direction of |ψ⟩</text>
+  </g>
+  
+  <!-- Key equations -->
+  <g transform="translate(400, 250)">
+    <rect x="-180" y="-210" width="360" height="40" rx="5" fill="#fff" stroke="#ddd" stroke-width="1"/>
+    <text x="0" y="-185" text-anchor="middle" font-family="Arial" font-size="16" fill="#333">
+      (|ψ⟩⟨φ|) |χ⟩ = ⟨φ|χ⟩ |ψ⟩
+    </text>
+  </g>
+</svg> 

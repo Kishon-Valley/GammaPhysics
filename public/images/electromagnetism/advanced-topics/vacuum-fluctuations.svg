@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Definitions for animations and styles -->
+    <style type="text/css">
+      .title-text { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; text-anchor: middle; }
+      .subtitle-text { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .label-text { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+      .small-text { font-family: Arial, sans-serif; font-size: 12px; text-anchor: middle; }
+      
+      .background { fill: #f0f8ff; }
+      .vacuum-field { fill: #e6f2ff; stroke: #a0c8ff; stroke-width: 1; }
+      
+      .electron { fill: #4080ff; }
+      .positron { fill: #ff6040; }
+      .photon { fill: #ffff00; stroke: #ffa000; stroke-width: 1; }
+      
+      .energy-axis { stroke: #606060; stroke-width: 2; }
+      .time-axis { stroke: #606060; stroke-width: 2; }
+      .axis-label { font-family: Arial, sans-serif; font-size: 14px; fill: #404040; }
+      
+      .field-line { stroke: #a0a0ff; stroke-width: 1; }
+      .field-amplitude { stroke: #5050ff; stroke-width: 2; fill: none; }
+      
+      @keyframes fluctuate {
+        0%, 100% { opacity: 0; r: 0; }
+        50% { opacity: 1; r: 10; }
+      }
+      
+      @keyframes fluctuate-delayed {
+        0%, 25%, 75%, 100% { opacity: 0; r: 0; }
+        50% { opacity: 1; r: 10; }
+      }
+      
+      @keyframes field-wave {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-100px); }
+      }
+      
+      @keyframes pulse-electron {
+        0%, 100% { r: 6; fill: #4080ff; }
+        50% { r: 8; fill: #80a0ff; }
+      }
+      
+      @keyframes pulse-positron {
+        0%, 100% { r: 6; fill: #ff6040; }
+        50% { r: 8; fill: #ffa080; }
+      }
+      
+      .pair-appear1 {
+        animation: fluctuate 3s infinite;
+      }
+      
+      .pair-appear2 {
+        animation: fluctuate-delayed 4s infinite;
+      }
+      
+      .pair-appear3 {
+        animation: fluctuate 3.5s infinite;
+      }
+      
+      .virtual-photon1 {
+        animation: fluctuate 2s infinite;
+      }
+      
+      .virtual-photon2 {
+        animation: fluctuate-delayed 2.5s infinite;
+      }
+      
+      .wave-move {
+        animation: field-wave 5s linear infinite;
+      }
+      
+      .electron-pulse {
+        animation: pulse-electron 2s infinite;
+      }
+      
+      .positron-pulse {
+        animation: pulse-positron 2s infinite;
+      }
+    </style>
+    
+    <!-- Pattern for field lines -->
+    <pattern id="fieldLines" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="20" class="field-line"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" class="background"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title-text">Quantum Vacuum Fluctuations</text>
+  
+  <!-- Vacuum field representation -->
+  <rect x="50" y="100" width="700" height="200" fill="url(#fieldLines)" class="vacuum-field"/>
+  
+  <!-- Virtual electron-positron pairs -->
+  <g transform="translate(150, 200)">
+    <circle cx="-10" cy="0" r="8" class="electron pair-appear1"/>
+    <circle cx="10" cy="0" r="8" class="positron pair-appear1"/>
+    <text x="0" y="30" class="small-text">Virtual e⁻/e⁺ pair</text>
+  </g>
+  
+  <g transform="translate(300, 200)">
+    <circle cx="-10" cy="0" r="8" class="electron pair-appear2"/>
+    <circle cx="10" cy="0" r="8" class="positron pair-appear2"/>
+  </g>
+  
+  <g transform="translate(450, 200)">
+    <circle cx="-10" cy="0" r="8" class="electron pair-appear3"/>
+    <circle cx="10" cy="0" r="8" class="positron pair-appear3"/>
+  </g>
+  
+  <!-- Virtual photons -->
+  <g transform="translate(250, 150)">
+    <circle cx="0" cy="0" r="8" class="photon virtual-photon1"/>
+    <text x="0" y="-20" class="small-text">Virtual photon</text>
+  </g>
+  
+  <g transform="translate(400, 250)">
+    <circle cx="0" cy="0" r="8" class="photon virtual-photon2"/>
+  </g>
+  
+  <g transform="translate(550, 180)">
+    <circle cx="0" cy="0" r="8" class="photon virtual-photon1"/>
+  </g>
+  
+  <!-- Field fluctuations -->
+  <g transform="translate(50, 320)">
+    <line x1="0" y1="0" x2="700" y2="0" class="energy-axis"/>
+    <line x1="0" y1="50" x2="0" y2="-50" class="time-axis"/>
+    <text x="700" y="20" class="axis-label">position</text>
+    <text x="-20" y="-40" class="axis-label">field</text>
+    
+    <!-- Field amplitude visualization -->
+    <g class="wave-move">
+      <path d="M0,0 C25,-20 50,20 75,0 C100,-20 125,20 150,0 C175,-20 200,20 225,0 C250,-20 275,20 300,0 C325,-20 350,20 375,0 C400,-20 425,20 450,0 C475,-20 500,20 525,0 C550,-20 575,20 600,0 C625,-20 650,20 675,0 C700,-20 725,20 750,0" class="field-amplitude"/>
+    </g>
+  </g>
+  
+  <!-- Heisenberg uncertainty visualization -->
+  <g transform="translate(600, 130)">
+    <rect x="-70" y="-40" width="140" height="80" rx="10" fill="#ffffff" stroke="#404040" stroke-width="1"/>
+    <text x="0" y="-20" class="label-text">Heisenberg Uncertainty</text>
+    <text x="0" y="0" class="small-text">ΔE·Δt ≥ ℏ/2</text>
+    <text x="0" y="20" class="small-text">Allows temporary</text>
+    <text x="0" y="40" class="small-text">energy fluctuations</text>
+  </g>
+  
+  <!-- Real electrons and positrons for scale -->
+  <g transform="translate(100, 130)">
+    <circle cx="-15" cy="0" r="7" class="electron electron-pulse"/>
+    <circle cx="15" cy="0" r="7" class="positron positron-pulse"/>
+    <text x="0" y="-20" class="label-text">Real particles</text>
+  </g>
+</svg> 

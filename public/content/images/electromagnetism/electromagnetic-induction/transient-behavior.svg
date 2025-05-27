@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold">RL Circuit Transient Response</text>
+    <text x="400" y="60" text-anchor="middle" font-size="14">
+        Current development in an RL circuit follows exponential behavior
+    </text>
+
+    <!-- Graph -->
+    <g transform="translate(100,350)">
+        <!-- Axes -->
+        <line x1="0" y1="0" x2="600" y2="0" stroke="black" stroke-width="2"/>
+        <line x1="0" y1="-300" x2="0" y2="0" stroke="black" stroke-width="2"/>
+        
+        <!-- Labels -->
+        <text x="300" y="30" text-anchor="middle">Time (τ)</text>
+        <text x="-30" y="-150" text-anchor="middle" transform="rotate(-90,-30,-150)">Current</text>
+        
+        <!-- Time constant markers -->
+        <g stroke="gray" stroke-dasharray="5,5">
+            <line x1="120" y1="0" x2="120" y2="-190"/>
+            <line x1="240" y1="0" x2="240" y2="-240"/>
+            <line x1="360" y1="0" x2="360" y2="-270"/>
+            <line x1="480" y1="0" x2="480" y2="-285"/>
+        </g>
+        
+        <!-- Current curve -->
+        <path d="M 0,0 Q 120,-180 240,-240 T 480,-300" 
+              fill="none" stroke="#2196F3" stroke-width="3">
+            <animate attributeName="stroke-dashoffset"
+                     values="1000;0"
+                     dur="3s"
+                     repeatCount="1"/>
+        </path>
+        
+        <!-- Time constant labels -->
+        <text x="120" y="15" text-anchor="middle">τ</text>
+        <text x="240" y="15" text-anchor="middle">2τ</text>
+        <text x="360" y="15" text-anchor="middle">3τ</text>
+        <text x="480" y="15" text-anchor="middle">4τ</text>
+
+        <!-- Added Time Constant Annotations -->
+        <g transform="translate(120,-190)">
+            <text x="0" y="0" text-anchor="start" font-size="12">63.2% of final value</text>
+            <line x1="-10" y1="0" x2="10" y2="0" stroke="red" stroke-width="2"/>
+        </g>
+        
+        <!-- Final Value Annotation -->
+        <text x="550" y="-300" text-anchor="start" font-size="12">Final value: I = V/R</text>
+        
+        <!-- Key Equations -->
+        <g transform="translate(300,80)">
+            <text x="0" y="0" text-anchor="middle" font-size="12">• Time constant τ = L/R</text>
+            <text x="0" y="20" text-anchor="middle" font-size="12">• i(t) = (V/R)(1 - e⁻ᵗ/τ)</text>
+            <text x="0" y="40" text-anchor="middle" font-size="12">• 5τ reaches ~99% of final value</text>
+        </g>
+    </g>
+
+    <!-- Equation -->
+    <text x="400" y="380" text-anchor="middle" font-family="math" font-size="16">
+        i(t) = I₀(1 - e^(-t/τ))
+    </text>
+
+    <!-- Enhanced Explanation -->
+    <g transform="translate(50,80)">
+        <text x="0" y="0" font-size="16" font-weight="bold">Understanding the Graph:</text>
+        <text x="0" y="30" font-size="14">1. At t=0: Switch closes, current begins to rise</text>
+        <text x="0" y="50" font-size="14">2. At t=τ: Current reaches 63.2% of final value</text>
+        <text x="0" y="70" font-size="14">3. At t=5τ: Current reaches ~99% (steady state)</text>
+        <text x="0" y="90" font-size="14">4. The curve shape shows inductors resist rapid current changes</text>
+    </g>
+
+    <!-- Circuit Diagram -->
+    <g transform="translate(600,200)">
+        <text x="0" y="-20" font-size="14" font-weight="bold">RL Circuit:</text>
+        <!-- Add simple circuit diagram -->
+    </g>
+
+    <!-- Practical Examples -->
+    <g transform="translate(50,450)">
+        <rect x="0" y="0" width="700" height="120" fill="#f5f5f5" stroke="#666"/>
+        <text x="20" y="30" font-size="16" font-weight="bold">Real-world Examples:</text>
+        <text x="20" y="60" font-size="14">• LED dimming: Smooth brightness transitions</text>
+        <text x="20" y="80" font-size="14">• Motor starting: Gradual speed increase</text>
+        <text x="20" y="100" font-size="14">• Power supplies: Inrush current limitation</text>
+    </g>
+</svg> 

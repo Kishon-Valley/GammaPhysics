@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font: bold 16px sans-serif; }
+        .label { font: 14px sans-serif; }
+        .math { font-style: italic; }
+        .equation { font: italic 16px serif; }
+    </style>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" class="title">Angular Quantities in Rotational Motion</text>
+    
+    <!-- Angular Position -->
+    <g transform="translate(50,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Angular Position (θ)</text>
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#ff4444" stroke-width="2"/>
+        <path d="M 160,100 A 60,60 0 0,1 130,50" fill="none" stroke="#4444ff" stroke-width="2"/>
+        <text x="145" y="80" class="math">θ</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">radians or degrees</text>
+    </g>
+    
+    <!-- Angular Velocity -->
+    <g transform="translate(300,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Angular Velocity (ω)</text>
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#ff4444" stroke-width="2"/>
+        <path d="M 160,100 A 60,60 0 0,1 130,50" fill="none" stroke="#4444ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="145" y="80" class="math">ω</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">rad/s</text>
+    </g>
+    
+    <!-- Angular Acceleration -->
+    <g transform="translate(550,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Angular Acceleration (α)</text>
+        <circle cx="100" cy="100" r="60" fill="none" stroke="#000" stroke-width="2"/>
+        <line x1="100" y1="100" x2="160" y2="100" stroke="#ff4444" stroke-width="2"/>
+        <path d="M 160,100 A 60,60 0 0,1 130,50" fill="none" stroke="#4444ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <path d="M 130,50 A 60,60 0 0,1 80,50" fill="none" stroke="#44ff44" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="145" y="80" class="math">α</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">rad/s²</text>
+    </g>
+    
+    <!-- Equations -->
+    <g transform="translate(0,300)">
+        <text x="200" y="20" class="equation">ω = dθ/dt</text>
+        <text x="400" y="20" class="equation">α = dω/dt = d²θ/dt²</text>
+        <text x="600" y="20" class="equation">θ = θ₀ + ωt + ½αt²</text>
+    </g>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+        </marker>
+    </defs>
+</svg>

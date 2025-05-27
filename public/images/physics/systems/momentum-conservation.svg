@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background that covers the entire viewport -->
+    <rect width="100%" height="100%" fill="white"/>
+    <style>
+        .title { font: bold 16px sans-serif; }
+        .label { font: 14px sans-serif; }
+        .math { font-style: italic; }
+    </style>
+    
+    <!-- Title -->
+    <text x="300" y="30" text-anchor="middle" class="title">Conservation of Momentum in Different Types of Collisions</text>
+    
+    <!-- Elastic Collision -->
+    <g transform="translate(0,50)">
+        <text x="200" y="30" text-anchor="middle" class="title">Elastic Collision</text>
+        <!-- Before -->
+        <circle cx="100" cy="80" r="20" fill="#ff4444"/>
+        <circle cx="300" cy="80" r="15" fill="#4444ff"/>
+        <line x1="130" y1="80" x2="170" y2="80" stroke="#000" marker-end="url(#arrowhead)"/>
+        <line x1="270" y1="80" x2="230" y2="80" stroke="#000" marker-end="url(#arrowhead)"/>
+        <!-- After -->
+        <circle cx="150" cy="150" r="20" fill="#ff4444"/>
+        <circle cx="250" cy="150" r="15" fill="#4444ff"/>
+        <line x1="120" y1="150" x2="80" y2="150" stroke="#000" marker-end="url(#arrowhead)"/>
+        <line x1="280" y1="150" x2="320" y2="150" stroke="#000" marker-end="url(#arrowhead)"/>
+        <text x="200" y="180" text-anchor="middle" class="label">KE and momentum conserved</text>
+    </g>
+    
+    <!-- Inelastic Collision -->
+    <g transform="translate(300,50)">
+        <text x="200" y="30" text-anchor="middle" class="title">Inelastic Collision</text>
+        <!-- Before -->
+        <circle cx="100" cy="80" r="20" fill="#ff4444"/>
+        <circle cx="300" cy="80" r="15" fill="#4444ff"/>
+        <line x1="130" y1="80" x2="170" y2="80" stroke="#000" marker-end="url(#arrowhead)"/>
+        <line x1="270" y1="80" x2="230" y2="80" stroke="#000" marker-end="url(#arrowhead)"/>
+        <!-- After -->
+        <rect x="180" y="140" width="40" height="30" fill="#9944ff"/>
+        <line x1="230" y1="155" x2="270" y2="155" stroke="#000" marker-end="url(#arrowhead)"/>
+        <text x="200" y="180" text-anchor="middle" class="label">Only momentum conserved</text>
+    </g>
+    
+    <!-- Conservation Law -->
+    <g transform="translate(0,250)">
+        <text x="300" y="30" text-anchor="middle" class="title">Conservation of Momentum</text>
+        <text x="300" y="60" text-anchor="middle" class="math">p₁ᵢ + p₂ᵢ = p₁f + p₂f</text>
+        <text x="300" y="90" text-anchor="middle" class="math">m₁v₁ᵢ + m₂v₂ᵢ = m₁v₁f + m₂v₂f</text>
+    </g>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+        </marker>
+    </defs>
+</svg>

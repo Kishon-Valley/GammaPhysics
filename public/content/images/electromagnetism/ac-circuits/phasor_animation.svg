@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .axis {
+      stroke: #333;
+      stroke-width: 2;
+    }
+    .grid {
+      stroke: #ccc;
+      stroke-width: 0.5;
+      stroke-dasharray: 3 2;
+    }
+    .phasor {
+      stroke: #e74c3c;
+      stroke-width: 3;
+      fill: none;
+    }
+    .projection {
+      stroke: #3498db;
+      stroke-width: 2;
+      stroke-dasharray: 4 2;
+    }
+    .sine-wave {
+      stroke: #3498db;
+      stroke-width: 3;
+      fill: none;
+    }
+    .marker {
+      fill: #3498db;
+    }
+    .phasor-head {
+      fill: #e74c3c;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .label {
+      text-anchor: middle;
+    }
+    .complex-plane {
+      fill: rgba(200, 200, 200, 0.1);
+      stroke: #333;
+      stroke-width: 1;
+    }
+  </style>
+  
+  <!-- Define gradients -->
+  <defs>
+    <linearGradient id="grid-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f8f9fa;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#e9ecef;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="600" height="400" fill="white" />
+  
+  <!-- Complex plane for phasor -->
+  <circle cx="150" cy="180" r="120" class="complex-plane" />
+  
+  <!-- Complex plane grid lines -->
+  <line x1="30" y1="180" x2="270" y2="180" class="grid" />
+  <line x1="150" y1="60" x2="150" y2="300" class="grid" />
+  
+  <!-- Complex plane axes -->
+  <line x1="30" y1="180" x2="270" y2="180" class="axis" />
+  <line x1="150" y1="60" x2="150" y2="300" class="axis" />
+  
+  <!-- Complex plane labels -->
+  <text x="270" y="195" text-anchor="end">Re</text>
+  <text x="155" y="60" text-anchor="start">Im</text>
+  <text x="150" y="40" class="bold label">Phasor Representation</text>
+  
+  <!-- Time domain plot area -->
+  <rect x="300" y="60" width="280" height="240" fill="url(#grid-gradient)" />
+  
+  <!-- Time domain grid lines -->
+  <g>
+    <!-- Horizontal grid lines -->
+    <line x1="300" y1="120" x2="580" y2="120" class="grid" />
+    <line x1="300" y1="180" x2="580" y2="180" class="grid" />
+    <line x1="300" y1="240" x2="580" y2="240" class="grid" />
+    
+    <!-- Vertical grid lines -->
+    <line x1="370" y1="60" x2="370" y2="300" class="grid" />
+    <line x1="440" y1="60" x2="440" y2="300" class="grid" />
+    <line x1="510" y1="60" x2="510" y2="300" class="grid" />
+  </g>
+  
+  <!-- Time domain axes -->
+  <line x1="300" y1="180" x2="580" y2="180" class="axis" />
+  <line x1="300" y1="60" x2="300" y2="300" class="axis" />
+  
+  <!-- Time domain labels -->
+  <text x="580" y="195" text-anchor="end">t</text>
+  <text x="305" y="60" text-anchor="start">v(t)</text>
+  <text x="440" y="40" class="bold label">Time Domain</text>
+  
+  <!-- Legend -->
+  <rect x="100" y="320" width="400" height="60" rx="5" ry="5" fill="rgba(240, 240, 240, 0.5)" stroke="#333" stroke-width="1" />
+  <line x1="120" y1="340" x2="160" y2="340" class="phasor" />
+  <circle cx="160" cy="340" r="4" class="phasor-head" />
+  <text x="170" y="345">Phasor V = |V|∠φ</text>
+  
+  <line x1="120" y1="360" x2="160" y2="360" class="sine-wave" />
+  <text x="170" y="365">Sine wave v(t) = |V|sin(ωt + φ)</text>
+  
+  <!-- Phasor elements (will be animated) -->
+  <line id="phasor-line" x1="150" y1="180" x2="150" y2="180" class="phasor" />
+  <circle id="phasor-head" cx="150" cy="180" r="5" class="phasor-head" />
+  
+  <!-- Projection line (will be animated) -->
+  <line id="projection-line" x1="150" y1="180" x2="300" y2="180" class="projection" />
+  <circle id="projection-point" cx="300" cy="180" r="4" class="marker" />
+  
+  <!-- Sine wave path (will be animated) -->
+  <path id="sine-path" class="sine-wave" />
+  
+  <script type="text/javascript"><![CDATA[
+    // Constants
+    const centerX = 150;
+    const centerY = 180;
+    const phasorLength = 100;
+    const timeAxisStartX = 300;
+    const timeAxisEndX = 580;
+    const timeAxisCenterY = 180;
+    const amplitude = 100;
+    const totalTime = 6000; // Animation duration in ms
+    
+    // Get elements
+    const phasorLine = document.getElementById('phasor-line');
+    const phasorHead = document.getElementById('phasor-head');
+    const projectionLine = document.getElementById('projection-line');
+    const projectionPoint = document.getElementById('projection-point');
+    const sinePath = document.getElementById('sine-path');
+    
+    // Data for sine wave points
+    let sinePoints = [];
+    
+    // Set up the animation
+    let startTime = null;
+    
+    // Update the phasor position
+    function updatePhasor(angle) {
+      const x = centerX + phasorLength * Math.cos(angle);
+      const y = centerY - phasorLength * Math.sin(angle);
+      
+      phasorLine.setAttribute('x2', x);
+      phasorLine.setAttribute('y2', y);
+      phasorHead.setAttribute('cx', x);
+      phasorHead.setAttribute('cy', y);
+      
+      return { x, y };
+    }
+    
+    // Update the projection
+    function updateProjection(phasorPoint) {
+      projectionLine.setAttribute('x1', phasorPoint.x);
+      projectionLine.setAttribute('y1', phasorPoint.y);
+      projectionPoint.setAttribute('cy', phasorPoint.y);
+    }
+    
+    // Generate and update the sine wave
+    function updateSineWave(angle, progress) {
+      // Store sine point at current angle
+      const sineY = timeAxisCenterY - amplitude * Math.sin(angle);
+      const currentX = timeAxisEndX - (timeAxisEndX - timeAxisStartX) * progress;
+      
+      // Add current point
+      sinePoints.push({ x: currentX, y: sineY });
+      
+      // Remove old points
+      if (sinePoints.length > 100) {
+        sinePoints = sinePoints.slice(-100);
+      }
+      
+      // Sort points by x coordinate (newest first)
+      sinePoints.sort((a, b) => b.x - a.x);
+      
+      // Generate path
+      let d = `M ${sinePoints[0].x} ${sinePoints[0].y}`;
+      for (let i = 1; i < sinePoints.length; i++) {
+        d += ` L ${sinePoints[i].x} ${sinePoints[i].y}`;
+      }
+      
+      sinePath.setAttribute('d', d);
+    }
+    
+    // Animation function
+    function animate(timestamp) {
+      if (!startTime) {
+        startTime = timestamp;
+        sinePoints = []; // Initialize sine points
+      }
+      
+      const elapsed = timestamp - startTime;
+      const progress = (elapsed % totalTime) / totalTime;
+      const angle = progress * 2 * Math.PI;
+      
+      // Update phasor
+      const phasorPoint = updatePhasor(angle);
+      
+      // Update projection
+      updateProjection(phasorPoint);
+      
+      // Update sine wave
+      updateSineWave(angle, progress);
+      
+      // Continue animation
+      window.requestAnimationFrame(animate);
+    }
+    
+    // Start the animation
+    window.requestAnimationFrame(animate);
+  ]]></script>
+</svg> 

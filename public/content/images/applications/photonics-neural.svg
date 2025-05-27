@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="400" fill="white"/>
+    
+    <!-- Input Layer -->
+    <circle cx="150" cy="100" r="20" fill="#f0f0f0" stroke="black"/>
+    <circle cx="150" cy="200" r="20" fill="#f0f0f0" stroke="black"/>
+    <circle cx="150" cy="300" r="20" fill="#f0f0f0" stroke="black"/>
+    
+    <!-- Hidden Layer -->
+    <circle cx="400" cy="150" r="20" fill="#e0e0e0" stroke="black"/>
+    <circle cx="400" cy="250" r="20" fill="#e0e0e0" stroke="black"/>
+    
+    <!-- Output Layer -->
+    <circle cx="650" cy="200" r="20" fill="#d0d0d0" stroke="black"/>
+    
+    <!-- Connections -->
+    <path d="M 170 100 Q 285 125 380 150" fill="none" stroke="blue" stroke-width="2"/>
+    <path d="M 170 200 Q 285 175 380 150" fill="none" stroke="blue" stroke-width="2"/>
+    <path d="M 170 200 Q 285 225 380 250" fill="none" stroke="blue" stroke-width="2"/>
+    <path d="M 170 300 Q 285 275 380 250" fill="none" stroke="blue" stroke-width="2"/>
+    <path d="M 420 150 Q 535 175 630 200" fill="none" stroke="red" stroke-width="2"/>
+    <path d="M 420 250 Q 535 225 630 200" fill="none" stroke="red" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="250" y="50" font-family="Arial" font-size="20" fill="black">Photonic Neural Network Architecture</text>
+    <text x="50" cy="200" font-family="Arial" font-size="16" fill="black">Input</text>
+    <text x="380" cy="100" font-family="Arial" font-size="16" fill="black">Hidden</text>
+    <text x="700" cy="200" font-family="Arial" font-size="16" fill="black">Output</text>
+</svg>

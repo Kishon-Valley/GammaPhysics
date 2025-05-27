@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font: bold 16px sans-serif; }
+        .label { font: 14px sans-serif; }
+        .math { font-style: italic; }
+        .equation { font: italic 16px serif; }
+    </style>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" class="title">Rotational Equilibrium</text>
+    
+    <!-- See-Saw Example -->
+    <g transform="translate(50,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">See-Saw Balance</text>
+        
+        <!-- Fulcrum -->
+        <path d="M 80,120 L 120,120 L 100,140 Z" fill="#000"/>
+        
+        <!-- Board -->
+        <line x1="20" y1="100" x2="180" y2="100" stroke="#000" stroke-width="4"/>
+        
+        <!-- Masses -->
+        <rect x="30" y="90" width="20" height="20" fill="#ff4444"/>
+        <rect x="150" y="90" width="20" height="20" fill="#4444ff"/>
+        
+        <!-- Distance Lines -->
+        <line x1="100" y1="110" x2="40" y2="110" stroke="#000" stroke-width="1" stroke-dasharray="4,4"/>
+        <line x1="100" y1="110" x2="160" y2="110" stroke="#000" stroke-width="1" stroke-dasharray="4,4"/>
+        
+        <!-- Labels -->
+        <text x="40" y="85" class="math">m₁</text>
+        <text x="160" y="85" class="math">m₂</text>
+        <text x="70" y="125" class="math">r₁</text>
+        <text x="130" y="125" class="math">r₂</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">m₁r₁ = m₂r₂</text>
+    </g>
+    
+    <!-- Force Couples -->
+    <g transform="translate(300,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Force Couples</text>
+        
+        <!-- Object -->
+        <rect x="60" y="60" width="80" height="80" fill="none" stroke="#000" stroke-width="2"/>
+        
+        <!-- Forces -->
+        <line x1="60" y1="70" x2="30" y2="70" stroke="#ff4444" stroke-width="2" marker-start="url(#arrowhead)"/>
+        <line x1="140" y1="130" x2="170" y2="130" stroke="#ff4444" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="45" y="65" class="math">F</text>
+        <text x="155" y="125" class="math">F</text>
+        <text x="100" y="180" text-anchor="middle" class="equation">τ = Fd</text>
+    </g>
+    
+    <!-- Static Equilibrium -->
+    <g transform="translate(550,100)">
+        <text x="100" y="30" text-anchor="middle" class="title">Static Equilibrium</text>
+        
+        <!-- Object -->
+        <rect x="60" y="60" width="80" height="80" fill="none" stroke="#000" stroke-width="2"/>
+        
+        <!-- Forces -->
+        <line x1="100" y1="40" x2="100" y2="60" stroke="#ff4444" stroke-width="2" marker-start="url(#arrowhead)"/>
+        <line x1="100" y1="140" x2="100" y2="160" stroke="#4444ff" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <line x1="40" y1="100" x2="60" y2="100" stroke="#44ff44" stroke-width="2" marker-start="url(#arrowhead)"/>
+        <line x1="140" y1="100" x2="160" y2="100" stroke="#44ff44" stroke-width="2" marker-end="url(#arrowhead)"/>
+        
+        <!-- Labels -->
+        <text x="100" y="180" text-anchor="middle" class="equation">ΣF = 0, Στ = 0</text>
+    </g>
+    
+    <!-- Equations -->
+    <g transform="translate(0,300)">
+        <text x="200" y="20" class="equation">ΣF = 0</text>
+        <text x="400" y="20" class="equation">Στ = 0</text>
+        <text x="600" y="20" class="equation">τ = r × F</text>
+    </g>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+        </marker>
+    </defs>
+</svg>

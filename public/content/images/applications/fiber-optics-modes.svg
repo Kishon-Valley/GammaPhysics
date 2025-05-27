@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Core and Cladding -->
+    <rect x="50" y="50" width="700" height="300" fill="#f0f0f0" stroke="black"/>
+    <rect x="100" y="100" width="600" height="200" fill="#e0e0ff" stroke="black"/>
+    
+    <!-- Fundamental Mode (HE11) -->
+    <path d="M 150 200 Q 400 100 650 200 Q 400 300 150 200" 
+          fill="none" stroke="red" stroke-width="2"/>
+    <text x="300" y="80" font-family="Arial" font-size="14">Fundamental Mode (HE₁₁)</text>
+    
+    <!-- Higher Order Mode -->
+    <path d="M 150 200 Q 275 150 400 200 Q 525 250 650 200" 
+          fill="none" stroke="blue" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="300" y="350" font-family="Arial" font-size="14">Higher Order Mode</text>
+    
+    <!-- Labels -->
+    <text x="50" y="30" font-family="Arial" font-size="16">Mode Field Distributions in Optical Fiber</text>
+    <text x="720" y="180" font-family="Arial" font-size="12">Core</text>
+    <text x="720" y="80" font-family="Arial" font-size="12">Cladding</text>
+</svg>

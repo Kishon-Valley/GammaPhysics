@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="400" height="300" fill="white"/>
+    
+    <!-- Prism -->
+    <path d="M 150,100 L 250,100 L 200,200 Z" fill="none" stroke="black" stroke-width="2"/>
+    
+    <!-- Incident white light -->
+    <line x1="100" y1="50" x2="180" y2="100" stroke="black" stroke-width="2"/>
+    <text x="60" y="40" font-family="Arial" font-size="14">White light</text>
+    
+    <!-- Dispersed rays -->
+    <line x1="200" y1="200" x2="250" y2="250" stroke="red" stroke-width="2"/>
+    <line x1="200" y1="200" x2="240" y2="250" stroke="orange" stroke-width="2"/>
+    <line x1="200" y1="200" x2="230" y2="250" stroke="yellow" stroke-width="2"/>
+    <line x1="200" y1="200" x2="220" y2="250" stroke="green" stroke-width="2"/>
+    <line x1="200" y1="200" x2="210" y2="250" stroke="blue" stroke-width="2"/>
+    <line x1="200" y1="200" x2="200" y2="250" stroke="violet" stroke-width="2"/>
+    
+    <!-- Wavelength labels -->
+    <text x="260" y="250" font-family="Arial" font-size="12" fill="red">λred = 656.3 nm</text>
+    <text x="180" y="270" font-family="Arial" font-size="12" fill="violet">λviolet = 404.7 nm</text>
+    
+    <!-- Angle labels -->
+    <text x="220" y="120" font-family="Arial" font-size="14">60°</text>
+    <path d="M 200,100 A 20,20 0 0 1 220,120" fill="none" stroke="black" stroke-width="1"/>
+    
+    <!-- Dispersion angle -->
+    <path d="M 200,200 A 40,40 0 0 0 240,230" fill="none" stroke="black" stroke-width="1"/>
+    <text x="250" y="220" font-family="Arial" font-size="14">Δθ</text>
+</svg>

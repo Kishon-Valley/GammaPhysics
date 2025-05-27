@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Metal lattice -->
+    <g id="lattice">
+        <!-- Regular lattice points -->
+        <g id="regular-points" fill="#888">
+            <circle cx="150" cy="100" r="6"/>
+            <circle cx="250" cy="100" r="6"/>
+            <circle cx="350" cy="100" r="6"/>
+            <circle cx="450" cy="100" r="6"/>
+            <circle cx="550" cy="100" r="6"/>
+            <circle cx="650" cy="100" r="6"/>
+            
+            <circle cx="150" cy="200" r="6"/>
+            <circle cx="250" cy="200" r="6"/>
+            <circle cx="350" cy="200" r="6"/>
+            <circle cx="450" cy="200" r="6"/>
+            <circle cx="550" cy="200" r="6"/>
+            <circle cx="650" cy="200" r="6"/>
+            
+            <circle cx="150" cy="300" r="6"/>
+            <circle cx="250" cy="300" r="6"/>
+            <circle cx="350" cy="300" r="6"/>
+            <circle cx="450" cy="300" r="6"/>
+            <circle cx="550" cy="300" r="6"/>
+            <circle cx="650" cy="300" r="6"/>
+        </g>
+        
+        <!-- Vibrating lattice points -->
+        <g id="vibrating-points" fill="#F44336">
+            <circle cx="350" cy="200" r="6">
+                <animate attributeName="cy" 
+                         values="195;205;195" 
+                         dur="1.5s" 
+                         repeatCount="indefinite"/>
+            </circle>
+            <circle cx="450" cy="100" r="6">
+                <animate attributeName="cy" 
+                         values="95;105;95" 
+                         dur="2s" 
+                         repeatCount="indefinite"/>
+            </circle>
+        </g>
+    </g>
+    
+    <!-- Electron paths -->
+    <g id="electron-paths" stroke="#2196F3" fill="none" stroke-width="2">
+        <!-- Path 1 -->
+        <path d="M 100,150 Q 200,100 280,200 L 300,220">
+            <animate attributeName="d" 
+                     values="M 100,150 Q 200,100 280,200 L 300,220;
+                             M 100,150 Q 200,180 280,200 L 300,220;
+                             M 100,150 Q 200,100 280,200 L 300,220" 
+                     dur="3s" 
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Path 2 -->
+        <path d="M 300,220 Q 400,240 500,180 L 520,160">
+            <animate attributeName="d" 
+                     values="M 300,220 Q 400,240 500,180 L 520,160;
+                             M 300,220 Q 400,200 500,180 L 520,160;
+                             M 300,220 Q 400,240 500,180 L 520,160" 
+                     dur="3s" 
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Path 3 -->
+        <path d="M 520,160 Q 600,140 700,200">
+            <animate attributeName="d" 
+                     values="M 520,160 Q 600,140 700,200;
+                             M 520,160 Q 600,180 700,200;
+                             M 520,160 Q 600,140 700,200" 
+                     dur="3s" 
+                     repeatCount="indefinite"/>
+        </path>
+    </g>
+    
+    <!-- Electrons -->
+    <g id="electrons">
+        <circle cx="300" cy="220" r="4" fill="#2196F3">
+            <animate attributeName="cx" 
+                     values="100;700" 
+                     dur="3s" 
+                     repeatCount="indefinite"/>
+            <animate attributeName="cy" 
+                     values="150;200;180;200" 
+                     dur="3s" 
+                     repeatCount="indefinite"/>
+        </circle>
+    </g>
+    
+    <!-- Labels -->
+    <g id="labels" font-family="Arial" text-anchor="middle">
+        <text x="400" y="30" font-size="20">Drude Model of Electron Transport</text>
+        <text x="200" y="350" font-size="14">Electron Path</text>
+        <text x="600" y="350" font-size="14">Lattice Scattering</text>
+        <text x="400" y="370" font-size="14">Mean Free Path</text>
+    </g>
+</svg>

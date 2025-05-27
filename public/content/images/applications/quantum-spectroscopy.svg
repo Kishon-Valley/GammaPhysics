@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="800" height="400" fill="white"/>
+    
+    <!-- Cavity Enhancement -->
+    <text x="150" y="50" font-family="Arial" font-size="20" fill="black">Cavity Enhancement</text>
+    
+    <!-- Mirrors -->
+    <line x1="100" y1="100" x2="100" y2="200" stroke="black" stroke-width="3"/>
+    <line x1="400" y1="100" x2="400" y2="200" stroke="black" stroke-width="3"/>
+    
+    <!-- Multiple Reflections -->
+    <path d="M 50 150 L 450 150" stroke="red" stroke-width="1" stroke-dasharray="5,5"/>
+    <path d="M 50 160 L 450 160" stroke="blue" stroke-width="1" stroke-dasharray="5,5"/>
+    <path d="M 50 140 L 450 140" stroke="green" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Quantum Enhancement -->
+    <text x="600" y="50" font-family="Arial" font-size="20" fill="black">Quantum Enhancement</text>
+    
+    <!-- Classical vs Quantum Noise -->
+    <path d="M 500 150 Q 550 100 600 150 Q 650 200 700 150 Q 750 100 800 150" fill="none" stroke="gray" stroke-width="2"/>
+    <path d="M 500 150 Q 550 140 600 150 Q 650 160 700 150 Q 750 140 800 150" fill="none" stroke="purple" stroke-width="2"/>
+    
+    <!-- Axes -->
+    <line x1="500" y1="200" x2="800" y2="200" stroke="black" stroke-width="1"/>
+    <line x1="500" y1="200" x2="500" y2="100" stroke="black" stroke-width="1"/>
+    
+    <!-- Labels -->
+    <text x="250" y="250" font-family="Arial" font-size="14">Multiple Pass Enhancement</text>
+    <text x="650" y="250" font-family="Arial" font-size="14">Quantum Noise Reduction</text>
+    
+    <!-- Legend -->
+    <line x1="550" y1="300" x2="580" y2="300" stroke="gray" stroke-width="2"/>
+    <text x="590" y="305" font-family="Arial" font-size="12">Classical</text>
+    
+    <line x1="650" y1="300" x2="680" y2="300" stroke="purple" stroke-width="2"/>
+    <text x="690" y="305" font-family="Arial" font-size="12">Squeezed</text>
+</svg>

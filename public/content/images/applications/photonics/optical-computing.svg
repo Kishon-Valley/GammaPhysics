@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="500" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Optical Computing Principles</text>
+  
+  <!-- Linear Optical Computing Section -->
+  <g transform="translate(50, 80)">
+    <text x="150" y="-10" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Linear Optical Computing</text>
+    
+    <!-- Matrix operation diagram -->
+    <rect x="50" y="20" width="40" height="100" fill="#E0E0E0" stroke="black" stroke-width="1"/>
+    <text x="70" y="75" font-family="Arial" font-size="14" text-anchor="middle">a</text>
+    
+    <rect x="150" y="20" width="100" height="100" fill="#A0D0FF" stroke="black" stroke-width="1"/>
+    <text x="200" y="75" font-family="Arial" font-size="14" text-anchor="middle">U</text>
+    
+    <rect x="310" y="20" width="40" height="100" fill="#E0E0E0" stroke="black" stroke-width="1"/>
+    <text x="330" y="75" font-family="Arial" font-size="14" text-anchor="middle">b</text>
+    
+    <!-- Arrows -->
+    <line x1="90" y1="70" x2="150" y2="70" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
+    <line x1="250" y1="70" x2="310" y2="70" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
+    
+    <!-- Matrix equation -->
+    <text x="200" y="140" font-family="Arial" font-size="14" text-anchor="middle">b = U u00d7 a</text>
+    
+    <!-- Optical implementation -->
+    <text x="150" y="170" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Optical Implementation</text>
+    
+    <!-- Beam splitter network -->
+    <line x1="50" y1="200" x2="80" y2="200" stroke="#FF0000" stroke-width="2"/>
+    <line x1="50" y1="240" x2="80" y2="240" stroke="#FF0000" stroke-width="2"/>
+    
+    <!-- Beam splitters -->
+    <rect x="80" y="190" width="20" height="20" fill="#C0C0C0" stroke="black" stroke-width="1" transform="rotate(45, 90, 200)"/>
+    <rect x="120" y="230" width="20" height="20" fill="#C0C0C0" stroke="black" stroke-width="1" transform="rotate(45, 130, 240)"/>
+    <rect x="160" y="190" width="20" height="20" fill="#C0C0C0" stroke="black" stroke-width="1" transform="rotate(45, 170, 200)"/>
+    
+    <!-- Phase shifters -->
+    <circle cx="110" cy="200" r="5" fill="#FFD580" stroke="black" stroke-width="1"/>
+    <circle cx="150" cy="240" r="5" fill="#FFD580" stroke="black" stroke-width="1"/>
+    <circle cx="190" cy="200" r="5" fill="#FFD580" stroke="black" stroke-width="1"/>
+    <circle cx="190" cy="240" r="5" fill="#FFD580" stroke="black" stroke-width="1"/>
+    
+    <!-- Connecting lines -->
+    <line x1="97" y1="207" x2="123" y2="233" stroke="#FF0000" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <line x1="97" y1="193" x2="110" y2="200" stroke="#FF0000" stroke-width="1.5"/>
+    <line x1="110" y1="200" x2="163" y2="193" stroke="#FF0000" stroke-width="1.5"/>
+    <line x1="137" y1="233" x2="150" y2="240" stroke="#FF0000" stroke-width="1.5"/>
+    <line x1="150" y1="240" x2="183" y2="247" stroke="#FF0000" stroke-width="1.5"/>
+    <line x1="137" y1="247" x2="163" y2="207" stroke="#FF0000" stroke-width="1.5" stroke-dasharray="3,3"/>
+    
+    <!-- Output -->
+    <line x1="190" y1="200" x2="220" y2="200" stroke="#FF0000" stroke-width="2"/>
+    <line x1="190" y1="240" x2="220" y2="240" stroke="#FF0000" stroke-width="2"/>
+    
+    <text x="230" y="200" font-family="Arial" font-size="12">bu2081</text>
+    <text x="230" y="240" font-family="Arial" font-size="12">bu2082</text>
+  </g>
+  
+  <!-- Nonlinear Optical Computing Section -->
+  <g transform="translate(400, 80)">
+    <text x="150" y="-10" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Nonlinear Optical Computing</text>
+    
+    <!-- Nonlinear refractive index equation -->
+    <text x="150" y="20" font-family="Arial" font-size="14" text-anchor="middle">n(I) = nu2080 + nu2082I</text>
+    
+    <!-- Optical bistability diagram -->
+    <rect x="100" y="40" width="100" height="60" fill="#E0F0FF" stroke="black" stroke-width="1"/>
+    <text x="150" y="75" font-family="Arial" font-size="14" text-anchor="middle">Nonlinear Medium</text>
+    
+    <!-- Input/Output -->
+    <line x1="50" y1="70" x2="100" y2="70" stroke="#FF0000" stroke-width="2"/>
+    <polygon points="100,70 90,65 90,75" fill="#FF0000"/>
+    <text x="75" y="60" font-family="Arial" font-size="12" text-anchor="middle">Iu1d62u2099</text>
+    
+    <line x1="200" y1="70" x2="250" y2="70" stroke="#FF0000" stroke-width="2"/>
+    <polygon points="250,70 240,65 240,75" fill="#FF0000"/>
+    <text x="225" y="60" font-family="Arial" font-size="12" text-anchor="middle">Iu2092u2096u209c</text>
+    
+    <!-- Feedback -->
+    <path d="M 225,70 C 225,40 75,40 75,70" fill="none" stroke="#FF0000" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <polygon points="75,70 80,60 70,60" fill="#FF0000"/>
+    
+    <!-- Bistability curve -->
+    <line x1="50" y1="180" x2="250" y2="180" stroke="black" stroke-width="1"/> <!-- x-axis -->
+    <line x1="50" y1="180" x2="50" y2="120" stroke="black" stroke-width="1"/> <!-- y-axis -->
+    
+    <text x="150" y="195" font-family="Arial" font-size="12" text-anchor="middle">Input Intensity</text>
+    <text x="35" y="150" font-family="Arial" font-size="12" text-anchor="middle">Output</text>
+    
+    <path d="M 50,180 C 70,180 80,170 90,160 C 100,140 120,130 140,130 C 160,130 180,140 190,160 C 200,170 210,180 230,180" 
+          fill="none" stroke="#0066CC" stroke-width="1.5"/>
+    <path d="M 230,180 C 210,180 200,170 190,160 C 180,140 160,130 140,130 C 120,130 100,140 90,160 C 80,170 70,180 50,180" 
+          fill="none" stroke="#CC0066" stroke-width="1.5" stroke-dasharray="3,3"/>
+    
+    <text x="140" y="120" font-family="Arial" font-size="12">Hysteresis</text>
+    <path d="M 140,125 C 120,135 120,175 140,175" fill="none" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
+    <path d="M 160,175 C 180,165 180,125 160,125" fill="none" stroke="black" stroke-width="1" marker-end="url(#arrow)"/>
+  </g>
+  
+  <!-- Quantum Optical Computing Section -->
+  <g transform="translate(50, 280)">
+    <text x="150" y="-10" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Quantum Optical Computing</text>
+    
+    <!-- Qubit representation -->
+    <circle cx="100" cy="50" r="30" fill="none" stroke="black" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="100" y1="20" x2="100" y2="80" stroke="black" stroke-width="1"/>
+    <line x1="70" y1="50" x2="130" y2="50" stroke="black" stroke-width="1"/>
+    
+    <!-- State vector -->
+    <line x1="100" y1="50" x2="115" y2="30" stroke="#0066CC" stroke-width="2"/>
+    <polygon points="115,30 105,35 110,25" fill="#0066CC"/>
+    
+    <text x="70" y="40" font-family="Arial" font-size="12">|0u27e9</text>
+    <text x="125" y="75" font-family="Arial" font-size="12">|1u27e9</text>
+    <text x="150" y="50" font-family="Arial" font-size="14">|u03c8u27e9 = u03b1|0u27e9 + u03b2|1u27e9</text>
+    
+    <!-- Hong-Ou-Mandel effect -->
+    <text x="150" y="100" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Hong-Ou-Mandel Effect</text>
+    
+    <!-- Beam splitter -->
+    <rect x="140" y="130" width="20" height="20" fill="#C0C0C0" stroke="black" stroke-width="1" transform="rotate(45, 150, 140)"/>
+    
+    <!-- Input photons -->
+    <line x1="100" y1="130" x2="143" y2="130" stroke="#FF0000" stroke-width="2"/>
+    <circle cx="120" cy="130" r="5" fill="#FF0000" stroke="none"/>
+    <text x="120" y="120" font-family="Arial" font-size="12">1</text>
+    
+    <line x1="150" y1="110" x2="150" y2="133" stroke="#FF0000" stroke-width="2"/>
+    <circle cx="150" cy="120" r="5" fill="#FF0000" stroke="none"/>
+    <text x="160" y="120" font-family="Arial" font-size="12">1</text>
+    
+    <!-- Output paths -->
+    <line x1="157" y1="147" x2="180" y2="170" stroke="#FF0000" stroke-width="2"/>
+    <line x1="143" y1="147" x2="120" y2="170" stroke="#FF0000" stroke-width="2"/>
+    
+    <!-- Output states -->
+    <text x="100" y="180" font-family="Arial" font-size="12">0</text>
+    <text x="200" y="180" font-family="Arial" font-size="12">0</text>
+    <text x="150" y="200" font-family="Arial" font-size="12" text-anchor="middle">or</text>
+    <text x="100" y="220" font-family="Arial" font-size="12">2</text>
+    <text x="200" y="220" font-family="Arial" font-size="12">0</text>
+    <text x="150" y="220" font-family="Arial" font-size="12" text-anchor="middle">or</text>
+    <text x="100" y="240" font-family="Arial" font-size="12">0</text>
+    <text x="200" y="240" font-family="Arial" font-size="12">2</text>
+    
+    <text x="250" y="200" font-family="Arial" font-size="12">Never 1,1 for</text>
+    <text x="250" y="215" font-family="Arial" font-size="12">indistinguishable</text>
+    <text x="250" y="230" font-family="Arial" font-size="12">photons</text>
+  </g>
+  
+  <!-- Photonic Architectures Section -->
+  <g transform="translate(400, 280)">
+    <text x="150" y="-10" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Photonic Computing Architectures</text>
+    
+    <!-- Optical Neural Network -->
+    <text x="75" y="20" font-family="Arial" font-size="14" text-anchor="middle">Optical Neural Network</text>
+    
+    <!-- Layers -->
+    <circle cx="25" cy="50" r="5" fill="#0066CC" stroke="none"/>
+    <circle cx="25" cy="70" r="5" fill="#0066CC" stroke="none"/>
+    <circle cx="25" cy="90" r="5" fill="#0066CC" stroke="none"/>
+    
+    <circle cx="75" cy="40" r="5" fill="#0066CC" stroke="none"/>
+    <circle cx="75" cy="60" r="5" fill="#0066CC" stroke="none"/>
+    <circle cx="75" cy="80" r="5" fill="#0066CC" stroke="none"/>
+    <circle cx="75" cy="100" r="5" fill="#0066CC" stroke="none"/>
+    
+    <circle cx="125" cy="50" r="5" fill="#0066CC" stroke="none"/>
+    <circle cx="125" cy="70" r="5" fill="#0066CC" stroke="none"/>
+    <circle cx="125" cy="90" r="5" fill="#0066CC" stroke="none"/>
+    
+    <!-- Connections -->
+    <line x1="25" y1="50" x2="75" y2="40" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="25" y1="50" x2="75" y2="60" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="25" y1="50" x2="75" y2="80" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="25" y1="50" x2="75" y2="100" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    
+    <line x1="25" y1="70" x2="75" y2="40" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="25" y1="70" x2="75" y2="60" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="25" y1="70" x2="75" y2="80" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="25" y1="70" x2="75" y2="100" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    
+    <line x1="25" y1="90" x2="75" y2="40" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="25" y1="90" x2="75" y2="60" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="25" y1="90" x2="75" y2="80" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="25" y1="90" x2="75" y2="100" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    
+    <line x1="75" y1="40" x2="125" y2="50" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="75" y1="40" x2="125" y2="70" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="75" y1="40" x2="125" y2="90" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    
+    <line x1="75" y1="60" x2="125" y2="50" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="75" y1="60" x2="125" y2="70" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="75" y1="60" x2="125" y2="90" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    
+    <line x1="75" y1="80" x2="125" y2="50" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="75" y1="80" x2="125" y2="70" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="75" y1="80" x2="125" y2="90" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    
+    <line x1="75" y1="100" x2="125" y2="50" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="75" y1="100" x2="125" y2="70" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    <line x1="75" y1="100" x2="125" y2="90" stroke="#FF0000" stroke-width="1" stroke-opacity="0.5"/>
+    
+    <!-- Photonic Ising Machine -->
+    <text x="225" y="20" font-family="Arial" font-size="14" text-anchor="middle">Photonic Ising Machine</text>
+    
+    <!-- Spin network -->
+    <circle cx="200" cy="50" r="10" fill="none" stroke="black" stroke-width="1"/>
+    <line x1="195" y1="45" x2="205" y2="55" stroke="black" stroke-width="1"/>
+    <line x1="195" y1="55" x2="205" y2="45" stroke="black" stroke-width="1"/>
+    
+    <circle cx="250" cy="50" r="10" fill="none" stroke="black" stroke-width="1"/>
+    <line x1="245" y1="45" x2="255" y2="55" stroke="black" stroke-width="1"/>
+    <line x1="245" y1="55" x2="255" y2="45" stroke="black" stroke-width="1"/>
+    
+    <circle cx="200" cy="100" r="10" fill="none" stroke="black" stroke-width="1"/>
+    <line x1="195" y1="95" x2="205" y2="105" stroke="black" stroke-width="1"/>
+    <line x1="195" y1="105" x2="205" y2="95" stroke="black" stroke-width="1"/>
+    
+    <circle cx="250" cy="100" r="10" fill="none" stroke="black" stroke-width="1"/>
+    <line x1="245" y1="95" x2="255" y2="105" stroke="black" stroke-width="1"/>
+    <line x1="245" y1="105" x2="255" y2="95" stroke="black" stroke-width="1"/>
+    
+    <!-- Connections -->
+    <line x1="200" y1="60" x2="200" y2="90" stroke="black" stroke-width="1"/>
+    <line x1="210" y1="50" x2="240" y2="50" stroke="black" stroke-width="1"/>
+    <line x1="210" y1="100" x2="240" y2="100" stroke="black" stroke-width="1"/>
+    <line x1="250" y1="60" x2="250" y2="90" stroke="black" stroke-width="1"/>
+    <line x1="210" y1="60" x2="240" y2="90" stroke="black" stroke-width="1"/>
+    <line x1="210" y1="90" x2="240" y2="60" stroke="black" stroke-width="1"/>
+    
+    <!-- Hamiltonian -->
+    <text x="225" y="130" font-family="Arial" font-size="14" text-anchor="middle">H = -u2211Ju1d62u2c7cu03c3u1d62u03c3u2c7c - u2211hu1d62u03c3u1d62</text>
+  </g>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="black"/>
+    </marker>
+  </defs>
+</svg>

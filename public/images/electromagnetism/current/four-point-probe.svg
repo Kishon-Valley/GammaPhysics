@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <!-- White background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Main diagram -->
+  <g transform="translate(50,50)">
+    <!-- Sample material -->
+    <rect x="100" y="200" width="600" height="50" fill="#90A4AE"/>
+    
+    <!-- Probes -->
+    <g>
+      <!-- Current probes -->
+      <line x1="150" y1="100" x2="150" y2="200" stroke="#E91E63" stroke-width="4"/>
+      <line x1="650" y1="100" x2="650" y2="200" stroke="#E91E63" stroke-width="4"/>
+      
+      <!-- Voltage probes -->
+      <line x1="300" y1="100" x2="300" y2="200" stroke="#2196F3" stroke-width="4"/>
+      <line x1="500" y1="100" x2="500" y2="200" stroke="#2196F3" stroke-width="4"/>
+    </g>
+    
+    <!-- Equipment -->
+    <!-- Current source -->
+    <rect x="100" y="50" width="100" height="40" fill="white" stroke="#E91E63" stroke-width="2"/>
+    <text x="150" y="75" font-family="Arial" font-size="14" text-anchor="middle">I source</text>
+    
+    <!-- Voltmeter -->
+    <rect x="350" y="50" width="100" height="40" fill="white" stroke="#2196F3" stroke-width="2"/>
+    <text x="400" y="75" font-family="Arial" font-size="14" text-anchor="middle">V meter</text>
+    
+    <!-- Connections -->
+    <g stroke-width="2" fill="none">
+      <path d="M 150,50 L 150,100" stroke="#E91E63"/>
+      <path d="M 650,50 L 650,100" stroke="#E91E63"/>
+      <path d="M 300,50 L 300,100" stroke="#2196F3"/>
+      <path d="M 500,50 L 500,100" stroke="#2196F3"/>
+    </g>
+    
+    <!-- Labels -->
+    <text x="400" y="300" font-family="Arial" font-size="20" text-anchor="middle">Four-Point Probe Resistance Measurement</text>
+    
+    <!-- Spacing labels -->
+    <text x="225" y="240" font-family="Arial" font-size="14">s</text>
+    <text x="400" y="240" font-family="Arial" font-size="14">s</text>
+    <text x="575" y="240" font-family="Arial" font-size="14">s</text>
+    
+    <!-- Measurements -->
+    <g font-family="Arial" font-size="14">
+      <text x="150" y="350">I in</text>
+      <text x="650" y="350">I out</text>
+      <text x="400" y="350">V = IR (measured)</text>
+    </g>
+  </g>
+  
+  <!-- Formula -->
+  <text x="400" y="450" font-family="Arial" font-size="16" text-anchor="middle">ρ = 2πs(V/I)</text>
+</svg>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height="300" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Spring-mass system at different positions -->
+    
+    <!-- Maximum displacement (left) -->
+    <g transform="translate(50,0)">
+        <rect x="25" y="20" width="100" height="10" fill="#666"/>
+        <path d="M75,30 L75,50 L55,55 L95,60 L55,65 L95,70 L75,75" 
+              fill="none" stroke="#444" stroke-width="3"/>
+        <circle cx="75" cy="100" r="15" fill="#1a73e8"/>
+        <text x="40" y="140" font-family="Arial" font-size="12">Maximum PE</text>
+        <text x="40" y="155" font-family="Arial" font-size="12">Zero KE</text>
+    </g>
+    
+    <!-- Equilibrium position (center) -->
+    <g transform="translate(200,0)">
+        <rect x="25" y="20" width="100" height="10" fill="#666"/>
+        <path d="M75,30 L75,50 L55,60 L95,70 L55,80 L95,90 L75,100" 
+              fill="none" stroke="#444" stroke-width="3"/>
+        <circle cx="75" cy="125" r="15" fill="#1a73e8"/>
+        <text x="40" y="165" font-family="Arial" font-size="12">Zero PE</text>
+        <text x="40" y="180" font-family="Arial" font-size="12">Maximum KE</text>
+        <!-- Velocity arrow -->
+        <path d="M75,125 L115,125 L110,120 M115,125 L110,130" stroke="#f44336" stroke-width="2"/>
+    </g>
+    
+    <!-- Maximum displacement (right) -->
+    <g transform="translate(350,0)">
+        <rect x="25" y="20" width="100" height="10" fill="#666"/>
+        <path d="M75,30 L75,50 L95,55 L55,60 L95,65 L55,70 L75,75" 
+              fill="none" stroke="#444" stroke-width="3"/>
+        <circle cx="75" cy="100" r="15" fill="#1a73e8"/>
+        <text x="40" y="140" font-family="Arial" font-size="12">Maximum PE</text>
+        <text x="40" y="155" font-family="Arial" font-size="12">Zero KE</text>
+    </g>
+    
+    <!-- Energy bar graphs -->
+    <g transform="translate(50,200)">
+        <rect x="25" y="20" width="20" height="60" fill="#f44336"/>
+        <rect x="55" y="80" width="20" height="0" fill="#2196f3"/>
+        <text x="35" y="100" font-family="Arial" font-size="10">PE</text>
+        <text x="65" y="100" font-family="Arial" font-size="10">KE</text>
+    </g>
+    
+    <g transform="translate(200,200)">
+        <rect x="25" y="80" width="20" height="0" fill="#f44336"/>
+        <rect x="55" y="20" width="20" height="60" fill="#2196f3"/>
+        <text x="35" y="100" font-family="Arial" font-size="10">PE</text>
+        <text x="65" y="100" font-family="Arial" font-size="10">KE</text>
+    </g>
+    
+    <g transform="translate(350,200)">
+        <rect x="25" y="20" width="20" height="60" fill="#f44336"/>
+        <rect x="55" y="80" width="20" height="0" fill="#2196f3"/>
+        <text x="35" y="100" font-family="Arial" font-size="10">PE</text>
+        <text x="65" y="100" font-family="Arial" font-size="10">KE</text>
+    </g>
+</svg>

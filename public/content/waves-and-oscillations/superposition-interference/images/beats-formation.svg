@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Beat Formation</text>
+    
+    <!-- Wave 1 (higher frequency) -->
+    <g transform="translate(0,100)">
+        <text x="50" y="20" font-size="14">Wave 1 (f₁)</text>
+        <path d="M100,50 Q125,25 150,50 T200,50 T250,50 T300,50 T350,50 T400,50 T450,50 T500,50 T550,50 T600,50 T650,50" 
+              fill="none" stroke="#2196F3" stroke-width="2"/>
+    </g>
+    
+    <!-- Wave 2 (lower frequency) -->
+    <g transform="translate(0,200)">
+        <text x="50" y="20" font-size="14">Wave 2 (f₂)</text>
+        <path d="M100,50 Q130,25 160,50 T220,50 T280,50 T340,50 T400,50 T460,50 T520,50 T580,50 T640,50 T700,50" 
+              fill="none" stroke="#4CAF50" stroke-width="2"/>
+    </g>
+    
+    <!-- Resultant Beat Wave -->
+    <g transform="translate(0,350)">
+        <text x="50" y="20" font-size="14">Resultant Beat</text>
+        <!-- Beat envelope -->
+        <path d="M100,50 Q200,0 300,50 T500,50 T700,50" 
+              fill="none" stroke="#E91E63" stroke-width="2" stroke-dasharray="5,5"/>
+        <path d="M100,50 Q200,100 300,50 T500,50 T700,50" 
+              fill="none" stroke="#E91E63" stroke-width="2" stroke-dasharray="5,5"/>
+        <!-- Carrier wave -->
+        <path d="M100,50 Q112,25 124,50 T148,50 T172,50 T196,50 T220,50 T244,50 T268,50 T292,50 T316,50 T340,50" 
+              fill="none" stroke="#9C27B0" stroke-width="1.5"/>
+        <path d="M340,50 Q352,75 364,50 T388,50 T412,50 T436,50 T460,50 T484,50 T508,50 T532,50 T556,50 T580,50" 
+              fill="none" stroke="#9C27B0" stroke-width="1.5"/>
+        <path d="M580,50 Q592,25 604,50 T628,50 T652,50 T676,50 T700,50" 
+              fill="none" stroke="#9C27B0" stroke-width="1.5"/>
+    </g>
+    
+    <!-- Formulas -->
+    <g transform="translate(0,450)">
+        <text x="400" y="0" text-anchor="middle" font-size="16">Beat Frequency: f_beat = |f₁ - f₂|</text>
+        <text x="400" y="25" text-anchor="middle" font-size="14">Envelope frequency = |f₁ - f₂|/2</text>
+    </g>
+</svg>

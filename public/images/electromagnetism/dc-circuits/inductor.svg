@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="500" height="300" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Styles -->
+  <style>
+    .wire { stroke: #333; stroke-width: 2.5; fill: none; }
+    .coil { stroke: #333; stroke-width: 2.5; fill: none; }
+    .current-arrow { stroke: #0066cc; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    .voltage-arrow { stroke: #cc0000; stroke-width: 2; fill: none; marker-end: url(#voltageArrow); }
+    .magnetic-field { stroke: #8844dd; stroke-width: 1.5; fill: none; stroke-dasharray: 5,3; }
+    .electron { fill: #3498db; }
+    .label { font-family: Arial; font-size: 16px; text-anchor: middle; }
+    .formula { font-family: Arial; font-style: italic; font-size: 16px; }
+    .title { font-family: Arial; font-size: 20px; font-weight: bold; text-anchor: middle; }
+    
+    @keyframes electronFlow {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-150px); }
+    }
+    
+    .moving-electron {
+      animation: electronFlow 3s linear infinite;
+    }
+    
+    @keyframes pulseField {
+      0% { stroke-opacity: 0.2; transform: scale(0.9); }
+      50% { stroke-opacity: 0.8; transform: scale(1.1); }
+      100% { stroke-opacity: 0.2; transform: scale(0.9); }
+    }
+    
+    .pulsing-field {
+      animation: pulseField 3s ease-in-out infinite;
+      transform-origin: center;
+    }
+  </style>
+
+  <!-- Definitions -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0066cc"/>
+    </marker>
+    <marker id="voltageArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc0000"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="300" fill="white"/>
+
+  <!-- Title -->
+  <text x="250" y="30" class="title">Inductor</text>
+  
+  <!-- Inductor Circuit -->
+  <g transform="translate(50, 150)">
+    <!-- Wires -->
+    <line x1="0" y1="0" x2="70" y2="0" class="wire"/>
+    <line x1="330" y1="0" x2="400" y2="0" class="wire"/>
+    
+    <!-- Inductor Coil -->
+    <path d="M 70,0
+             C 80,0 80,-15 90,-15
+             S 100,15 110,15
+             S 120,-15 130,-15
+             S 140,15 150,15
+             S 160,-15 170,-15
+             S 180,15 190,15
+             S 200,-15 210,-15
+             S 220,15 230,15
+             S 240,-15 250,-15
+             S 260,15 270,15
+             S 280,-15 290,-15
+             S 300,15 310,15
+             S 320,-15 330,-15"
+          class="coil"/>
+    
+    <!-- Electrons Animation -->
+    <g class="moving-electron">
+      <circle cx="230" cy="0" r="5" class="electron"/>
+      <circle cx="280" cy="0" r="5" class="electron"/>
+      <circle cx="330" cy="0" r="5" class="electron"/>
+      <circle cx="380" cy="0" r="5" class="electron"/>
+    </g>
+    
+    <!-- Magnetic Field Lines -->
+    <ellipse cx="200" cy="-50" rx="100" ry="20" class="magnetic-field pulsing-field"/>
+    <ellipse cx="200" cy="-65" rx="120" ry="30" class="magnetic-field pulsing-field"/>
+    <ellipse cx="200" cy="-80" rx="140" ry="40" class="magnetic-field pulsing-field"/>
+    
+    <!-- Current Arrow -->
+    <path d="M 40,0 Q 50,-10 60,0" class="current-arrow"/>
+    <text x="50" y="-15" class="label" fill="#0066cc">i</text>
+    
+    <!-- Voltage Arrow -->
+    <line x1="200" y1="20" x2="200" y2="50" class="voltage-arrow"/>
+    <text x="200" y="65" class="label" fill="#cc0000">v</text>
+  </g>
+  
+  <!-- Inductor Equations -->
+  <g transform="translate(250, 240)">
+    <text x="0" y="0" class="formula">v = L · di/dt</text>
+    <text x="0" y="25" class="formula">i = (1/L) · ∫v dt</text>
+  </g>
+</svg> 

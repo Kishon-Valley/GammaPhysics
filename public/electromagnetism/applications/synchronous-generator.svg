@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewBox="0 0 600 400">
+  <style>
+    .stator { fill: #78909C; stroke: #455A64; stroke-width: 2; }
+    .rotor { fill: #FFCC80; stroke: #F57C00; stroke-width: 2; }
+    .rotor-pole-n { fill: #3F51B5; stroke: #303F9F; stroke-width: 1; }
+    .rotor-pole-s { fill: #F44336; stroke: #D32F2F; stroke-width: 1; }
+    .winding { fill: #FF9800; stroke: #F57C00; stroke-width: 1; }
+    .shaft { fill: #9E9E9E; stroke: #616161; stroke-width: 1; }
+    .arrow { fill: #4CAF50; }
+    .text { font-family: Arial, sans-serif; font-size: 14px; }
+    .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; }
+    .equation { font-family: 'Times New Roman', serif; font-size: 16px; font-style: italic; }
+    .flux-line { fill: none; stroke: #3F51B5; stroke-width: 1.5; stroke-dasharray: 5,3; opacity: 0.7; }
+    .sine-wave { fill: none; stroke: #F44336; stroke-width: 2; }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    @keyframes sineWave {
+      from { transform: translateX(0); }
+      to { transform: translateX(-200px); }
+    }
+    
+    @keyframes pulseFlux {
+      0% { opacity: 0.2; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0.2; }
+    }
+    
+    #rotor-group { animation: rotate 8s linear infinite; }
+    #sine-wave-group { animation: sineWave 8s linear infinite; }
+    #flux-lines { animation: pulseFlux 4s ease-in-out infinite; }
+  </style>
+  
+  <!-- Background -->
+  <rect width="600" height="400" fill="#f9f9f9"/>
+  
+  <!-- Title -->
+  <text x="300" y="30" text-anchor="middle" class="title">Synchronous Generator</text>
+  
+  <!-- Equations -->
+  <text x="300" y="55" text-anchor="middle" class="equation">f = np/60</text>
+  <text x="300" y="75" text-anchor="middle" class="equation">E = kΦω</text>
+  
+  <!-- Main Generator Group -->
+  <g transform="translate(230, 200)">
+    <!-- Stator -->
+    <circle cx="0" cy="0" r="100" class="stator" />
+    <circle cx="0" cy="0" r="70" fill="#f9f9f9" stroke="#455A64" stroke-width="1" />
+    
+    <!-- Stator Windings -->
+    <g id="stator-windings">
+      <!-- Phase A -->
+      <rect x="-95" y="-25" width="25" height="50" rx="5" class="winding" />
+      <rect x="70" y="-25" width="25" height="50" rx="5" class="winding" />
+      
+      <!-- Phase B -->
+      <rect x="-25" y="-95" width="50" height="25" rx="5" transform="rotate(0)" class="winding" />
+      <rect x="-25" y="70" width="50" height="25" rx="5" transform="rotate(0)" class="winding" />
+      
+      <!-- Phase C -->
+      <rect x="-60" y="-80" width="50" height="25" rx="5" transform="rotate(-60)" class="winding" />
+      <rect x="10" y="55" width="50" height="25" rx="5" transform="rotate(-60)" class="winding" />
+    </g>
+    
+    <!-- Flux Lines -->
+    <g id="flux-lines">
+      <path d="M0,-70 C30,-60 60,-30 70,0" class="flux-line" />
+      <path d="M70,0 C60,30 30,60 0,70" class="flux-line" />
+      <path d="M0,70 C-30,60 -60,30 -70,0" class="flux-line" />
+      <path d="M-70,0 C-60,-30 -30,-60 0,-70" class="flux-line" />
+    </g>
+    
+    <!-- Rotor -->
+    <g id="rotor-group">
+      <circle cx="0" cy="0" r="60" class="rotor" />
+      
+      <!-- Rotor Poles -->
+      <rect x="-50" y="-20" width="40" height="40" class="rotor-pole-n" />
+      <rect x="10" y="-20" width="40" height="40" class="rotor-pole-s" />
+      
+      <!-- Rotor Text -->
+      <text x="-30" y="5" text-anchor="middle" fill="white" class="text">N</text>
+      <text x="30" y="5" text-anchor="middle" fill="white" class="text">S</text>
+      
+      <!-- Shaft -->
+      <circle cx="0" cy="0" r="15" class="shaft" />
+      
+      <!-- Rotation Arrow -->
+      <path d="M0,-40 L10,-30 L0,-35 L-10,-30 Z" class="arrow" />
+    </g>
+  </g>
+  
+  <!-- Output Waveform -->
+  <g transform="translate(450, 200)">
+    <rect x="-80" y="-50" width="160" height="100" fill="#eee" stroke="#333" stroke-width="1" />
+    
+    <!-- Axes -->
+    <line x1="-80" y1="0" x2="80" y2="0" stroke="#333" stroke-width="1" />
+    <line x1="-80" y1="-40" x2="-80" y2="40" stroke="#333" stroke-width="1" />
+    
+    <!-- Sine Wave (Clipped to rectangle) -->
+    <clipPath id="waveClip">
+      <rect x="-80" y="-50" width="160" height="100" />
+    </clipPath>
+    
+    <g id="sine-wave-group" clip-path="url(#waveClip)">
+      <path d="M-180,0 C-155,-40 -130,-40 -105,0 C-80,40 -55,40 -30,0 C-5,-40 20,-40 45,0 C70,40 95,40 120,0 C145,-40 170,-40 195,0 C220,40 245,40 270,0" class="sine-wave" />
+    </g>
+    
+    <text x="0" y="-60" text-anchor="middle" class="text">Output Voltage</text>
+  </g>
+  
+  <!-- Labels -->
+  <text x="230" y="320" text-anchor="middle" class="text">Rotating Field</text>
+  <text x="450" y="320" text-anchor="middle" class="text">Generated AC Voltage</text>
+  
+  <!-- Explanation -->
+  <text x="300" y="350" text-anchor="middle" class="text">A rotating magnetic field induces alternating voltage in stator windings</text>
+  <text x="300" y="370" text-anchor="middle" class="text">Frequency depends on rotation speed and number of poles</text>
+</svg>

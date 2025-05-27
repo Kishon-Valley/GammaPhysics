@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="800" viewBox="0 0 900 800">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+    </marker>
+    <marker id="currentArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0066cc"/>
+    </marker>
+    <marker id="voltageArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc0000"/>
+    </marker>
+    
+    <!-- Sine wave path for current animation -->
+    <path id="sinePath" d="M0,0 Q5,-20 10,0 T20,0 T30,0 T40,0 T50,0" stroke-linecap="round" />
+    
+    <!-- Animation definitions -->
+    <style>
+      .circuit-line { stroke: #000; stroke-width: 2.5; }
+      .component-label { font-family: Arial; font-size: 14px; text-anchor: middle; }
+      
+      .current-flow { stroke: #0066cc; stroke-width: 3; stroke-dasharray: 7,3; fill: none; }
+      .current-label { fill: #0066cc; font-family: Arial; font-size: 14px; font-weight: bold; }
+      
+      .voltage { stroke: #cc0000; stroke-width: 2; stroke-dasharray: 6,3; }
+      .voltage-label { fill: #cc0000; font-family: Arial; font-size: 14px; font-weight: bold; }
+      
+      .phasor { stroke-width: 2.5; }
+      
+      .resonance-box { fill: #f5f5f5; stroke: #333; stroke-width: 1; }
+      .resonance-title { font-family: Arial; font-size: 16px; font-weight: bold; text-anchor: middle; }
+      .resonance-formula { font-family: Arial; font-size: 14px; text-anchor: start; }
+
+      @keyframes flowAnimation {
+        from { stroke-dashoffset: 50; }
+        to { stroke-dashoffset: 0; }
+      }
+      
+      .animated-current {
+        animation: flowAnimation 1.5s linear infinite;
+      }
+      
+      @keyframes pulseAnimation {
+        0% { opacity: 0.3; }
+        50% { opacity: 1; }
+        100% { opacity: 0.3; }
+      }
+      
+      .pulse {
+        animation: pulseAnimation 2s ease-in-out infinite;
+      }
+      
+      @keyframes rotateAnimation {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      .rotate {
+        animation: rotateAnimation 8s linear infinite;
+        transform-origin: center;
+      }
+    </style>
+  </defs>
+  
+  <!-- Background and Title -->
+  <rect width="900" height="800" fill="white"/>
+  <text x="450" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">Parallel RLC Circuit Resonance</text>
+  
+  <!-- Circuit Diagram -->
+  <g transform="translate(150, 150)">
+    <!-- AC Source -->
+    <circle cx="60" cy="200" r="30" fill="none" stroke="#000" stroke-width="2"/>
+    <path d="M60,170 Q70,185 60,200 Q50,215 60,230" fill="none" stroke="#000" stroke-width="2"/>
+    <text x="60" y="250" class="component-label">AC Source</text>
+    
+    <!-- Connecting Lines -->
+    <line x1="60" y1="140" x2="60" y2="170" class="circuit-line"/>
+    <line x1="60" y1="230" x2="60" y2="260" class="circuit-line"/>
+    <line x1="60" y1="140" x2="350" y2="140" class="circuit-line"/>
+    <line x1="60" y1="260" x2="350" y2="260" class="circuit-line"/>
+    
+    <!-- Resistor Branch -->
+    <line x1="150" y1="140" x2="150" y2="160" class="circuit-line"/>
+    <path d="M150,160 L140,165 L160,175 L140,185 L160,195 L140,205 L160,215 L150,220" fill="none" stroke="#000" stroke-width="2.5"/>
+    <line x1="150" y1="220" x2="150" y2="260" class="circuit-line"/>
+    <text x="150" y="120" class="component-label">R</text>
+    
+    <!-- Inductor Branch -->
+    <line x1="250" y1="140" x2="250" y2="160" class="circuit-line"/>
+    <path d="M250,160 C270,160 270,170 250,170 C270,170 270,180 250,180 C270,180 270,190 250,190 C270,190 270,200 250,200 C270,200 270,210 250,210 C270,210 270,220 250,220" fill="none" stroke="#000" stroke-width="2.5"/>
+    <line x1="250" y1="220" x2="250" y2="260" class="circuit-line"/>
+    <text x="250" y="120" class="component-label">L</text>
+    
+    <!-- Capacitor Branch -->
+    <line x1="350" y1="140" x2="350" y2="190" class="circuit-line"/>
+    <line x1="330" y1="190" x2="370" y2="190" class="circuit-line"/>
+    <line x1="330" y1="210" x2="370" y2="210" class="circuit-line"/>
+    <line x1="350" y1="210" x2="350" y2="260" class="circuit-line"/>
+    <text x="350" y="120" class="component-label">C</text>
+    
+    <!-- Current Labels and Arrows -->
+    <path d="M60,130 Q70,125 80,130" class="current-flow animated-current" marker-end="url(#currentArrow)"/>
+    <text x="85" y="120" class="current-label">I</text>
+    
+    <path d="M135,200 Q145,195 155,200" class="current-flow animated-current" marker-end="url(#currentArrow)"/>
+    <text x="120" y="200" class="current-label">IR</text>
+    
+    <path d="M235,200 Q245,195 255,200" class="current-flow animated-current" marker-end="url(#currentArrow)"/>
+    <text x="220" y="200" class="current-label">IL</text>
+    
+    <path d="M335,200 Q345,195 355,200" class="current-flow animated-current" marker-end="url(#currentArrow)"/>
+    <text x="370" y="200" class="current-label">IC</text>
+    
+    <!-- Voltage Arrows -->
+    <line x1="50" y1="200" x2="70" y2="200" class="voltage" marker-end="url(#voltageArrow)"/>
+    <text x="30" y="200" class="voltage-label">V</text>
+  </g>
+  
+  <!-- Phasor Diagram -->
+  <g transform="translate(200, 450)">
+    <text x="0" y="-100" font-family="Arial" font-size="18" font-weight="bold">Phasor Diagram at Resonance</text>
+    
+    <!-- Coordinate Axes -->
+    <line x1="-80" y1="0" x2="80" y2="0" stroke="#000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <line x1="0" y1="80" x2="0" y2="-80" stroke="#000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <text x="85" y="15" font-family="Arial" font-size="12">Real</text>
+    <text x="15" y="-85" font-family="Arial" font-size="12">Imaginary</text>
+    
+    <!-- Phasors -->
+    <g class="rotate">
+      <!-- Supply Voltage Phasor -->
+      <line x1="0" y1="0" x2="60" y2="0" class="phasor" stroke="#cc0000" marker-end="url(#voltageArrow)"/>
+      <text x="30" y="-10" class="voltage-label">V</text>
+      
+      <!-- Current Phasors -->
+      <line x1="0" y1="0" x2="50" y2="0" class="phasor" stroke="#0066cc" marker-end="url(#currentArrow)"/>
+      <text x="25" y="15" class="current-label">IR</text>
+      
+      <line x1="0" y1="0" x2="0" y2="-40" class="phasor" stroke="#0066cc" marker-end="url(#currentArrow)"/>
+      <text x="-15" y="-20" class="current-label">IL</text>
+      
+      <line x1="0" y1="0" x2="0" y2="40" class="phasor" stroke="#0066cc" marker-end="url(#currentArrow)"/>
+      <text x="15" y="20" class="current-label">IC</text>
+    </g>
+  </g>
+  
+  <!-- Impedance vs Frequency Graph -->
+  <g transform="translate(550, 250)">
+    <text x="0" y="-120" font-family="Arial" font-size="18" font-weight="bold">Impedance vs Frequency</text>
+    
+    <!-- Axes -->
+    <line x1="-80" y1="100" x2="250" y2="100" stroke="#000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <line x1="-50" y1="200" x2="-50" y2="-100" stroke="#000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    
+    <!-- Axis Labels -->
+    <text x="260" y="100" font-family="Arial" font-size="14">f</text>
+    <text x="-50" y="-110" font-family="Arial" font-size="14">Z</text>
+    
+    <!-- Resonance Frequency Marker -->
+    <line x1="100" y1="100" x2="100" y2="105" stroke="#000" stroke-width="1.5"/>
+    <text x="100" y="120" font-family="Arial" font-size="12" text-anchor="middle">fr</text>
+    
+    <!-- Impedance Curves -->
+    <path d="M-50,100 Q0,100 50,50 T100,20 T150,10 T200,5 T250,0" fill="none" stroke="#0066cc" stroke-width="2.5"/>
+    <text x="200" y="0" font-family="Arial" font-size="12" fill="#0066cc">Z</text>
+    
+    <!-- Marker for maximum impedance at resonance -->
+    <circle cx="100" cy="20" r="5" fill="#cc0000" class="pulse"/>
+    <line x1="100" y1="20" x2="130" y2="-20" stroke="#cc0000" stroke-width="1"/>
+    <text x="140" y="-25" font-family="Arial" font-size="12" fill="#cc0000">Maximum Z at resonance</text>
+  </g>
+  
+  <!-- Resonance Conditions Box -->
+  <g transform="translate(550, 500)">
+    <rect x="-50" y="-40" width="300" height="180" class="resonance-box" rx="10" ry="10"/>
+    <text x="100" y="-15" class="resonance-title">Parallel Resonance Conditions</text>
+    
+    <text x="-30" y="20" class="resonance-formula">• Resonance Frequency: f_r = 1/(2π√(LC))</text>
+    <text x="-30" y="50" class="resonance-formula">• At resonance:</text>
+    <text x="-20" y="80" class="resonance-formula">- X_L = X_C</text>
+    <text x="-20" y="110" class="resonance-formula">- Circuit impedance is maximum</text>
+    <text x="-20" y="140" class="resonance-formula">- I_L and I_C are equal and opposite</text>
+  </g>
+  
+  <!-- Waveforms -->
+  <g transform="translate(200, 650)">
+    <text x="0" y="-20" font-family="Arial" font-size="18" font-weight="bold">Waveforms at Resonance</text>
+    
+    <!-- Time Axis -->
+    <line x1="-80" y1="50" x2="300" y2="50" stroke="#000" stroke-width="1" marker-end="url(#arrowhead)"/>
+    <text x="310" y="50" font-family="Arial" font-size="12">t</text>
+    
+    <!-- Voltage Waveform -->
+    <path d="M-80,50 Q-65,10 -50,50 Q-35,90 -20,50 Q-5,10 10,50 Q25,90 40,50 Q55,10 70,50 Q85,90 100,50 Q115,10 130,50 Q145,90 160,50 Q175,10 190,50 Q205,90 220,50 Q235,10 250,50 Q265,90 280,50" fill="none" stroke="#cc0000" stroke-width="2.5"/>
+    <text x="290" y="30" class="voltage-label">V</text>
+    
+    <!-- Source Current Waveform - in phase with voltage at resonance -->
+    <path d="M-80,50 Q-65,70 -50,50 Q-35,30 -20,50 Q-5,70 10,50 Q25,30 40,50 Q55,70 70,50 Q85,30 100,50 Q115,70 130,50 Q145,30 160,50 Q175,70 190,50 Q205,30 220,50 Q235,70 250,50 Q265,30 280,50" fill="none" stroke="#0066cc" stroke-width="2.5"/>
+    <text x="290" y="70" class="current-label">I</text>
+    
+    <!-- Time Markers -->
+    <line x1="-50" y1="45" x2="-50" y2="55" stroke="#000" stroke-width="1"/>
+    <line x1="70" y1="45" x2="70" y2="55" stroke="#000" stroke-width="1"/>
+    <line x1="190" y1="45" x2="190" y2="55" stroke="#000" stroke-width="1"/>
+    
+    <text x="-50" y="70" font-family="Arial" font-size="10" text-anchor="middle">0</text>
+    <text x="70" y="70" font-family="Arial" font-size="10" text-anchor="middle">T</text>
+    <text x="190" y="70" font-family="Arial" font-size="10" text-anchor="middle">2T</text>
+  </g>
+</svg> 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="220" height="160" viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
+  <rect width="220" height="160" fill="white"/>
+  <!-- Outer shell -->
+  <circle cx="110" cy="80" r="60" fill="none" stroke="#4444ff" stroke-width="3"/>
+  <!-- Inner region -->
+  <circle cx="110" cy="80" r="40" fill="none" stroke="#00cc66" stroke-width="2" stroke-dasharray="5,5"/>
+  <!-- Labels -->
+  <text x="170" y="80" font-size="13" fill="#4444ff">R</text>
+  <text x="110" y="30" font-size="13" fill="#00cc66">Inside</text>
+  <text x="110" y="150" font-size="13" fill="#4444ff">Outside</text>
+  <!-- Arrow -->
+  <line x1="110" y1="80" x2="170" y2="80" stroke="#888" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="140" y="70" font-size="13" fill="#888">r</text>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888"/>
+    </marker>
+  </defs>
+</svg>

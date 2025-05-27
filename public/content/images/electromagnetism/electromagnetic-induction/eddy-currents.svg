@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400">
+    <defs>
+        <marker id="current-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+    </defs>
+
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="bold">
+        Electromagnetic Damping and Eddy Currents
+    </text>
+
+    <!-- Conductor and magnetic field -->
+    <g transform="translate(400, 200)">
+        <!-- Conductor -->
+        <rect x="-100" y="-80" width="200" height="160" fill="#e0e0e0" stroke="#666">
+            <animate attributeName="x" 
+                     values="-150;-50;-150"
+                     dur="3s"
+                     repeatCount="indefinite"/>
+        </rect>
+
+        <!-- Magnetic field dots (into page) -->
+        <g id="field-dots">
+            <g transform="translate(-60,-40)">
+                <circle r="3" fill="#4CAF50"/>
+                <circle r="6" fill="none" stroke="#4CAF50">
+                    <animate attributeName="r" values="3;8;3" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="stroke-opacity" values="1;0;1" dur="2s" repeatCount="indefinite"/>
+                </circle>
+            </g>
+        </g>
+        <use href="#field-dots" transform="translate(60,0)"/>
+        <use href="#field-dots" transform="translate(0,80)"/>
+        <use href="#field-dots" transform="translate(60,80)"/>
+
+        <!-- Eddy currents -->
+        <path d="M -50,-40 A 30,30 0 1 1 -50,40" 
+              fill="none" stroke="#FF5722" stroke-width="2" marker-end="url(#current-arrow)">
+            <animate attributeName="stroke-dashoffset"
+                     values="0;100"
+                     dur="1s"
+                     repeatCount="indefinite"/>
+        </path>
+    </g>
+
+    <!-- Damping force equation -->
+    <text x="400" y="350" text-anchor="middle" font-family="math" font-size="16">
+        F = -kv
+    </text>
+</svg> 

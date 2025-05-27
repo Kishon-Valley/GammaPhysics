@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Coordinate system -->
+  <g stroke="#666" stroke-width="1">
+    <line x1="50" y1="250" x2="350" y2="250"/>
+    <line x1="50" y1="50" x2="50" y2="250"/>
+    
+    <!-- Arrows -->
+    <polygon points="350,250 345,245 345,255" fill="#666"/>
+    <polygon points="50,50 45,55 55,55" fill="#666"/>
+    
+    <!-- Labels -->
+    <text x="360" y="255" font-family="Arial" font-size="12">r</text>
+    <text x="30" y="45" font-family="Arial" font-size="12">U</text>
+  </g>
+  
+  <!-- Potential energy curve -->
+  <path d="M 350,250 C 300,240 200,180 150,130 S 80,70 50,60" 
+        fill="none" stroke="#4a90e2" stroke-width="2"/>
+  
+  <!-- Point mass -->
+  <circle cx="200" cy="180" r="5" fill="#e24a4a"/>
+  
+  <!-- Energy level -->
+  <line x1="50" y1="180" x2="350" y2="180" 
+        stroke="#50C878" stroke-width="1" stroke-dasharray="5,5"/>
+  <text x="360" y="185" font-family="Arial" font-size="12">E</text>
+  
+  <!-- Formula -->
+  <text x="200" y="280" text-anchor="middle" font-family="Arial" font-size="14">U = -GMm/r</text>
+</svg>

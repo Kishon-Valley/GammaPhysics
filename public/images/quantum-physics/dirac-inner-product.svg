@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f8f8" />
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="24" text-anchor="middle" fill="#333">Inner Product in Dirac Notation</text>
+  
+  <!-- Coordinate system -->
+  <g transform="translate(400, 200)">
+    <!-- x-axis -->
+    <line x1="-300" y1="0" x2="300" y2="0" stroke="#333" stroke-width="2" />
+    <text x="310" y="15" font-family="Arial" font-size="16" fill="#333">Re</text>
+    
+    <!-- y-axis -->
+    <line x1="0" y1="150" x2="0" y2="-150" stroke="#333" stroke-width="2" />
+    <text x="15" y="-160" font-family="Arial" font-size="16" fill="#333">Im</text>
+    
+    <!-- Unit circle -->
+    <circle cx="0" cy="0" r="100" stroke="#999" stroke-width="1" fill="none" stroke-dasharray="5,5" />
+  </g>
+  
+  <!-- Vector representation -->
+  <g transform="translate(400, 200)">
+    <!-- State vector |ψ⟩ -->
+    <line x1="0" y1="0" x2="80" y2="-60" stroke="#3366cc" stroke-width="3" />
+    <circle cx="80" cy="-60" r="5" fill="#3366cc" />
+    <text x="90" y="-70" font-family="Arial" font-size="16" fill="#3366cc">|ψ⟩</text>
+    
+    <!-- State vector |φ⟩ -->
+    <line x1="0" y1="0" x2="90" y2="-30" stroke="#cc3366" stroke-width="3" />
+    <circle cx="90" cy="-30" r="5" fill="#cc3366" />
+    <text x="100" y="-30" font-family="Arial" font-size="16" fill="#cc3366">|φ⟩</text>
+    
+    <!-- Projection line -->
+    <line x1="80" y1="-60" x2="64.3" y2="-21.4" stroke="#33cc66" stroke-width="2" stroke-dasharray="5,5" />
+    <line x1="0" y1="0" x2="64.3" y2="-21.4" stroke="#33cc66" stroke-width="3" />
+    <circle cx="64.3" cy="-21.4" r="5" fill="#33cc66" />
+    
+    <!-- Angle -->
+    <path d="M 40,0 A 40 40 0 0 1 28.3,-28.3" stroke="#666" stroke-width="1.5" fill="none" />
+    <text x="45" y="-20" font-family="Arial" font-size="14" fill="#666">θ</text>
+  </g>
+  
+  <!-- Explanation -->
+  <g transform="translate(150, 100)">
+    <text x="0" y="0" font-family="Arial" font-size="16" fill="#333">Inner product: ⟨φ|ψ⟩ = |φ|·|ψ|·cos θ + i·|φ|·|ψ|·sin θ</text>
+    <text x="0" y="30" font-family="Arial" font-size="16" fill="#333">• Magnitude: |⟨φ|ψ⟩| = |φ|·|ψ|·|cos θ|</text>
+    <text x="0" y="60" font-family="Arial" font-size="16" fill="#333">• For normalized states: |⟨φ|ψ⟩| = |cos θ|</text>
+  </g>
+  
+  <!-- Probability interpretation -->
+  <g transform="translate(150, 300)">
+    <text x="0" y="0" font-family="Arial" font-size="16" fill="#333">Quantum interpretation:</text>
+    <text x="0" y="30" font-family="Arial" font-size="16" fill="#333">• |⟨φ|ψ⟩|² = probability of measuring state |ψ⟩ in state |φ⟩</text>
+    <text x="0" y="60" font-family="Arial" font-size="16" fill="#333">• When |⟨φ|ψ⟩| = 0, the states are orthogonal (θ = 90°)</text>
+  </g>
+  
+  <!-- Projection illustration -->
+  <g transform="translate(600, 120)">
+    <text x="0" y="0" font-family="Arial" font-size="16" fill="#333">Projection:</text>
+    <text x="0" y="30" font-family="Arial" font-size="14" fill="#33cc66">Proj|φ⟩|ψ⟩ = ⟨φ|ψ⟩·|φ⟩/|φ|²</text>
+    <line x1="-20" y1="60" x2="120" y2="60" stroke="#cc3366" stroke-width="3" />
+    <text x="130" y="65" font-family="Arial" font-size="14" fill="#cc3366">|φ⟩</text>
+    <line x1="50" y1="60" x2="90" y2="20" stroke="#3366cc" stroke-width="3" />
+    <text x="95" y="15" font-family="Arial" font-size="14" fill="#3366cc">|ψ⟩</text>
+    <line x1="50" y1="60" x2="80" y2="60" stroke="#33cc66" stroke-width="3" />
+    <text x="65" y="80" font-family="Arial" font-size="14" fill="#33cc66">Projection</text>
+  </g>
+</svg>

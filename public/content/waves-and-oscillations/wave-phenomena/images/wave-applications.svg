@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Applications of Wave Reflection and Transmission</text>
+    
+    <!-- Ultrasound Imaging -->
+    <g transform="translate(50,80)">
+        <text x="0" y="0" font-size="16" font-weight="bold">Ultrasound Imaging</text>
+        
+        <!-- Transducer -->
+        <rect x="50" y="20" width="60" height="30" fill="#9C27B0"/>
+        <text x="80" y="60" text-anchor="middle" font-size="12">Transducer</text>
+        
+        <!-- Tissue layers -->
+        <rect x="0" y="80" width="200" height="30" fill="#E3F2FD" fill-opacity="0.5"/>
+        <rect x="0" y="110" width="200" height="30" fill="#E8F5E9" fill-opacity="0.5"/>
+        <rect x="0" y="140" width="200" height="30" fill="#F3E5F5" fill-opacity="0.5"/>
+        
+        <!-- Waves -->
+        <path d="M80,50 L80,140" stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5"/>
+        <path d="M80,140 L80,50" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5"/>
+    </g>
+    
+    <!-- Optical Fiber -->
+    <g transform="translate(300,80)">
+        <text x="0" y="0" font-size="16" font-weight="bold">Optical Fiber</text>
+        
+        <!-- Fiber structure -->
+        <rect x="0" y="20" width="200" height="60" fill="#E3F2FD"/>
+        <rect x="0" y="40" width="200" height="20" fill="#E8F5E9"/>
+        
+        <!-- Light ray -->
+        <path d="M0,50 L50,30 L100,50 L150,30 L200,50" 
+              fill="none" stroke="#FFA000" stroke-width="2"/>
+        
+        <text x="100" y="100" text-anchor="middle" font-size="12">Total Internal Reflection</text>
+    </g>
+    
+    <!-- Acoustic Guitar -->
+    <g transform="translate(50,280)">
+        <text x="0" y="0" font-size="16" font-weight="bold">Acoustic Guitar</text>
+        
+        <!-- Guitar body outline -->
+        <path d="M50,20 Q100,0 150,20 Q200,40 150,60 Q100,80 50,60 Q0,40 50,20" 
+              fill="none" stroke="black" stroke-width="2"/>
+        
+        <!-- Sound hole -->
+        <circle cx="100" cy="40" r="15" stroke="black" stroke-width="2" fill="none"/>
+        
+        <!-- Standing waves -->
+        <path d="M70,40 Q100,30 130,40" fill="none" stroke="#9C27B0" stroke-width="1"/>
+        <path d="M70,40 Q100,50 130,40" fill="none" stroke="#9C27B0" stroke-width="1"/>
+    </g>
+    
+    <!-- Radar System -->
+    <g transform="translate(300,280)">
+        <text x="0" y="0" font-size="16" font-weight="bold">Radar System</text>
+        
+        <!-- Antenna -->
+        <path d="M100,20 L100,80 M80,20 L120,20" 
+              fill="none" stroke="black" stroke-width="2"/>
+        
+        <!-- Waves -->
+        <path d="M100,50 Q150,30 200,50" fill="none" stroke="#2196F3" stroke-width="2"/>
+        <path d="M200,50 Q150,70 100,50" fill="none" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5"/>
+        
+        <text x="150" y="100" text-anchor="middle" font-size="12">Echo Detection</text>
+    </g>
+    
+    <!-- Labels -->
+    <g transform="translate(0,450)">
+        <text x="400" y="0" text-anchor="middle" font-size="14">
+            Applications utilize controlled reflection and transmission for:
+        </text>
+        <text x="400" y="20" text-anchor="middle" font-size="14">
+            Imaging • Communication • Sound Production • Detection
+        </text>
+    </g>
+</svg>

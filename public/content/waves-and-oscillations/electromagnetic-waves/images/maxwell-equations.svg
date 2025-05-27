@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-family="Arial" font-weight="bold">
+        Maxwell's Equations: Unified Field Theory
+    </text>
+    
+    <!-- Gauss's Law for Electricity -->
+    <g transform="translate(200,150)">
+        <rect x="0" y="0" width="200" height="100" rx="10" fill="#E3F2FD" stroke="#2196F3"/>
+        <text x="100" y="30" text-anchor="middle" font-size="16" fill="#2196F3">Gauss's Law (Electric)</text>
+        <text x="100" y="60" text-anchor="middle" font-size="14">∇·E = ρ/ε₀</text>
+        <!-- Electric field lines -->
+        <circle cx="100" cy="80" r="5" fill="#2196F3"/>
+        <path d="M 100,75 L 120,55 M 100,75 L 80,55 M 100,75 L 100,55" 
+              stroke="#2196F3" stroke-width="1"/>
+    </g>
+    
+    <!-- Gauss's Law for Magnetism -->
+    <g transform="translate(500,150)">
+        <rect x="0" y="0" width="200" height="100" rx="10" fill="#F3E5F5" stroke="#9C27B0"/>
+        <text x="100" y="30" text-anchor="middle" font-size="16" fill="#9C27B0">Gauss's Law (Magnetic)</text>
+        <text x="100" y="60" text-anchor="middle" font-size="14">∇·B = 0</text>
+        <!-- Magnetic field lines -->
+        <path d="M 70,80 A 30,30 0 0,1 130,80 A 30,30 0 0,1 70,80" 
+              fill="none" stroke="#9C27B0" stroke-width="1"/>
+    </g>
+    
+    <!-- Faraday's Law -->
+    <g transform="translate(200,300)">
+        <rect x="0" y="0" width="200" height="100" rx="10" fill="#FFF3E0" stroke="#FF9800"/>
+        <text x="100" y="30" text-anchor="middle" font-size="16" fill="#FF9800">Faraday's Law</text>
+        <text x="100" y="60" text-anchor="middle" font-size="14">∇×E = -∂B/∂t</text>
+        <!-- Induced current -->
+        <circle cx="100" cy="80" r="15" fill="none" stroke="#FF9800" stroke-width="1"/>
+        <path d="M 85,80 A 15,15 0 0,1 115,80" stroke="#FF9800" stroke-width="2" marker-end="url(#arrowhead)"/>
+    </g>
+    
+    <!-- Ampère-Maxwell Law -->
+    <g transform="translate(500,300)">
+        <rect x="0" y="0" width="200" height="100" rx="10" fill="#E8F5E9" stroke="#4CAF50"/>
+        <text x="100" y="30" text-anchor="middle" font-size="16" fill="#4CAF50">Ampère-Maxwell Law</text>
+        <text x="100" y="60" text-anchor="middle" font-size="14">∇×B = μ₀J + μ₀ε₀∂E/∂t</text>
+        <!-- Current and field -->
+        <line x1="85" y1="80" x2="115" y2="80" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <path d="M 85,70 A 15,15 0 0,1 115,70" stroke="#4CAF50" stroke-width="1" fill="none"/>
+    </g>
+    
+    <!-- Unified Theory -->
+    <g transform="translate(200,450)">
+        <rect x="0" y="0" width="500" height="100" rx="10" fill="#FAFAFA" stroke="#666"/>
+        <text x="250" y="30" text-anchor="middle" font-size="16">Electromagnetic Wave Speed</text>
+        <text x="250" y="60" text-anchor="middle" font-size="14">c = 1/√(μ₀ε₀) ≈ 3×10⁸ m/s</text>
+        <text x="250" y="80" text-anchor="middle" font-size="12">Unification of Electricity, Magnetism, and Light</text>
+    </g>
+    
+    <!-- Arrow marker definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="currentColor"/>
+        </marker>
+    </defs>
+</svg>

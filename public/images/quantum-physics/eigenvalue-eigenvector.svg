@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions -->
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3182ce"/>
+    </marker>
+    
+    <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e53e3e"/>
+    </marker>
+    
+    <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#38a169"/>
+    </marker>
+    
+    <!-- Gradients for vectors -->
+    <linearGradient id="eigen1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3182ce" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#63b3ed" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="eigen2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e53e3e" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#fc8181" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="targetVectorGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38a169" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#68d391" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <!-- Animation paths for eigenvalue demo -->
+    <path id="eigenPath1" d="M 200,250 L 350,250" fill="none"/>
+    <path id="eigenPath2" d="M 200,250 L 200,100" fill="none"/>
+    
+    <!-- Filters for glow effects -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Styles -->
+  <style>
+    .title {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .axis-label {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      fill: #333;
+      text-anchor: middle;
+    }
+    
+    .vector-label {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-style: italic;
+    }
+    
+    .equation-label {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      fill: #333;
+    }
+    
+    .axis-line {
+      stroke: #333;
+      stroke-width: 1.5;
+      marker-end: url(#arrowhead);
+    }
+    
+    .grid-line {
+      stroke: #ddd;
+      stroke-width: 0.5;
+      stroke-dasharray: 3,3;
+    }
+    
+    .eigenvector1 {
+      stroke: url(#eigen1Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead-blue);
+    }
+    
+    .eigenvector2 {
+      stroke: url(#eigen2Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead-red);
+    }
+    
+    .transformed-vector {
+      stroke-dasharray: 5,3;
+      stroke-width: 2;
+    }
+    
+    .target-vector {
+      stroke: url(#targetVectorGradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead-green);
+    }
+    
+    .component-vector {
+      stroke-width: 2;
+      stroke-dasharray: 4,2;
+    }
+    
+    .matrix-box {
+      fill: #f8f9fa;
+      stroke: #adb5bd;
+      stroke-width: 1;
+      rx: 5;
+      ry: 5;
+    }
+    
+    .matrix-element {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .note-box {
+      fill: #fff;
+      stroke: #ddd;
+      stroke-width: 1;
+      rx: 5;
+      ry: 5;
+    }
+    
+    .note-text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    @keyframes scaleVector {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(2);
+      }
+    }
+    
+    @keyframes pulseVector {
+      0%, 100% {
+        stroke-width: 3;
+      }
+      50% {
+        stroke-width: 4.5;
+      }
+    }
+    
+    @keyframes rotateVector {
+      0%, 100% {
+        transform: rotate(0deg);
+      }
+      50% {
+        transform: rotate(180deg);
+      }
+    }
+    
+    .scale-animation {
+      animation: scaleVector 6s ease-in-out infinite;
+      transform-origin: 200px 250px;
+    }
+    
+    .pulse-animation {
+      animation: pulseVector 3s ease-in-out infinite;
+    }
+    
+    .rotate-animation {
+      animation: rotateVector 8s ease-in-out infinite;
+      transform-origin: 600px 250px;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Eigenvalues and Eigenvectors</text>
+  <text x="400" y="70" class="subtitle">Spectral Decomposition of Quantum Operators</text>
+  
+  <!-- Left Panel: Eigenvalue Demonstration -->
+  <g transform="translate(0, 0)">
+    <text x="200" y="110" class="subtitle" text-anchor="middle">Operator Acting on Eigenvectors</text>
+    
+    <!-- Coordinate System -->
+    <g transform="translate(200, 250)">
+      <!-- Grid -->
+      <line x1="-150" y1="0" x2="150" y2="0" class="grid-line"/>
+      <line x1="0" y1="-150" x2="0" y2="150" class="grid-line"/>
+      
+      <!-- Axes -->
+      <line x1="-150" y1="0" x2="150" y2="0" class="axis-line"/>
+      <line x1="0" y1="150" x2="0" y2="-150" class="axis-line"/>
+      
+      <!-- Eigenvector 1 (unmodified) -->
+      <line x1="0" y1="0" x2="100" y2="0" class="eigenvector1"/>
+      <text x="110" y="15" class="vector-label" fill="#3182ce">|e₁⟩</text>
+      
+      <!-- Eigenvector 1 (Transformed) -->
+      <g class="scale-animation">
+        <line x1="0" y1="0" x2="100" y2="0" class="eigenvector1 transformed-vector" stroke-dasharray="5,3" opacity="0.6"/>
+        <text x="130" y="15" class="vector-label" fill="#3182ce" opacity="0.6">A|e₁⟩ = λ₁|e₁⟩</text>
+      </g>
+      
+      <!-- Eigenvector 2 (unmodified) -->
+      <line x1="0" y1="0" x2="0" y2="-100" class="eigenvector2"/>
+      <text x="10" y="-110" class="vector-label" fill="#e53e3e">|e₂⟩</text>
+      
+      <!-- Eigenvector 2 (Transformed) -->
+      <g class="scale-animation" style="animation-delay: 1s">
+        <line x1="0" y1="0" x2="0" y2="-100" class="eigenvector2 transformed-vector" stroke-dasharray="5,3" opacity="0.6"/>
+        <text x="10" y="-140" class="vector-label" fill="#e53e3e" opacity="0.6">A|e₂⟩ = λ₂|e₂⟩</text>
+      </g>
+      
+      <!-- Non-eigenvector (gets rotated) -->
+      <line x1="0" y1="0" x2="70" y2="-70" class="target-vector"/>
+      <text x="80" y="-80" class="vector-label" fill="#38a169">|v⟩</text>
+      
+      <!-- Transformed non-eigenvector -->
+      <g class="rotate-animation" transform="translate(-200, -250)">
+        <line x1="200" y1="250" x2="270" y2="180" class="target-vector transformed-vector" opacity="0.6"/>
+        <text x="280" y="170" class="vector-label" fill="#38a169" opacity="0.6">A|v⟩</text>
+      </g>
+    </g>
+    
+    <!-- Operator Matrix -->
+    <g transform="translate(80, 170)">
+      <rect x="0" y="0" width="80" height="80" class="matrix-box"/>
+      <text x="25" y="30" class="matrix-element">λ₁</text>
+      <text x="25" y="70" class="matrix-element">0</text>
+      <text x="55" y="30" class="matrix-element">0</text>
+      <text x="55" y="70" class="matrix-element">λ₂</text>
+      
+      <text x="-20" y="40" class="vector-label" text-anchor="end">A =</text>
+    </g>
+    
+    <!-- Operator Eigenvalue Equation -->
+    <g transform="translate(80, 320)">
+      <rect x="0" y="0" width="240" height="100" class="note-box"/>
+      <text x="10" y="25" class="note-text">• A|e₁⟩ = λ₁|e₁⟩ (eigenvalue λ₁)</text>
+      <text x="10" y="50" class="note-text">• A|e₂⟩ = λ₂|e₂⟩ (eigenvalue λ₂)</text>
+      <text x="10" y="75" class="note-text">• Eigenvectors scale, not rotate</text>
+    </g>
+  </g>
+  
+  <!-- Right Panel: Spectral Decomposition -->
+  <g transform="translate(400, 0)">
+    <text x="200" y="110" class="subtitle" text-anchor="middle">Spectral Decomposition</text>
+    
+    <!-- Coordinate System -->
+    <g transform="translate(200, 250)">
+      <!-- Grid -->
+      <line x1="-150" y1="0" x2="150" y2="0" class="grid-line"/>
+      <line x1="0" y1="-150" x2="0" y2="150" class="grid-line"/>
+      
+      <!-- Axes -->
+      <line x1="-150" y1="0" x2="150" y2="0" class="axis-line"/>
+      <line x1="0" y1="150" x2="0" y2="-150" class="axis-line"/>
+      
+      <!-- Eigenbasis -->
+      <line x1="0" y1="0" x2="100" y2="0" class="eigenvector1 pulse-animation"/>
+      <text x="110" y="15" class="vector-label" fill="#3182ce">|e₁⟩</text>
+      
+      <line x1="0" y1="0" x2="0" y2="-100" class="eigenvector2 pulse-animation"/>
+      <text x="10" y="-110" class="vector-label" fill="#e53e3e">|e₂⟩</text>
+      
+      <!-- Arbitrary Vector Decomposition -->
+      <line x1="0" y1="0" x2="80" y2="-60" class="target-vector"/>
+      <text x="90" y="-60" class="vector-label" fill="#38a169">|ψ⟩</text>
+      
+      <!-- Vector Components -->
+      <line x1="0" y1="0" x2="80" y2="0" class="component-vector" stroke="#3182ce"/>
+      <text x="40" y="15" class="vector-label" fill="#3182ce" font-size="14">c₁|e₁⟩</text>
+      
+      <line x1="80" y1="0" x2="80" y2="-60" class="component-vector" stroke="#e53e3e"/>
+      <text x="90" y="-30" class="vector-label" fill="#e53e3e" font-size="14">c₂|e₂⟩</text>
+    </g>
+    
+    <!-- Spectral Decomposition Formulas -->
+    <g transform="translate(80, 170)">
+      <!-- Operator Decomposition -->
+      <rect x="0" y="0" width="240" height="35" class="matrix-box"/>
+      <text x="120" y="25" class="equation-label" text-anchor="middle">A = λ₁|e₁⟩⟨e₁| + λ₂|e₂⟩⟨e₂|</text>
+      
+      <!-- State Decomposition -->
+      <rect x="0" y="45" width="240" height="35" class="matrix-box"/>
+      <text x="120" y="70" class="equation-label" text-anchor="middle">|ψ⟩ = c₁|e₁⟩ + c₂|e₂⟩</text>
+    </g>
+    
+    <!-- Spectral Decomposition Notes -->
+    <g transform="translate(80, 320)">
+      <rect x="0" y="0" width="240" height="100" class="note-box"/>
+      <text x="10" y="25" class="note-text">• Any state: |ψ⟩ = Σ cᵢ|eᵢ⟩</text>
+      <text x="10" y="50" class="note-text">• Expectation value: ⟨A⟩ = Σ λᵢ|cᵢ|²</text>
+      <text x="10" y="75" class="note-text">• Probability of measurement: P(λᵢ) = |cᵢ|²</text>
+    </g>
+  </g>
+  
+  <!-- Bottom Information Panel -->
+  <g transform="translate(400, 450)">
+    <rect x="-360" y="-25" width="720" height="50" rx="10" fill="#f8f9fa" stroke="#ddd"/>
+    <text x="0" y="10" class="equation-label" text-anchor="middle">
+      In quantum mechanics, observables correspond to Hermitian operators with real eigenvalues.
+      Measurement outcomes are eigenvalues, occurring with probability |⟨eᵢ|ψ⟩|².
+    </text>
+  </g>
+</svg> 

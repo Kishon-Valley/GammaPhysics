@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="400" height="300" fill="white"/>
+    
+    <!-- Axes -->
+    <line x1="50" y1="250" x2="350" y2="250" stroke="black" stroke-width="2"/>
+    <line x1="50" y1="50" x2="50" y2="250" stroke="black" stroke-width="2"/>
+    
+    <!-- Axis labels -->
+    <text x="20" y="40" font-family="Arial" font-size="14">I/I₀</text>
+    <text x="360" y="260" font-family="Arial" font-size="14">x</text>
+    
+    <!-- Tick marks -->
+    <line x1="50" y1="50" x2="45" y2="50" stroke="black" stroke-width="1"/>
+    <text x="30" y="55" font-family="Arial" font-size="12">1.0</text>
+    
+    <line x1="50" y1="150" x2="45" y2="150" stroke="black" stroke-width="1"/>
+    <text x="30" y="155" font-family="Arial" font-size="12">0.5</text>
+    
+    <!-- Exponential decay curve -->
+    <path d="M 50,50 Q 150,100 350,230" fill="none" stroke="blue" stroke-width="2"/>
+    
+    <!-- Equation -->
+    <text x="100" y="30" font-family="Arial" font-size="14">I = I₀e⁻ᵅˣ</text>
+    
+    <!-- Material thickness -->
+    <rect x="100" y="100" width="200" height="100" fill="rgba(200,200,200,0.2)" stroke="gray" stroke-width="1"/>
+    <text x="150" y="140" font-family="Arial" font-size="14">Absorbing medium</text>
+    <text x="150" y="160" font-family="Arial" font-size="14">α = 0.5 cm⁻¹</text>
+</svg>

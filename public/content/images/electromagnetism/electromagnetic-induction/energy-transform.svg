@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700" style="background-color: white;">
+    <!-- Explicit white background -->
+    <rect width="800" height="700" fill="white"/>
+
+    <!-- Title and Main Explanation -->
+    <rect x="0" y="0" width="800" height="140" fill="white"/>
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Energy Transformation in Electromagnetic Systems</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">Pmech = F·v = IℓBv = εI = Pelec</text>
+    
+    <!-- Key Concept Box -->
+    <rect x="50" y="80" width="700" height="50" fill="#f8f8f8" stroke="#666"/>
+    <text x="400" y="105" text-anchor="middle" font-size="14">Mechanical energy converts to electrical energy (and vice versa)</text>
+    <text x="400" y="120" text-anchor="middle" font-size="14">with perfect efficiency in ideal electromagnetic systems</text>
+
+    <!-- Main Visualization -->
+    <g transform="translate(400,350)">
+        <!-- Mechanical Energy Section -->
+        <g transform="translate(-150,-50)">
+            <text x="0" y="-80" text-anchor="middle" font-size="16" fill="#FF5722" font-weight="bold">Mechanical Energy</text>
+            <text x="0" y="-60" text-anchor="middle" font-size="14" fill="#FF5722">Rotational Motion</text>
+            <!-- Rotating gear -->
+            <g>
+                <animateTransform attributeName="transform"
+                                type="rotate"
+                                from="0 0 0"
+                                to="360 0 0"
+                                dur="4s"
+                                repeatCount="indefinite"/>
+                <circle cx="0" cy="0" r="40" fill="none" stroke="#FF5722" stroke-width="2"/>
+                <path d="M 0,-40 L 0,-50 M 28,-28 L 35,-35 M 40,0 L 50,0 M 28,28 L 35,35 M 0,40 L 0,50 M -28,28 L -35,35 M -40,0 L -50,0 M -28,-28 L -35,-35"
+                      stroke="#FF5722" stroke-width="2"/>
+            </g>
+            <!-- Power value -->
+            <text x="0" y="70" text-anchor="middle" font-size="14">Pmech = 100W</text>
+        </g>
+
+        <!-- Transformation Arrow -->
+        <g>
+            <path d="M -50,0 L 50,0" stroke="#666" stroke-width="2" marker-end="url(#arrow)">
+                <animate attributeName="stroke-width"
+                         values="2;4;2"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+            <text x="0" y="-20" text-anchor="middle" font-size="14">Conservation of Energy</text>
+            <text x="0" y="20" text-anchor="middle" font-size="12">No Energy Loss</text>
+        </g>
+
+        <!-- Electrical Energy Section -->
+        <g transform="translate(150,-50)">
+            <text x="0" y="-80" text-anchor="middle" font-size="16" fill="#2196F3" font-weight="bold">Electrical Energy</text>
+            <text x="0" y="-60" text-anchor="middle" font-size="14" fill="#2196F3">Induced Current</text>
+            <!-- Oscillating wave -->
+            <path d="M -40,0 Q -20,-40 0,0 T 40,0" 
+                  fill="none" stroke="#2196F3" stroke-width="2">
+                <animate attributeName="d"
+                         values="M -40,0 Q -20,-40 0,0 T 40,0;
+                                M -40,0 Q -20,40 0,0 T 40,0;
+                                M -40,0 Q -20,-40 0,0 T 40,0"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </path>
+            <!-- Power value -->
+            <text x="0" y="70" text-anchor="middle" font-size="14">Pelec = 100W</text>
+        </g>
+    </g>
+
+    <!-- Detailed Explanation Box -->
+    <g transform="translate(50,550)">
+        <rect x="0" y="0" width="700" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Energy Conversion Process:</text>
+        <text x="20" y="55" font-size="14">1. Mechanical energy (orange gear) represents input power from motion</text>
+        <text x="20" y="80" font-size="14">2. Energy converts through electromagnetic interaction (F = IℓB)</text>
+        <text x="20" y="105" font-size="14">3. Electrical energy (blue wave) shows induced current and voltage</text>
+    </g>
+
+    <!-- Definitions -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+        </marker>
+    </defs>
+</svg> 

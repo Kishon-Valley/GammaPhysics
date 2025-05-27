@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Electric field wave (blue) -->
+    <path d="M 50,200 Q 150,100 250,200 T 450,200 T 650,200 T 850,200" 
+          fill="none" stroke="#4285f4" stroke-width="3"/>
+    
+    <!-- Magnetic field wave (red) -->
+    <path d="M 50,200 Q 150,300 250,200 T 450,200 T 650,200 T 850,200" 
+          fill="none" stroke="#ea4335" stroke-width="3"/>
+    
+    <!-- Propagation direction arrow -->
+    <line x1="700" y1="200" x2="750" y2="200" stroke="black" stroke-width="2"/>
+    <polygon points="750,200 740,195 740,205" fill="black"/>
+    <text x="720" y="180" font-family="Arial" font-size="14">z</text>
+    
+    <!-- Labels -->
+    <text x="100" y="80" font-family="Arial" font-size="14" fill="#4285f4">E (Electric Field)</text>
+    <text x="100" y="320" font-family="Arial" font-size="14" fill="#ea4335">B (Magnetic Field)</text>
+    
+    <!-- Wavelength annotation -->
+    <line x1="50" y1="350" x2="250" y2="350" stroke="black" stroke-width="1"/>
+    <text x="130" y="370" font-family="Arial" font-size="14">λ (wavelength)</text>
+    
+    <!-- Coordinate axes -->
+    <line x1="50" y1="200" x2="750" y2="200" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+    <line x1="50" y1="50" x2="50" y2="350" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+</svg>

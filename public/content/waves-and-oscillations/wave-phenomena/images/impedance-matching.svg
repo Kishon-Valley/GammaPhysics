@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Impedance Matching</text>
+    
+    <!-- Unmatched Case -->
+    <g transform="translate(0,50)">
+        <text x="100" y="20" font-size="16" font-weight="bold">Unmatched Impedance</text>
+        
+        <!-- Media -->
+        <rect x="100" y="50" width="200" height="100" fill="#E3F2FD"/>
+        <text x="200" y="90" text-anchor="middle" font-size="14">Z₁</text>
+        <rect x="300" y="50" width="200" height="100" fill="#E8F5E9"/>
+        <text x="400" y="90" text-anchor="middle" font-size="14">Z₂ >> Z₁</text>
+        
+        <!-- Wave -->
+        <path d="M150,100 Q200,75 250,100" fill="none" stroke="#2196F3" stroke-width="2"/>
+        <path d="M250,100 Q200,125 150,100" fill="none" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5"/>
+        <text x="200" y="160" text-anchor="middle" font-size="14">High Reflection</text>
+    </g>
+    
+    <!-- Matched Case -->
+    <g transform="translate(0,250)">
+        <text x="100" y="20" font-size="16" font-weight="bold">Matched Impedance</text>
+        
+        <!-- Media -->
+        <rect x="100" y="50" width="133" height="100" fill="#E3F2FD"/>
+        <text x="167" y="90" text-anchor="middle" font-size="14">Z₁</text>
+        <rect x="233" y="50" width="133" height="100" fill="#F3E5F5"/>
+        <text x="300" y="90" text-anchor="middle" font-size="14">√(Z₁Z₂)</text>
+        <rect x="366" y="50" width="133" height="100" fill="#E8F5E9"/>
+        <text x="433" y="90" text-anchor="middle" font-size="14">Z₂</text>
+        
+        <!-- Wave -->
+        <path d="M150,100 Q250,75 350,100 T450,100" fill="none" stroke="#9C27B0" stroke-width="2"/>
+        <text x="300" y="160" text-anchor="middle" font-size="14">Maximum Transmission</text>
+    </g>
+    
+    <!-- Formulas -->
+    <text x="600" y="100" font-size="14">Unmatched: r ≈ 1</text>
+    <text x="600" y="125" font-size="14">Power loss: P_r/P_i ≈ 1</text>
+    <text x="600" y="300" font-size="14">Matched: r ≈ 0</text>
+    <text x="600" y="325" font-size="14">Power loss: P_r/P_i ≈ 0</text>
+</svg>

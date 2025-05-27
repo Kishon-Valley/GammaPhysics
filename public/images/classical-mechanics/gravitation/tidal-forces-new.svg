@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="400" height="300" fill="white"/>
+    
+    <!-- Moon -->
+    <circle cx="350" cy="150" r="20" fill="#ccc" stroke="#999" stroke-width="2"/>
+    <text x="335" y="190" font-family="Arial" font-size="12">Moon</text>
+    
+    <!-- Earth with tidal bulges -->
+    <g transform="translate(150,150)">
+        <!-- Basic Earth shape -->
+        <ellipse cx="0" cy="0" rx="60" ry="50" fill="#39f" stroke="#069" stroke-width="2"/>
+        
+        <!-- Tidal bulges -->
+        <ellipse cx="0" cy="0" rx="70" ry="50" fill="#39f" stroke="#069" stroke-width="2"/>
+        
+        <!-- Arrows showing force direction -->
+        <line x1="60" y1="0" x2="80" y2="0" stroke="red" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="-60" y1="0" x2="-80" y2="0" stroke="red" stroke-width="2" marker-end="url(#arrow)"/>
+    </g>
+    
+    <!-- Arrow marker definition -->
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="red"/>
+        </marker>
+    </defs>
+    
+    <!-- Labels -->
+    <text x="120" y="30" font-family="Arial" font-size="14">Tidal Forces on Earth</text>
+    <text x="20" y="280" font-family="Arial" font-size="12">Near side bulge</text>
+    <text x="250" y="280" font-family="Arial" font-size="12">Far side bulge</text>
+    
+    <!-- Force arrows explanation -->
+    <text x="20" y="50" font-family="Arial" font-size="10">Differential gravitational forces</text>
+    <text x="20" y="65" font-family="Arial" font-size="10">cause tidal bulges</text>
+</svg>

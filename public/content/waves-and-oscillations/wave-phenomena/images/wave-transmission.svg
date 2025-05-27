@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Wave Transmission Across Interface</text>
+    
+    <!-- Medium 1 -->
+    <rect x="100" y="100" width="300" height="200" fill="#E3F2FD"/>
+    <text x="250" y="150" text-anchor="middle" font-size="16">Medium 1</text>
+    <text x="250" y="175" text-anchor="middle" font-size="14">Impedance Z₁</text>
+    
+    <!-- Medium 2 -->
+    <rect x="400" y="100" width="300" height="200" fill="#E8F5E9"/>
+    <text x="550" y="150" text-anchor="middle" font-size="16">Medium 2</text>
+    <text x="550" y="175" text-anchor="middle" font-size="14">Impedance Z₂</text>
+    
+    <!-- Interface -->
+    <line x1="400" y1="100" x2="400" y2="300" stroke="#666" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="400" y="90" text-anchor="middle" font-size="14">Interface</text>
+    
+    <!-- Incident wave -->
+    <path d="M150,200 Q225,150 300,200 T400,200" fill="none" stroke="#2196F3" stroke-width="2"/>
+    <text x="250" y="250" font-size="14">Incident Wave</text>
+    <path d="M380,190 L400,200 L380,210" fill="none" stroke="#2196F3" stroke-width="2"/>
+    
+    <!-- Reflected wave -->
+    <path d="M400,200 Q325,250 250,200 T150,200" fill="none" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="250" y="280" font-size="14">Reflected Wave</text>
+    <path d="M170,190 L150,200 L170,210" fill="none" stroke="#4CAF50" stroke-width="2"/>
+    
+    <!-- Transmitted wave -->
+    <path d="M400,200 Q475,150 550,200 T700,200" fill="none" stroke="#9C27B0" stroke-width="2"/>
+    <text x="550" y="250" font-size="14">Transmitted Wave</text>
+    <path d="M680,190 L700,200 L680,210" fill="none" stroke="#9C27B0" stroke-width="2"/>
+    
+    <!-- Formulas -->
+    <text x="400" y="350" text-anchor="middle" font-size="16">Transmission coefficient: t = 2Z₁/(Z₁ + Z₂)</text>
+    <text x="400" y="375" text-anchor="middle" font-size="14">Reflection coefficient: r = (Z₂ - Z₁)/(Z₁ + Z₂)</text>
+</svg>

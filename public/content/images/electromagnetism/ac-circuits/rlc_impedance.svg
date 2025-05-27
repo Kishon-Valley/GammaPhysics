@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="500" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .axis {
+      stroke: #333;
+      stroke-width: 2;
+    }
+    .grid {
+      stroke: #ccc;
+      stroke-width: 0.5;
+      stroke-dasharray: 3 2;
+    }
+    .resistance {
+      stroke: #e74c3c;
+      stroke-width: 3;
+      fill: none;
+    }
+    .inductance {
+      stroke: #3498db;
+      stroke-width: 3;
+      fill: none;
+    }
+    .capacitance {
+      stroke: #2ecc71;
+      stroke-width: 3;
+      fill: none;
+    }
+    .impedance {
+      stroke: #9b59b6;
+      stroke-width: 3;
+      fill: none;
+    }
+    .v-wave {
+      stroke: #e74c3c;
+      stroke-width: 3;
+      fill: none;
+    }
+    .i-wave {
+      stroke: #3498db;
+      stroke-width: 3;
+      fill: none;
+    }
+    .marker {
+      stroke-width: 1;
+      stroke: #333;
+    }
+    .component {
+      stroke: #333;
+      stroke-width: 2;
+      fill: white;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .label {
+      text-anchor: middle;
+    }
+    .component-label {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .impedance-plane {
+      fill: rgba(200, 200, 200, 0.1);
+      stroke: #333;
+      stroke-width: 1;
+    }
+    .resonance-indicator {
+      fill: none;
+      stroke: #e67e22;
+      stroke-width: 2;
+      stroke-dasharray: 5 3;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="600" height="500" fill="white" />
+  
+  <!-- Circuit diagram -->
+  <g transform="translate(75, 75)">
+    <text x="0" y="-25" class="bold">Series RLC Circuit</text>
+    
+    <!-- Source -->
+    <circle cx="0" cy="50" r="15" class="component" />
+    <text x="0" y="55" class="label">~</text>
+    <text x="0" y="80" class="label">v(t)</text>
+    
+    <!-- Connecting wires -->
+    <line x1="15" y1="50" x2="50" y2="50" class="axis" />
+    <line x1="100" y1="50" x2="125" y2="50" class="axis" />
+    <line x1="175" y1="50" x2="200" y2="50" class="axis" />
+    <line x1="250" y1="50" x2="275" y2="50" class="axis" />
+    <line x1="325" y1="50" x2="350" y2="50" class="axis" />
+    <line x1="350" y1="50" x2="350" y2="100" class="axis" />
+    <line x1="0" y1="100" x2="350" y2="100" class="axis" />
+    <line x1="0" y1="65" x2="0" y2="100" class="axis" />
+    
+    <!-- Resistor -->
+    <path d="M 50,50 L 60,40 L 70,60 L 80,40 L 90,60 L 100,50" class="component" />
+    <text x="75" y="30" class="component-label" fill="#e74c3c">R</text>
+    
+    <!-- Inductor -->
+    <path d="M 125,50 C 130,50 130,40 135,40 S 140,50 145,50 S 150,40 155,40 S 160,50 165,50 S 170,40 175,40" class="component" />
+    <text x="150" y="30" class="component-label" fill="#3498db">L</text>
+    
+    <!-- Capacitor -->
+    <line x1="225" y1="30" x2="225" y2="70" class="component" />
+    <line x1="250" y1="30" x2="250" y2="70" class="component" />
+    <text x="237" y="30" class="component-label" fill="#2ecc71">C</text>
+    
+    <!-- Current direction -->
+    <path d="M 300,40 L 315,50 L 300,60 Z" fill="#3498db" />
+    <text x="315" y="35" fill="#3498db">i(t)</text>
+  </g>
+  
+  <!-- Impedance diagram -->
+  <g transform="translate(450, 150)">
+    <text x="0" y="-25" class="bold">Impedance Triangle</text>
+    
+    <!-- Impedance plane -->
+    <circle cx="0" cy="0" r="100" class="impedance-plane" />
+    
+    <!-- Axes -->
+    <line x1="-100" y1="0" x2="100" y2="0" class="axis" />
+    <line x1="0" y1="100" x2="0" y2="-100" class="axis" />
+    
+    <!-- Axis labels -->
+    <text x="110" y="0" text-anchor="end">R</text>
+    <text x="5" y="-110" text-anchor="start">X</text>
+    
+    <!-- Reactance lines -->
+    <line x1="-90" y1="-60" x2="90" y2="-60" stroke="#3498db" stroke-dasharray="5 3" stroke-width="1" />
+    <text x="-95" y="-60" text-anchor="end" fill="#3498db">XL</text>
+    
+    <line x1="-90" y1="60" x2="90" y2="60" stroke="#2ecc71" stroke-dasharray="5 3" stroke-width="1" />
+    <text x="-95" y="60" text-anchor="end" fill="#2ecc71">XC</text>
+    
+    <circle id="resonance-point" cx="0" cy="0" r="5" fill="#e67e22" />
+    <text x="10" y="15" fill="#e67e22">Resonance</text>
+    
+    <!-- Impedance components (will be animated) -->
+    <line id="resistance-line" x1="0" y1="0" x2="60" y2="0" class="resistance" />
+    <line id="reactance-line" x1="60" y1="0" x2="60" y2="0" class="inductance" />
+    <line id="impedance-line" x1="0" y1="0" x2="60" y2="0" class="impedance" />
+    
+    <circle id="impedance-marker" cx="60" cy="0" r="5" class="marker" fill="#9b59b6" />
+    
+    <!-- Phase angle -->
+    <path id="phase-angle" d="M 20,0 A 20,20 0 0,1 20,0" class="impedance" fill="rgba(155, 89, 182, 0.2)" />
+    <text id="phase-angle-text" x="30" y="-10" fill="#9b59b6">φ = 0°</text>
+  </g>
+  
+  <!-- Waveform display -->
+  <g transform="translate(75, 300)">
+    <text x="225" y="-25" class="bold">Voltage and Current Waveforms</text>
+    
+    <!-- Time domain plot area -->
+    <rect x="0" y="0" width="450" height="150" fill="rgba(240, 240, 240, 0.3)" stroke="#333" stroke-width="1" />
+    
+    <!-- Time axis -->
+    <line x1="0" y1="75" x2="450" y2="75" class="axis" />
+    
+    <!-- Axis labels -->
+    <text x="440" y="90">t</text>
+    
+    <!-- Voltage and current waveforms (will be animated) -->
+    <path id="voltage-wave" class="v-wave" />
+    <path id="current-wave" class="i-wave" />
+    
+    <!-- Legend -->
+    <line x1="20" y1="170" x2="50" y2="170" class="v-wave" />
+    <text x="60" y="175" fill="#e74c3c">v(t) - Voltage</text>
+    
+    <line x1="200" y1="170" x2="230" y2="170" class="i-wave" />
+    <text x="240" y="175" fill="#3498db">i(t) - Current</text>
+  </g>
+  
+  <!-- Frequency control -->
+  <g transform="translate(75, 480)">
+    <text x="0" y="0">Frequency: </text>
+    <text id="frequency-display" x="80" y="0">1.0 × ω₀</text>
+    
+    <!-- Slider for frequency adjustment -->
+    <line x1="150" y1="0" x2="350" y2="0" stroke="#333" stroke-width="2" />
+    <circle id="frequency-slider" cx="250" cy="0" r="7" fill="#9b59b6" stroke="#333" stroke-width="1" />
+  </g>
+  
+  <!-- Animation script -->
+  <script type="text/javascript"><![CDATA[
+    // Constants
+    const resonanceFreq = 1.0; // Normalized resonance frequency
+    const maxFreqRatio = 2.0;  // Maximum frequency relative to resonance
+    const minFreqRatio = 0.5;  // Minimum frequency relative to resonance
+    const amplitude = 60;      // For waveforms and impedance components
+    const totalTime = 5000;    // Animation duration in ms
+    
+    // Get elements
+    const resistanceLine = document.getElementById('resistance-line');
+    const reactanceLine = document.getElementById('reactance-line');
+    const impedanceLine = document.getElementById('impedance-line');
+    const impedanceMarker = document.getElementById('impedance-marker');
+    const phaseAngle = document.getElementById('phase-angle');
+    const phaseAngleText = document.getElementById('phase-angle-text');
+    const voltageWave = document.getElementById('voltage-wave');
+    const currentWave = document.getElementById('current-wave');
+    const frequencySlider = document.getElementById('frequency-slider');
+    const frequencyDisplay = document.getElementById('frequency-display');
+    
+    // Initial values
+    let frequencyRatio = 1.0; // Start at resonance
+    let startTime = null;
+    let wavePoints = [];
+    
+    // Update the impedance triangle based on frequency
+    function updateImpedance(freq) {
+      // Fixed resistance component
+      const R = 60;
+      resistanceLine.setAttribute('x2', R);
+      
+      // Reactive component (positive for inductive, negative for capacitive)
+      const XL = 60 * freq;
+      const XC = 60 / freq;
+      const X = XL - XC;
+      
+      const reactanceClass = X > 0 ? 'inductance' : 'capacitance';
+      reactanceLine.setAttribute('class', reactanceClass);
+      reactanceLine.setAttribute('x1', R);
+      reactanceLine.setAttribute('x2', R);
+      reactanceLine.setAttribute('y1', 0);
+      reactanceLine.setAttribute('y2', -X);
+      
+      // Total impedance
+      const Z = Math.sqrt(R*R + X*X);
+      const angle = Math.atan2(-X, R);
+      
+      impedanceLine.setAttribute('x2', R);
+      impedanceLine.setAttribute('y2', -X);
+      
+      impedanceMarker.setAttribute('cx', R);
+      impedanceMarker.setAttribute('cy', -X);
+      
+      // Update phase angle display
+      const angleDeg = (angle * 180 / Math.PI).toFixed(1);
+      phaseAngleText.textContent = `φ = ${angleDeg}°`;
+      
+      // Draw the phase angle arc
+      const largeArcFlag = Math.abs(angle) > Math.PI ? 1 : 0;
+      const sweepFlag = angle < 0 ? 1 : 0;
+      const endX = 20 * Math.cos(angle);
+      const endY = -20 * Math.sin(angle);
+      phaseAngle.setAttribute('d', `M 20,0 A 20,20 0 0,${sweepFlag} ${endX},${endY}`);
+      
+      return { R, X, Z, angle };
+    }
+    
+    // Generate voltage and current waveforms
+    function updateWaveforms(time, impedance) {
+      const period = 450;
+      const wavePoints = [];
+      
+      for (let x = 0; x < 450; x += 5) {
+        const t = x / period * 2 * Math.PI;
+        const vY = 75 - 50 * Math.sin(t);
+        
+        // Current lags/leads voltage by the impedance phase angle
+        const iY = 75 - 50 * Math.sin(t - impedance.angle);
+        
+        wavePoints.push({ x, vY, iY });
+      }
+      
+      let vPath = `M ${wavePoints[0].x} ${wavePoints[0].vY}`;
+      let iPath = `M ${wavePoints[0].x} ${wavePoints[0].iY}`;
+      
+      for (let i = 1; i < wavePoints.length; i++) {
+        vPath += ` L ${wavePoints[i].x} ${wavePoints[i].vY}`;
+        iPath += ` L ${wavePoints[i].x} ${wavePoints[i].iY}`;
+      }
+      
+      voltageWave.setAttribute('d', vPath);
+      currentWave.setAttribute('d', iPath);
+    }
+    
+    // Initialize the slider functionality
+    function initSlider() {
+      const sliderStart = 150;
+      const sliderEnd = 350;
+      const sliderRange = sliderEnd - sliderStart;
+      
+      // Set initial position
+      const initialPos = sliderStart + (frequencyRatio - minFreqRatio) / (maxFreqRatio - minFreqRatio) * sliderRange;
+      frequencySlider.setAttribute('cx', initialPos);
+      
+      // Handle drag events
+      let isDragging = false;
+      
+      frequencySlider.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        e.preventDefault();
+      });
+      
+      document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        
+        // Get mouse position
+        const svgRect = frequencySlider.ownerSVGElement.getBoundingClientRect();
+        let mouseX = e.clientX - svgRect.left;
+        
+        // Constrain to slider range
+        mouseX = Math.max(sliderStart, Math.min(sliderEnd, mouseX));
+        
+        // Update slider position
+        frequencySlider.setAttribute('cx', mouseX);
+        
+        // Calculate new frequency ratio
+        frequencyRatio = minFreqRatio + (mouseX - sliderStart) / sliderRange * (maxFreqRatio - minFreqRatio);
+        frequencyDisplay.textContent = `${frequencyRatio.toFixed(2)} × ω₀`;
+        
+        // Update impedance and waveforms
+        const impedance = updateImpedance(frequencyRatio);
+        updateWaveforms(0, impedance);
+      });
+      
+      document.addEventListener('mouseup', function() {
+        isDragging = false;
+      });
+    }
+    
+    // Animation function
+    function animate(timestamp) {
+      if (!startTime) {
+        startTime = timestamp;
+        initSlider();
+      }
+      
+      const elapsed = timestamp - startTime;
+      const time = (elapsed % totalTime) / totalTime;
+      
+      // Update impedance diagram
+      const impedance = updateImpedance(frequencyRatio);
+      
+      // Update waveforms
+      updateWaveforms(time, impedance);
+      
+      // Continue animation
+      window.requestAnimationFrame(animate);
+    }
+    
+    // Start the animation
+    window.requestAnimationFrame(animate);
+  ]]></script>
+</svg> 

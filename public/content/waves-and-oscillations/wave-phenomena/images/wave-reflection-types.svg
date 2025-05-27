@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Wave Reflection at Boundaries</text>
+    
+    <!-- Fixed End Reflection -->
+    <g transform="translate(0,100)">
+        <text x="100" y="20" font-size="16" font-weight="bold">Fixed End Reflection</text>
+        
+        <!-- Incident wave -->
+        <path d="M100,100 Q150,50 200,100 T300,100" fill="none" stroke="#2196F3" stroke-width="2"/>
+        <text x="150" y="40" font-size="14">Incident Wave</text>
+        <path d="M280,90 L300,100 L280,110" fill="none" stroke="#2196F3" stroke-width="2"/>
+        
+        <!-- Reflected wave -->
+        <path d="M300,100 Q250,150 200,100 T100,100" fill="none" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5"/>
+        <text x="250" y="160" font-size="14">Reflected Wave</text>
+        <path d="M120,90 L100,100 L120,110" fill="none" stroke="#4CAF50" stroke-width="2"/>
+        
+        <!-- Boundary -->
+        <line x1="300" y1="50" x2="300" y2="150" stroke="#666" stroke-width="4"/>
+        <text x="320" y="100" font-size="14">Fixed End</text>
+        <text x="400" y="100" font-size="14">Phase shift: 180°</text>
+    </g>
+    
+    <!-- Free End Reflection -->
+    <g transform="translate(0,300)">
+        <text x="100" y="20" font-size="16" font-weight="bold">Free End Reflection</text>
+        
+        <!-- Incident wave -->
+        <path d="M100,100 Q150,50 200,100 T300,100" fill="none" stroke="#2196F3" stroke-width="2"/>
+        <text x="150" y="40" font-size="14">Incident Wave</text>
+        <path d="M280,90 L300,100 L280,110" fill="none" stroke="#2196F3" stroke-width="2"/>
+        
+        <!-- Reflected wave -->
+        <path d="M300,100 Q250,50 200,100 T100,100" fill="none" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5"/>
+        <text x="250" y="40" font-size="14">Reflected Wave</text>
+        <path d="M120,90 L100,100 L120,110" fill="none" stroke="#4CAF50" stroke-width="2"/>
+        
+        <!-- Boundary -->
+        <line x1="300" y1="98" x2="300" y2="102" stroke="#666" stroke-width="4"/>
+        <text x="320" y="100" font-size="14">Free End</text>
+        <text x="400" y="100" font-size="14">Phase shift: 0°</text>
+    </g>
+    
+    <!-- Formulas -->
+    <text x="400" y="450" text-anchor="middle" font-size="16">Reflection coefficient: r = ±1</text>
+    <text x="400" y="475" text-anchor="middle" font-size="14">Fixed end: r = -1, Free end: r = +1</text>
+</svg>

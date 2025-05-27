@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Center point -->
+  <circle cx="200" cy="150" r="4" fill="#444"/>
+  
+  <!-- Rotating coordinate system -->
+  <g stroke="#4a90e2" stroke-width="2">
+    <!-- x-axis -->
+    <line x1="100" y1="150" x2="300" y2="150"/>
+    <polygon points="300,150 290,145 290,155" fill="#4a90e2"/>
+    
+    <!-- y-axis -->
+    <line x1="200" y1="50" x2="200" y2="250"/>
+    <polygon points="200,50 195,60 205,60" fill="#4a90e2"/>
+  </g>
+  
+  <!-- Rotating object -->
+  <circle cx="250" cy="150" r="10" fill="#e24a4a"/>
+  
+  <!-- Rotation arrow -->
+  <path d="M 200,100 A 50,50 0 0,1 250,150" fill="none" stroke="#50C878" stroke-width="2"/>
+  <polygon points="250,150 245,140 255,145" fill="#50C878"/>
+  
+  <!-- Labels -->
+  <text x="310" y="155" font-family="Arial" font-size="14">x'</text>
+  <text x="205" y="45" font-family="Arial" font-size="14">y'</text>
+  <text x="270" y="120" font-family="Arial" font-size="14">ω</text>
+  
+  <!-- Title -->
+  <text x="200" y="280" text-anchor="middle" font-family="Arial" font-size="14">Rotating Reference Frame</text>
+</svg>

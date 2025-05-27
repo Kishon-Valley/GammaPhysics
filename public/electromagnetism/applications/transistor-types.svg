@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Definitions for markers and animations -->
+  <defs>
+    <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+      <path d="M0,0 L0,4 L6,2 Z" fill="#FF5733" />
+    </marker>
+    
+    <style type="text/css">
+      @keyframes electronFlow {
+        0% { stroke-dashoffset: 30; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes fieldPulse {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 0.8; }
+      }
+      
+      @keyframes channelWiden {
+        0% { width: 0; }
+        100% { width: 80; }
+      }
+      
+      .current-flow {
+        stroke-dasharray: 5, 3;
+        animation: electronFlow 2s linear infinite;
+      }
+      
+      .field-lines {
+        animation: fieldPulse 3s infinite;
+      }
+      
+      .mosfet-channel {
+        animation: channelWiden 3s ease-in-out infinite alternate;
+      }
+      
+      text {
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="white"/>
+  <text x="400" y="40" font-size="24" font-weight="bold" text-anchor="middle">Transistor Types</text>
+  
+  <!-- BJT (NPN) Transistor -->
+  <g transform="translate(200, 180)">
+    <text x="0" y="-50" font-size="20" font-weight="bold" text-anchor="middle">Bipolar Junction Transistor (NPN)</text>
+    
+    <!-- Structure -->
+    <rect x="-70" y="0" width="50" height="120" fill="#FFB703" stroke="#FB8500" stroke-width="2"/>
+    <rect x="-20" y="0" width="40" height="120" fill="#8ECAE6" stroke="#2A9D8F" stroke-width="2"/>
+    <rect x="20" y="0" width="50" height="120" fill="#FFB703" stroke="#FB8500" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="-45" y="60" font-size="16" font-weight="bold" text-anchor="middle">N</text>
+    <text x="0" y="60" font-size="16" font-weight="bold" text-anchor="middle">P</text>
+    <text x="45" y="60" font-size="16" font-weight="bold" text-anchor="middle">N</text>
+    
+    <text x="-45" y="140" font-size="14" text-anchor="middle">Emitter</text>
+    <text x="0" y="140" font-size="14" text-anchor="middle">Base</text>
+    <text x="45" y="140" font-size="14" text-anchor="middle">Collector</text>
+    
+    <!-- Terminals -->
+    <line x1="-45" y1="-20" x2="-45" y2="0" stroke="black" stroke-width="2"/>
+    <line x1="0" y1="-20" x2="0" y2="0" stroke="black" stroke-width="2"/>
+    <line x1="45" y1="-20" x2="45" y2="0" stroke="black" stroke-width="2"/>
+    
+    <circle cx="-45" cy="-20" r="5" fill="white" stroke="black" stroke-width="2"/>
+    <circle cx="0" cy="-20" r="5" fill="white" stroke="black" stroke-width="2"/>
+    <circle cx="45" cy="-20" r="5" fill="white" stroke="black" stroke-width="2"/>
+    
+    <text x="-45" y="-30" font-size="14" text-anchor="middle">E</text>
+    <text x="0" y="-30" font-size="14" text-anchor="middle">B</text>
+    <text x="45" y="-30" font-size="14" text-anchor="middle">C</text>
+    
+    <!-- Current flow -->
+    <path class="current-flow" d="M-45,30 C-30,40 -15,40 0,30" stroke="#FF5733" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <path class="current-flow" d="M0,30 C15,40 30,40 45,30" stroke="#FF5733" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <path class="current-flow" d="M-45,90 C-30,80 -15,80 0,90" stroke="#FF5733" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <path class="current-flow" d="M0,90 C15,80 30,80 45,90" stroke="#FF5733" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Amplification description -->
+    <text x="0" y="170" font-size="13" text-anchor="middle">Small base current controls</text>
+    <text x="0" y="185" font-size="13" text-anchor="middle">larger collector current</text>
+  </g>
+  
+  <!-- MOSFET (N-Channel) Transistor -->
+  <g transform="translate(600, 180)">
+    <text x="0" y="-50" font-size="20" font-weight="bold" text-anchor="middle">MOSFET (N-Channel)</text>
+    
+    <!-- Structure -->
+    <rect x="-80" y="0" width="160" height="120" fill="#F4F1DE" stroke="#81B29A" stroke-width="2"/>
+    <text x="0" y="135" font-size="14" text-anchor="middle">P-type Substrate</text>
+    
+    <!-- Source and Drain -->
+    <rect x="-70" y="20" width="40" height="30" fill="#FFB703" stroke="#FB8500" stroke-width="2"/>
+    <rect x="30" y="20" width="40" height="30" fill="#FFB703" stroke="#FB8500" stroke-width="2"/>
+    <text x="-50" y="40" font-size="14" text-anchor="middle">N+</text>
+    <text x="50" y="40" font-size="14" text-anchor="middle">N+</text>
+    
+    <!-- Gate oxide and metal -->
+    <rect x="-30" y="10" width="60" height="10" fill="#D8E2DC" stroke="#81B29A" stroke-width="2"/>
+    <rect x="-30" y="0" width="60" height="10" fill="#95A3B3" stroke="#81B29A" stroke-width="2"/>
+    
+    <!-- Channel (appears with gate voltage) -->
+    <rect id="channel" x="-30" y="20" width="0" height="5" fill="#FFB703" fill-opacity="0.5" stroke="none" class="mosfet-channel"/>
+    
+    <!-- Labels -->
+    <text x="-50" y="70" font-size="14" text-anchor="middle">Source</text>
+    <text x="0" y="-10" font-size="14" text-anchor="middle">Gate</text>
+    <text x="50" y="70" font-size="14" text-anchor="middle">Drain</text>
+    
+    <!-- Terminals -->
+    <line x1="-50" y1="-25" x2="-50" y2="20" stroke="black" stroke-width="2"/>
+    <line x1="0" y1="-25" x2="0" y2="0" stroke="black" stroke-width="2"/>
+    <line x1="50" y1="-25" x2="50" y2="20" stroke="black" stroke-width="2"/>
+    
+    <circle cx="-50" cy="-25" r="5" fill="white" stroke="black" stroke-width="2"/>
+    <circle cx="0" cy="-25" r="5" fill="white" stroke="black" stroke-width="2"/>
+    <circle cx="50" cy="-25" r="5" fill="white" stroke="black" stroke-width="2"/>
+    
+    <text x="-50" y="-35" font-size="14" text-anchor="middle">S</text>
+    <text x="0" y="-35" font-size="14" text-anchor="middle">G</text>
+    <text x="50" y="-35" font-size="14" text-anchor="middle">D</text>
+    
+    <!-- Electric field lines -->
+    <path d="M-10,5 Q-10,15 -10,25" stroke="#3498DB" stroke-width="1" fill="none" class="field-lines"/>
+    <path d="M0,5 Q0,15 0,25" stroke="#3498DB" stroke-width="1" fill="none" class="field-lines"/>
+    <path d="M10,5 Q10,15 10,25" stroke="#3498DB" stroke-width="1" fill="none" class="field-lines"/>
+    
+    <!-- Current flow (appears when channel forms) -->
+    <path class="current-flow" d="M-50,25 C-40,25 -20,25 -10,25" stroke="#FF5733" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <path class="current-flow" d="M10,25 C20,25 40,25 50,25" stroke="#FF5733" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    
+    <!-- Voltage control description -->
+    <text x="0" y="170" font-size="13" text-anchor="middle">Gate voltage creates channel</text>
+    <text x="0" y="185" font-size="13" text-anchor="middle">with virtually no gate current</text>
+  </g>
+  
+  <!-- Comparison and Applications -->
+  <g transform="translate(400, 380)">
+    <rect x="-350" y="0" width="700" height="170" fill="#F8F9FA" stroke="#CED4DA" stroke-width="2" rx="10" ry="10"/>
+    
+    <text x="0" y="30" font-size="18" font-weight="bold" text-anchor="middle">Transistor Comparison</text>
+    
+    <!-- BJT Characteristics -->
+    <text x="-200" y="60" font-size="16" font-weight="bold" text-anchor="middle">BJT</text>
+    <text x="-200" y="85" font-size="14" text-anchor="middle">• Current-controlled device</text>
+    <text x="-200" y="105" font-size="14" text-anchor="middle">• Higher transconductance</text>
+    <text x="-200" y="125" font-size="14" text-anchor="middle">• Better for analog/RF applications</text>
+    <text x="-200" y="145" font-size="14" text-anchor="middle">• Typical gain (β): 20-200</text>
+    
+    <!-- MOSFET Characteristics -->
+    <text x="200" y="60" font-size="16" font-weight="bold" text-anchor="middle">MOSFET</text>
+    <text x="200" y="85" font-size="14" text-anchor="middle">• Voltage-controlled device</text>
+    <text x="200" y="105" font-size="14" text-anchor="middle">• Very high input impedance</text>
+    <text x="200" y="125" font-size="14" text-anchor="middle">• Better for digital/power applications</text>
+    <text x="200" y="145" font-size="14" text-anchor="middle">• Higher integration density</text>
+  </g>
+</svg> 

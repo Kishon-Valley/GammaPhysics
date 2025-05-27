@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Earth outline -->
+  <circle cx="200" cy="150" r="100" fill="#4169E1" stroke="#2E4B8F" stroke-width="2"/>
+  
+  <!-- Latitude lines -->
+  <g stroke="#87CEEB" stroke-width="1" fill="none">
+    <ellipse cx="200" cy="150" rx="100" ry="20"/>
+    <ellipse cx="200" cy="150" rx="90" ry="40"/>
+    <ellipse cx="200" cy="150" rx="70" ry="60"/>
+    <ellipse cx="200" cy="150" rx="40" ry="80"/>
+  </g>
+  
+  <!-- Rotation arrow -->
+  <path d="M 200,50 A 100,100 0 0,1 300,150" fill="none" stroke="#50C878" stroke-width="2"/>
+  <polygon points="300,150 290,145 295,155" fill="#50C878"/>
+  
+  <!-- Particle trajectory -->
+  <path d="M 200,70 C 220,90 240,130 245,170" fill="none" stroke="#e24a4a" stroke-width="2" stroke-dasharray="5,5"/>
+  <circle cx="200" cy="70" r="4" fill="#e24a4a"/>
+  <circle cx="245" cy="170" r="4" fill="#e24a4a"/>
+  
+  <!-- Labels -->
+  <text x="320" y="150" font-family="Arial" font-size="14">ω</text>
+  <text x="260" y="100" font-family="Arial" font-size="14" fill="#e24a4a">Deflected</text>
+  <text x="260" y="115" font-family="Arial" font-size="14" fill="#e24a4a">Path</text>
+  
+  <!-- Title -->
+  <text x="200" y="280" text-anchor="middle" font-family="Arial" font-size="14">Coriolis Effect</text>
+</svg>

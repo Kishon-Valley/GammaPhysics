@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <rect width="800" height="700" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">EM Wave Boundary Conditions</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">E₁∥ = E₂∥, ε₁E₁⊥ = ε₂E₂⊥</text>
+
+    <!-- Main Visualization -->
+    <g transform="translate(400,350)">
+        <!-- Interface Line -->
+        <line x1="-300" y1="0" x2="300" y2="0" stroke="#666" stroke-width="2"/>
+        <text x="-280" y="20" font-size="14">Medium 1 (ε₁, μ₁)</text>
+        <text x="-280" y="-10" font-size="14">Medium 2 (ε₂, μ₂)</text>
+
+        <!-- Electric Field Vectors -->
+        <g class="e-field">
+            <!-- Incident Wave -->
+            <path d="M -200,-100 L -200,100" stroke="#FF5722" stroke-width="2" marker-end="url(#e-arrow)">
+                <animate attributeName="stroke-width"
+                         values="2;3;2"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+            <text x="-220" y="0" text-anchor="end" fill="#FF5722" font-size="14">E₁</text>
+
+            <!-- Transmitted Wave -->
+            <path d="M 200,-80 L 200,80" stroke="#2196F3" stroke-width="2" marker-end="url(#e-arrow)">
+                <animate attributeName="stroke-width"
+                         values="2;3;2"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </path>
+            <text x="220" y="0" text-anchor="start" fill="#2196F3" font-size="14">E₂</text>
+
+            <!-- Component Indicators -->
+            <line x1="-200" y1="0" x2="-160" y2="0" stroke="#666" stroke-dasharray="5,5"/>
+            <text x="-180" y="20" font-size="12">E∥</text>
+            <line x1="-200" y1="-50" x2="-200" y2="-90" stroke="#666" stroke-dasharray="5,5"/>
+            <text x="-220" y="-70" font-size="12">E⊥</text>
+        </g>
+    </g>
+
+    <!-- Explanation Box -->
+    <g transform="translate(50,550)">
+        <rect width="700" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Boundary Conditions:</text>
+        <text x="20" y="55" font-size="14">1. Parallel E-field components are continuous</text>
+        <text x="20" y="80" font-size="14">2. Normal D-field components are continuous</text>
+        <text x="20" y="105" font-size="14">3. Similar conditions apply for magnetic fields</text>
+    </g>
+
+    <!-- Definitions -->
+    <defs>
+        <marker id="e-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+    </defs>
+</svg> 

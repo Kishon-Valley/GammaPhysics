@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions -->
+  <defs>
+    <!-- Clock tick marks pattern -->
+    <pattern id="tickMarks" patternUnits="userSpaceOnUse" width="60" height="60" patternTransform="rotate(30)">
+      <line x1="30" y1="0" x2="30" y2="5" stroke="#333" stroke-width="2"/>
+    </pattern>
+    
+    <!-- Animations -->
+    <style type="text/css">
+      .title-text { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; text-anchor: middle; }
+      .subtitle-text { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .label-text { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+      .formula-text { font-family: Arial, sans-serif; font-size: 16px; font-style: italic; }
+      .small-text { font-family: Arial, sans-serif; font-size: 12px; }
+      
+      .rest-frame { fill: #e6f7ff; stroke: #0099cc; stroke-width: 2; }
+      .moving-frame { fill: #ffe6e6; stroke: #cc0000; stroke-width: 2; }
+      
+      .clock-face { fill: white; stroke: #333; stroke-width: 2; }
+      .clock-hand { stroke: #333; stroke-width: 3; stroke-linecap: round; }
+      .clock-center { fill: #333; }
+      
+      .light-pulse { fill: yellow; stroke: orange; stroke-width: 1; }
+      
+      @keyframes rotateNormalHand {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      @keyframes rotateDilatedHand {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      .normal-second-hand {
+        animation: rotateNormalHand 6s linear infinite;
+        transform-origin: center;
+      }
+      
+      .dilated-second-hand {
+        animation: rotateDilatedHand 12s linear infinite;
+        transform-origin: center;
+      }
+      
+      .gamma-value {
+        font-weight: bold;
+      }
+      
+      @keyframes lightPulse {
+        0%, 100% { opacity: 0; r: 5; }
+        50% { opacity: 1; r: 15; }
+      }
+      
+      .pulse {
+        animation: lightPulse 2s infinite;
+      }
+      
+      .velocity-value {
+        font-weight: bold;
+        fill: #cc0000;
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f9f9f9"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title-text">Time Dilation in Special Relativity</text>
+  
+  <!-- Rest Frame -->
+  <rect x="50" y="80" width="300" height="260" rx="10" class="rest-frame"/>
+  <text x="200" y="110" class="subtitle-text">Rest Frame (Laboratory)</text>
+  
+  <!-- Rest Frame Clock -->
+  <circle cx="200" cy="200" r="80" class="clock-face"/>
+  <circle cx="200" cy="200" r="75" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="2,5"/>
+  <circle cx="200" cy="200" r="5" class="clock-center"/>
+  
+  <!-- Clock tick marks - Rest frame -->
+  <g transform="translate(200, 200)">
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(0)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(30)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(60)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(90)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(120)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(150)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(180)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(210)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(240)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(270)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(300)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(330)"/>
+    
+    <!-- Numbers on clock -->
+    <text x="0" y="-55" class="small-text" text-anchor="middle">12</text>
+    <text x="40" y="-40" class="small-text" text-anchor="middle">1</text>
+    <text x="55" y="0" class="small-text" text-anchor="start">3</text>
+    <text x="0" y="60" class="small-text" text-anchor="middle">6</text>
+    <text x="-55" y="0" class="small-text" text-anchor="end">9</text>
+    
+    <!-- Clock hand - Rest frame (appears to move normally) -->
+    <line x1="0" y1="0" x2="0" y2="-65" class="clock-hand normal-second-hand" id="restClockHand"/>
+  </g>
+  
+  <text x="200" y="300" class="label-text">Proper time: 1 second per cycle</text>
+  
+  <!-- Moving Frame -->
+  <rect x="450" y="80" width="300" height="260" rx="10" class="moving-frame"/>
+  <text x="600" y="110" class="subtitle-text">Moving Frame (Spacecraft)</text>
+  
+  <!-- Moving Frame Clock -->
+  <circle cx="600" cy="200" r="80" class="clock-face"/>
+  <circle cx="600" cy="200" r="75" fill="none" stroke="#333" stroke-width="1" stroke-dasharray="2,5"/>
+  <circle cx="600" cy="200" r="5" class="clock-center"/>
+  
+  <!-- Clock tick marks - Moving frame -->
+  <g transform="translate(600, 200)">
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(0)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(30)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(60)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(90)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(120)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(150)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(180)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(210)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(240)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(270)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(300)"/>
+    <line x1="0" y1="-75" x2="0" y2="-65" stroke="#333" stroke-width="2" transform="rotate(330)"/>
+    
+    <!-- Numbers on clock -->
+    <text x="0" y="-55" class="small-text" text-anchor="middle">12</text>
+    <text x="40" y="-40" class="small-text" text-anchor="middle">1</text>
+    <text x="55" y="0" class="small-text" text-anchor="start">3</text>
+    <text x="0" y="60" class="small-text" text-anchor="middle">6</text>
+    <text x="-55" y="0" class="small-text" text-anchor="end">9</text>
+    
+    <!-- Clock hand - Moving frame (appears to move slower) -->
+    <line x1="0" y1="0" x2="0" y2="-65" class="clock-hand dilated-second-hand" id="movingClockHand"/>
+  </g>
+  
+  <!-- Moving frame velocity indicator -->
+  <text x="600" y="280" class="label-text">Time appears dilated by factor γ = 2</text>
+  <text x="600" y="300" class="label-text">Velocity: v = 0.866c (86.6% of light speed)</text>
+  
+  <!-- Direction of motion arrow -->
+  <line x1="450" y1="200" x2="400" y2="200" stroke="#cc0000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc0000"/>
+    </marker>
+  </defs>
+  
+  <!-- Time Dilation Formula Box -->
+  <rect x="150" y="370" width="500" height="180" rx="10" fill="#f0f0f0" stroke="#333" stroke-width="2"/>
+  <text x="400" y="400" class="subtitle-text">Time Dilation Formula</text>
+  
+  <text x="400" y="440" class="formula-text" text-anchor="middle">Δt = γ × Δt₀</text>
+  <text x="400" y="480" class="formula-text" text-anchor="middle">γ = 1/√(1-v²/c²)</text>
+  
+  <!-- Formula explanation -->
+  <text x="200" y="520" class="small-text" text-anchor="start">Where:</text>
+  <text x="220" y="540" class="small-text" text-anchor="start">Δt = time interval measured in the observer's frame</text>
+  <text x="220" y="560" class="small-text" text-anchor="start">Δt₀ = proper time interval (measured in the rest frame)</text>
+  <text x="520" y="540" class="small-text" text-anchor="start">γ = Lorentz factor</text>
+  <text x="520" y="560" class="small-text" text-anchor="start">v = relative velocity, c = speed of light</text>
+  
+  <!-- Light pulses to visualize c -->
+  <circle cx="200" cy="140" r="10" class="light-pulse pulse"/>
+  <circle cx="600" cy="140" r="10" class="light-pulse pulse"/>
+  
+  <!-- JavaScript for interactivity - Commented out as static SVG
+  <script type="text/javascript">
+    // JavaScript would go here for interactive elements
+    // For full interactivity, this would adjust the animation duration based on input
+  </script>
+  -->
+</svg> 

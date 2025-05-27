@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="500" height="300" fill="white"/>
+    
+    <!-- Platform (reference frame S) -->
+    <line x1="50" y1="250" x2="450" y2="250" stroke="black" stroke-width="3"/>
+    <text x="20" y="255" font-family="Arial" font-size="14">S</text>
+    
+    <!-- Train (reference frame S') -->
+    <rect x="100" y="200" width="300" height="40" fill="none" stroke="blue" stroke-width="2"/>
+    <text x="380" y="220" font-family="Arial" font-size="14">S'</text>
+    
+    <!-- Ball -->
+    <circle cx="250" cy="210" r="10" fill="red"/>
+    
+    <!-- Velocity arrows -->
+    <line x1="150" y1="170" x2="350" y2="170" stroke="blue" stroke-width="2"/>
+    <polygon points="350,170 340,165 340,175" fill="blue"/>
+    <text x="230" y="165" font-family="Arial" font-size="14">v (train)</text>
+    
+    <line x1="240" y1="140" x2="340" y2="140" stroke="red" stroke-width="2"/>
+    <polygon points="340,140 330,135 330,145" fill="red"/>
+    <text x="270" y="135" font-family="Arial" font-size="14">u' (ball)</text>
+    
+    <line x1="240" y1="110" x2="390" y2="110" stroke="green" stroke-width="2"/>
+    <polygon points="390,110 380,105 380,115" fill="green"/>
+    <text x="280" y="105" font-family="Arial" font-size="14">w (relative to S)</text>
+    
+    <!-- Formula -->
+    <text x="100" y="50" font-family="Arial" font-size="16">w = (u' + v)/(1 + u'v/c²)</text>
+</svg>

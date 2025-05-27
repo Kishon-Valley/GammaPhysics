@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <!-- Add white background as the first element after the opening svg tag -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Title -->
+  <text x="200" y="30" font-size="16" font-weight="bold">Types of Rolling Motion</text>
+  
+  <!-- Pure Rolling -->
+  <g transform="translate(150,150)">
+    <text x="-40" y="-60" font-size="14" font-weight="bold">Pure Rolling</text>
+    <!-- Ground -->
+    <line x1="-80" y1="40" x2="80" y2="40" stroke="black" stroke-width="2"/>
+    <!-- Wheel -->
+    <circle cx="0" cy="0" r="40" fill="none" stroke="blue" stroke-width="2"/>
+    <!-- Center point -->
+    <circle cx="0" cy="0" r="3" fill="black"/>
+    <!-- Contact point -->
+    <circle cx="0" cy="40" r="3" fill="red"/>
+    <!-- Velocity arrows -->
+    <line x1="-10" y1="-10" x2="30" y2="-10" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="40" y="-10" fill="#4CAF50">vcm</text>
+    <!-- Angular velocity -->
+    <path d="M 0,0 A 20,20 0 0 1 20,-10" stroke="#FF9800" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="25" y="-20" fill="#FF9800">ω</text>
+    <!-- No slip condition -->
+    <text x="-70" y="60" font-size="12">v = rω (No slip)</text>
+  </g>
+  
+  <!-- Rolling with Slipping -->
+  <g transform="translate(450,150)">
+    <text x="-60" y="-60" font-size="14" font-weight="bold">Rolling with Slip</text>
+    <!-- Ground -->
+    <line x1="-80" y1="40" x2="80" y2="40" stroke="black" stroke-width="2"/>
+    <!-- Wheel -->
+    <circle cx="0" cy="0" r="40" fill="none" stroke="blue" stroke-width="2"/>
+    <!-- Center point -->
+    <circle cx="0" cy="0" r="3" fill="black"/>
+    <!-- Contact point -->
+    <circle cx="0" cy="40" r="3" fill="red"/>
+    <!-- Slip arrows -->
+    <line x1="-20" y1="35" x2="20" y2="35" stroke="purple" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="25" y="35" fill="purple">vslip</text>
+    <!-- Center of mass velocity -->
+    <line x1="-10" y1="-10" x2="30" y2="-10" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="40" y="-10" fill="#4CAF50">vcm</text>
+    <!-- Angular velocity -->
+    <path d="M 0,0 A 20,20 0 0 1 20,-10" stroke="#FF9800" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="25" y="-20" fill="#FF9800">ω</text>
+    <!-- Slip condition -->
+    <text x="-70" y="60" font-size="12">v ≠ rω (Slip)</text>
+  </g>
+  
+  <!-- Rolling Resistance -->
+  <g transform="translate(300,300)">
+    <text x="-60" y="-20" font-size="14" font-weight="bold">Rolling Resistance</text>
+    <!-- Ground -->
+    <line x1="-100" y1="40" x2="100" y2="40" stroke="black" stroke-width="2"/>
+    <!-- Wheel deformation -->
+    <path d="M 0,0 A 40,40 0 1 1 0,40 L 0,0 Z" fill="none" stroke="blue" stroke-width="2"/>
+    <!-- Normal force -->
+    <line x1="0" y1="40" x2="0" y2="0" stroke="red" stroke-width="2" marker-start="url(#arrow)"/>
+    <text x="10" y="20" fill="red">N</text>
+    <!-- Resistance force -->
+    <line x1="-10" y1="35" x2="-40" y2="35" stroke="purple" stroke-width="2" marker-start="url(#arrow)"/>
+    <text x="-35" y="30" fill="purple">Fr</text>
+  </g>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+    </marker>
+  </defs>
+</svg>

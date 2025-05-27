@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="400" height="300" fill="white"/>
+    
+    <!-- Interface line -->
+    <line x1="50" y1="150" x2="350" y2="150" stroke="black" stroke-width="2"/>
+    
+    <!-- Medium labels -->
+    <text x="360" y="130" font-family="Arial" font-size="14">n₁ (Air)</text>
+    <text x="360" y="170" font-family="Arial" font-size="14">n₂ (Glass)</text>
+    
+    <!-- Incident ray -->
+    <line x1="150" y1="50" x2="200" y2="150" stroke="red" stroke-width="2"/>
+    <text x="130" y="45" font-family="Arial" font-size="12">Incident Ray</text>
+    
+    <!-- Reflected ray -->
+    <line x1="200" y1="150" x2="250" y2="50" stroke="blue" stroke-width="2"/>
+    <text x="260" y="45" font-family="Arial" font-size="12">Reflected Ray</text>
+    
+    <!-- Transmitted ray -->
+    <line x1="200" y1="150" x2="250" y2="250" stroke="green" stroke-width="2"/>
+    <text x="260" y="260" font-family="Arial" font-size="12">Transmitted Ray</text>
+    
+    <!-- Normal line -->
+    <line x1="200" y1="50" x2="200" y2="250" stroke="gray" stroke-dasharray="5,5"/>
+    <text x="205" y="40" font-family="Arial" font-size="12">Normal</text>
+    
+    <!-- Angles -->
+    <path d="M 190,140 A 20,20 0 0 1 210,140" fill="none" stroke="black"/>
+    <text x="180" y="135" font-family="Arial" font-size="12">θᵢ</text>
+    <text x="210" y="135" font-family="Arial" font-size="12">θᵣ</text>
+    <text x="210" y="170" font-family="Arial" font-size="12">θₜ</text>
+</svg>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <defs>
+        <!-- Gradient for background -->
+        <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+        </linearGradient>
+        
+        <!-- Arrow markers -->
+        <marker id="arrowhead-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+        <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+        <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+        
+        <!-- Particle glow effect -->
+        <filter id="particle-glow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+        </filter>
+    </defs>
+
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="url(#bg-gradient)" />
+
+    <!-- Title -->
+    <text x="400" y="50" text-anchor="middle" fill="#000000" font-family="Arial" font-size="20">
+        Helical Motion of a Charged Particle in Magnetic Field
+    </text>
+
+    <!-- Magnetic field visualization -->
+    <g stroke="#4CAF50" stroke-width="2">
+        <!-- Static field lines -->
+        <line x1="200" y1="100" x2="200" y2="500" marker-end="url(#arrowhead-green)" />
+        <line x1="400" y1="100" x2="400" y2="500" marker-end="url(#arrowhead-green)" />
+        <line x1="600" y1="100" x2="600" y2="500" marker-end="url(#arrowhead-green)" />
+        
+        <!-- Animated magnetic field particles (more of them) -->
+        <circle r="3" fill="#4CAF50">
+            <animateMotion path="M 200,100 L 200,500" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="3" fill="#4CAF50">
+            <animateMotion path="M 200,300 L 200,500" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="3" fill="#4CAF50">
+            <animateMotion path="M 400,100 L 400,500" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="3" fill="#4CAF50">
+            <animateMotion path="M 400,300 L 400,500" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="3" fill="#4CAF50">
+            <animateMotion path="M 600,100 L 600,500" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="3" fill="#4CAF50">
+            <animateMotion path="M 600,300 L 600,500" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        
+        <text x="150" y="300" fill="#4CAF50" font-family="Arial" font-size="16">B</text>
+    </g>
+
+    <!-- Magnetic force visualization (circular indicators) -->
+    <g stroke="#FF5722" stroke-width="1" fill="none">
+        <circle cx="300" cy="300" r="20">
+            <animate attributeName="r" values="15;25;15" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="400" cy="300" r="20">
+            <animate attributeName="r" values="25;15;25" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="500" cy="300" r="20">
+            <animate attributeName="r" values="15;25;15" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="stroke-opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+        </circle>
+    </g>
+
+    <!-- Helical path -->
+    <path d="M 200,300 Q 250,200 300,300 T 400,300 T 500,300 T 600,300" 
+          fill="none" stroke="#2196F3" stroke-width="3" stroke-dasharray="10,10">
+        <animate attributeName="stroke-dashoffset" 
+                 from="100" to="0" 
+                 dur="1s" 
+                 repeatCount="indefinite"/>
+    </path>
+
+    <!-- Particle with vectors -->
+    <g>
+        <animateMotion 
+            dur="3s"
+            repeatCount="indefinite"
+            path="M 200,300 Q 250,200 300,300 T 400,300 T 500,300 T 600,300">
+            <g>
+                <!-- Particle -->
+                <circle r="8" fill="#FF5722" />
+                <circle r="12" fill="#FF5722" opacity="0.3" filter="url(#particle-glow)" />
+                
+                <!-- Velocity vector -->
+                <line x1="0" y1="0" x2="40" y2="-20" stroke="#2196F3" stroke-width="2" marker-end="url(#arrowhead-blue)">
+                    <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0"
+                        to="360"
+                        dur="3s"
+                        repeatCount="indefinite"/>
+                </line>
+                <text x="45" y="-25" fill="#2196F3" font-family="Arial" font-size="16">v</text>
+                
+                <!-- Force vector -->
+                <line x1="0" y1="0" x2="-20" y2="-20" stroke="#FF5722" stroke-width="2" marker-end="url(#arrowhead-red)">
+                    <animateTransform
+                        attributeName="transform"
+                        type="rotate"
+                        from="0"
+                        to="360"
+                        dur="3s"
+                        repeatCount="indefinite"/>
+                </line>
+                <text x="-35" y="-25" fill="#FF5722" font-family="Arial" font-size="16">F</text>
+            </g>
+        </animateMotion>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(50, 500)">
+        <text x="0" y="0" fill="#000000" font-family="Arial" font-size="16" font-weight="bold">Legend:</text>
+        
+        <!-- Magnetic field -->
+        <line x1="20" y1="20" x2="50" y2="20" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrowhead-green)" />
+        <text x="60" y="25" fill="#4CAF50" font-family="Arial" font-size="14">Magnetic Field (B)</text>
+        
+        <!-- Velocity -->
+        <line x1="200" y1="20" x2="230" y2="20" stroke="#2196F3" stroke-width="2" marker-end="url(#arrowhead-blue)" />
+        <text x="240" y="25" fill="#2196F3" font-family="Arial" font-size="14">Velocity (v)</text>
+        
+        <!-- Force -->
+        <line x1="380" y1="20" x2="410" y2="20" stroke="#FF5722" stroke-width="2" marker-end="url(#arrowhead-red)" />
+        <text x="420" y="25" fill="#FF5722" font-family="Arial" font-size="14">Magnetic Force (F)</text>
+    </g>
+
+    <!-- Equations -->
+    <text x="50" y="570" fill="#000000" font-family="Arial" font-size="14">
+        F = qv × B    R = mv⊥/qB    T = 2πm/qB
+    </text>
+
+    <!-- Explanation Panel -->
+    <g transform="translate(50, 600)">
+        <rect width="700" height="80" fill="#f8f9fa" stroke="#e9ecef" stroke-width="1" rx="5"/>
+        <text x="10" y="20" fill="#000000" font-family="Arial" font-size="14" font-weight="bold">
+            Understanding the Motion:
+        </text>
+        <text x="10" y="40" fill="#000000" font-family="Arial" font-size="12">
+            1. The green dots show the magnetic field (B) direction pointing downward
+        </text>
+        <text x="10" y="55" fill="#000000" font-family="Arial" font-size="12">
+            2. The blue vector (v) shows particle velocity, which creates a spiral due to the magnetic force
+        </text>
+        <text x="10" y="70" fill="#000000" font-family="Arial" font-size="12">
+            3. The red vector (F) shows the magnetic force, always perpendicular to both velocity and magnetic field
+        </text>
+    </g>
+</svg>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" style="background-color: white;">
+    <!-- Explicit white background -->
+    <rect width="800" height="600" fill="white"/>
+    
+    <defs>
+        <marker id="magnetic-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+        <marker id="current-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+    </defs>
+
+    <!-- Title with white background -->
+    <rect x="0" y="0" width="800" height="60" fill="white"/>
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Electric Generator</text>
+
+    <!-- Explanation -->
+    <g transform="translate(50,80)">
+        <text x="0" y="0" font-size="16" font-weight="bold">How it Works:</text>
+        <text x="0" y="30" font-size="14">1. Mechanical energy rotates the coil</text>
+        <text x="0" y="50" font-size="14">2. Coil cuts through magnetic field lines</text>
+        <text x="0" y="70" font-size="14">3. EMF induced follows ε = NBA ω sin(ωt)</text>
+    </g>
+
+    <!-- Generator Visualization -->
+    <g transform="translate(400,300)">
+        <!-- Magnetic field -->
+        <g transform="translate(0,-100)">
+            <text x="-50" y="0" fill="#4CAF50" font-size="20">N</text>
+            <text x="-50" y="200" fill="#4CAF50" font-size="20">S</text>
+        </g>
+
+        <!-- Rotating coil -->
+        <g>
+            <animateTransform attributeName="transform"
+                             type="rotate"
+                             from="0 0 0"
+                             to="360 0 0"
+                             dur="3s"
+                             repeatCount="indefinite"/>
+            
+            <!-- Coil -->
+            <rect x="-80" y="-80" width="160" height="160" 
+                  fill="none" stroke="#666" stroke-width="3"/>
+            
+            <!-- Current direction -->
+            <path d="M -80,-80 L 80,-80" stroke="#2196F3" stroke-width="2" marker-end="url(#current-arrow)">
+                <animate attributeName="opacity"
+                         values="1;0;1"
+                         dur="1.5s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Output voltage wave -->
+        <path d="M 200,0 Q 250,-50 300,0 T 400,0" 
+              fill="none" stroke="#FF5722" stroke-width="3">
+            <animate attributeName="d"
+                     values="M 200,0 Q 250,-50 300,0 T 400,0;
+                             M 200,0 Q 250,50 300,0 T 400,0;
+                             M 200,0 Q 250,-50 300,0 T 400,0"
+                     dur="3s"
+                     repeatCount="indefinite"/>
+        </path>
+    </g>
+
+    <!-- Formula Box -->
+    <g transform="translate(50,450)">
+        <rect x="0" y="0" width="700" height="120" fill="#f5f5f5" stroke="#666"/>
+        <text x="20" y="30" font-size="16" font-weight="bold">Key Parameters:</text>
+        <text x="20" y="60" font-family="math" font-size="14">• EMF: ε = NBA ω sin(ωt)</text>
+        <text x="20" y="80" font-size="14">• Power: P = τω = VI</text>
+        <text x="20" y="100" font-size="14">• Efficiency depends on mechanical and electrical losses</text>
+    </g>
+</svg> 

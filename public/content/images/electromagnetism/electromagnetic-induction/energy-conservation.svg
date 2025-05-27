@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+        <marker id="energy-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+    </defs>
+
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold">
+        Energy Conservation in Electromagnetic Systems
+    </text>
+
+    <!-- Main Animation Content -->
+    <g transform="translate(400, 250)">
+        <!-- Mechanical Energy Box -->
+        <rect x="-300" y="-100" width="150" height="80" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+        <text x="-225" y="-70" text-anchor="middle" font-size="14">Mechanical</text>
+        <text x="-225" y="-50" text-anchor="middle" font-size="14">Energy</text>
+        
+        <!-- Electrical Energy Box -->
+        <rect x="-75" y="-100" width="150" height="80" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+        <text x="0" y="-70" text-anchor="middle" font-size="14">Electrical</text>
+        <text x="0" y="-50" text-anchor="middle" font-size="14">Energy</text>
+        
+        <!-- Thermal Energy Box -->
+        <rect x="150" y="-100" width="150" height="80" fill="#ffebee" stroke="#c62828" stroke-width="2"/>
+        <text x="225" y="-70" text-anchor="middle" font-size="14">Thermal</text>
+        <text x="225" y="-50" text-anchor="middle" font-size="14">Energy</text>
+
+        <!-- Animated Energy Flow Arrows -->
+        <g>
+            <!-- Mechanical to Electrical -->
+            <line x1="-150" y1="-60" x2="-75" y2="-60" stroke="#2196F3" stroke-width="3" marker-end="url(#arrow)">
+                <animate attributeName="stroke-dashoffset"
+                         values="0;100"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </line>
+            
+            <!-- Electrical to Thermal -->
+            <line x1="75" y1="-60" x2="150" y2="-60" stroke="#FF5722" stroke-width="3" marker-end="url(#energy-arrow)">
+                <animate attributeName="stroke-dashoffset"
+                         values="0;100"
+                         dur="2s"
+                         repeatCount="indefinite"/>
+            </line>
+        </g>
+
+        <!-- Power Equations -->
+        <text x="-125" y="50" font-family="math" font-size="14">P_mech = τω</text>
+        <text x="0" y="50" font-family="math" font-size="14">P_elec = εI</text>
+        <text x="125" y="50" font-family="math" font-size="14">P_heat = I²R</text>
+    </g>
+
+    <!-- Conservation Law -->
+    <text x="400" y="400" text-anchor="middle" font-family="math" font-size="16">
+        E_mechanical = E_electrical + E_thermal + E_losses
+    </text>
+
+    <!-- Embedded Explanation Box -->
+    <g transform="translate(50,500)">
+        <rect width="700" height="160" fill="#f8f9fa" stroke="#e9ecef" stroke-width="1" rx="5"/>
+        
+        <text x="20" y="30" font-size="16" font-weight="bold">Energy Transformation Process:</text>
+        <text x="20" y="60" font-size="14">1. Mechanical Energy Input:</text>
+        <text x="40" y="80" font-size="12">• Motion of magnets or conductors</text>
+        <text x="40" y="100" font-size="12">• Work done against electromagnetic forces</text>
+        
+        <text x="20" y="120" font-size="14">2. Electrical Energy Conversion:</text>
+        <text x="40" y="140" font-size="12">• Generation of induced EMF</text>
+        <text x="40" y="160" font-size="12">• Flow of induced currents</text>
+    </g>
+</svg> 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Spherical Aberration (Top) -->
+    <g transform="translate(0,0)">
+        <!-- Lens -->
+        <path d="M 300,50 Q 400,50 500,50 C 520,50 520,150 500,150 Q 400,150 300,150 C 280,150 280,50 300,50" 
+              fill="#e3f2fd" stroke="black" stroke-width="2"/>
+        
+        <!-- Rays -->
+        <line x1="100" y1="30" x2="400" y2="60" stroke="#4285f4" stroke-width="2"/>
+        <line x1="400" y1="60" x2="600" y2="80" stroke="#4285f4" stroke-width="2"/>
+        
+        <line x1="100" y1="70" x2="400" y2="80" stroke="#34a853" stroke-width="2"/>
+        <line x1="400" y1="80" x2="600" y2="100" stroke="#34a853" stroke-width="2"/>
+        
+        <line x1="100" y1="130" x2="400" y2="140" stroke="#fbbc05" stroke-width="2"/>
+        <line x1="400" y1="140" x2="600" y2="120" stroke="#fbbc05" stroke-width="2"/>
+        
+        <!-- Label -->
+        <text x="250" y="30" font-family="Arial" font-size="14">Spherical Aberration</text>
+    </g>
+    
+    <!-- Chromatic Aberration (Bottom) -->
+    <g transform="translate(0,300)">
+        <!-- Lens -->
+        <path d="M 300,50 Q 400,50 500,50 C 520,50 520,150 500,150 Q 400,150 300,150 C 280,150 280,50 300,50" 
+              fill="#e3f2fd" stroke="black" stroke-width="2"/>
+        
+        <!-- White Light -->
+        <line x1="100" y1="100" x2="300" y2="100" stroke="black" stroke-width="2"/>
+        
+        <!-- Dispersed Rays -->
+        <line x1="300" y1="100" x2="600" y2="60" stroke="#ea4335" stroke-width="2"/>
+        <line x1="300" y1="100" x2="600" y2="100" stroke="#34a853" stroke-width="2"/>
+        <line x1="300" y1="100" x2="600" y2="140" stroke="#4285f4" stroke-width="2"/>
+        
+        <!-- Labels -->
+        <text x="610" y="65" font-family="Arial" font-size="12" fill="#ea4335">Red</text>
+        <text x="610" y="105" font-family="Arial" font-size="12" fill="#34a853">Green</text>
+        <text x="610" y="145" font-family="Arial" font-size="12" fill="#4285f4">Blue</text>
+        <text x="250" y="30" font-family="Arial" font-size="14">Chromatic Aberration</text>
+    </g>
+</svg>

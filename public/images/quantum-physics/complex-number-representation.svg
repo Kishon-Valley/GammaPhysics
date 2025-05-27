@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions -->
+  <defs>
+    <!-- Markers for arrows -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    
+    <!-- Gradients -->
+    <linearGradient id="gridGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8f9fa" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#f1f3f5" stop-opacity="0.4"/>
+    </linearGradient>
+    
+    <linearGradient id="complexVectorGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#5a67d8" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#4c51bf" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="realComponentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38a169" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#2f855a" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="imagComponentGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e53e3e" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#c53030" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <!-- Animation paths -->
+    <path id="rotationPath" d="M 400,250 m 0,-150 a 150,150 0 1,1 -0.1,0 z" fill="none"/>
+  </defs>
+  
+  <!-- Styles -->
+  <style>
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .axis-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+      text-anchor: middle;
+    }
+    
+    .grid-line {
+      stroke: #ddd;
+      stroke-width: 1;
+    }
+    
+    .axis-line {
+      stroke: #333;
+      stroke-width: 2;
+      marker-end: url(#arrowhead);
+    }
+    
+    .complex-vector {
+      stroke: url(#complexVectorGradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .real-component {
+      stroke: url(#realComponentGradient);
+      stroke-width: 2;
+      stroke-dasharray: 5,3;
+    }
+    
+    .imag-component {
+      stroke: url(#imagComponentGradient);
+      stroke-width: 2;
+      stroke-dasharray: 5,3;
+    }
+    
+    .angle-arc {
+      fill: none;
+      stroke: #805ad5;
+      stroke-width: 2;
+    }
+    
+    .coord-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #333;
+    }
+    
+    .equation-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+      font-style: italic;
+    }
+    
+    .point {
+      fill: #4c51bf;
+      stroke: white;
+      stroke-width: 1;
+    }
+    
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+        transform-origin: 400px 250px;
+      }
+      to {
+        transform: rotate(360deg);
+        transform-origin: 400px 250px;
+      }
+    }
+    
+    @keyframes scaleUp {
+      0%, 100% {
+        transform: scale(0.6);
+        transform-origin: 400px 250px;
+      }
+      50% {
+        transform: scale(1.4);
+        transform-origin: 400px 250px;
+      }
+    }
+    
+    @keyframes phaseShift {
+      0% {
+        transform: translate(0, 0);
+      }
+      50% {
+        transform: translate(10px, -10px);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+    
+    .rotation-animation {
+      animation: rotate 15s linear infinite;
+    }
+    
+    .scale-animation {
+      animation: scaleUp 10s ease-in-out infinite;
+    }
+    
+    .phase-animation {
+      animation: phaseShift.5s ease-in-out infinite;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Complex Number Representation</text>
+  <text x="400" y="70" class="subtitle">Rectangular and Polar Forms in the Complex Plane</text>
+  
+  <!-- Complex Plane -->
+  <g transform="translate(400, 250)">
+    <!-- Grid -->
+    <rect x="-200" y="-200" width="400" height="400" fill="url(#gridGradient)" stroke="#ccc" stroke-width="1"/>
+    
+    <!-- Grid lines -->
+    <g>
+      <!-- Vertical lines -->
+      <line x1="-200" y1="-200" x2="-200" y2="200" class="grid-line"/>
+      <line x1="-150" y1="-200" x2="-150" y2="200" class="grid-line"/>
+      <line x1="-100" y1="-200" x2="-100" y2="200" class="grid-line"/>
+      <line x1="-50" y1="-200" x2="-50" y2="200" class="grid-line"/>
+      <line x1="0" y1="-200" x2="0" y2="200" class="grid-line"/>
+      <line x1="50" y1="-200" x2="50" y2="200" class="grid-line"/>
+      <line x1="100" y1="-200" x2="100" y2="200" class="grid-line"/>
+      <line x1="150" y1="-200" x2="150" y2="200" class="grid-line"/>
+      <line x1="200" y1="-200" x2="200" y2="200" class="grid-line"/>
+      
+      <!-- Horizontal lines -->
+      <line x1="-200" y1="-200" x2="200" y2="-200" class="grid-line"/>
+      <line x1="-200" y1="-150" x2="200" y2="-150" class="grid-line"/>
+      <line x1="-200" y1="-100" x2="200" y2="-100" class="grid-line"/>
+      <line x1="-200" y1="-50" x2="200" y2="-50" class="grid-line"/>
+      <line x1="-200" y1="0" x2="200" y2="0" class="grid-line"/>
+      <line x1="-200" y1="50" x2="200" y2="50" class="grid-line"/>
+      <line x1="-200" y1="100" x2="200" y2="100" class="grid-line"/>
+      <line x1="-200" y1="150" x2="200" y2="150" class="grid-line"/>
+      <line x1="-200" y1="200" x2="200" y2="200" class="grid-line"/>
+    </g>
+    
+    <!-- Axes -->
+    <line x1="-200" y1="0" x2="200" y2="0" class="axis-line"/>
+    <line x1="0" y1="200" x2="0" y2="-200" class="axis-line"/>
+    
+    <!-- Axis labels -->
+    <text x="210" y="15" class="axis-label">Re(z)</text>
+    <text x="15" y="-210" class="axis-label">Im(z)</text>
+    
+    <!-- Coordinate labels -->
+    <text x="-150" y="-5" class="coord-label" text-anchor="middle">-3</text>
+    <text x="-100" y="-5" class="coord-label" text-anchor="middle">-2</text>
+    <text x="-50" y="-5" class="coord-label" text-anchor="middle">-1</text>
+    <text x="50" y="-5" class="coord-label" text-anchor="middle">1</text>
+    <text x="100" y="-5" class="coord-label" text-anchor="middle">2</text>
+    <text x="150" y="-5" class="coord-label" text-anchor="middle">3</text>
+    
+    <text x="5" y="-150" class="coord-label">3i</text>
+    <text x="5" y="-100" class="coord-label">2i</text>
+    <text x="5" y="-50" class="coord-label">i</text>
+    <text x="5" y="50" class="coord-label">-i</text>
+    <text x="5" y="100" class="coord-label">-2i</text>
+    <text x="5" y="150" class="coord-label">-3i</text>
+    
+    <!-- Complex number z = 3 + 2i -->
+    <g class="rotation-animation">
+      <!-- Complex vector -->
+      <line x1="0" y1="0" x2="150" y2="-100" class="complex-vector"/>
+      
+      <!-- Real component -->
+      <line x1="0" y1="0" x2="150" y2="0" class="real-component"/>
+      
+      <!-- Imaginary component -->
+      <line x1="150" y1="0" x2="150" y2="-100" class="imag-component"/>
+      
+      <!-- Point at the tip -->
+      <circle cx="150" cy="-100" r="5" class="point"/>
+      
+      <!-- Angle arc -->
+      <path d="M 30,0 A 30,30 0 0,1 24,-18" class="angle-arc"/>
+      <text x="40" y="-15" class="coord-label">θ</text>
+      
+      <!-- Radius (|z|) label -->
+      <text x="85" y="-60" class="coord-label" transform="rotate(-34, 85, -60)">|z| = r</text>
+      
+      <!-- Rectangular form label -->
+      <text x="160" y="-110" class="coord-label phase-animation">z = 3 + 2i</text>
+      
+      <!-- Polar form label -->
+      <text x="160" y="-130" class="coord-label phase-animation">z = 3.6e^(0.59i)</text>
+    </g>
+  </g>
+  
+  <!-- Equations and notes -->
+  <g transform="translate(400, 400)">
+    <rect x="-350" y="-40" width="700" height="80" rx="10" fill="#f8f9fa" stroke="#ddd"/>
+    
+    <text x="-300" y="-10" class="equation-label">• Rectangular form: z = x + iy where x = Re(z), y = Im(z)</text>
+    <text x="-300" y="20" class="equation-label">• Polar form: z = re^(iθ) = r(cos θ + i sin θ) where r = |z| = √(x² + y²), θ = arg(z) = tan⁻¹(y/x)</text>
+    
+    <text x="280" y="-10" class="coord-label">x = 3, y = 2</text>
+    <text x="280" y="20" class="coord-label">r = 3.6, θ = 0.59 rad</text>
+  </g>
+  
+  <!-- Additional complex vectors showing rotation and scaling -->
+  <g transform="translate(400, 250)">
+    <!-- Scaled version (scale animation) -->
+    <g class="scale-animation" opacity="0.4">
+      <line x1="0" y1="0" x2="150" y2="-100" class="complex-vector"/>
+      <circle cx="150" cy="-100" r="5" class="point"/>
+    </g>
+  </g>
+</svg> 

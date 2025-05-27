@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="white"/>
+  
+  <!-- Interface line -->
+  <line x1="0" y1="200" x2="600" y2="200" stroke="black" stroke-width="2"/>
+  
+  <!-- Medium labels -->
+  <text x="30" y="150" font-family="Arial" font-size="24" fill="black">n₁ (Core)</text>
+  <text x="30" y="250" font-family="Arial" font-size="24" fill="black">n₂ (Cladding)</text>
+  
+  <!-- Incident ray -->
+  <line x1="150" y1="100" x2="300" y2="200" stroke="red" stroke-width="3"/>
+  <polygon points="300,200 285,185 290,195" fill="red" stroke="red"/>
+  
+  <!-- Reflected ray -->
+  <line x1="300" y1="200" x2="450" y2="100" stroke="red" stroke-width="3" stroke-dasharray="5,5"/>
+  <polygon points="450,100 435,115 440,105" fill="red" stroke="red"/>
+  
+  <!-- Refracted ray (for subcritical angle) -->
+  <line x1="300" y1="200" x2="400" y2="300" stroke="blue" stroke-width="3" stroke-dasharray="5,5"/>
+  <polygon points="400,300 385,285 395,290" fill="blue" stroke="blue"/>
+  
+  <!-- Normal line -->
+  <line x1="300" y1="100" x2="300" y2="300" stroke="gray" stroke-width="1" stroke-dasharray="5,5"/>
+  
+  <!-- Angle labels -->
+  <path d="M 300,200 L 320,180 A 28.28,28.28 0 0,0 280,180 Z" fill="none" stroke="black"/>
+  <text x="310" y="170" font-family="Arial" font-size="18" fill="black">θ₁</text>
+  
+  <path d="M 300,200 L 320,220 A 28.28,28.28 0 0,1 280,220 Z" fill="none" stroke="black"/>
+  <text x="310" y="240" font-family="Arial" font-size="18" fill="black">θ₂</text>
+  
+  <!-- Critical angle demonstration -->
+  <line x1="400" y1="130" x2="500" y2="200" stroke="green" stroke-width="3"/>
+  <line x1="500" y1="200" x2="600" y2="200" stroke="green" stroke-width="3" stroke-dasharray="5,5"/>
+  <text x="520" y="180" font-family="Arial" font-size="18" fill="green">θc</text>
+  
+  <!-- Title -->
+  <text x="150" y="50" font-family="Arial" font-size="24" font-weight="bold" fill="black">Total Internal Reflection in Optical Fibers</text>
+  
+  <!-- Legend -->
+  <rect x="450" y="320" width="20" height="5" fill="red"/>
+  <text x="480" y="325" font-family="Arial" font-size="14" fill="black">Incident/Reflected Ray</text>
+  
+  <rect x="450" y="340" width="20" height="5" fill="blue"/>
+  <text x="480" y="345" font-family="Arial" font-size="14" fill="black">Refracted Ray</text>
+  
+  <rect x="450" y="360" width="20" height="5" fill="green"/>
+  <text x="480" y="365" font-family="Arial" font-size="14" fill="black">Critical Angle</text>
+</svg>

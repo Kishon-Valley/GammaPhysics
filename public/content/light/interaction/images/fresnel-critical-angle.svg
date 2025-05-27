@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- White Background -->
+  <rect width="800" height="500" fill="white"/>
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Fresnel Reflection and Critical Angle</text>
+  
+  <!-- Graph of Reflectance vs Angle -->
+  <g transform="translate(200, 250)">
+    <!-- Axes -->
+    <line x1="-150" y1="150" x2="150" y2="150" stroke="black" stroke-width="2"/>
+    <line x1="-150" y1="150" x2="-150" y2="-150" stroke="black" stroke-width="2"/>
+    
+    <!-- X-axis labels -->
+    <text x="-150" y="170" font-family="Arial" font-size="14" text-anchor="middle">0°</text>
+    <text x="-75" y="170" font-family="Arial" font-size="14" text-anchor="middle">30°</text>
+    <text x="0" y="170" font-family="Arial" font-size="14" text-anchor="middle">60°</text>
+    <text x="75" y="170" font-family="Arial" font-size="14" text-anchor="middle">90°</text>
+    <text x="0" y="190" font-family="Arial" font-size="16" text-anchor="middle">Angle of Incidence (θᵢ)</text>
+    
+    <!-- Y-axis labels -->
+    <text x="-170" y="150" font-family="Arial" font-size="14" text-anchor="middle">0</text>
+    <text x="-170" y="75" font-family="Arial" font-size="14" text-anchor="middle">0.5</text>
+    <text x="-170" y="0" font-family="Arial" font-size="14" text-anchor="middle">1.0</text>
+    <text x="-200" y="0" font-family="Arial" font-size="16" text-anchor="middle" transform="rotate(-90 -200 0)">Reflectance (R)</text>
+    
+    <!-- Critical angle marker (for n1=1.5, n2=1.0) -->
+    <line x1="-30" y1="150" x2="-30" y2="-150" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="-30" y="-160" font-family="Arial" font-size="14" text-anchor="middle">θc ≈ 42°</text>
+    
+    <!-- Brewster's angle marker -->
+    <line x1="-56" y1="150" x2="-56" y2="-150" stroke="gray" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="-56" y="-130" font-family="Arial" font-size="14" text-anchor="middle">θB ≈ 56°</text>
+    
+    <!-- Perpendicular polarization curve -->
+    <path d="M -150,145 C -120,140 -90,130 -60,110 C -45,95 -30,0 0,0 C 30,0 60,0 75,0" stroke="blue" stroke-width="2" fill="none"/>
+    <text x="100" y="20" font-family="Arial" font-size="14" fill="blue">R⊥</text>
+    
+    <!-- Parallel polarization curve -->
+    <path d="M -150,145 C -120,135 -90,100 -56,150 C -45,130 -30,0 0,0 C 30,0 60,0 75,0" stroke="red" stroke-width="2" fill="none"/>
+    <text x="100" y="40" font-family="Arial" font-size="14" fill="red">R∥</text>
+    
+    <!-- Total internal reflection region -->
+    <rect x="-30" y="0" width="105" height="150" fill="rgba(0,0,255,0.1)"/>
+    <text x="20" y="75" font-family="Arial" font-size="14" text-anchor="middle">Total Internal</text>
+    <text x="20" y="95" font-family="Arial" font-size="14" text-anchor="middle">Reflection</text>
+    
+    <!-- Label -->
+    <text x="0" y="220" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Reflectance vs. Angle of Incidence</text>
+    <text x="0" y="240" font-family="Arial" font-size="14" text-anchor="middle">(n₁ = 1.5, n₂ = 1.0)</text>
+  </g>
+  
+  <!-- Critical Angle Diagram -->
+  <g transform="translate(600, 250)">
+    <!-- Interface -->
+    <line x1="-150" y1="0" x2="150" y2="0" stroke="black" stroke-width="3"/>
+    
+    <!-- Medium labels -->
+    <text x="-120" y="-50" font-family="Arial" font-size="16">n₁ = 1.5</text>
+    <text x="-120" y="50" font-family="Arial" font-size="16">n₂ = 1.0</text>
+    
+    <!-- Normal -->
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="10" y="-80" font-family="Arial" font-size="14">Normal</text>
+    
+    <!-- Critical angle ray -->
+    <line x1="-100" y1="-70" x2="0" y2="0" stroke="blue" stroke-width="2"/>
+    <polygon points="0,0 -10,-5 -5,-15" fill="blue" transform="rotate(-35 0 0)"/>
+    <text x="-80" y="-50" font-family="Arial" font-size="14" fill="blue">θc ≈ 42°</text>
+    
+    <!-- Refracted ray at 90° -->
+    <line x1="0" y1="0" x2="100" y2="0" stroke="green" stroke-width="2"/>
+    <polygon points="100,0 85,5 85,-5" fill="green"/>
+    <text x="50" y="20" font-family="Arial" font-size="14" fill="green">θt = 90°</text>
+    
+    <!-- Angle arc -->
+    <path d="M 0,0 L 0,-30 A 30 30 0 0 0 -24,-18 Z" fill="rgba(0,0,255,0.2)"/>
+    
+    <!-- Formula -->
+    <text x="0" y="120" font-family="Arial" font-size="16" text-anchor="middle">θc = arcsin(n₂/n₁) = arcsin(1.0/1.5) ≈ 42°</text>
+    
+    <!-- Label -->
+    <text x="0" y="-120" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Critical Angle</text>
+  </g>
+</svg>

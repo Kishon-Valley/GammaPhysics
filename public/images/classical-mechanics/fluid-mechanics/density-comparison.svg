@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-family="Arial">Density Layering in Fluids</text>
+    
+    <!-- Container -->
+    <g transform="translate(200,50)">
+        <!-- Glass container -->
+        <path d="M100,20 L400,20 L380,300 L120,300 Z" fill="none" stroke="black" stroke-width="2"/>
+        
+        <!-- Oil layer (yellow) -->
+        <path d="M105,20 L395,20 L390,100 L110,100 Z" fill="#FFD700" fill-opacity="0.6"/>
+        <text x="420" y="70" font-size="16">Oil (ρ ≈ 900 kg/m³)</text>
+        
+        <!-- Water layer (blue) -->
+        <path d="M110,100 L390,100 L385,200 L115,200 Z" fill="#4169E1" fill-opacity="0.6"/>
+        <text x="420" y="160" font-size="16">Water (ρ = 1000 kg/m³)</text>
+        
+        <!-- Mercury layer (silver) -->
+        <path d="M115,200 L385,200 L380,300 L120,300 Z" fill="#C0C0C0"/>
+        <text x="420" y="260" font-size="16">Mercury (ρ ≈ 13600 kg/m³)</text>
+        
+        <!-- Floating object -->
+        <circle cx="250" cy="90" r="15" fill="#FF6B6B"/>
+        <text x="420" y="90" font-size="16">Cork (ρ ≈ 240 kg/m³)</text>
+        
+        <!-- Suspended object -->
+        <circle cx="250" cy="150" r="15" fill="#32CD32"/>
+        <text x="420" y="180" font-size="16">Plastic (ρ ≈ 1000 kg/m³)</text>
+        
+        <!-- Sunken object -->
+        <circle cx="250" cy="250" r="15" fill="#4B0082"/>
+        <text x="420" y="280" font-size="16">Steel (ρ ≈ 7800 kg/m³)</text>
+    </g>
+    
+    <!-- Arrows indicating density increase -->
+    <g transform="translate(150,170)">
+        <path d="M0,0 L30,0" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="-10" y="20" font-size="14">Density</text>
+        <text x="-10" y="40" font-size="14">increases</text>
+    </g>
+    
+    <!-- Arrow marker definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+        </marker>
+    </defs>
+</svg>

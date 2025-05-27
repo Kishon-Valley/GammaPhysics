@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid -->
+    <g id="grid" stroke="#ddd" stroke-width="1">
+        <line x1="100" y1="50" x2="100" y2="350"/>
+        <line x1="100" y1="350" x2="700" y2="350"/>
+        
+        <!-- Horizontal grid lines -->
+        <line x1="90" y1="300" x2="700" y2="300" stroke-dasharray="5,5"/>
+        <line x1="90" y1="250" x2="700" y2="250" stroke-dasharray="5,5"/>
+        <line x1="90" y1="200" x2="700" y2="200" stroke-dasharray="5,5"/>
+        <line x1="90" y1="150" x2="700" y2="150" stroke-dasharray="5,5"/>
+        <line x1="90" y1="100" x2="700" y2="100" stroke-dasharray="5,5"/>
+    </g>
+    
+    <!-- Quantum conductance steps -->
+    <path d="M 100,350 
+             H 200 V 300
+             H 300 V 250
+             H 400 V 200
+             H 500 V 150
+             H 600 V 100
+             H 700"
+          fill="none" stroke="#2196F3" stroke-width="3"/>
+    
+    <!-- Axes labels -->
+    <g id="labels" font-family="Arial">
+        <text x="400" y="390" font-size="16" text-anchor="middle">Gate Voltage</text>
+        <text x="60" y="200" font-size="16" text-anchor="middle" transform="rotate(-90,60,200)">Conductance (2e²/h)</text>
+        
+        <!-- Y-axis values -->
+        <text x="80" y="355" font-size="12" text-anchor="end">0</text>
+        <text x="80" y="305" font-size="12" text-anchor="end">1</text>
+        <text x="80" y="255" font-size="12" text-anchor="end">2</text>
+        <text x="80" y="205" font-size="12" text-anchor="end">3</text>
+        <text x="80" y="155" font-size="12" text-anchor="end">4</text>
+        <text x="80" y="105" font-size="12" text-anchor="end">5</text>
+    </g>
+    
+    <!-- Title -->
+    <text x="400" y="30" font-size="20" text-anchor="middle" font-family="Arial">Quantum Conductance Quantization</text>
+    
+    <!-- Annotation -->
+    <text x="650" y="200" font-size="14" fill="#666" font-family="Arial">Conductance</text>
+    <text x="650" y="220" font-size="14" fill="#666" font-family="Arial">Plateaus</text>
+</svg>

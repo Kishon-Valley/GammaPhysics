@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Wave Refraction</text>
+    
+    <!-- Media -->
+    <rect x="0" y="200" width="800" height="200" fill="#E3F2FD"/>
+    <text x="50" y="250" font-size="16">n₂ > n₁</text>
+    
+    <!-- Normal line -->
+    <line x1="400" y1="100" x2="400" y2="300" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="410" y="120" font-size="14">Normal</text>
+    
+    <!-- Incident wave -->
+    <path d="M250,100 L400,200" stroke="#2196F3" stroke-width="2"/>
+    <path d="M390,190 L400,200 L390,210" fill="none" stroke="#2196F3" stroke-width="2"/>
+    <text x="300" y="90" font-size="14">Incident Wave</text>
+    <text x="320" y="110" font-size="14">n₁</text>
+    
+    <!-- Refracted wave -->
+    <path d="M400,200 L500,350" stroke="#4CAF50" stroke-width="2"/>
+    <path d="M490,340 L500,350 L490,360" fill="none" stroke="#4CAF50" stroke-width="2"/>
+    <text x="500" y="320" font-size="14">Refracted Wave</text>
+    <text x="480" y="340" font-size="14">n₂</text>
+    
+    <!-- Angles -->
+    <path d="M400,200 A40,40 0 0 1 430,170" fill="none" stroke="#2196F3" stroke-width="1"/>
+    <text x="440" y="175" font-size="16">θᵢ</text>
+    
+    <path d="M400,200 A40,40 0 0 0 420,230" fill="none" stroke="#4CAF50" stroke-width="1"/>
+    <text x="430" y="240" font-size="16">θᵣ</text>
+    
+    <!-- Snell's Law -->
+    <text x="400" y="380" text-anchor="middle" font-size="18">n₁sin(θᵢ) = n₂sin(θᵣ)</text>
+</svg>

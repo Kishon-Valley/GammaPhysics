@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Vacuum -->
+    <rect x="50" y="50" width="100" height="200" fill="none" stroke="black" stroke-width="1"/>
+    <text x="70" y="150" font-size="12">Vacuum (n=1)</text>
+    
+    <!-- Medium 1 -->
+    <rect x="150" y="50" width="100" height="200" fill="lightblue" stroke="black" stroke-width="1"/>
+    <text x="170" y="150" font-size="12">Medium 1 (n=1.5)</text>
+    
+    <!-- Medium 2 -->
+    <rect x="250" y="50" width="100" height="200" fill="lightgreen" stroke="black" stroke-width="1"/>
+    <text x="270" y="150" font-size="12">Medium 2 (n=2.0)</text>
+    
+    <!-- Wave fronts -->
+    <path d="M 50 100 L 150 100" stroke="blue" stroke-width="2"/>
+    <path d="M 150 100 L 250 100" stroke="blue" stroke-width="2"/>
+    <path d="M 250 100 L 350 100" stroke="blue" stroke-width="2"/>
+    
+    <!-- Energy density indicators -->
+    <circle cx="100" cy="180" r="20" fill="blue" fill-opacity="0.3"/>
+    <circle cx="200" cy="180" r="30" fill="blue" fill-opacity="0.3"/>
+    <circle cx="300" cy="180" r="40" fill="blue" fill-opacity="0.3"/>
+    
+    <!-- Labels -->
+    <text x="80" y="180" font-size="12">u₁</text>
+    <text x="180" y="180" font-size="12">u₂</text>
+    <text x="280" y="180" font-size="12">u₃</text>
+    <text x="180" y="30" font-size="12">Energy Transport in Different Media</text>
+</svg> 

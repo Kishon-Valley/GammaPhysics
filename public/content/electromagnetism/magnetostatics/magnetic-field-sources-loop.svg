@@ -1,0 +1,22 @@
+<svg width="320" height="200" viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="200" fill="white"/>
+  <!-- Current loop -->
+  <ellipse cx="160" cy="100" rx="70" ry="40" fill="none" stroke="#555" stroke-width="4"/>
+  <!-- Current direction -->
+  <path d="M90,100 A70,40 0 1,1 230,100" fill="none" stroke="#1e90ff" stroke-width="4" marker-end="url(#arrow)"/>
+  <text x="75" y="100" font-size="16" fill="#1e90ff">I</text>
+  <!-- Magnetic field lines -->
+  <path d="M160,60 Q180,100 160,140" stroke="#009688" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+  <path d="M160,140 Q140,100 160,60" stroke="#009688" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+  <!-- Dipole axis -->
+  <line x1="160" y1="30" x2="160" y2="170" stroke="#f39c12" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="170" y="40" font-size="14" fill="#f39c12">B</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0,0 10,5 0,10 3,5" fill="#1e90ff"/>
+    </marker>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0,0 10,5 0,10 3,5" fill="#009688"/>
+    </marker>
+  </defs>
+</svg>

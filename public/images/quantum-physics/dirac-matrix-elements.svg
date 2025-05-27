@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    
+    <!-- Gradients -->
+    <linearGradient id="matrixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8e44ad" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="basis1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#2980b9" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="basis2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#c0392b" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="element1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2ecc71" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#27ae60" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="element2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f1c40f" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f39c12" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Style definitions -->
+  <style>
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .vector-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    
+    .formula-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+    }
+    
+    .note-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    .matrix-element {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      fill: #555;
+      text-anchor: middle;
+    }
+    
+    .matrix-border {
+      stroke: #555;
+      stroke-width: 2;
+      fill: none;
+    }
+    
+    .basis-vector1 {
+      stroke: url(#basis1Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .basis-vector2 {
+      stroke: url(#basis2Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .vector-line {
+      stroke-width: 2;
+      stroke-dasharray: 5,3;
+    }
+    
+    .matrix-element-box {
+      fill: #fff;
+      stroke: #ddd;
+      stroke-width: 1;
+      filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.2));
+    }
+    
+    .operator-box {
+      fill: url(#matrixGradient);
+      stroke: #8e44ad;
+      stroke-width: 2;
+      opacity: 0.9;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    @keyframes pulseOpacity {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    
+    @keyframes highlightElement {
+      0%, 100% { fill: #fff; }
+      50% { fill: rgba(155, 89, 182, 0.2); }
+    }
+    
+    @keyframes highlightBorder {
+      0%, 100% { stroke: #555; }
+      50% { stroke: #9b59b6; stroke-width: 3; }
+    }
+    
+    .pulse {
+      animation: pulseOpacity 3s infinite ease-in-out;
+    }
+    
+    .highlight-element {
+      animation: highlightElement 3s infinite ease-in-out;
+    }
+    
+    .highlight-border {
+      animation: highlightBorder 3s infinite ease-in-out;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Matrix Representation of Operators</text>
+  <text x="400" y="70" class="subtitle">Matrix Elements in Dirac Notation</text>
+  
+  <!-- Left side - Operator in Dirac notation -->
+  <g transform="translate(200, 220)">
+    <!-- Operator title -->
+    <text x="0" y="-80" class="subtitle" text-anchor="middle">Operator Â in Abstract Form</text>
+    
+    <!-- Operator box -->
+    <rect x="-50" y="-50" width="100" height="100" rx="10" class="operator-box"/>
+    <text x="0" y="15" class="matrix-element" fill="#fff" font-size="36">Â</text>
+    
+    <!-- Basis vectors -->
+    <g transform="translate(0, 130)">
+      <line x1="-80" y1="0" x2="-30" y2="0" class="basis-vector1"/>
+      <text x="-90" y="5" class="vector-label" text-anchor="end" fill="#3498db">|e₁⟩</text>
+      
+      <line x1="30" y1="0" x2="80" y2="0" class="basis-vector2"/>
+      <text x="90" y="5" class="vector-label" text-anchor="start" fill="#e74c3c">|e₂⟩</text>
+    </g>
+    
+    <!-- Operator actions -->
+    <path d="M-70,130 Q-70,30 -70,30" stroke="#3498db" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)" fill="none"/>
+    <text x="-100" y="80" class="vector-label" fill="#3498db">Â|e₁⟩</text>
+    
+    <path d="M70,130 Q70,30 70,30" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)" fill="none"/>
+    <text x="100" y="80" class="vector-label" fill="#e74c3c">Â|e₂⟩</text>
+  </g>
+  
+  <!-- Right side - Matrix representation -->
+  <g transform="translate(550, 220)">
+    <!-- Matrix title -->
+    <text x="0" y="-80" class="subtitle" text-anchor="middle">Matrix Representation of Â</text>
+    
+    <!-- Matrix -->
+    <rect x="-75" y="-75" width="150" height="150" class="matrix-element-box"/>
+    <line x1="-75" y1="-75" x2="-75" y2="75" class="matrix-border"/>
+    <line x1="75" y1="-75" x2="75" y2="75" class="matrix-border"/>
+    <line x1="-75" y1="0" x2="75" y2="0" stroke="#ddd" stroke-width="1"/>
+    <line x1="0" y1="-75" x2="0" y2="75" stroke="#ddd" stroke-width="1"/>
+    
+    <!-- Matrix elements -->
+    <g transform="translate(-37.5, -37.5)" class="highlight-element">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₁₁</text>
+    </g>
+    
+    <g transform="translate(37.5, -37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₁₂</text>
+    </g>
+    
+    <g transform="translate(-37.5, 37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₂₁</text>
+    </g>
+    
+    <g transform="translate(37.5, 37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₂₂</text>
+    </g>
+  </g>
+  
+  <!-- Center - Translation illustration -->
+  <g transform="translate(400, 220)">
+    <path d="M-120,0 L120,0" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="0" y="-15" class="formula-text" text-anchor="middle">Matrix Representation</text>
+  </g>
+  
+  <!-- Matrix element calculation -->
+  <g transform="translate(550, 80)">
+    <rect x="-200" y="-30" width="400" height="60" rx="5" fill="#fff" stroke="#9b59b6" stroke-width="1" stroke-dasharray="5,3"/>
+    <text x="0" y="0" class="formula-text" text-anchor="middle" font-weight="bold">
+      Matrix elements: A_ij = ⟨e_i|Â|e_j⟩
+    </text>
+    <text x="0" y="25" class="formula-text" text-anchor="middle">
+      Values that determine how Â transforms basis vectors
+    </text>
+  </g>
+  
+  <!-- Bottom panel - Calculation examples -->
+  <g transform="translate(400, 380)">
+    <rect x="-350" y="-50" width="700" height="140" rx="10" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+    
+    <text x="-325" y="-25" class="formula-text" text-anchor="start" font-weight="bold">
+      Example of Matrix Element Calculations:
+    </text>
+    
+    <g transform="translate(-200, 20)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#3498db" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₁₁ = ⟨e₁|Â|e₁⟩
+      </text>
+    </g>
+    
+    <g transform="translate(200, 20)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#e74c3c" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₁₂ = ⟨e₁|Â|e₂⟩
+      </text>
+    </g>
+    
+    <g transform="translate(-200, 70)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#3498db" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₂₁ = ⟨e₂|Â|e₁⟩
+      </text>
+    </g>
+    
+    <g transform="translate(200, 70)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#e74c3c" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₂₂ = ⟨e₂|Â|e₂⟩
+      </text>
+    </g>
+  </g>
+  
+  <!-- Coordinate lines between elements and calculation -->
+  <g>
+    <path d="M512.5,182.5 L200,400" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M587.5,182.5 L600,400" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M512.5,257.5 L200,450" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M587.5,257.5 L600,450" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+  </g>
+</svg> 
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    
+    <!-- Gradients -->
+    <linearGradient id="matrixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8e44ad" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="basis1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#2980b9" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="basis2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#c0392b" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="element1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2ecc71" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#27ae60" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="element2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f1c40f" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f39c12" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Style definitions -->
+  <style>
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .vector-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    
+    .formula-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+    }
+    
+    .note-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    .matrix-element {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      fill: #555;
+      text-anchor: middle;
+    }
+    
+    .matrix-border {
+      stroke: #555;
+      stroke-width: 2;
+      fill: none;
+    }
+    
+    .basis-vector1 {
+      stroke: url(#basis1Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .basis-vector2 {
+      stroke: url(#basis2Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .vector-line {
+      stroke-width: 2;
+      stroke-dasharray: 5,3;
+    }
+    
+    .matrix-element-box {
+      fill: #fff;
+      stroke: #ddd;
+      stroke-width: 1;
+      filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.2));
+    }
+    
+    .operator-box {
+      fill: url(#matrixGradient);
+      stroke: #8e44ad;
+      stroke-width: 2;
+      opacity: 0.9;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    @keyframes pulseOpacity {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    
+    @keyframes highlightElement {
+      0%, 100% { fill: #fff; }
+      50% { fill: rgba(155, 89, 182, 0.2); }
+    }
+    
+    @keyframes highlightBorder {
+      0%, 100% { stroke: #555; }
+      50% { stroke: #9b59b6; stroke-width: 3; }
+    }
+    
+    .pulse {
+      animation: pulseOpacity 3s infinite ease-in-out;
+    }
+    
+    .highlight-element {
+      animation: highlightElement 3s infinite ease-in-out;
+    }
+    
+    .highlight-border {
+      animation: highlightBorder 3s infinite ease-in-out;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Matrix Representation of Operators</text>
+  <text x="400" y="70" class="subtitle">Matrix Elements in Dirac Notation</text>
+  
+  <!-- Left side - Operator in Dirac notation -->
+  <g transform="translate(200, 220)">
+    <!-- Operator title -->
+    <text x="0" y="-80" class="subtitle" text-anchor="middle">Operator Â in Abstract Form</text>
+    
+    <!-- Operator box -->
+    <rect x="-50" y="-50" width="100" height="100" rx="10" class="operator-box"/>
+    <text x="0" y="15" class="matrix-element" fill="#fff" font-size="36">Â</text>
+    
+    <!-- Basis vectors -->
+    <g transform="translate(0, 130)">
+      <line x1="-80" y1="0" x2="-30" y2="0" class="basis-vector1"/>
+      <text x="-90" y="5" class="vector-label" text-anchor="end" fill="#3498db">|e₁⟩</text>
+      
+      <line x1="30" y1="0" x2="80" y2="0" class="basis-vector2"/>
+      <text x="90" y="5" class="vector-label" text-anchor="start" fill="#e74c3c">|e₂⟩</text>
+    </g>
+    
+    <!-- Operator actions -->
+    <path d="M-70,130 Q-70,30 -70,30" stroke="#3498db" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)" fill="none"/>
+    <text x="-100" y="80" class="vector-label" fill="#3498db">Â|e₁⟩</text>
+    
+    <path d="M70,130 Q70,30 70,30" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)" fill="none"/>
+    <text x="100" y="80" class="vector-label" fill="#e74c3c">Â|e₂⟩</text>
+  </g>
+  
+  <!-- Right side - Matrix representation -->
+  <g transform="translate(550, 220)">
+    <!-- Matrix title -->
+    <text x="0" y="-80" class="subtitle" text-anchor="middle">Matrix Representation of Â</text>
+    
+    <!-- Matrix -->
+    <rect x="-75" y="-75" width="150" height="150" class="matrix-element-box"/>
+    <line x1="-75" y1="-75" x2="-75" y2="75" class="matrix-border"/>
+    <line x1="75" y1="-75" x2="75" y2="75" class="matrix-border"/>
+    <line x1="-75" y1="0" x2="75" y2="0" stroke="#ddd" stroke-width="1"/>
+    <line x1="0" y1="-75" x2="0" y2="75" stroke="#ddd" stroke-width="1"/>
+    
+    <!-- Matrix elements -->
+    <g transform="translate(-37.5, -37.5)" class="highlight-element">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₁₁</text>
+    </g>
+    
+    <g transform="translate(37.5, -37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₁₂</text>
+    </g>
+    
+    <g transform="translate(-37.5, 37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₂₁</text>
+    </g>
+    
+    <g transform="translate(37.5, 37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₂₂</text>
+    </g>
+  </g>
+  
+  <!-- Center - Translation illustration -->
+  <g transform="translate(400, 220)">
+    <path d="M-120,0 L120,0" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="0" y="-15" class="formula-text" text-anchor="middle">Matrix Representation</text>
+  </g>
+  
+  <!-- Matrix element calculation -->
+  <g transform="translate(550, 80)">
+    <rect x="-200" y="-30" width="400" height="60" rx="5" fill="#fff" stroke="#9b59b6" stroke-width="1" stroke-dasharray="5,3"/>
+    <text x="0" y="0" class="formula-text" text-anchor="middle" font-weight="bold">
+      Matrix elements: A_ij = ⟨e_i|Â|e_j⟩
+    </text>
+    <text x="0" y="25" class="formula-text" text-anchor="middle">
+      Values that determine how Â transforms basis vectors
+    </text>
+  </g>
+  
+  <!-- Bottom panel - Calculation examples -->
+  <g transform="translate(400, 380)">
+    <rect x="-350" y="-50" width="700" height="140" rx="10" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+    
+    <text x="-325" y="-25" class="formula-text" text-anchor="start" font-weight="bold">
+      Example of Matrix Element Calculations:
+    </text>
+    
+    <g transform="translate(-200, 20)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#3498db" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₁₁ = ⟨e₁|Â|e₁⟩
+      </text>
+    </g>
+    
+    <g transform="translate(200, 20)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#e74c3c" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₁₂ = ⟨e₁|Â|e₂⟩
+      </text>
+    </g>
+    
+    <g transform="translate(-200, 70)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#3498db" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₂₁ = ⟨e₂|Â|e₁⟩
+      </text>
+    </g>
+    
+    <g transform="translate(200, 70)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#e74c3c" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₂₂ = ⟨e₂|Â|e₂⟩
+      </text>
+    </g>
+  </g>
+  
+  <!-- Coordinate lines between elements and calculation -->
+  <g>
+    <path d="M512.5,182.5 L200,400" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M587.5,182.5 L600,400" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M512.5,257.5 L200,450" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M587.5,257.5 L600,450" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+  </g>
+</svg> 
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    
+    <!-- Gradients -->
+    <linearGradient id="matrixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8e44ad" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="basis1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#2980b9" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="basis2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#c0392b" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="element1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2ecc71" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#27ae60" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="element2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f1c40f" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f39c12" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Style definitions -->
+  <style>
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .vector-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    
+    .formula-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+    }
+    
+    .note-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    .matrix-element {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      fill: #555;
+      text-anchor: middle;
+    }
+    
+    .matrix-border {
+      stroke: #555;
+      stroke-width: 2;
+      fill: none;
+    }
+    
+    .basis-vector1 {
+      stroke: url(#basis1Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .basis-vector2 {
+      stroke: url(#basis2Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .vector-line {
+      stroke-width: 2;
+      stroke-dasharray: 5,3;
+    }
+    
+    .matrix-element-box {
+      fill: #fff;
+      stroke: #ddd;
+      stroke-width: 1;
+      filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.2));
+    }
+    
+    .operator-box {
+      fill: url(#matrixGradient);
+      stroke: #8e44ad;
+      stroke-width: 2;
+      opacity: 0.9;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    @keyframes pulseOpacity {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    
+    @keyframes highlightElement {
+      0%, 100% { fill: #fff; }
+      50% { fill: rgba(155, 89, 182, 0.2); }
+    }
+    
+    @keyframes highlightBorder {
+      0%, 100% { stroke: #555; }
+      50% { stroke: #9b59b6; stroke-width: 3; }
+    }
+    
+    .pulse {
+      animation: pulseOpacity 3s infinite ease-in-out;
+    }
+    
+    .highlight-element {
+      animation: highlightElement 3s infinite ease-in-out;
+    }
+    
+    .highlight-border {
+      animation: highlightBorder 3s infinite ease-in-out;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Matrix Representation of Operators</text>
+  <text x="400" y="70" class="subtitle">Matrix Elements in Dirac Notation</text>
+  
+  <!-- Left side - Operator in Dirac notation -->
+  <g transform="translate(200, 220)">
+    <!-- Operator title -->
+    <text x="0" y="-80" class="subtitle" text-anchor="middle">Operator Â in Abstract Form</text>
+    
+    <!-- Operator box -->
+    <rect x="-50" y="-50" width="100" height="100" rx="10" class="operator-box"/>
+    <text x="0" y="15" class="matrix-element" fill="#fff" font-size="36">Â</text>
+    
+    <!-- Basis vectors -->
+    <g transform="translate(0, 130)">
+      <line x1="-80" y1="0" x2="-30" y2="0" class="basis-vector1"/>
+      <text x="-90" y="5" class="vector-label" text-anchor="end" fill="#3498db">|e₁⟩</text>
+      
+      <line x1="30" y1="0" x2="80" y2="0" class="basis-vector2"/>
+      <text x="90" y="5" class="vector-label" text-anchor="start" fill="#e74c3c">|e₂⟩</text>
+    </g>
+    
+    <!-- Operator actions -->
+    <path d="M-70,130 Q-70,30 -70,30" stroke="#3498db" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)" fill="none"/>
+    <text x="-100" y="80" class="vector-label" fill="#3498db">Â|e₁⟩</text>
+    
+    <path d="M70,130 Q70,30 70,30" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)" fill="none"/>
+    <text x="100" y="80" class="vector-label" fill="#e74c3c">Â|e₂⟩</text>
+  </g>
+  
+  <!-- Right side - Matrix representation -->
+  <g transform="translate(550, 220)">
+    <!-- Matrix title -->
+    <text x="0" y="-80" class="subtitle" text-anchor="middle">Matrix Representation of Â</text>
+    
+    <!-- Matrix -->
+    <rect x="-75" y="-75" width="150" height="150" class="matrix-element-box"/>
+    <line x1="-75" y1="-75" x2="-75" y2="75" class="matrix-border"/>
+    <line x1="75" y1="-75" x2="75" y2="75" class="matrix-border"/>
+    <line x1="-75" y1="0" x2="75" y2="0" stroke="#ddd" stroke-width="1"/>
+    <line x1="0" y1="-75" x2="0" y2="75" stroke="#ddd" stroke-width="1"/>
+    
+    <!-- Matrix elements -->
+    <g transform="translate(-37.5, -37.5)" class="highlight-element">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₁₁</text>
+    </g>
+    
+    <g transform="translate(37.5, -37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₁₂</text>
+    </g>
+    
+    <g transform="translate(-37.5, 37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₂₁</text>
+    </g>
+    
+    <g transform="translate(37.5, 37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₂₂</text>
+    </g>
+  </g>
+  
+  <!-- Center - Translation illustration -->
+  <g transform="translate(400, 220)">
+    <path d="M-120,0 L120,0" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="0" y="-15" class="formula-text" text-anchor="middle">Matrix Representation</text>
+  </g>
+  
+  <!-- Matrix element calculation -->
+  <g transform="translate(550, 80)">
+    <rect x="-200" y="-30" width="400" height="60" rx="5" fill="#fff" stroke="#9b59b6" stroke-width="1" stroke-dasharray="5,3"/>
+    <text x="0" y="0" class="formula-text" text-anchor="middle" font-weight="bold">
+      Matrix elements: A_ij = ⟨e_i|Â|e_j⟩
+    </text>
+    <text x="0" y="25" class="formula-text" text-anchor="middle">
+      Values that determine how Â transforms basis vectors
+    </text>
+  </g>
+  
+  <!-- Bottom panel - Calculation examples -->
+  <g transform="translate(400, 380)">
+    <rect x="-350" y="-50" width="700" height="140" rx="10" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+    
+    <text x="-325" y="-25" class="formula-text" text-anchor="start" font-weight="bold">
+      Example of Matrix Element Calculations:
+    </text>
+    
+    <g transform="translate(-200, 20)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#3498db" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₁₁ = ⟨e₁|Â|e₁⟩
+      </text>
+    </g>
+    
+    <g transform="translate(200, 20)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#e74c3c" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₁₂ = ⟨e₁|Â|e₂⟩
+      </text>
+    </g>
+    
+    <g transform="translate(-200, 70)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#3498db" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₂₁ = ⟨e₂|Â|e₁⟩
+      </text>
+    </g>
+    
+    <g transform="translate(200, 70)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#e74c3c" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₂₂ = ⟨e₂|Â|e₂⟩
+      </text>
+    </g>
+  </g>
+  
+  <!-- Coordinate lines between elements and calculation -->
+  <g>
+    <path d="M512.5,182.5 L200,400" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M587.5,182.5 L600,400" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M512.5,257.5 L200,450" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M587.5,257.5 L600,450" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+  </g>
+</svg> 
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    
+    <!-- Gradients -->
+    <linearGradient id="matrixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8e44ad" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="basis1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#2980b9" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="basis2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#c0392b" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="element1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2ecc71" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#27ae60" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="element2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f1c40f" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f39c12" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+  
+  <!-- Style definitions -->
+  <style>
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .vector-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    
+    .formula-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+    }
+    
+    .note-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    .matrix-element {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      fill: #555;
+      text-anchor: middle;
+    }
+    
+    .matrix-border {
+      stroke: #555;
+      stroke-width: 2;
+      fill: none;
+    }
+    
+    .basis-vector1 {
+      stroke: url(#basis1Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .basis-vector2 {
+      stroke: url(#basis2Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .vector-line {
+      stroke-width: 2;
+      stroke-dasharray: 5,3;
+    }
+    
+    .matrix-element-box {
+      fill: #fff;
+      stroke: #ddd;
+      stroke-width: 1;
+      filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.2));
+    }
+    
+    .operator-box {
+      fill: url(#matrixGradient);
+      stroke: #8e44ad;
+      stroke-width: 2;
+      opacity: 0.9;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    @keyframes pulseOpacity {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+    
+    @keyframes highlightElement {
+      0%, 100% { fill: #fff; }
+      50% { fill: rgba(155, 89, 182, 0.2); }
+    }
+    
+    @keyframes highlightBorder {
+      0%, 100% { stroke: #555; }
+      50% { stroke: #9b59b6; stroke-width: 3; }
+    }
+    
+    .pulse {
+      animation: pulseOpacity 3s infinite ease-in-out;
+    }
+    
+    .highlight-element {
+      animation: highlightElement 3s infinite ease-in-out;
+    }
+    
+    .highlight-border {
+      animation: highlightBorder 3s infinite ease-in-out;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Matrix Representation of Operators</text>
+  <text x="400" y="70" class="subtitle">Matrix Elements in Dirac Notation</text>
+  
+  <!-- Left side - Operator in Dirac notation -->
+  <g transform="translate(200, 220)">
+    <!-- Operator title -->
+    <text x="0" y="-80" class="subtitle" text-anchor="middle">Operator Â in Abstract Form</text>
+    
+    <!-- Operator box -->
+    <rect x="-50" y="-50" width="100" height="100" rx="10" class="operator-box"/>
+    <text x="0" y="15" class="matrix-element" fill="#fff" font-size="36">Â</text>
+    
+    <!-- Basis vectors -->
+    <g transform="translate(0, 130)">
+      <line x1="-80" y1="0" x2="-30" y2="0" class="basis-vector1"/>
+      <text x="-90" y="5" class="vector-label" text-anchor="end" fill="#3498db">|e₁⟩</text>
+      
+      <line x1="30" y1="0" x2="80" y2="0" class="basis-vector2"/>
+      <text x="90" y="5" class="vector-label" text-anchor="start" fill="#e74c3c">|e₂⟩</text>
+    </g>
+    
+    <!-- Operator actions -->
+    <path d="M-70,130 Q-70,30 -70,30" stroke="#3498db" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)" fill="none"/>
+    <text x="-100" y="80" class="vector-label" fill="#3498db">Â|e₁⟩</text>
+    
+    <path d="M70,130 Q70,30 70,30" stroke="#e74c3c" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)" fill="none"/>
+    <text x="100" y="80" class="vector-label" fill="#e74c3c">Â|e₂⟩</text>
+  </g>
+  
+  <!-- Right side - Matrix representation -->
+  <g transform="translate(550, 220)">
+    <!-- Matrix title -->
+    <text x="0" y="-80" class="subtitle" text-anchor="middle">Matrix Representation of Â</text>
+    
+    <!-- Matrix -->
+    <rect x="-75" y="-75" width="150" height="150" class="matrix-element-box"/>
+    <line x1="-75" y1="-75" x2="-75" y2="75" class="matrix-border"/>
+    <line x1="75" y1="-75" x2="75" y2="75" class="matrix-border"/>
+    <line x1="-75" y1="0" x2="75" y2="0" stroke="#ddd" stroke-width="1"/>
+    <line x1="0" y1="-75" x2="0" y2="75" stroke="#ddd" stroke-width="1"/>
+    
+    <!-- Matrix elements -->
+    <g transform="translate(-37.5, -37.5)" class="highlight-element">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₁₁</text>
+    </g>
+    
+    <g transform="translate(37.5, -37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₁₂</text>
+    </g>
+    
+    <g transform="translate(-37.5, 37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₂₁</text>
+    </g>
+    
+    <g transform="translate(37.5, 37.5)">
+      <rect x="-30" y="-30" width="60" height="60" fill="#fff" rx="5"/>
+      <text x="0" y="7" class="matrix-element">A₂₂</text>
+    </g>
+  </g>
+  
+  <!-- Center - Translation illustration -->
+  <g transform="translate(400, 220)">
+    <path d="M-120,0 L120,0" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="0" y="-15" class="formula-text" text-anchor="middle">Matrix Representation</text>
+  </g>
+  
+  <!-- Matrix element calculation -->
+  <g transform="translate(550, 80)">
+    <rect x="-200" y="-30" width="400" height="60" rx="5" fill="#fff" stroke="#9b59b6" stroke-width="1" stroke-dasharray="5,3"/>
+    <text x="0" y="0" class="formula-text" text-anchor="middle" font-weight="bold">
+      Matrix elements: A_ij = ⟨e_i|Â|e_j⟩
+    </text>
+    <text x="0" y="25" class="formula-text" text-anchor="middle">
+      Values that determine how Â transforms basis vectors
+    </text>
+  </g>
+  
+  <!-- Bottom panel - Calculation examples -->
+  <g transform="translate(400, 380)">
+    <rect x="-350" y="-50" width="700" height="140" rx="10" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+    
+    <text x="-325" y="-25" class="formula-text" text-anchor="start" font-weight="bold">
+      Example of Matrix Element Calculations:
+    </text>
+    
+    <g transform="translate(-200, 20)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#3498db" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₁₁ = ⟨e₁|Â|e₁⟩
+      </text>
+    </g>
+    
+    <g transform="translate(200, 20)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#e74c3c" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₁₂ = ⟨e₁|Â|e₂⟩
+      </text>
+    </g>
+    
+    <g transform="translate(-200, 70)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#3498db" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₂₁ = ⟨e₂|Â|e₁⟩
+      </text>
+    </g>
+    
+    <g transform="translate(200, 70)">
+      <rect x="-80" y="-20" width="160" height="40" rx="5" fill="#fff" stroke="#e74c3c" stroke-width="1"/>
+      <text x="0" y="5" class="formula-text" text-anchor="middle">
+        A₂₂ = ⟨e₂|Â|e₂⟩
+      </text>
+    </g>
+  </g>
+  
+  <!-- Coordinate lines between elements and calculation -->
+  <g>
+    <path d="M512.5,182.5 L200,400" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M587.5,182.5 L600,400" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M512.5,257.5 L200,450" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+    <path d="M587.5,257.5 L600,450" stroke="#9b59b6" stroke-width="1" stroke-dasharray="3,3" fill="none"/>
+  </g>
+</svg> 

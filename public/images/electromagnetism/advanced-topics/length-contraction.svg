@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <!-- Definitions for markers and animations -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50"/>
+    </marker>
+    
+    <!-- Animation definitions -->
+    <style>
+      .title { font-family: Arial; font-size: 24px; font-weight: bold; text-anchor: middle; fill: #2c3e50; }
+      .subtitle { font-family: Arial; font-size: 18px; font-weight: bold; text-anchor: middle; fill: #2c3e50; }
+      .label { font-family: Arial; font-size: 14px; text-anchor: middle; fill: #2c3e50; }
+      .small-label { font-family: Arial; font-size: 12px; text-anchor: middle; fill: #2c3e50; }
+      .measurement { font-family: Arial; font-size: 16px; fill: #e74c3c; font-weight: bold; }
+      .formula { font-family: Arial; font-size: 16px; fill: #2c3e50; }
+      .axis { stroke: #7f8c8d; stroke-width: 1.5; }
+      .axis-arrow { stroke: #7f8c8d; stroke-width: 1.5; marker-end: url(#arrowhead); }
+      .grid-line { stroke: #ecf0f1; stroke-width: 1; }
+      .measure-line { stroke: #e74c3c; stroke-width: 2; stroke-dasharray: 5,3; }
+      .measure-arrow { stroke: #e74c3c; stroke-width: 2; marker-end: url(#arrowhead); }
+      .measure-start { stroke: #e74c3c; stroke-width: 2; }
+      .ruler { stroke: #3498db; stroke-width: 2; }
+      .ruler-tick { stroke: #3498db; stroke-width: 1.5; }
+      .ruler-label { font-family: Arial; font-size: 10px; fill: #3498db; text-anchor: middle; }
+      .observer { fill: #3498db; }
+      .spaceship { fill: #9b59b6; stroke: #8e44ad; stroke-width: 2; }
+      .rest-frame { fill: #2ecc71; stroke: #27ae60; stroke-width: 2; }
+      .speed-label { font-family: Arial; font-size: 14px; fill: #2c3e50; }
+      .slider-track { stroke: #bdc3c7; stroke-width: 4; stroke-linecap: round; }
+      .slider-thumb { fill: #3498db; stroke: #2980b9; stroke-width: 2; cursor: pointer; }
+      
+      @keyframes dash {
+        to { stroke-dashoffset: -16; }
+      }
+      
+      .animated-dash {
+        animation: dash 1s linear infinite;
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Length Contraction in Special Relativity</text>
+  
+  <!-- Reference Frame Labels -->
+  <text x="200" y="80" class="subtitle">Rest Frame</text>
+  <text x="600" y="80" class="subtitle">Moving Observer's View</text>
+  
+  <!-- Rest Frame (Left Panel) -->
+  <g transform="translate(200, 250)">
+    <!-- Coordinate system -->
+    <line x1="-180" y1="0" x2="180" y2="0" class="axis"/>
+    <line x1="180" y1="0" x2="170" y2="-5" class="axis"/>
+    <line x1="180" y1="0" x2="170" y2="5" class="axis"/>
+    <text x="180" y="20" class="small-label">x</text>
+    
+    <!-- Stationary object (e.g., a rod or spaceship) -->
+    <rect id="rest-object" x="-75" y="-20" width="150" height="40" rx="5" class="rest-frame"/>
+    
+    <!-- Measurement indicators -->
+    <line x1="-75" y1="-30" x2="75" y2="-30" class="measure-line"/>
+    <line x1="-75" y1="-35" x2="-75" y2="-25" class="measure-start"/>
+    <line x1="75" y1="-35" x2="75" y2="-25" class="measure-start"/>
+    <text x="0" y="-45" class="measurement">L₀ = 150 units</text>
+    
+    <!-- Ruler (for reference) -->
+    <line x1="-150" y1="50" x2="150" y2="50" class="ruler"/>
+    <g id="rest-ruler-ticks">
+      <!-- Ruler ticks will be added by JavaScript -->
+    </g>
+    
+    <!-- Stationary observer -->
+    <circle cx="-120" cy="20" r="10" class="observer"/>
+    <text x="-120" y="40" class="small-label">Observer at rest</text>
+  </g>
+  
+  <!-- Moving Frame (Right Panel) -->
+  <g transform="translate(600, 250)">
+    <!-- Coordinate system -->
+    <line x1="-180" y1="0" x2="180" y2="0" class="axis"/>
+    <line x1="180" y1="0" x2="170" y2="-5" class="axis"/>
+    <line x1="180" y1="0" x2="170" y2="5" class="axis"/>
+    <text x="180" y="20" class="small-label">x'</text>
+    
+    <!-- Moving object (contracted) -->
+    <rect id="contracted-object" x="-60" y="-20" width="120" height="40" rx="5" class="rest-frame"/>
+    
+    <!-- Measurement indicators -->
+    <line id="contracted-measure-line" x1="-60" y1="-30" x2="60" y2="-30" class="measure-line"/>
+    <line x1="-60" y1="-35" x2="-60" y2="-25" class="measure-start"/>
+    <line x1="60" y1="-35" x2="60" y2="-25" class="measure-start"/>
+    <text id="contracted-length" x="0" y="-45" class="measurement">L = 120 units</text>
+    
+    <!-- Ruler (for reference) -->
+    <line x1="-150" y1="50" x2="150" y2="50" class="ruler"/>
+    <g id="moving-ruler-ticks">
+      <!-- Ruler ticks will be added by JavaScript -->
+    </g>
+    
+    <!-- Moving observer (appears stationary in this frame) -->
+    <g>
+      <circle cx="-120" cy="20" r="10" class="observer"/>
+      <rect x="-150" y="25" width="60" height="15" rx="3" class="spaceship"/>
+      <text x="-120" y="50" class="small-label">Moving observer</text>
+    </g>
+  </g>
+  
+  <!-- Velocity Slider -->
+  <g transform="translate(400, 420)">
+    <text x="0" y="-15" class="subtitle" text-anchor="middle">Relative Velocity (v/c)</text>
+    <line x1="-150" y1="0" x2="150" y2="0" class="slider-track"/>
+    <text x="-150" y="20" class="speed-label" text-anchor="middle">0</text>
+    <text x="-75" y="20" class="speed-label" text-anchor="middle">0.25</text>
+    <text x="0" y="20" class="speed-label" text-anchor="middle">0.5</text>
+    <text x="75" y="20" class="speed-label" text-anchor="middle">0.75</text>
+    <text x="150" y="20" class="speed-label" text-anchor="middle">0.99</text>
+    
+    <circle id="velocity-slider" cx="0" cy="0" r="10" class="slider-thumb"/>
+  </g>
+  
+  <!-- Formula Box -->
+  <g transform="translate(400, 160)">
+    <rect x="-150" y="-60" width="300" height="90" rx="10" fill="#f8f9fa" stroke="#dcdde1" stroke-width="2"/>
+    <text x="0" y="-35" class="subtitle">Length Contraction Formula</text>
+    <text x="0" y="-5" class="formula">L = L₀ × √(1 - v²/c²)</text>
+    <text x="0" y="25" class="formula">L = L₀ × 1/γ</text>
+    <text x="0" y="5" class="small-label">(Where γ is the Lorentz factor)</text>
+  </g>
+  
+  <!-- JavaScript for interactivity -->
+  <script type="text/javascript"><![CDATA[
+    // Get interactive elements
+    const velocitySlider = document.getElementById('velocity-slider');
+    const contractedObject = document.getElementById('contracted-object');
+    const contractedMeasureLine = document.getElementById('contracted-measure-line');
+    const contractedLength = document.getElementById('contracted-length');
+    const restRulerTicks = document.getElementById('rest-ruler-ticks');
+    const movingRulerTicks = document.getElementById('moving-ruler-ticks');
+    
+    // Initial parameters
+    let velocity = 0.5; // v/c
+    const originalLength = 150;
+    let isDragging = false;
+    
+    // Create ruler ticks
+    function createRulerTicks() {
+      // Clear previous ticks
+      while (restRulerTicks.firstChild) {
+        restRulerTicks.removeChild(restRulerTicks.firstChild);
+      }
+      
+      while (movingRulerTicks.firstChild) {
+        movingRulerTicks.removeChild(movingRulerTicks.firstChild);
+      }
+      
+      // Create ticks for rest frame ruler
+      for (let i = -150; i <= 150; i += 30) {
+        // Tick mark
+        const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        tick.setAttribute("x1", i);
+        tick.setAttribute("y1", 45);
+        tick.setAttribute("x2", i);
+        tick.setAttribute("y2", 55);
+        tick.setAttribute("class", "ruler-tick");
+        restRulerTicks.appendChild(tick);
+        
+        // Tick label
+        const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        label.setAttribute("x", i);
+        label.setAttribute("y", 70);
+        label.setAttribute("class", "ruler-label");
+        label.textContent = i;
+        restRulerTicks.appendChild(label);
+      }
+      
+      // Calculate Lorentz factor
+      const gamma = 1 / Math.sqrt(1 - velocity * velocity);
+      
+      // Create ticks for moving frame ruler (compressed)
+      for (let i = -150; i <= 150; i += 30) {
+        // Tick mark
+        const tick = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        tick.setAttribute("x1", i);
+        tick.setAttribute("y1", 45);
+        tick.setAttribute("x2", i);
+        tick.setAttribute("y2", 55);
+        tick.setAttribute("class", "ruler-tick");
+        movingRulerTicks.appendChild(tick);
+        
+        // Tick label (adjusted for length contraction)
+        const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        label.setAttribute("x", i);
+        label.setAttribute("y", 70);
+        label.setAttribute("class", "ruler-label");
+        label.textContent = Math.round(i * gamma);
+        movingRulerTicks.appendChild(label);
+      }
+    }
+    
+    // Update visualization based on velocity
+    function updateContraction() {
+      // Calculate Lorentz factor
+      const gamma = 1 / Math.sqrt(1 - velocity * velocity);
+      
+      // Calculate contracted length
+      const contractedLengthValue = originalLength / gamma;
+      
+      // Update contracted object width
+      const halfContractedLength = contractedLengthValue / 2;
+      contractedObject.setAttribute("x", -halfContractedLength);
+      contractedObject.setAttribute("width", contractedLengthValue);
+      
+      // Update measurement line
+      contractedMeasureLine.setAttribute("x1", -halfContractedLength);
+      contractedMeasureLine.setAttribute("x2", halfContractedLength);
+      
+      // Update measurement text
+      contractedLength.textContent = `L = ${Math.round(contractedLengthValue)} units`;
+      
+      // Update ruler ticks
+      createRulerTicks();
+    }
+    
+    // Setup slider functionality
+    velocitySlider.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      updateSliderPosition(e);
+    });
+    
+    document.addEventListener('mousemove', function(e) {
+      if (isDragging) {
+        updateSliderPosition(e);
+      }
+    });
+    
+    document.addEventListener('mouseup', function() {
+      isDragging = false;
+    });
+    
+    // Touch events for mobile devices
+    velocitySlider.addEventListener('touchstart', function(e) {
+      isDragging = true;
+      updateSliderPosition(e.touches[0]);
+      e.preventDefault();
+    });
+    
+    document.addEventListener('touchmove', function(e) {
+      if (isDragging) {
+        updateSliderPosition(e.touches[0]);
+        e.preventDefault();
+      }
+    });
+    
+    document.addEventListener('touchend', function() {
+      isDragging = false;
+    });
+    
+    function updateSliderPosition(e) {
+      // Get slider container coordinates
+      const sliderContainer = velocitySlider.parentNode;
+      const rect = sliderContainer.getBoundingClientRect();
+      const containerX = rect.left + window.scrollX;
+      
+      // Calculate position relative to slider
+      let sliderX = e.clientX - containerX - 400;
+      
+      // Constrain to slider bounds
+      if (sliderX < -150) sliderX = -150;
+      if (sliderX > 150) sliderX = 150;
+      
+      // Update slider position
+      velocitySlider.setAttribute('cx', sliderX);
+      
+      // Map slider position to velocity (0 to 0.99c)
+      if (sliderX <= 0) {
+        // Linear mapping from -150..0 to 0..0.5
+        velocity = (sliderX + 150) / 300;
+      } else {
+        // Non-linear mapping from 0..150 to 0.5..0.99
+        const t = sliderX / 150;
+        velocity = 0.5 + 0.49 * t;
+      }
+      
+      // Update visualization
+      updateContraction();
+    }
+    
+    // Initialize
+    createRulerTicks();
+    updateContraction();
+  ]]></script>
+</svg> 

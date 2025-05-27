@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Ocean Wave Speed vs Depth</text>
+    
+    <!-- Ocean surface with waves -->
+    <path d="M50,150 Q100,130 150,150 T250,150 T350,150 T450,150 T550,150 T650,150 T750,150" 
+          fill="none" stroke="#2196F3" stroke-width="3"/>
+    
+    <!-- Ocean depth gradient -->
+    <defs>
+        <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#2196F3;stop-opacity:0.2"/>
+            <stop offset="100%" style="stop-color:#0D47A1;stop-opacity:0.6"/>
+        </linearGradient>
+    </defs>
+    <path d="M50,150 L750,150 L750,350 L50,350 Z" fill="url(#oceanGradient)"/>
+    
+    <!-- Wave speed arrows -->
+    <path d="M200,180 L300,180" stroke="#E91E63" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M200,250 L350,250" stroke="#E91E63" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <path d="M200,320 L400,320" stroke="#E91E63" stroke-width="3" marker-end="url(#arrowhead)"/>
+    
+    <!-- Arrowhead definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#E91E63"/>
+        </marker>
+    </defs>
+    
+    <!-- Labels -->
+    <text x="150" y="185" text-anchor="end" font-size="14">Shallow water</text>
+    <text x="150" y="255" text-anchor="end" font-size="14">Medium depth</text>
+    <text x="150" y="325" text-anchor="end" font-size="14">Deep water</text>
+    
+    <!-- Formula -->
+    <text x="400" y="380" text-anchor="middle" font-size="16">v = √(gλ/2π) in deep water</text>
+</svg>

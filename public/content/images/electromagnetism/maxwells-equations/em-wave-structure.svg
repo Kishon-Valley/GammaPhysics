@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <rect width="800" height="700" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">EM Wave Structure</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">E⊥B, B = E/c</text>
+
+    <!-- Key Concept Box -->
+    <rect x="50" y="80" width="700" height="50" fill="#f8f8f8" stroke="#666"/>
+    <text x="400" y="105" text-anchor="middle" font-size="14">Electric and magnetic fields are perpendicular to each other</text>
+    <text x="400" y="120" text-anchor="middle" font-size="14">and to the direction of propagation</text>
+
+    <!-- Main Visualization -->
+    <g transform="translate(400,350)">
+        <!-- Coordinate System -->
+        <line x1="-300" y1="0" x2="300" y2="0" stroke="#666" stroke-width="1"/>
+        <line x1="0" y1="-200" x2="0" y2="200" stroke="#666" stroke-width="1"/>
+        <line x1="0" y1="0" x2="200" y2="-100" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+        <text x="310" y="15" font-size="14">x (propagation)</text>
+        <text x="-15" y="-210" font-size="14">y (E-field)</text>
+        <text x="210" y="-110" font-size="14">z (B-field)</text>
+
+        <!-- Electric Field Wave -->
+        <path d="M -250,0 Q -200,-100 -150,0 T -50,0 T 50,0 T 150,0" 
+              fill="none" stroke="#FF5722" stroke-width="2">
+            <animate attributeName="d"
+                     values="M -250,0 Q -200,-100 -150,0 T -50,0 T 50,0 T 150,0;
+                            M -250,0 Q -200,100 -150,0 T -50,0 T 50,0 T 150,0;
+                            M -250,0 Q -200,-100 -150,0 T -50,0 T 50,0 T 150,0"
+                     dur="3s"
+                     repeatCount="indefinite"/>
+        </path>
+        <text x="-280" y="-50" fill="#FF5722" font-size="14">E-field</text>
+
+        <!-- Magnetic Field Wave -->
+        <g transform="rotate(90)">
+            <path d="M -250,0 Q -200,-100 -150,0 T -50,0 T 50,0 T 150,0" 
+                  fill="none" stroke="#2196F3" stroke-width="2">
+                <animate attributeName="d"
+                         values="M -250,0 Q -200,-100 -150,0 T -50,0 T 50,0 T 150,0;
+                                M -250,0 Q -200,100 -150,0 T -50,0 T 50,0 T 150,0;
+                                M -250,0 Q -200,-100 -150,0 T -50,0 T 50,0 T 150,0"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+        <text x="50" y="70" fill="#2196F3" font-size="14">B-field</text>
+    </g>
+
+    <!-- Explanation Box -->
+    <g transform="translate(50,550)">
+        <rect width="700" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Key Properties:</text>
+        <text x="20" y="55" font-size="14">1. E and B fields are in phase</text>
+        <text x="20" y="80" font-size="14">2. Fields are mutually perpendicular</text>
+        <text x="20" y="105" font-size="14">3. Wave propagates in direction E×B</text>
+    </g>
+
+    <!-- Wave Parameters -->
+    <g transform="translate(600,200)">
+        <rect width="150" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="10" y="30" font-size="12">λ: Wavelength</text>
+        <text x="10" y="50" font-size="12">k: Wave number</text>
+        <text x="10" y="70" font-size="12">ω: Angular frequency</text>
+        <text x="10" y="90" font-size="12">c: Speed of light</text>
+        <text x="10" y="110" font-size="12">k = ω/c</text>
+    </g>
+</svg> 

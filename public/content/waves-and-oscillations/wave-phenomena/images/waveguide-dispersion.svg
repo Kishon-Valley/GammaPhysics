@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Waveguide Dispersion</text>
+    
+    <!-- Waveguide structure -->
+    <rect x="100" y="100" width="600" height="200" fill="#E3F2FD" stroke="black" stroke-width="2"/>
+    
+    <!-- Wave propagation -->
+    <path d="M150,200 Q200,150 250,200 T350,200 T450,200 T550,200 T650,200" 
+          stroke="#2196F3" stroke-width="2" fill="none"/>
+    
+    <!-- Dimensions -->
+    <line x1="50" y1="100" x2="50" y2="300" stroke="#666" stroke-width="1"/>
+    <text x="30" y="200" text-anchor="middle" font-size="16">2a</text>
+    
+    <!-- Mode pattern -->
+    <path d="M700,150 L750,150" stroke="#4CAF50" stroke-width="2"/>
+    <text x="770" y="155" font-size="14">TE₁₀ Mode</text>
+    
+    <!-- Formulas -->
+    <text x="400" y="350" text-anchor="middle" font-size="16">β² = k² - (π/a)²</text>
+    <text x="400" y="380" text-anchor="middle" font-size="14">vₐ = c√[1-(λ/2a)²]</text>
+</svg>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions -->
+  <defs>
+    <!-- Lightning bolt pattern -->
+    <path id="lightning" d="M0,0 L5,-15 L0,-8 L5,0 Z" fill="yellow" stroke="orange" stroke-width="1"/>
+    
+    <!-- Animations -->
+    <style type="text/css">
+      .title-text { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; text-anchor: middle; }
+      .subtitle-text { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; text-anchor: middle; }
+      .label-text { font-family: Arial, sans-serif; font-size: 14px; text-anchor: middle; }
+      .formula-text { font-family: Arial, sans-serif; font-size: 16px; font-style: italic; }
+      .small-text { font-family: Arial, sans-serif; font-size: 12px; }
+      
+      .rest-frame { fill: #e6f7ff; stroke: #0099cc; stroke-width: 2; }
+      .moving-frame { fill: #ffe6e6; stroke: #cc0000; stroke-width: 2; }
+      
+      .train { fill: #dddddd; stroke: #333333; stroke-width: 2; }
+      .track { stroke: #666666; stroke-width: 3; stroke-linecap: round; }
+      .observer { fill: #9999ff; stroke: #333333; stroke-width: 1; }
+      
+      .light-ray { stroke: yellow; stroke-width: 2; }
+      .time-marker { stroke: #333333; stroke-width: 1; stroke-dasharray: 3,3; }
+      
+      @keyframes lightTravelLeft {
+        from { transform: translateX(0); opacity: 0; }
+        10% { opacity: 1; }
+        to { transform: translateX(-80px); opacity: 1; }
+      }
+      
+      @keyframes lightTravelRight {
+        from { transform: translateX(0); opacity: 0; }
+        10% { opacity: 1; }
+        to { transform: translateX(80px); opacity: 1; }
+      }
+      
+      .light-left {
+        animation: lightTravelLeft 3s linear infinite;
+      }
+      
+      .light-right {
+        animation: lightTravelRight 3s linear infinite;
+      }
+      
+      @keyframes flashLightning {
+        0%, 100% { opacity: 0; }
+        5%, 15% { opacity: 1; }
+      }
+      
+      .lightning-flash {
+        animation: flashLightning 3s linear infinite;
+      }
+      
+      @keyframes moveTrain {
+        from { transform: translateX(0); }
+        to { transform: translateX(150px); }
+      }
+      
+      .moving-train {
+        animation: moveTrain 10s linear infinite;
+      }
+      
+      .spacetime-grid line {
+        stroke: #cccccc;
+        stroke-width: 0.5;
+      }
+      
+      .worldline {
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+      }
+      
+      .event-point {
+        fill: #ff5500;
+        stroke: #333333;
+        stroke-width: 1;
+      }
+      
+      .velocity-value {
+        font-weight: bold;
+        fill: #cc0000;
+      }
+    </style>
+    
+    <!-- Arrow marker for vectors -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333333"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f9f9f9"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title-text">Relativity of Simultaneity</text>
+  
+  <!-- Static Frame (Ground Observer's Perspective) -->
+  <rect x="50" y="80" width="700" height="160" rx="10" class="rest-frame"/>
+  <text x="400" y="105" class="subtitle-text">Ground Observer's Frame (at rest)</text>
+  
+  <!-- Train track -->
+  <line x1="50" y1="220" x2="750" y2="220" class="track"/>
+  
+  <!-- Ground observer -->
+  <circle cx="400" cy="180" r="15" class="observer"/>
+  <text x="400" y="160" class="label-text">Observer O</text>
+  
+  <!-- Lightning strikes from ground observer's perspective - simultaneous -->
+  <g class="lightning-flash">
+    <use href="#lightning" x="200" y="220" transform="scale(2)"/>
+    <text x="200" y="245" class="small-text">Event A</text>
+    <text x="200" y="260" class="small-text">(t = 0)</text>
+  </g>
+  
+  <g class="lightning-flash">
+    <use href="#lightning" x="600" y="220" transform="scale(2)"/>
+    <text x="600" y="245" class="small-text">Event B</text>
+    <text x="600" y="260" class="small-text">(t = 0)</text>
+  </g>
+  
+  <!-- Light rays from lightning strikes to observer -->
+  <line x1="220" y1="220" x2="385" y2="180" class="light-ray light-left"/>
+  <line x1="580" y1="220" x2="415" y2="180" class="light-ray light-right"/>
+  
+  <!-- Train Frame (Moving Observer's Perspective) -->
+  <rect x="50" y="310" width="700" height="160" rx="10" class="moving-frame"/>
+  <text x="400" y="335" class="subtitle-text">Train Observer's Frame (moving right)</text>
+  
+  <!-- Train track -->
+  <line x1="50" y1="450" x2="750" y2="450" class="track"/>
+  
+  <!-- Train with observer -->
+  <g class="moving-train">
+    <rect x="300" y="410" width="200" height="40" rx="5" class="train"/>
+    <circle cx="400" cy="410" r="15" class="observer"/>
+    <text x="400" y="390" class="label-text">Observer O'</text>
+    <line x1="380" y1="430" x2="410" y2="430" stroke="#333333" stroke-width="5"/>
+    <line x1="320" y1="430" x2="350" y2="430" stroke="#333333" stroke-width="5"/>
+    <line x1="450" y1="430" x2="480" y2="430" stroke="#333333" stroke-width="5"/>
+  </g>
+  
+  <!-- Direction of motion arrow -->
+  <line x1="380" y1="365" x2="450" y2="365" stroke="#cc0000" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="400" y="355" class="label-text">v = 0.6c</text>
+  
+  <!-- Light rays in moving frame - reaching observer at different times -->
+  <line x1="220" y1="450" x2="385" y2="410" class="light-ray light-left"/>
+  <line x1="580" y1="450" x2="415" y2="410" class="light-ray light-right"/>
+  
+  <!-- Lightning strikes in moving frame - B appears before A -->
+  <g class="lightning-flash">
+    <use href="#lightning" x="200" y="450" transform="scale(2)"/>
+    <text x="200" y="475" class="small-text">Event A</text>
+    <text x="200" y="490" class="small-text">(t' > 0)</text>
+  </g>
+  
+  <g class="lightning-flash">
+    <use href="#lightning" x="600" y="450" transform="scale(2)"/>
+    <text x="600" y="475" class="small-text">Event B</text>
+    <text x="600" y="490" class="small-text">(t' < 0)</text>
+  </g>
+  
+  <!-- Spacetime Diagram -->
+  <rect x="150" y="520" width="500" height="60" rx="5" fill="#f0f0f0" stroke="#333" stroke-width="1"/>
+  <text x="400" y="545" class="subtitle-text">Key Insight: Events simultaneous in one frame are not simultaneous in another</text>
+  
+  <!-- Formula and Explanation -->
+  <rect x="150" y="460" width="500" height="50" rx="5" fill="#f0f0f0" stroke="#333" stroke-width="1"/>
+  <text x="400" y="485" class="formula-text" text-anchor="middle">Δt' = γ(Δt - vΔx/c²)</text>
+  <text x="400" y="505" class="small-text" text-anchor="middle">Time difference depends on the spatial separation and relative velocity</text>
+</svg> 

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .axis {
+      stroke: #333;
+      stroke-width: 2;
+    }
+    .grid {
+      stroke: #ccc;
+      stroke-width: 0.5;
+      stroke-dasharray: 3 2;
+    }
+    .active-power {
+      stroke: #e74c3c;
+      stroke-width: 3;
+      fill: none;
+    }
+    .reactive-power {
+      stroke: #3498db;
+      stroke-width: 3;
+      fill: none;
+    }
+    .apparent-power {
+      stroke: #9b59b6;
+      stroke-width: 3;
+      fill: none;
+    }
+    .corrected-power {
+      stroke: #2ecc71;
+      stroke-width: 3;
+      stroke-dasharray: 5 3;
+      fill: none;
+    }
+    .power-factor {
+      stroke: #f39c12;
+      stroke-width: 2;
+      fill: none;
+    }
+    .power-triangle {
+      fill: rgba(155, 89, 182, 0.1);
+      stroke: #333;
+      stroke-width: 1;
+    }
+    .corrected-triangle {
+      fill: rgba(46, 204, 113, 0.1);
+      stroke: #2ecc71;
+      stroke-width: 1;
+      stroke-dasharray: 5 3;
+    }
+    .marker {
+      fill: #9b59b6;
+      stroke: #333;
+      stroke-width: 1;
+    }
+    .control-group {
+      fill: rgba(240, 240, 240, 0.5);
+      stroke: #333;
+      stroke-width: 1;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .label {
+      text-anchor: middle;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="600" height="400" fill="white" />
+  
+  <!-- Title -->
+  <text x="300" y="30" class="bold label" font-size="18">Power Triangle and Power Factor Correction</text>
+  
+  <!-- Power Triangle Display -->
+  <g transform="translate(300, 200)">
+    <!-- Coordinate system -->
+    <line x1="-200" y1="0" x2="200" y2="0" class="axis" />
+    <line x1="0" y1="150" x2="0" y2="-150" class="axis" />
+    
+    <!-- Grid lines -->
+    <line x1="-200" y1="-50" x2="200" y2="-50" class="grid" />
+    <line x1="-200" y1="-100" x2="200" y2="-100" class="grid" />
+    <line x1="-200" y1="50" x2="200" y2="50" class="grid" />
+    <line x1="-200" y1="100" x2="200" y2="100" class="grid" />
+    <line x1="-150" y1="-150" x2="-150" y2="150" class="grid" />
+    <line x1="-100" y1="-150" x2="-100" y2="150" class="grid" />
+    <line x1="-50" y1="-150" x2="-50" y2="150" class="grid" />
+    <line x1="50" y1="-150" x2="50" y2="150" class="grid" />
+    <line x1="100" y1="-150" x2="100" y2="150" class="grid" />
+    <line x1="150" y1="-150" x2="150" y2="150" class="grid" />
+    
+    <!-- Axis labels -->
+    <text x="200" y="20" text-anchor="end">P (Active Power)</text>
+    <text x="20" y="-130" text-anchor="start">Q (Reactive Power)</text>
+    
+    <!-- Original Power Triangle -->
+    <polygon id="original-triangle" class="power-triangle" points="0,0 100,0 100,-80" />
+    
+    <!-- Corrected Power Triangle -->
+    <polygon id="corrected-triangle" class="corrected-triangle" points="0,0 100,0 100,-20" />
+    
+    <!-- Power Components -->
+    <line id="active-power" x1="0" y1="0" x2="100" y2="0" class="active-power" />
+    <line id="reactive-power" x1="100" y1="0" x2="100" y2="-80" class="reactive-power" />
+    <line id="apparent-power" x1="0" y1="0" x2="100" y2="-80" class="apparent-power" />
+    <line id="corrected-reactive" x1="100" y1="0" x2="100" y2="-20" class="corrected-power" />
+    <line id="corrected-apparent" x1="0" y1="0" x2="100" y2="-20" class="corrected-power" />
+    
+    <!-- Power Factor Angle Indicator -->
+    <path id="pf-angle" d="M 30,0 A 30,30 0 0,1 25,-15" class="power-factor" fill="rgba(243, 156, 18, 0.2)" />
+    <text id="pf-angle-text" x="50" y="-20" fill="#f39c12">φ₁ = 38.7°</text>
+    <text id="pf-value-text" x="50" y="-35" fill="#f39c12">PF₁ = 0.78</text>
+    
+    <!-- Corrected Power Factor Angle -->
+    <path id="corrected-pf-angle" d="M 30,0 A 30,30 0 0,1 29.5,-5" class="power-factor" fill="rgba(46, 204, 113, 0.2)" />
+    <text id="corrected-pf-text" x="150" y="-20" fill="#2ecc71">φ₂ = 11.3°</text>
+    <text id="corrected-pf-value" x="150" y="-35" fill="#2ecc71">PF₂ = 0.98</text>
+    
+    <!-- Capacitive Compensation Arrow -->
+    <line x1="100" y1="-80" x2="100" y2="-20" stroke="#e67e22" stroke-width="2" stroke-dasharray="5 3" />
+    <path d="M 95,-45 L 100,-35 L 105,-45" fill="none" stroke="#e67e22" stroke-width="2" />
+    <text x="120" y="-50" fill="#e67e22">Capacitive</text>
+    <text x="120" y="-35" fill="#e67e22">Compensation</text>
+    
+    <!-- Power Labels -->
+    <text id="s-value" x="60" y="-85" fill="#9b59b6" text-anchor="end">S₁ = 128 VA</text>
+    <text id="p-value" x="50" y="15" fill="#e74c3c">P = 100 W</text>
+    <text id="q-value" x="115" y="-40" fill="#3498db">Q₁ = 80 VAR</text>
+    <text id="q2-value" x="135" y="-10" fill="#2ecc71">Q₂ = 20 VAR</text>
+    <text id="s2-value" x="60" y="-15" fill="#2ecc71" text-anchor="end">S₂ = 102 VA</text>
+  </g>
+  
+  <!-- Controls -->
+  <g transform="translate(130, 350)">
+    <rect x="0" y="0" width="340" height="30" rx="5" ry="5" class="control-group" />
+    <text x="10" y="20">Power Factor Correction:</text>
+    <text id="slider-value" x="190" y="20">25%</text>
+    
+    <!-- Slider -->
+    <line x1="220" y1="15" x2="320" y2="15" stroke="#333" stroke-width="2" />
+    <circle id="slider-knob" cx="245" cy="15" r="6" fill="#f39c12" stroke="#333" stroke-width="1" />
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(480, 350)">
+    <rect x="0" y="-80" width="110" height="110" rx="5" ry="5" class="control-group" />
+    <text x="5" y="-65" class="bold">Legend:</text>
+    
+    <line x1="10" y1="-50" x2="30" y2="-50" class="active-power" />
+    <text x="35" y="-45">Active (P)</text>
+    
+    <line x1="10" y1="-30" x2="30" y2="-30" class="reactive-power" />
+    <text x="35" y="-25">Reactive (Q)</text>
+    
+    <line x1="10" y1="-10" x2="30" y2="-10" class="apparent-power" />
+    <text x="35" y="-5">Apparent (S)</text>
+    
+    <line x1="10" y1="10" x2="30" y2="10" class="corrected-power" />
+    <text x="35" y="15">Corrected</text>
+  </g>
+  
+  <script type="text/javascript"><![CDATA[
+    // Constants
+    const activePower = 100;  // Fixed active power (P) in watts
+    const maxReactivePower = 80;  // Maximum reactive power (Q) in VAR
+    const minReactivePower = 0;   // Minimum reactive power after correction
+    
+    // Get elements
+    const originalTriangle = document.getElementById('original-triangle');
+    const correctedTriangle = document.getElementById('corrected-triangle');
+    const activePowerLine = document.getElementById('active-power');
+    const reactivePowerLine = document.getElementById('reactive-power');
+    const apparentPowerLine = document.getElementById('apparent-power');
+    const correctedReactiveLine = document.getElementById('corrected-reactive');
+    const correctedApparentLine = document.getElementById('corrected-apparent');
+    const pfAngle = document.getElementById('pf-angle');
+    const pfAngleText = document.getElementById('pf-angle-text');
+    const pfValueText = document.getElementById('pf-value-text');
+    const correctedPfAngle = document.getElementById('corrected-pf-angle');
+    const correctedPfText = document.getElementById('corrected-pf-text');
+    const correctedPfValue = document.getElementById('corrected-pf-value');
+    const sliderKnob = document.getElementById('slider-knob');
+    const sliderValue = document.getElementById('slider-value');
+    const sValue = document.getElementById('s-value');
+    const pValue = document.getElementById('p-value');
+    const qValue = document.getElementById('q-value');
+    const q2Value = document.getElementById('q2-value');
+    const s2Value = document.getElementById('s2-value');
+    
+    // Initialize values
+    let correctionPercentage = 0.75;  // Start with 75% correction
+    
+    // Update power triangle based on correction percentage
+    function updatePowerTriangle(percentage) {
+      // Calculate reactive power after correction
+      const originalQ = maxReactivePower;
+      const correctedQ = originalQ * (1 - percentage);
+      
+      // Update reactive power lines
+      reactivePowerLine.setAttribute('y2', -originalQ);
+      correctedReactiveLine.setAttribute('y2', -correctedQ);
+      
+      // Calculate apparent power values
+      const originalS = Math.sqrt(activePower*activePower + originalQ*originalQ);
+      const correctedS = Math.sqrt(activePower*activePower + correctedQ*correctedQ);
+      
+      // Update triangle points
+      originalTriangle.setAttribute('points', `0,0 ${activePower},0 ${activePower},${-originalQ}`);
+      correctedTriangle.setAttribute('points', `0,0 ${activePower},0 ${activePower},${-correctedQ}`);
+      
+      // Update apparent power lines
+      apparentPowerLine.setAttribute('x2', activePower);
+      apparentPowerLine.setAttribute('y2', -originalQ);
+      correctedApparentLine.setAttribute('x2', activePower);
+      correctedApparentLine.setAttribute('y2', -correctedQ);
+      
+      // Calculate power factor angles
+      const originalAngle = Math.atan2(originalQ, activePower);
+      const correctedAngle = Math.atan2(correctedQ, activePower);
+      
+      // Convert to degrees for display
+      const originalAngleDeg = (originalAngle * 180 / Math.PI).toFixed(1);
+      const correctedAngleDeg = (correctedAngle * 180 / Math.PI).toFixed(1);
+      
+      // Calculate power factors
+      const originalPF = Math.cos(originalAngle).toFixed(2);
+      const correctedPF = Math.cos(correctedAngle).toFixed(2);
+      
+      // Update angle displays
+      pfAngleText.textContent = `φ₁ = ${originalAngleDeg}°`;
+      pfValueText.textContent = `PF₁ = ${originalPF}`;
+      correctedPfText.textContent = `φ₂ = ${correctedAngleDeg}°`;
+      correctedPfValue.textContent = `PF₂ = ${correctedPF}`;
+      
+      // Draw angle arcs
+      const originalArcEndX = 30 * Math.cos(originalAngle);
+      const originalArcEndY = -30 * Math.sin(originalAngle);
+      pfAngle.setAttribute('d', `M 30,0 A 30,30 0 0,1 ${originalArcEndX},${originalArcEndY}`);
+      
+      const correctedArcEndX = 30 * Math.cos(correctedAngle);
+      const correctedArcEndY = -30 * Math.sin(correctedAngle);
+      correctedPfAngle.setAttribute('d', `M 30,0 A 30,30 0 0,1 ${correctedArcEndX},${correctedArcEndY}`);
+      
+      // Update power value displays
+      sValue.textContent = `S₁ = ${Math.round(originalS)} VA`;
+      pValue.textContent = `P = ${activePower} W`;
+      qValue.textContent = `Q₁ = ${Math.round(originalQ)} VAR`;
+      q2Value.textContent = `Q₂ = ${Math.round(correctedQ)} VAR`;
+      s2Value.textContent = `S₂ = ${Math.round(correctedS)} VA`;
+    }
+    
+    // Initialize the slider functionality
+    function initSlider() {
+      const sliderStart = 220;
+      const sliderEnd = 320;
+      const sliderRange = sliderEnd - sliderStart;
+      
+      // Set initial position
+      const initialPos = sliderStart + correctionPercentage * sliderRange;
+      sliderKnob.setAttribute('cx', initialPos);
+      sliderValue.textContent = `${Math.round(correctionPercentage * 100)}%`;
+      
+      // Update the power triangle with initial values
+      updatePowerTriangle(correctionPercentage);
+      
+      // Handle drag events
+      let isDragging = false;
+      
+      sliderKnob.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        e.preventDefault();
+      });
+      
+      document.addEventListener('mousemove', function(e) {
+        if (!isDragging) return;
+        
+        // Get mouse position
+        const svgRect = sliderKnob.ownerSVGElement.getBoundingClientRect();
+        let mouseX = e.clientX - svgRect.left;
+        
+        // Constrain to slider range
+        mouseX = Math.max(sliderStart, Math.min(sliderEnd, mouseX));
+        
+        // Update slider position
+        sliderKnob.setAttribute('cx', mouseX);
+        
+        // Calculate new correction percentage
+        correctionPercentage = (mouseX - sliderStart) / sliderRange;
+        sliderValue.textContent = `${Math.round(correctionPercentage * 100)}%`;
+        
+        // Update power triangle
+        updatePowerTriangle(correctionPercentage);
+      });
+      
+      document.addEventListener('mouseup', function() {
+        isDragging = false;
+      });
+    }
+    
+    // Initialize on load
+    initSlider();
+  ]]></script>
+</svg> 

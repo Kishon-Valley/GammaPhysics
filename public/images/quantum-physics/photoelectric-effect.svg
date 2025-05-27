@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions -->
+  <defs>
+    <!-- Gradient definitions -->
+    <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#666666;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#dddddd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#666666;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="lowEnergyLight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff0000;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#ff6600;stop-opacity:0.8" />
+    </linearGradient>
+    
+    <linearGradient id="highEnergyLight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9400d3;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#0000ff;stop-opacity:0.8" />
+    </linearGradient>
+    
+    <!-- Photon animation -->
+    <marker id="photonMarker" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5">
+      <circle cx="5" cy="5" r="3" fill="yellow" />
+    </marker>
+    
+    <!-- Electron animation -->
+    <filter id="electronGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" />
+    </filter>
+  </defs>
+  
+  <!-- Styles -->
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      fill: #333;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    .subtitle {
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    .axis-label {
+      font-size: 14px;
+      text-anchor: middle;
+    }
+    .equation {
+      font-size: 16px;
+      font-style: italic;
+      text-anchor: middle;
+    }
+    .axis {
+      stroke: #666;
+      stroke-width: 2;
+    }
+    .annotation {
+      font-size: 14px;
+      fill: #555;
+    }
+    .graph-line {
+      fill: none;
+      stroke: #4d8bf5;
+      stroke-width: 3;
+    }
+    .threshold-line {
+      fill: none;
+      stroke: #ff6b6b;
+      stroke-width: 2;
+      stroke-dasharray: 5,3;
+    }
+    .metal {
+      fill: url(#metalGradient);
+      stroke: #444;
+      stroke-width: 1;
+    }
+    .photon {
+      fill: yellow;
+      stroke: orange;
+      stroke-width: 1;
+    }
+    .electron {
+      fill: #4d8bf5;
+      stroke: #2c5aa0;
+      stroke-width: 1;
+    }
+    .light-beam-low {
+      fill: url(#lowEnergyLight);
+    }
+    .light-beam-high {
+      fill: url(#highEnergyLight);
+    }
+    
+    @keyframes photonMove {
+      0% { opacity: 0; transform: translateX(0); }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; transform: translateX(150px); }
+    }
+    .photon-animate {
+      animation: photonMove 3s infinite;
+    }
+    
+    @keyframes electronEmit {
+      0% { opacity: 0; transform: translate(0, 0); }
+      10% { opacity: 0; }
+      20% { opacity: 1; transform: translate(0, 0); }
+      100% { opacity: 1; transform: translate(100px, -70px); }
+    }
+    .electron-emit {
+      animation: electronEmit 3s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; }
+      50% { opacity: 1; }
+    }
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes intensityChange {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+    .intensity-animate {
+      animation: intensityChange 4s infinite;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="white" />
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Photoelectric Effect</text>
+  <text x="400" y="70" class="subtitle">Einstein's Quantum Explanation (1905)</text>
+  
+  <!-- Apparatus and experiment visualization -->
+  <g transform="translate(80, 150)">
+    <!-- Low energy light (red) experiment -->
+    <g transform="translate(0, 0)">
+      <text x="200" y="-20" class="subtitle">Low Frequency Light (No Effect)</text>
+      
+      <!-- Light source -->
+      <rect x="0" y="50" width="40" height="80" rx="5" fill="#ddd" stroke="#666" />
+      <text x="20" y="40" class="annotation" text-anchor="middle">Light Source</text>
+      <text x="20" y="140" class="annotation" text-anchor="middle">(Red)</text>
+      
+      <!-- Light beam -->
+      <path d="M40,90 L180,90 L140,130 L40,130 Z" class="light-beam-low intensity-animate" />
+      
+      <!-- Photons -->
+      <g>
+        <circle cx="60" cy="110" r="5" class="photon photon-animate" style="animation-delay: 0s" />
+        <circle cx="90" cy="110" r="5" class="photon photon-animate" style="animation-delay: 0.5s" />
+        <circle cx="120" cy="110" r="5" class="photon photon-animate" style="animation-delay: 1s" />
+        <circle cx="150" cy="110" r="5" class="photon photon-animate" style="animation-delay: 1.5s" />
+      </g>
+      
+      <!-- Metal plate -->
+      <rect x="180" y="50" width="20" height="80" class="metal" />
+      <text x="190" y="40" class="annotation" text-anchor="middle">Metal</text>
+      
+      <!-- Work function visualization -->
+      <rect x="200" y="50" width="10" height="80" fill="#aaa" stroke="#666" />
+      <text x="225" y="90" class="annotation">Work Function (φ)</text>
+      <text x="225" y="110" class="equation">hν &lt; φ</text>
+      
+      <!-- Ammeter (showing no current) -->
+      <rect x="250" y="70" width="60" height="40" rx="5" fill="#f0f0f0" stroke="#666" />
+      <line x1="280" y1="80" x2="280" y2="100" stroke="#555" stroke-width="2" />
+      <text x="280" y="65" class="annotation" text-anchor="middle">Ammeter</text>
+      <text x="280" y="95" class="annotation" text-anchor="middle">0 A</text>
+    </g>
+    
+    <!-- High energy light (violet) experiment -->
+    <g transform="translate(0, 200)">
+      <text x="200" y="-20" class="subtitle">High Frequency Light (Electrons Emitted)</text>
+      
+      <!-- Light source -->
+      <rect x="0" y="50" width="40" height="80" rx="5" fill="#ddd" stroke="#666" />
+      <text x="20" y="40" class="annotation" text-anchor="middle">Light Source</text>
+      <text x="20" y="140" class="annotation" text-anchor="middle">(Violet)</text>
+      
+      <!-- Light beam -->
+      <path d="M40,90 L180,90 L140,130 L40,130 Z" class="light-beam-high intensity-animate" />
+      
+      <!-- Photons -->
+      <g>
+        <circle cx="60" cy="110" r="5" class="photon photon-animate" style="animation-delay: 0s" />
+        <circle cx="90" cy="110" r="5" class="photon photon-animate" style="animation-delay: 0.5s" />
+        <circle cx="120" cy="110" r="5" class="photon photon-animate" style="animation-delay: 1s" />
+        <circle cx="150" cy="110" r="5" class="photon photon-animate" style="animation-delay: 1.5s" />
+      </g>
+      
+      <!-- Metal plate -->
+      <rect x="180" y="50" width="20" height="80" class="metal" />
+      <text x="190" y="40" class="annotation" text-anchor="middle">Metal</text>
+      
+      <!-- Work function visualization -->
+      <rect x="200" y="50" width="10" height="80" fill="#aaa" stroke="#666" />
+      <text x="225" y="90" class="annotation">Work Function (φ)</text>
+      <text x="225" y="110" class="equation">hν &gt; φ</text>
+      
+      <!-- Electrons being emitted -->
+      <circle cx="190" cy="70" r="4" class="electron electron-emit" style="animation-delay: 0s" />
+      <circle cx="190" cy="90" r="4" class="electron electron-emit" style="animation-delay: 1s" />
+      <circle cx="190" cy="110" r="4" class="electron electron-emit" style="animation-delay: 2s" />
+      
+      <!-- Ammeter (showing current) -->
+      <rect x="250" y="70" width="60" height="40" rx="5" fill="#f0f0f0" stroke="#666" />
+      <line x1="280" y1="80" x2="280" y2="95" stroke="#555" stroke-width="2" />
+      <line x1="280" y1="95" x2="290" y2="95" stroke="#555" stroke-width="2" />
+      <text x="280" y="65" class="annotation" text-anchor="middle">Ammeter</text>
+      <text x="280" y="115" class="annotation" text-anchor="middle" fill="#4d8bf5" class="pulse">Current!</text>
+    </g>
+  </g>
+  
+  <!-- Key observations graph -->
+  <g transform="translate(450, 150)">
+    <text x="150" y="-20" class="subtitle">Key Observations</text>
+    
+    <!-- Graph 1: Frequency threshold -->
+    <g transform="translate(0, 30)">
+      <!-- Axes -->
+      <line x1="20" y1="120" x2="280" y2="120" class="axis" />
+      <line x1="20" y1="120" x2="20" y2="20" class="axis" />
+      
+      <!-- Axis labels -->
+      <text x="150" y="140" class="axis-label">Light Frequency (ν)</text>
+      <text x="10" y="70" class="axis-label" transform="rotate(-90 10 70)">Current</text>
+      
+      <!-- Threshold frequency -->
+      <line x1="100" y1="20" x2="100" y2="120" class="threshold-line" />
+      <text x="100" y="135" class="annotation" text-anchor="middle">ν₀</text>
+      <text x="100" y="10" class="annotation">Threshold Frequency</text>
+      
+      <!-- Current vs frequency line -->
+      <path d="M20,120 L100,120 L270,40" class="graph-line" />
+      
+      <!-- Regions -->
+      <text x="60" y="100" class="annotation" fill="#ff6b6b">No Photoelectric Effect</text>
+      <text x="185" y="70" class="annotation" fill="#4d8bf5">Photoelectric Effect</text>
+    </g>
+    
+    <!-- Graph 2: Kinetic energy vs frequency -->
+    <g transform="translate(0, 180)">
+      <!-- Axes -->
+      <line x1="20" y1="120" x2="280" y2="120" class="axis" />
+      <line x1="20" y1="120" x2="20" y2="20" class="axis" />
+      
+      <!-- Axis labels -->
+      <text x="150" y="140" class="axis-label">Light Frequency (ν)</text>
+      <text x="10" y="70" class="axis-label" transform="rotate(-90 10 70)">Electron KE</text>
+      
+      <!-- Threshold frequency -->
+      <line x1="100" y1="20" x2="100" y2="120" class="threshold-line" />
+      <text x="100" y="135" class="annotation" text-anchor="middle">ν₀</text>
+      
+      <!-- KE vs frequency line -->
+      <path d="M20,120 L100,120 L270,40" class="graph-line" />
+      
+      <!-- Einstein's equation visualization -->
+      <text x="185" y="80" class="equation">KE = hν - φ</text>
+      <text x="100" y="105" class="equation" text-anchor="middle">φ = hν₀</text>
+    </g>
+    
+    <!-- Einstein's quantum interpretation -->
+    <rect x="0" y="320" width="300" height="90" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="150" y="340" class="subtitle" text-anchor="middle">Einstein's Explanation</text>
+    <text x="20" y="360" class="annotation">• Light consists of discrete photons with E = hν</text>
+    <text x="20" y="380" class="annotation">• One photon interacts with one electron</text>
+    <text x="20" y="400" class="annotation">• Electron must overcome work function (φ)</text>
+  </g>
+</svg> 

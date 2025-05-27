@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Wave Impedance: Resistance to Wave Motion</text>
+    
+    <!-- Medium 1 (Low impedance) -->
+    <rect x="50" y="100" width="300" height="200" fill="#B3E5FC" opacity="0.5"/>
+    <text x="200" y="150" text-anchor="middle" font-size="16">Medium 1</text>
+    <text x="200" y="170" text-anchor="middle" font-size="14">Low Impedance</text>
+    <text x="200" y="190" text-anchor="middle" font-size="14">(e.g., Air)</text>
+    
+    <!-- Medium 2 (High impedance) -->
+    <rect x="450" y="100" width="300" height="200" fill="#FFE0B2" opacity="0.5"/>
+    <text x="600" y="150" text-anchor="middle" font-size="16">Medium 2</text>
+    <text x="600" y="170" text-anchor="middle" font-size="14">High Impedance</text>
+    <text x="600" y="190" text-anchor="middle" font-size="14">(e.g., Water)</text>
+    
+    <!-- Interface line -->
+    <line x1="350" y1="50" x2="350" y2="350" stroke="#E91E63" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="350" y="370" text-anchor="middle" font-size="14">Interface</text>
+    
+    <!-- Wave -->
+    <path d="M100,200 Q200,150 300,200 L350,200 Q450,250 550,200 T750,200" 
+          fill="none" stroke="#2196F3" stroke-width="2"/>
+    
+    <!-- Arrows showing wave motion -->
+    <path d="M250,250 L300,250 M290,245 L300,250 L290,255" stroke="#000" stroke-width="1"/>
+    <path d="M400,250 L450,250 M440,245 L450,250 L440,255" stroke="#000" stroke-width="1"/>
+    
+    <!-- Formula -->
+    <text x="400" y="330" text-anchor="middle" font-size="16">Z = ρv</text>
+    <text x="400" y="350" text-anchor="middle" font-size="14">ρ: density, v: wave speed</text>
+</svg>

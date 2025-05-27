@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+    <!-- Coordinate System -->
+    <line x1="50" y1="150" x2="350" y2="150" stroke="#000" stroke-width="2"/> <!-- x-axis -->
+    <line x1="50" y1="50" x2="50" y2="250" stroke="#000" stroke-width="2"/> <!-- y-axis -->
+    
+    <!-- Displacement curve -->
+    <path d="M50,150 C100,50 150,250 200,150 S300,50 350,150" 
+          fill="none" stroke="#1a73e8" stroke-width="2"/>
+    
+    <!-- Velocity curve -->
+    <path d="M50,150 C100,250 150,150 200,50 S300,150 350,250" 
+          fill="none" stroke="#f44336" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <!-- Acceleration curve -->
+    <path d="M50,150 C100,50 150,250 200,150 S300,50 350,150" 
+          fill="none" stroke="#4caf50" stroke-width="2" stroke-dasharray="2,2"/>
+    
+    <!-- Labels -->
+    <text x="360" y="155" font-family="Arial" font-size="12">t</text>
+    <text x="30" y="45" font-family="Arial" font-size="12">x, v, a</text>
+    
+    <!-- Legend -->
+    <line x1="50" y1="270" x2="80" y2="270" stroke="#1a73e8" stroke-width="2"/>
+    <text x="90" y="275" font-family="Arial" font-size="12">Position</text>
+    
+    <line x1="150" y1="270" x2="180" y2="270" stroke="#f44336" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="190" y="275" font-family="Arial" font-size="12">Velocity</text>
+    
+    <line x1="250" y1="270" x2="280" y2="270" stroke="#4caf50" stroke-width="2" stroke-dasharray="2,2"/>
+    <text x="290" y="275" font-family="Arial" font-size="12">Acceleration</text>
+</svg>

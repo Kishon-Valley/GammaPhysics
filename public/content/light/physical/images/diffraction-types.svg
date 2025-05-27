@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="300" y="40" font-family="Arial" font-size="20" font-weight="bold">Diffraction Regimes</text>
+    
+    <!-- Fresnel Diffraction (Top Half) -->
+    <text x="250" y="80" font-family="Arial" font-size="16">Fresnel (Near-Field) Diffraction</text>
+    
+    <!-- Source -->
+    <circle cx="100" cy="150" r="5" fill="#fbbc05"/>
+    
+    <!-- Aperture -->
+    <rect x="200" y="130" width="5" height="40" fill="black"/>
+    
+    <!-- Curved wavefronts -->
+    <path d="M 205,150 Q 250,130 300,130" fill="none" stroke="#4285f4" stroke-width="1"/>
+    <path d="M 205,150 Q 250,150 300,150" fill="none" stroke="#4285f4" stroke-width="1"/>
+    <path d="M 205,150 Q 250,170 300,170" fill="none" stroke="#4285f4" stroke-width="1"/>
+    
+    <!-- Complex pattern -->
+    <path d="M 300,120 C 320,140 340,160 360,140" fill="none" stroke="#34a853" stroke-width="2"/>
+    
+    <!-- Fraunhofer Diffraction (Bottom Half) -->
+    <text x="250" y="280" font-family="Arial" font-size="16">Fraunhofer (Far-Field) Diffraction</text>
+    
+    <!-- Source -->
+    <circle cx="100" cy="350" r="5" fill="#fbbc05"/>
+    
+    <!-- Aperture -->
+    <rect x="200" y="330" width="5" height="40" fill="black"/>
+    
+    <!-- Planar wavefronts -->
+    <line x1="205" y1="350" x2="400" y2="350" stroke="#4285f4" stroke-width="1"/>
+    <line x1="205" y1="350" x2="400" y2="300" stroke="#4285f4" stroke-width="1" opacity="0.5"/>
+    <line x1="205" y1="350" x2="400" y2="400" stroke="#4285f4" stroke-width="1" opacity="0.5"/>
+    
+    <!-- Sinc pattern -->
+    <path d="M 400,300 C 420,350 440,350 460,350" fill="none" stroke="#ea4335" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="80" y="140" font-family="Arial" font-size="12">Source</text>
+    <text x="180" y="120" font-family="Arial" font-size="12">Aperture</text>
+    <text x="320" y="120" font-family="Arial" font-size="12">Observation Screen</text>
+    <text x="220" y="180" font-family="Arial" font-size="12">Curved Wavefronts</text>
+    <text x="220" y="380" font-family="Arial" font-size="12">Planar Wavefronts</text>
+</svg>

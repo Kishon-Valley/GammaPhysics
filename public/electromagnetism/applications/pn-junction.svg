@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Definitions for markers and animations -->
+  <defs>
+    <marker id="arrowhead" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+      <path d="M0,0 L0,4 L6,2 Z" fill="#FF5733" />
+    </marker>
+    <marker id="fieldArrow" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
+      <path d="M0,0 L0,4 L6,2 Z" fill="#3498DB" />
+    </marker>
+    
+    <!-- Animation definitions -->
+    <style type="text/css">
+      @keyframes electronMove {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(-10px, 0); }
+      }
+      
+      @keyframes holeMove {
+        0%, 100% { transform: translate(0, 0); }
+        50% { transform: translate(10px, 0); }
+      }
+      
+      @keyframes fieldPulse {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 1; }
+      }
+      
+      @keyframes chargeFlow {
+        0% { stroke-dashoffset: 30; }
+        100% { stroke-dashoffset: 0; }
+      }
+      
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      
+      .electron {
+        animation: electronMove 3s ease-in-out infinite;
+      }
+      
+      .hole {
+        animation: holeMove 3s ease-in-out infinite;
+      }
+      
+      .electric-field {
+        animation: fieldPulse 2s infinite;
+      }
+      
+      .forward-current {
+        stroke-dasharray: 5, 3;
+        animation: chargeFlow 1s linear infinite;
+        opacity: 0;
+      }
+      
+      .forward-bias .forward-current {
+        opacity: 1;
+      }
+      
+      .forward-text {
+        opacity: 0;
+        animation: fadeIn 0.5s ease-in forwards;
+        animation-delay: 0.5s;
+      }
+      
+      .reverse-text {
+        opacity: 0;
+        animation: fadeIn 0.5s ease-in forwards;
+        animation-delay: 3.5s;
+      }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="white"/>
+  <text x="400" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">P-N Junction Behavior</text>
+  
+  <!-- P-N Junction at Equilibrium -->
+  <g transform="translate(150, 150)">
+    <text x="0" y="-30" font-family="Arial" font-size="18" font-weight="bold">Equilibrium State</text>
+    
+    <!-- Semiconductor regions -->
+    <rect x="0" y="0" width="200" height="160" fill="#8ECAE6" stroke="#2A9D8F" stroke-width="2"/>
+    <rect x="200" y="0" width="200" height="160" fill="#FFB703" stroke="#FB8500" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="100" y="30" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">P-type</text>
+    <text x="300" y="30" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">N-type</text>
+    
+    <!-- Depletion region -->
+    <rect x="160" y="0" width="80" height="160" fill="#E9C46A" fill-opacity="0.4" stroke="none"/>
+    <text x="200" y="185" font-family="Arial" font-size="14" text-anchor="middle">Depletion Region</text>
+    
+    <!-- Majority carriers -->
+    <!-- Holes in P-region -->
+    <g transform="translate(60, 80)">
+      <circle class="hole" cx="0" cy="0" r="8" fill="white" stroke="#FB8500" stroke-width="2"/>
+      <text x="0" y="0" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle">+</text>
+    </g>
+    <g transform="translate(100, 120)">
+      <circle class="hole" cx="0" cy="0" r="8" fill="white" stroke="#FB8500" stroke-width="2"/>
+      <text x="0" y="0" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle">+</text>
+    </g>
+    <g transform="translate(40, 50)">
+      <circle class="hole" cx="0" cy="0" r="8" fill="white" stroke="#FB8500" stroke-width="2"/>
+      <text x="0" y="0" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle">+</text>
+    </g>
+    
+    <!-- Electrons in N-region -->
+    <g transform="translate(340, 80)">
+      <circle class="electron" cx="0" cy="0" r="8" fill="#0077B6" stroke="#03045E" stroke-width="2"/>
+      <text x="0" y="0" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="white">-</text>
+    </g>
+    <g transform="translate(300, 120)">
+      <circle class="electron" cx="0" cy="0" r="8" fill="#0077B6" stroke="#03045E" stroke-width="2"/>
+      <text x="0" y="0" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="white">-</text>
+    </g>
+    <g transform="translate(360, 50)">
+      <circle class="electron" cx="0" cy="0" r="8" fill="#0077B6" stroke="#03045E" stroke-width="2"/>
+      <text x="0" y="0" font-family="Arial" font-size="12" text-anchor="middle" dominant-baseline="middle" fill="white">-</text>
+    </g>
+    
+    <!-- Exposed ions -->
+    <text x="180" y="60" font-family="Arial" font-size="16" fill="#FB8500" text-anchor="middle">-</text>
+    <text x="180" y="90" font-family="Arial" font-size="16" fill="#FB8500" text-anchor="middle">-</text>
+    <text x="180" y="120" font-family="Arial" font-size="16" fill="#FB8500" text-anchor="middle">-</text>
+    
+    <text x="220" y="60" font-family="Arial" font-size="16" fill="#0077B6" text-anchor="middle">+</text>
+    <text x="220" y="90" font-family="Arial" font-size="16" fill="#0077B6" text-anchor="middle">+</text>
+    <text x="220" y="120" font-family="Arial" font-size="16" fill="#0077B6" text-anchor="middle">+</text>
+    
+    <!-- Electric field -->
+    <line x1="210" y1="40" x2="190" y2="40" stroke="#3498DB" stroke-width="2" marker-end="url(#fieldArrow)" class="electric-field"/>
+    <line x1="210" y1="80" x2="190" y2="80" stroke="#3498DB" stroke-width="2" marker-end="url(#fieldArrow)" class="electric-field"/>
+    <line x1="210" y1="120" x2="190" y2="120" stroke="#3498DB" stroke-width="2" marker-end="url(#fieldArrow)" class="electric-field"/>
+    
+    <!-- Built-in potential -->
+    <text x="200" y="-10" font-family="Arial" font-size="14" text-anchor="middle">Built-in Potential</text>
+  </g>
+  
+  <!-- Forward Bias -->
+  <g transform="translate(150, 400)">
+    <text x="0" y="-30" font-family="Arial" font-size="18" font-weight="bold">Forward Bias</text>
+    
+    <!-- Semiconductor regions -->
+    <rect x="0" y="0" width="200" height="160" fill="#8ECAE6" stroke="#2A9D8F" stroke-width="2"/>
+    <rect x="200" y="0" width="200" height="160" fill="#FFB703" stroke="#FB8500" stroke-width="2"/>
+    
+    <!-- Battery -->
+    <rect x="-60" y="50" width="40" height="60" fill="white" stroke="black" stroke-width="2"/>
+    <line x1="-40" y1="40" x2="-40" y2="60" stroke="black" stroke-width="2"/>
+    <text x="-40" y="75" font-family="Arial" font-size="16" text-anchor="middle">+</text>
+    <line x1="-40" y1="100" x2="-40" y2="120" stroke="black" stroke-width="2"/>
+    <text x="-40" y="95" font-family="Arial" font-size="16" text-anchor="middle">-</text>
+    
+    <!-- Connection wires -->
+    <line x1="-40" y1="50" x2="-40" y2="0" stroke="black" stroke-width="2"/>
+    <line x1="-40" y1="0" x2="0" y2="0" stroke="black" stroke-width="2"/>
+    <line x1="-40" y1="110" x2="-40" y2="160" stroke="black" stroke-width="2"/>
+    <line x1="-40" y1="160" x2="400" y2="160" stroke="black" stroke-width="2"/>
+    <line x1="400" y1="160" x2="400" y2="0" stroke="black" stroke-width="2"/>
+    <line x1="400" y1="0" x2="400" y2="0" stroke="black" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="100" y="30" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">P-type</text>
+    <text x="300" y="30" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">N-type</text>
+    
+    <!-- Narrower depletion region -->
+    <rect x="180" y="0" width="40" height="160" fill="#E9C46A" fill-opacity="0.4" stroke="none"/>
+    
+    <!-- Current flow -->
+    <path class="forward-current" d="M50,20 C100,20 300,20 350,20" fill="none" stroke="#FF5733" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path class="forward-current" d="M50,80 C100,80 300,80 350,80" fill="none" stroke="#FF5733" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path class="forward-current" d="M50,140 C100,140 300,140 350,140" fill="none" stroke="#FF5733" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Current description -->
+    <text x="200" y="185" font-family="Arial" font-size="14" text-anchor="middle" class="forward-text">Electrons from N → P, Holes from P → N</text>
+  </g>
+  
+  <!-- Reverse Bias -->
+  <g transform="translate(550, 150)">
+    <text x="0" y="-30" font-family="Arial" font-size="18" font-weight="bold">Reverse Bias</text>
+    
+    <!-- Semiconductor regions -->
+    <rect x="0" y="0" width="200" height="160" fill="#8ECAE6" stroke="#2A9D8F" stroke-width="2"/>
+    <rect x="200" y="0" width="200" height="160" fill="#FFB703" stroke="#FB8500" stroke-width="2"/>
+    
+    <!-- Battery -->
+    <rect x="-60" y="50" width="40" height="60" fill="white" stroke="black" stroke-width="2"/>
+    <line x1="-40" y1="40" x2="-40" y2="60" stroke="black" stroke-width="2"/>
+    <text x="-40" y="75" font-family="Arial" font-size="16" text-anchor="middle">-</text>
+    <line x1="-40" y1="100" x2="-40" y2="120" stroke="black" stroke-width="2"/>
+    <text x="-40" y="95" font-family="Arial" font-size="16" text-anchor="middle">+</text>
+    
+    <!-- Connection wires -->
+    <line x1="-40" y1="50" x2="-40" y2="0" stroke="black" stroke-width="2"/>
+    <line x1="-40" y1="0" x2="0" y2="0" stroke="black" stroke-width="2"/>
+    <line x1="-40" y1="110" x2="-40" y2="160" stroke="black" stroke-width="2"/>
+    <line x1="-40" y1="160" x2="400" y2="160" stroke="black" stroke-width="2"/>
+    <line x1="400" y1="160" x2="400" y2="0" stroke="black" stroke-width="2"/>
+    <line x1="400" y1="0" x2="400" y2="0" stroke="black" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="100" y="30" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">P-type</text>
+    <text x="300" y="30" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">N-type</text>
+    
+    <!-- Wider depletion region -->
+    <rect x="140" y="0" width="120" height="160" fill="#E9C46A" fill-opacity="0.4" stroke="none"/>
+    
+    <!-- Electric field (stronger) -->
+    <line x1="230" y1="40" x2="170" y2="40" stroke="#3498DB" stroke-width="2" marker-end="url(#fieldArrow)" class="electric-field"/>
+    <line x1="230" y1="80" x2="170" y2="80" stroke="#3498DB" stroke-width="2" marker-end="url(#fieldArrow)" class="electric-field"/>
+    <line x1="230" y1="120" x2="170" y2="120" stroke="#3498DB" stroke-width="2" marker-end="url(#fieldArrow)" class="electric-field"/>
+    
+    <!-- Current description -->
+    <text x="200" y="185" font-family="Arial" font-size="14" text-anchor="middle" class="reverse-text">Only small leakage current flows</text>
+  </g>
+  
+  <!-- I-V characteristic curve -->
+  <g transform="translate(550, 400)">
+    <text x="0" y="-30" font-family="Arial" font-size="18" font-weight="bold">I-V Characteristic</text>
+    
+    <!-- Axes -->
+    <line x1="40" y1="80" x2="200" y2="80" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <line x1="100" y1="140" x2="100" y2="20" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Axis labels -->
+    <text x="200" y="100" font-family="Arial" font-size="14" text-anchor="middle">V</text>
+    <text x="80" y="25" font-family="Arial" font-size="14" text-anchor="middle">I</text>
+    
+    <!-- Origin labels -->
+    <text x="95" y="95" font-family="Arial" font-size="12" text-anchor="middle">0</text>
+    
+    <!-- Forward and reverse bias regions -->
+    <text x="150" y="60" font-family="Arial" font-size="12" text-anchor="middle">Forward</text>
+    <text x="50" y="60" font-family="Arial" font-size="12" text-anchor="middle">Reverse</text>
+    
+    <!-- Diode curve -->
+    <path d="M40,80 L90,82 Q95,80 100,80 C120,80 140,20 200,20" fill="none" stroke="#E63946" stroke-width="2.5"/>
+    
+    <!-- Breakdown region (optional) -->
+    <path d="M40,120 L60,80" fill="none" stroke="#E63946" stroke-width="2" stroke-dasharray="3,2"/>
+    <text x="50" y="130" font-family="Arial" font-size="11" text-anchor="middle">Breakdown</text>
+  </g>
+</svg> 

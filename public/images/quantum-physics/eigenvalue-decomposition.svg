@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="400" fill="#f8f8f8" />
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="24" text-anchor="middle" fill="#333">Eigenvalue Decomposition of a Hermitian Operator</text>
+  
+  <!-- Original state vector -->
+  <g transform="translate(150, 200)">
+    <line x1="0" y1="0" x2="120" y2="-80" stroke="#3366cc" stroke-width="3" />
+    <circle cx="0" cy="0" r="5" fill="#3366cc" />
+    <text x="130" y="-85" font-family="Arial" font-size="16" fill="#3366cc">|ψ⟩</text>
+    <text x="60" y="-20" font-family="Arial" font-size="14" fill="#666">Original state</text>
+  </g>
+  
+  <!-- Eigenvectors -->
+  <g transform="translate(400, 200)">
+    <!-- Eigenvector 1 -->
+    <line x1="0" y1="0" x2="100" y2="0" stroke="#cc3366" stroke-width="3" />
+    <circle cx="0" cy="0" r="5" fill="#cc3366" />
+    <text x="110" y="5" font-family="Arial" font-size="16" fill="#cc3366">|e₁⟩</text>
+    
+    <!-- Eigenvector 2 -->
+    <line x1="0" y1="0" x2="0" y2="-100" stroke="#33cc66" stroke-width="3" />
+    <circle cx="0" cy="0" r="5" fill="#33cc66" />
+    <text x="5" y="-110" font-family="Arial" font-size="16" fill="#33cc66">|e₂⟩</text>
+    
+    <!-- Projection lines (dashed) -->
+    <line x1="-250" y1="-80" x2="70" y2="-30" stroke="#999" stroke-width="2" stroke-dasharray="5,5" />
+    <line x1="-250" y1="-80" x2="30" y2="-70" stroke="#999" stroke-width="2" stroke-dasharray="5,5" />
+    
+    <!-- Projection components -->
+    <line x1="0" y1="0" x2="70" y2="-30" stroke="#cc3366" stroke-width="3" opacity="0.7" />
+    <line x1="0" y1="0" x2="30" y2="-70" stroke="#33cc66" stroke-width="3" opacity="0.7" />
+    
+    <text x="40" y="-15" font-family="Arial" font-size="12" fill="#cc3366">c₁|e₁⟩</text>
+    <text x="15" y="-50" font-family="Arial" font-size="12" fill="#33cc66">c₂|e₂⟩</text>
+    
+    <text x="50" y="50" font-family="Arial" font-size="14" fill="#666">Eigenstate decomposition</text>
+  </g>
+  
+  <!-- Operator action -->
+  <g transform="translate(650, 200)">
+    <!-- Eigenvector 1 scaled -->
+    <line x1="0" y1="0" x2="140" y2="0" stroke="#cc3366" stroke-width="3" />
+    <circle cx="0" cy="0" r="5" fill="#cc3366" />
+    <text x="150" y="5" font-family="Arial" font-size="16" fill="#cc3366">λ₁c₁|e₁⟩</text>
+    
+    <!-- Eigenvector 2 scaled -->
+    <line x1="0" y1="0" x2="0" y2="-60" stroke="#33cc66" stroke-width="3" />
+    <circle cx="0" cy="0" r="5" fill="#33cc66" />
+    <text x="5" y="-70" font-family="Arial" font-size="16" fill="#33cc66">λ₂c₂|e₂⟩</text>
+    
+    <!-- Resulting vector -->
+    <line x1="0" y1="0" x2="140" y2="-60" stroke="#6633cc" stroke-width="3" stroke-dasharray="5,5" />
+    <text x="150" y="-65" font-family="Arial" font-size="16" fill="#6633cc">Â|ψ⟩</text>
+    
+    <text x="50" y="50" font-family="Arial" font-size="14" fill="#666">Operator action</text>
+  </g>
+  
+  <!-- Equation -->
+  <text x="400" y="320" font-family="Arial" font-size="18" text-anchor="middle" fill="#333">
+    Â|ψ⟩ = Â(c₁|e₁⟩ + c₂|e₂⟩) = c₁λ₁|e₁⟩ + c₂λ₂|e₂⟩
+  </text>
+  
+  <!-- Arrows -->
+  <g>
+    <path d="M 270,200 L 320,200" stroke="#666" stroke-width="2" fill="none" />
+    <polygon points="320,200 310,195 310,205" fill="#666" />
+    
+    <path d="M 520,200 L 570,200" stroke="#666" stroke-width="2" fill="none" />
+    <polygon points="570,200 560,195 560,205" fill="#666" />
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-family="Arial" font-weight="bold">
+        Formation of Shock Waves
+    </text>
+    
+    <!-- Subsonic -->
+    <g transform="translate(150,150)">
+        <text x="0" y="-20" font-size="16">Subsonic (M < 1)</text>
+        <!-- Object -->
+        <circle cx="0" cy="0" r="10" fill="#2196F3"/>
+        <!-- Sound waves -->
+        <circle cx="0" cy="0" r="30" fill="none" stroke="#2196F3" stroke-width="1"/>
+        <circle cx="0" cy="0" r="50" fill="none" stroke="#2196F3" stroke-width="1"/>
+        <circle cx="0" cy="0" r="70" fill="none" stroke="#2196F3" stroke-width="1"/>
+    </g>
+    
+    <!-- Sonic -->
+    <g transform="translate(400,150)">
+        <text x="0" y="-20" font-size="16">Sonic (M = 1)</text>
+        <!-- Object -->
+        <circle cx="0" cy="0" r="10" fill="#FF9800"/>
+        <!-- Compressed waves -->
+        <path d="M -70,0 Q -35,-35 0,0 T 70,0" stroke="#FF9800" stroke-width="2" fill="none"/>
+        <path d="M -50,-20 Q -25,-55 0,-20 T 50,-20" stroke="#FF9800" stroke-width="2" fill="none"/>
+        <path d="M -50,20 Q -25,55 0,20 T 50,20" stroke="#FF9800" stroke-width="2" fill="none"/>
+    </g>
+    
+    <!-- Supersonic -->
+    <g transform="translate(650,150)">
+        <text x="0" y="-20" font-size="16">Supersonic (M > 1)</text>
+        <!-- Object -->
+        <circle cx="0" cy="0" r="10" fill="#F44336"/>
+        <!-- Shock cone -->
+        <path d="M -70,50 L 0,0 L -70,-50" fill="#F44336" fill-opacity="0.2" stroke="#F44336" stroke-width="2"/>
+        <!-- Mach angle -->
+        <path d="M 0,0 A 30,30 0 0,1 26,15" fill="none" stroke="#666" stroke-width="1"/>
+        <text x="15" y="15" font-size="14">θ</text>
+    </g>
+    
+    <!-- Speed Labels -->
+    <g transform="translate(400,300)">
+        <rect x="-200" y="-20" width="400" height="80" fill="#f8f8f8" stroke="#ccc"/>
+        <text font-family="Arial" font-size="14" x="0" y="0" text-anchor="middle">
+            <tspan x="0" dy="0">Mach Number (M) = v/v_s</tspan>
+            <tspan x="0" dy="20">v = object velocity</tspan>
+            <tspan x="0" dy="20">v_s = speed of sound</tspan>
+        </text>
+    </g>
+</svg>

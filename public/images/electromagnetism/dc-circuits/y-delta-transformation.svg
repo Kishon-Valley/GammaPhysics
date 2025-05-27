@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions for markers and animations -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0077cc"/>
+    </marker>
+    <style>
+      @keyframes flowAnimation {
+        0% { stroke-dashoffset: 50; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      @keyframes transformY {
+        0%, 45% { opacity: 1; }
+        50%, 95% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      @keyframes transformDelta {
+        0%, 45% { opacity: 0; }
+        50%, 95% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+      @keyframes rotateArrow {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      .current-flow {
+        stroke-dasharray: 5;
+        animation: flowAnimation 1s linear infinite;
+      }
+      text {
+        font-family: Arial, sans-serif;
+      }
+      .y-network {
+        animation: transformY 10s ease-in-out infinite;
+      }
+      .delta-network {
+        opacity: 0;
+        animation: transformDelta 10s ease-in-out infinite;
+      }
+      .rotate-arrows {
+        animation: rotateArrow 10s linear infinite;
+        transform-origin: 400px 240px;
+      }
+      .fadeIn-1 {
+        opacity: 0;
+        animation: fadeIn 1s ease-in forwards;
+        animation-delay: 0.5s;
+      }
+      .fadeIn-2 {
+        opacity: 0;
+        animation: fadeIn 1s ease-in forwards;
+        animation-delay: 1.5s;
+      }
+    </style>
+  </defs>
+
+  <!-- Background and title -->
+  <rect width="800" height="600" fill="#f8f9fa"/>
+  <text x="400" y="40" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Y-Δ (Star-Delta) Transformation</text>
+  <text x="400" y="70" font-size="16" text-anchor="middle" fill="#555">Conversion between equivalent three-terminal Y and Δ network configurations</text>
+
+  <!-- Y Network (Star) -->
+  <g class="y-network">
+    <text x="200" y="120" font-size="18" font-weight="bold" fill="#333">Y Network (Star)</text>
+    
+    <!-- Node A -->
+    <circle cx="250" cy="160" r="8" fill="#cc0000"/>
+    <text x="235" y="145" font-size="16" fill="#333">A</text>
+    
+    <!-- Node B -->
+    <circle cx="400" cy="350" r="8" fill="#cc0000"/>
+    <text x="415" y="350" font-size="16" fill="#333">B</text>
+    
+    <!-- Node C -->
+    <circle cx="550" cy="160" r="8" fill="#cc0000"/>
+    <text x="565" y="145" font-size="16" fill="#333">C</text>
+    
+    <!-- Center Node -->
+    <circle cx="400" cy="240" r="8" fill="#0077cc"/>
+    <text x="400" y="225" font-size="14" text-anchor="middle" fill="#0077cc">O</text>
+    
+    <!-- Resistors -->
+    <line x1="400" y1="240" x2="250" y2="160" stroke="#333" stroke-width="3"/>
+    <text x="315" y="180" font-size="16" fill="#333">R₁</text>
+    
+    <line x1="400" y1="240" x2="400" y2="350" stroke="#333" stroke-width="3"/>
+    <text x="415" y="295" font-size="16" fill="#333">R₂</text>
+    
+    <line x1="400" y1="240" x2="550" y2="160" stroke="#333" stroke-width="3"/>
+    <text x="485" y="180" font-size="16" fill="#333">R₃</text>
+    
+    <!-- Current Flow Indicators -->
+    <path d="M 370 220 L 340 190" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+    <path d="M 400 270 L 400 320" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+    <path d="M 430 220 L 460 190" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+  </g>
+
+  <!-- Delta Network (Triangle) -->
+  <g class="delta-network">
+    <text x="560" y="120" font-size="18" font-weight="bold" fill="#333">Δ Network (Delta)</text>
+    
+    <!-- Node A -->
+    <circle cx="250" cy="160" r="8" fill="#cc0000"/>
+    <text x="235" y="145" font-size="16" fill="#333">A</text>
+    
+    <!-- Node B -->
+    <circle cx="400" cy="350" r="8" fill="#cc0000"/>
+    <text x="415" y="350" font-size="16" fill="#333">B</text>
+    
+    <!-- Node C -->
+    <circle cx="550" cy="160" r="8" fill="#cc0000"/>
+    <text x="565" y="145" font-size="16" fill="#333">C</text>
+    
+    <!-- Resistors -->
+    <line x1="250" y1="160" x2="400" y2="350" stroke="#333" stroke-width="3"/>
+    <text x="290" y="270" font-size="16" fill="#333">R_AB</text>
+    
+    <line x1="400" y1="350" x2="550" y2="160" stroke="#333" stroke-width="3"/>
+    <text x="510" y="270" font-size="16" fill="#333">R_BC</text>
+    
+    <line x1="550" y1="160" x2="250" y2="160" stroke="#333" stroke-width="3"/>
+    <text x="400" y="145" font-size="16" fill="#333">R_CA</text>
+    
+    <!-- Current Flow Indicators -->
+    <path d="M 300 240 L 280 210" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+    <path d="M 450 250 L 480 230" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+    <path d="M 400 160 L 430 160" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+  </g>
+
+  <!-- Transformation Arrows -->
+  <g class="rotate-arrows">
+    <path d="M 300 240 C 350 270, 450 270, 500 240" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <path d="M 500 240 C 450 210, 350 210, 300 240" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  </g>
+
+  <!-- Conversion Formulas -->
+  <g transform="translate(0, 380)">
+    <text x="400" y="30" font-size="18" font-weight="bold" text-anchor="middle" fill="#333" class="fadeIn-1">Transformation Formulas</text>
+    
+    <!-- Y to Delta Formulas -->
+    <rect x="100" y="50" width="260" height="150" rx="10" ry="10" fill="#e0f0ff" stroke="#0077cc" stroke-width="2" class="fadeIn-1"/>
+    <text x="230" y="80" font-size="16" font-weight="bold" text-anchor="middle" fill="#333" class="fadeIn-1">Y to Δ Conversion</text>
+    
+    <text x="120" y="110" font-size="14" fill="#333" class="fadeIn-1">R_AB = (R₁×R₂ + R₂×R₃ + R₃×R₁) / R₃</text>
+    <text x="120" y="140" font-size="14" fill="#333" class="fadeIn-1">R_BC = (R₁×R₂ + R₂×R₃ + R₃×R₁) / R₁</text>
+    <text x="120" y="170" font-size="14" fill="#333" class="fadeIn-1">R_CA = (R₁×R₂ + R₂×R₃ + R₃×R₁) / R₂</text>
+    
+    <!-- Delta to Y Formulas -->
+    <rect x="440" y="50" width="260" height="150" rx="10" ry="10" fill="#e0f0ff" stroke="#0077cc" stroke-width="2" class="fadeIn-2"/>
+    <text x="570" y="80" font-size="16" font-weight="bold" text-anchor="middle" fill="#333" class="fadeIn-2">Δ to Y Conversion</text>
+    
+    <text x="460" y="110" font-size="14" fill="#333" class="fadeIn-2">R₁ = (R_AB × R_CA) / (R_AB + R_BC + R_CA)</text>
+    <text x="460" y="140" font-size="14" fill="#333" class="fadeIn-2">R₂ = (R_AB × R_BC) / (R_AB + R_BC + R_CA)</text>
+    <text x="460" y="170" font-size="14" fill="#333" class="fadeIn-2">R₃ = (R_BC × R_CA) / (R_AB + R_BC + R_CA)</text>
+  </g>
+
+  <!-- Applications -->
+  <g transform="translate(200, 580)">
+    <text x="200" y="0" font-size="16" font-weight="bold" text-anchor="middle" fill="#333" class="fadeIn-2">Applications:</text>
+    <text x="200" y="25" font-size="14" text-anchor="middle" fill="#333" class="fadeIn-2">Simplifying complex bridge circuits, three-phase power systems, and complex interconnected networks</text>
+  </g>
+</svg> 

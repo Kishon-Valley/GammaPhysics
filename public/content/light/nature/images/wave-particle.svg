@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-family="Arial" font-weight="bold">
+        Wave-Particle Duality
+    </text>
+    
+    <!-- Wave Nature (Left Side) -->
+    <g transform="translate(100,100)">
+        <text x="150" y="30" text-anchor="middle" font-size="18">Wave Nature</text>
+        
+        <!-- Wave Pattern -->
+        <path d="M 50,100 Q 100,50 150,100 T 250,100" 
+              fill="none" stroke="#4169E1" stroke-width="2"/>
+        
+        <!-- Properties -->
+        <text x="150" y="150" text-anchor="middle" font-size="14">Properties:</text>
+        <text x="150" y="170" text-anchor="middle" font-size="12">• Interference</text>
+        <text x="150" y="190" text-anchor="middle" font-size="12">• Diffraction</text>
+        <text x="150" y="210" text-anchor="middle" font-size="12">• Wavelength (λ)</text>
+    </g>
+    
+    <!-- Particle Nature (Right Side) -->
+    <g transform="translate(450,100)">
+        <text x="150" y="30" text-anchor="middle" font-size="18">Particle Nature</text>
+        
+        <!-- Photon Representation -->
+        <circle cx="150" cy="100" r="30" fill="#FFD700" opacity="0.6"/>
+        <circle cx="150" cy="100" r="20" fill="#FFD700" opacity="0.8"/>
+        <circle cx="150" cy="100" r="10" fill="#FFD700"/>
+        
+        <!-- Properties -->
+        <text x="150" y="150" text-anchor="middle" font-size="14">Properties:</text>
+        <text x="150" y="170" text-anchor="middle" font-size="12">• Energy (E = hf)</text>
+        <text x="150" y="190" text-anchor="middle" font-size="12">• Momentum</text>
+        <text x="150" y="210" text-anchor="middle" font-size="12">• Discrete Packets</text>
+    </g>
+    
+    <!-- Connecting Arrow -->
+    <g transform="translate(400,200)">
+        <line x1="-50" y1="0" x2="50" y2="0" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+        <text x="0" y="30" text-anchor="middle" font-size="14">Quantum Mechanics</text>
+    </g>
+    
+    <!-- Examples -->
+    <g transform="translate(100,300)">
+        <text x="300" y="30" text-anchor="middle" font-size="16">Experimental Evidence:</text>
+        <text x="200" y="60" text-anchor="middle" font-size="12">Double-Slit</text>
+        <text x="400" y="60" text-anchor="middle" font-size="12">Photoelectric Effect</text>
+        <text x="600" y="60" text-anchor="middle" font-size="12">Compton Scattering</text>
+    </g>
+    
+    <!-- Arrow Marker Definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+        </marker>
+    </defs>
+</svg>

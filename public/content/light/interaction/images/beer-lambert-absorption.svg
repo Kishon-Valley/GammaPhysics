@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- White Background -->
+  <rect width="800" height="500" fill="white"/>
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="20" text-anchor="middle" font-weight="bold">Beer-Lambert Law and Absorption Spectrum</text>
+  
+  <!-- Beer-Lambert Law Diagram -->
+  <g transform="translate(250, 250)">
+    <!-- Container -->
+    <rect x="-150" y="-100" width="300" height="200" stroke="black" stroke-width="2" fill="rgba(200,230,255,0.3)"/>
+    
+    <!-- Incident Light -->
+    <line x1="-180" y1="0" x2="-150" y2="0" stroke="yellow" stroke-width="4"/>
+    <polygon points="-150,0 -165,5 -165,-5" fill="yellow"/>
+    <text x="-165" y="-15" font-family="Arial" font-size="14">I₀</text>
+    
+    <!-- Transmitted Light -->
+    <line x1="150" y1="0" x2="180" y2="0" stroke="yellow" stroke-width="2"/>
+    <polygon points="180,0 165,5 165,-5" fill="yellow"/>
+    <text x="165" y="-15" font-family="Arial" font-size="14">I</text>
+    
+    <!-- Path length -->
+    <line x1="-150" y1="110" x2="150" y2="110" stroke="black" stroke-width="1"/>
+    <line x1="-150" y1="105" x2="-150" y2="115" stroke="black" stroke-width="1"/>
+    <line x1="150" y1="105" x2="150" y2="115" stroke="black" stroke-width="1"/>
+    <text x="0" y="130" font-family="Arial" font-size="14" text-anchor="middle">Path length (l)</text>
+    
+    <!-- Light rays through medium -->
+    <line x1="-120" y1="0" x2="-60" y2="0" stroke="yellow" stroke-width="3.5"/>
+    <line x1="-60" y1="0" x2="0" y2="0" stroke="yellow" stroke-width="3"/>
+    <line x1="0" y1="0" x2="60" y2="0" stroke="yellow" stroke-width="2.5"/>
+    <line x1="60" y1="0" x2="120" y2="0" stroke="yellow" stroke-width="2"/>
+    
+    <!-- Absorption indicators -->
+    <path d="M -90,0 L -90,-20 L -80,-20 L -80,0" stroke="red" stroke-width="1" fill="none"/>
+    <path d="M -30,0 L -30,-20 L -20,-20 L -20,0" stroke="red" stroke-width="1" fill="none"/>
+    <path d="M 30,0 L 30,-20 L 40,-20 L 40,0" stroke="red" stroke-width="1" fill="none"/>
+    <path d="M 90,0 L 90,-20 L 100,-20 L 100,0" stroke="red" stroke-width="1" fill="none"/>
+    
+    <!-- Medium label -->
+    <text x="0" y="20" font-family="Arial" font-size="16" text-anchor="middle">Absorbing Medium</text>
+    <text x="0" y="45" font-family="Arial" font-size="14" text-anchor="middle">Concentration (c)</text>
+    <text x="0" y="70" font-family="Arial" font-size="14" text-anchor="middle">Absorption Coefficient (α)</text>
+    
+    <!-- Beer-Lambert Equation -->
+    <text x="0" y="-120" font-family="Arial" font-size="16" text-anchor="middle">I = I₀e⁻ᵃᶜˡ</text>
+    <text x="0" y="-140" font-family="Arial" font-size="16" text-anchor="middle">A = log₁₀(I₀/I) = εcl</text>
+    
+    <!-- Label -->
+    <text x="0" y="-170" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Beer-Lambert Law</text>
+  </g>
+  
+  <!-- Absorption Spectrum Graph -->
+  <g transform="translate(600, 250)">
+    <!-- Axes -->
+    <line x1="-150" y1="100" x2="150" y2="100" stroke="black" stroke-width="2"/>
+    <line x1="-150" y1="100" x2="-150" y2="-100" stroke="black" stroke-width="2"/>
+    
+    <!-- X-axis labels -->
+    <text x="-150" y="120" font-family="Arial" font-size="14" text-anchor="middle">400</text>
+    <text x="-75" y="120" font-family="Arial" font-size="14" text-anchor="middle">500</text>
+    <text x="0" y="120" font-family="Arial" font-size="14" text-anchor="middle">600</text>
+    <text x="75" y="120" font-family="Arial" font-size="14" text-anchor="middle">700</text>
+    <text x="0" y="140" font-family="Arial" font-size="14" text-anchor="middle">Wavelength (nm)</text>
+    
+    <!-- Y-axis labels -->
+    <text x="-170" y="100" font-family="Arial" font-size="14" text-anchor="middle">0</text>
+    <text x="-170" y="50" font-family="Arial" font-size="14" text-anchor="middle">0.5</text>
+    <text x="-170" y="0" font-family="Arial" font-size="14" text-anchor="middle">1.0</text>
+    <text x="-170" y="-50" font-family="Arial" font-size="14" text-anchor="middle">1.5</text>
+    <text x="-200" y="0" font-family="Arial" font-size="14" text-anchor="middle" transform="rotate(-90 -200 0)">Absorbance (A)</text>
+    
+    <!-- Absorption peaks -->
+    <path d="M -150,100 C -140,100 -130,90 -120,80 C -110,50 -100,20 -90,10 C -80,0 -70,10 -60,30 C -50,60 -40,80 -30,85 C -20,90 -10,95 0,90 C 10,80 20,60 30,30 C 40,10 50,0 60,10 C 70,20 80,50 90,80 C 100,90 110,95 120,98 C 130,99 140,100 150,100" stroke="blue" stroke-width="2" fill="none"/>
+    
+    <!-- Peak labels -->
+    <text x="-90" y="-10" font-family="Arial" font-size="12" text-anchor="middle">Peak 1</text>
+    <line x1="-90" y1="10" x2="-90" y2="-5" stroke="black" stroke-width="1" stroke-dasharray="2,2"/>
+    
+    <text x="60" y="-10" font-family="Arial" font-size="12" text-anchor="middle">Peak 2</text>
+    <line x1="60" y1="10" x2="60" y2="-5" stroke="black" stroke-width="1" stroke-dasharray="2,2"/>
+    
+    <!-- Visible spectrum colors -->
+    <rect x="-150" y="150" width="43" height="10" fill="violet"/>
+    <rect x="-107" y="150" width="43" height="10" fill="blue"/>
+    <rect x="-64" y="150" width="43" height="10" fill="green"/>
+    <rect x="-21" y="150" width="43" height="10" fill="yellow"/>
+    <rect x="22" y="150" width="43" height="10" fill="orange"/>
+    <rect x="65" y="150" width="43" height="10" fill="red"/>
+    <rect x="108" y="150" width="42" height="10" fill="darkred"/>
+    
+    <!-- Label -->
+    <text x="0" y="-120" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold">Absorption Spectrum</text>
+  </g>
+</svg>

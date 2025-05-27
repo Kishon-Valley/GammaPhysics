@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Wave Energy Transfer</text>
+    
+    <!-- Wave medium particles -->
+    <g id="particles">
+        <!-- Row 1 -->
+        <circle cx="100" cy="150" r="10" fill="#2196F3"/>
+        <circle cx="200" cy="150" r="10" fill="#2196F3"/>
+        <circle cx="300" cy="150" r="10" fill="#2196F3"/>
+        <circle cx="400" cy="150" r="10" fill="#2196F3"/>
+        <circle cx="500" cy="150" r="10" fill="#2196F3"/>
+        <circle cx="600" cy="150" r="10" fill="#2196F3"/>
+        <circle cx="700" cy="150" r="10" fill="#2196F3"/>
+        
+        <!-- Vertical motion arrows -->
+        <path d="M100,180 L100,200 M95,195 L100,200 L105,195" stroke="black" stroke-width="2"/>
+        <path d="M200,120 L200,100 M195,105 L200,100 L205,105" stroke="black" stroke-width="2"/>
+        <path d="M300,180 L300,200 M295,195 L300,200 L305,195" stroke="black" stroke-width="2"/>
+        <path d="M400,120 L400,100 M395,105 L400,100 L405,105" stroke="black" stroke-width="2"/>
+        <path d="M500,180 L500,200 M495,195 L500,200 L505,195" stroke="black" stroke-width="2"/>
+        <path d="M600,120 L600,100 M595,105 L600,100 L605,105" stroke="black" stroke-width="2"/>
+        <path d="M700,180 L700,200 M695,195 L700,200 L705,195" stroke="black" stroke-width="2"/>
+    </g>
+    
+    <!-- Wave propagation arrow -->
+    <path d="M50,150 L750,150" stroke="#E91E63" stroke-width="2" stroke-dasharray="10,5"/>
+    <path d="M730,140 L750,150 L730,160" fill="none" stroke="#E91E63" stroke-width="2"/>
+    
+    <!-- Labels -->
+    <text x="400" y="250" text-anchor="middle" font-size="16">Energy travels with wave propagation</text>
+    <text x="400" y="280" text-anchor="middle" font-size="14">Particles oscillate up and down</text>
+    <text x="400" y="300" text-anchor="middle" font-size="14">Energy moves horizontally</text>
+</svg>

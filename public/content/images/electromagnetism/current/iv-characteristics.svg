@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid -->
+    <g id="grid" stroke="#ddd" stroke-width="1">
+        <!-- Vertical lines -->
+        <line x1="400" y1="50" x2="400" y2="350"/>
+        <!-- Horizontal lines -->
+        <line x1="100" y1="200" x2="700" y2="200"/>
+    </g>
+    
+    <!-- Axes -->
+    <g id="axes" stroke="#000" stroke-width="2">
+        <line x1="100" y1="350" x2="700" y2="350"/>
+        <line x1="400" y1="50" x2="400" y2="350"/>
+        <!-- Arrows -->
+        <polygon points="695,350 700,350 700,345" fill="#000"/>
+        <polygon points="400,55 400,50 405,50" fill="#000"/>
+    </g>
+    
+    <!-- Curves -->
+    <g id="curves">
+        <!-- Ohmic (linear) -->
+        <line x1="100" y1="350" x2="700" y2="50" 
+              stroke="#2196F3" stroke-width="3"/>
+        
+        <!-- Non-ohmic (diode) -->
+        <path d="M 100,340 Q 350,330 400,200 T 700,50" 
+              fill="none" stroke="#F44336" stroke-width="3"/>
+        
+        <!-- Non-ohmic (light bulb) -->
+        <path d="M 100,350 Q 250,300 400,200 T 700,50" 
+              fill="none" stroke="#4CAF50" stroke-width="3"/>
+    </g>
+    
+    <!-- Labels -->
+    <g id="labels" font-family="Arial">
+        <text x="400" y="30" font-size="20" text-anchor="middle">
+            Current-Voltage Characteristics
+        </text>
+        
+        <!-- Axis labels -->
+        <text x="720" y="350" font-size="16">V</text>
+        <text x="400" y="40" font-size="16">I</text>
+        
+        <!-- Curve labels -->
+        <text x="600" y="150" font-size="14" fill="#2196F3">Ohmic Conductor</text>
+        <text x="600" y="170" font-size="14" fill="#F44336">Semiconductor Diode</text>
+        <text x="600" y="190" font-size="14" fill="#4CAF50">Light Bulb</text>
+        
+        <!-- Origin -->
+        <text x="390" y="370" font-size="14">0</text>
+    </g>
+</svg>

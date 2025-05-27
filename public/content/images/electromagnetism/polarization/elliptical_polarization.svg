@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Axes -->
+    <line x1="50" y1="100" x2="350" y2="100" stroke="black" stroke-width="1"/>
+    <line x1="200" y1="50" x2="200" y2="150" stroke="black" stroke-width="1"/>
+    
+    <!-- Elliptical polarization -->
+    <ellipse cx="200" cy="100" rx="75" ry="40" stroke="blue" stroke-width="2" fill="none"/>
+    <path d="M 200 60 A 75 40 0 0 1 275 100" stroke="red" stroke-width="2" fill="none"/>
+    <path d="M 275 100 A 75 40 0 0 1 200 140" stroke="red" stroke-width="2" fill="none"/>
+    <path d="M 200 140 A 75 40 0 0 1 125 100" stroke="red" stroke-width="2" fill="none"/>
+    <path d="M 125 100 A 75 40 0 0 1 200 60" stroke="red" stroke-width="2" fill="none"/>
+    
+    <!-- Labels -->
+    <text x="360" y="110" font-size="12">z</text>
+    <text x="210" y="40" font-size="12">E</text>
+    <text x="180" y="120" font-size="12">Elliptical Polarization</text>
+</svg> 

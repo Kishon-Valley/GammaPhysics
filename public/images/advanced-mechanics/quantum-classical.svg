@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="800" height="400" fill="#ffffff"/>
+    
+    <!-- Wave-particle duality illustration -->
+    <g transform="translate(0,200)">
+        <!-- Wave function -->
+        <path d="M 50,0 C 100,-50 150,-50 200,0 C 250,50 300,50 350,0 C 400,-50 450,-50 500,0"
+              stroke="#0066cc" stroke-width="2" fill="none"/>
+        
+        <!-- Particle representation -->
+        <g transform="translate(275,0)">
+            <circle cx="0" cy="0" r="10" fill="#cc0000"/>
+            <!-- Probability cloud -->
+            <circle cx="0" cy="0" r="30" fill="#cc0000" opacity="0.2"/>
+            <circle cx="0" cy="0" r="50" fill="#cc0000" opacity="0.1"/>
+        </g>
+    </g>
+
+    <!-- Classical trajectory -->
+    <path d="M 550,200 L 750,200" stroke="#000000" stroke-width="2"/>
+    
+    <!-- Transition arrows -->
+    <path d="M 500,200 L 550,200" stroke="#009900" stroke-width="2" marker-end="url(#arrow)"/>
+    
+    <!-- Arrow marker definition -->
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0,0 L 10,5 L 0,10 z" fill="#009900"/>
+        </marker>
+    </defs>
+
+    <!-- Labels -->
+    <text x="400" y="30" text-anchor="middle" font-family="Arial" font-size="20">Quantum-Classical Transition</text>
+    <text x="200" y="150" font-family="Arial" font-size="16">Quantum Description</text>
+    <text x="650" y="150" font-family="Arial" font-size="16">Classical Limit</text>
+    
+    <!-- Mathematical symbols -->
+    <text x="200" y="350" font-family="Arial" font-size="16">ψ(x,t)</text>
+    <text x="650" y="350" font-family="Arial" font-size="16">x(t)</text>
+</svg>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="400" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font: bold 16px sans-serif; }
+        .label { font: 14px sans-serif; }
+        .math { font-style: italic; }
+    </style>
+    
+    <!-- Title -->
+    <text x="250" y="30" text-anchor="middle" class="title">Types of Collisions</text>
+    
+    <!-- Elastic Collision -->
+    <g transform="translate(0,50)">
+        <text x="250" y="30" text-anchor="middle" class="title">Elastic Collision</text>
+        <!-- Before -->
+        <circle cx="100" cy="80" r="20" fill="#ff4444"/>
+        <circle cx="300" cy="80" r="15" fill="#4444ff"/>
+        <line x1="130" y1="80" x2="170" y2="80" stroke="#000" marker-end="url(#arrowhead)"/>
+        <!-- After -->
+        <circle cx="200" cy="150" r="20" fill="#ff4444"/>
+        <circle cx="400" cy="150" r="15" fill="#4444ff"/>
+        <line x1="160" y1="150" x2="130" y2="150" stroke="#000" marker-end="url(#arrowhead)"/>
+        <line x1="330" y1="150" x2="370" y2="150" stroke="#000" marker-end="url(#arrowhead)"/>
+        <text x="80" y="85" class="label">m₁</text>
+        <text x="320" y="85" class="label">m₂</text>
+        <text x="180" y="70" class="label">v₁ᵢ</text>
+        <text x="150" y="170" class="label">v₁f</text>
+        <text x="370" y="170" class="label">v₂f</text>
+    </g>
+    
+    <!-- Inelastic Collision -->
+    <g transform="translate(0,220)">
+        <text x="250" y="30" text-anchor="middle" class="title">Perfectly Inelastic Collision</text>
+        <!-- Before -->
+        <circle cx="100" cy="80" r="20" fill="#ff4444"/>
+        <circle cx="300" cy="80" r="15" fill="#4444ff"/>
+        <line x1="130" y1="80" x2="170" y2="80" stroke="#000" marker-end="url(#arrowhead)"/>
+        <line x1="270" y1="80" x2="230" y2="80" stroke="#000" marker-end="url(#arrowhead)"/>
+        <!-- After -->
+        <rect x="180" y="140" width="40" height="30" fill="#9944ff"/>
+        <line x1="230" y1="155" x2="270" y2="155" stroke="#000" marker-end="url(#arrowhead)"/>
+        <text x="80" y="85" class="label">m₁</text>
+        <text x="320" y="85" class="label">m₂</text>
+        <text x="180" y="70" class="label">v₁ᵢ</text>
+        <text x="250" y="70" class="label">v₂ᵢ</text>
+        <text x="270" y="170" class="label">vf</text>
+    </g>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+        </marker>
+    </defs>
+</svg>

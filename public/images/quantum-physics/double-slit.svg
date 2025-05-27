@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions -->
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="sourceGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffcc00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6600;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="electronGradient" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" style="stop-color:#80c0ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0066cc;stop-opacity:1" />
+    </radialGradient>
+    
+    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4d8bf5;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#4d8bf5;stop-opacity:0" />
+    </linearGradient>
+    
+    <!-- Wave pattern -->
+    <pattern id="wavePattern" patternUnits="userSpaceOnUse" width="20" height="10" patternTransform="rotate(0)">
+      <path d="M0,5 C2.5,0 7.5,10 10,5 C12.5,0 17.5,10 20,5" fill="none" stroke="#4d8bf5" stroke-width="1.5" />
+    </pattern>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" />
+    </filter>
+    
+    <!-- Wave animation -->
+    <path id="wave1" d="M0,0 C10,-20 20,20 30,0 C40,-20 50,20 60,0" />
+    <path id="wave2" d="M0,0 C10,-15 20,15 30,0 C40,-15 50,15 60,0" />
+    
+    <!-- Particle paths -->
+    <path id="particlePath1" d="M0,0 L400,100" />
+    <path id="particlePath2" d="M0,0 L400,200" />
+    <path id="particlePath3" d="M0,0 L400,300" />
+    
+    <!-- Clip paths -->
+    <clipPath id="slitClip">
+      <rect x="0" y="60" width="20" height="40" />
+      <rect x="0" y="160" width="20" height="40" />
+    </clipPath>
+  </defs>
+  
+  <!-- Styles -->
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+      fill: #333;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    .subtitle {
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+    }
+    .label {
+      font-size: 14px;
+      text-anchor: middle;
+    }
+    .small-label {
+      font-size: 12px;
+      text-anchor: middle;
+    }
+    .equation {
+      font-size: 16px;
+      font-style: italic;
+      text-anchor: middle;
+    }
+    .axis {
+      stroke: #666;
+      stroke-width: 2;
+    }
+    .source {
+      fill: url(#sourceGradient);
+      stroke: #cc6600;
+      stroke-width: 1;
+    }
+    .barrier {
+      fill: #666;
+      stroke: #444;
+      stroke-width: 1;
+    }
+    .screen {
+      fill: #f0f0f0;
+      stroke: #ccc;
+      stroke-width: 1;
+    }
+    .electron {
+      fill: url(#electronGradient);
+      stroke: #0066cc;
+      stroke-width: 1;
+    }
+    .wave-front {
+      fill: none;
+      stroke: #4d8bf5;
+      stroke-width: 1.5;
+      stroke-dasharray: 3,2;
+    }
+    .interference-pattern {
+      fill: url(#waveGradient);
+    }
+    .annotation {
+      font-size: 14px;
+      fill: #555;
+    }
+    .highlight {
+      filter: url(#glow);
+    }
+    
+    /* Animations */
+    @keyframes moveParticle {
+      0% { opacity: 0; offset-distance: 0%; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { opacity: 0; offset-distance: 100%; }
+    }
+    
+    @keyframes expandWave {
+      0% { r: 20; opacity: 0.8; }
+      100% { r: 200; opacity: 0; }
+    }
+    
+    @keyframes pulseSource {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes buildPattern {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .particle1 {
+      offset-path: path('M150,150 L390,100');
+      animation: moveParticle 3s infinite;
+    }
+    
+    .particle2 {
+      offset-path: path('M150,150 L390,150');
+      animation: moveParticle 3s infinite;
+      animation-delay: 1s;
+    }
+    
+    .particle3 {
+      offset-path: path('M150,150 L390,200');
+      animation: moveParticle 3s infinite;
+      animation-delay: 2s;
+    }
+    
+    .wave-expand {
+      animation: expandWave 3s infinite;
+    }
+    
+    .source-pulse {
+      animation: pulseSource 2s infinite;
+    }
+    
+    .fade-in-out {
+      animation: fadeInOut 6s infinite;
+    }
+    
+    .build-pattern {
+      animation: buildPattern 10s ease-in;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="white" />
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Double-Slit Experiment</text>
+  <text x="400" y="70" class="subtitle">Wave-Particle Duality</text>
+  
+  <!-- Main visualization -->
+  <g transform="translate(50, 50)">
+    <!-- Source -->
+    <rect x="100" y="130" width="50" height="40" rx="5" class="source source-pulse" />
+    <text x="125" y="120" class="label">Source</text>
+    
+    <!-- Barrier with slits -->
+    <rect x="250" y="50" width="20" height="200" class="barrier" />
+    <rect x="250" y="60" width="20" height="40" fill="white" stroke="#444" />
+    <rect x="250" y="160" width="20" height="40" fill="white" stroke="#444" />
+    <text x="260" y="40" class="label">Barrier</text>
+    <text x="260" y="80" class="small-label">Slit 1</text>
+    <text x="260" y="180" class="small-label">Slit 2</text>
+    
+    <!-- Screen -->
+    <rect x="400" y="50" width="10" height="200" class="screen" />
+    <text x="405" y="40" class="label">Screen</text>
+    
+    <!-- Particle behavior -->
+    <g class="particle-view">
+      <circle class="electron particle1" cx="0" cy="0" r="5" />
+      <circle class="electron particle2" cx="0" cy="0" r="5" />
+      <circle class="electron particle3" cx="0" cy="0" r="5" />
+      
+      <!-- Individual particle detections -->
+      <circle cx="400" cy="80" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="100" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="120" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="125" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="130" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="140" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="150" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="160" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="165" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="170" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="185" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="190" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="200" r="2" fill="#0066cc" opacity="0.7" />
+      <circle cx="400" cy="220" r="2" fill="#0066cc" opacity="0.7" />
+    </g>
+    
+    <!-- Wave behavior (overlapping with particle view) -->
+    <g class="wave-view" opacity="0.5">
+      <!-- Expanding circular waves from source -->
+      <circle cx="125" cy="150" r="20" class="wave-front wave-expand" style="animation-delay: 0s" />
+      <circle cx="125" cy="150" r="20" class="wave-front wave-expand" style="animation-delay: 1s" />
+      <circle cx="125" cy="150" r="20" class="wave-front wave-expand" style="animation-delay: 2s" />
+      
+      <!-- Waves passing through slits -->
+      <circle cx="260" cy="80" r="20" class="wave-front wave-expand" clip-path="url(#slitClip)" style="animation-delay: 1.5s" />
+      <circle cx="260" cy="180" r="20" class="wave-front wave-expand" clip-path="url(#slitClip)" style="animation-delay: 1.5s" />
+      
+      <!-- Interference pattern -->
+      <rect x="400" y="50" width="10" height="200" fill="url(#wavePattern)" opacity="0.7" class="build-pattern" />
+    </g>
+  </g>
+  
+  <!-- Probability distribution -->
+  <g transform="translate(450, 150)">
+    <!-- Axes -->
+    <line x1="0" y1="200" x2="300" y2="200" class="axis" />
+    <line x1="0" y1="0" x2="0" y2="200" class="axis" />
+    
+    <!-- Axis labels -->
+    <text x="150" y="230" class="label">Position on Screen</text>
+    <text x="-30" y="100" class="label" transform="rotate(-90 -30 100)">Probability</text>
+    
+    <!-- Distribution pattern -->
+    <path d="M0,200 C30,190 60,120 90,200 C120,280 150,50 180,200 C210,280 240,120 270,200 C300,190 330,200 350,200" class="graph-line build-pattern" fill="none" stroke="#4d8bf5" stroke-width="2" />
+    
+    <!-- Single particle cases -->
+    <g class="fade-in-out" style="animation-delay: 0s">
+      <circle cx="150" cy="50" r="4" fill="#0066cc" />
+      <text x="180" y="50" class="small-label" text-anchor="start">Single electron</text>
+    </g>
+    
+    <g class="fade-in-out" style="animation-delay: 3s">
+      <circle cx="90" cy="200" r="4" fill="#0066cc" />
+      <text x="120" y="200" class="small-label" text-anchor="start">Single electron</text>
+    </g>
+    
+    <g class="fade-in-out" style="animation-delay: 6s">
+      <circle cx="210" cy="200" r="4" fill="#0066cc" />
+      <text x="240" y="200" class="small-label" text-anchor="start">Single electron</text>
+    </g>
+  </g>
+  
+  <!-- Explanations -->
+  <g transform="translate(150, 400)">
+    <rect x="-100" y="-40" width="200" height="80" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="0" y="-20" class="subtitle" text-anchor="middle">Particle Behavior</text>
+    <text x="0" y="0" class="annotation" text-anchor="middle">• Detected as individual particles</text>
+    <text x="0" y="20" class="annotation" text-anchor="middle">• Each electron takes one path</text>
+  </g>
+  
+  <g transform="translate(400, 400)">
+    <rect x="-100" y="-40" width="200" height="80" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="0" y="-20" class="subtitle" text-anchor="middle">Wave Behavior</text>
+    <text x="0" y="0" class="annotation" text-anchor="middle">• Interference pattern emerges</text>
+    <text x="0" y="20" class="annotation" text-anchor="middle">• As if passing through both slits</text>
+  </g>
+  
+  <g transform="translate(650, 400)">
+    <rect x="-100" y="-40" width="200" height="80" rx="5" fill="#f8f9fa" stroke="#ddd" />
+    <text x="0" y="-20" class="subtitle" text-anchor="middle">Key Insight</text>
+    <text x="0" y="0" class="annotation" text-anchor="middle">|ψ₁ + ψ₂|² ≠ |ψ₁|² + |ψ₂|²</text>
+    <text x="0" y="20" class="annotation" text-anchor="middle">Interference term present</text>
+  </g>
+</svg> 

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <rect width="800" height="700" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Wave Polarization States</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">Linear, Circular, and Elliptical</text>
+
+    <!-- Three Polarization Types -->
+    <g transform="translate(400,350)">
+        <!-- Linear Polarization -->
+        <g transform="translate(-250,0)">
+            <text x="0" y="-150" text-anchor="middle" font-size="16">Linear</text>
+            <line x1="-50" y1="0" x2="50" y2="0" stroke="#666" stroke-width="1"/>
+            <line x1="0" y1="-100" x2="0" y2="100" stroke="#666" stroke-width="1"/>
+            <path d="M -50,0 L 50,0" stroke="#FF5722" stroke-width="3">
+                <animate attributeName="transform"
+                         values="rotate(0);rotate(360)"
+                         dur="4s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Circular Polarization -->
+        <g transform="translate(0,0)">
+            <text x="0" y="-150" text-anchor="middle" font-size="16">Circular</text>
+            <circle cx="0" cy="0" r="50" fill="none" stroke="#666" stroke-width="1"/>
+            <circle cx="0" cy="0" r="2" fill="#FF5722"/>
+            <line x1="0" y1="0" x2="50" y2="0" stroke="#FF5722" stroke-width="3">
+                <animate attributeName="transform"
+                         values="rotate(0);rotate(360)"
+                         dur="4s"
+                         repeatCount="indefinite"/>
+            </line>
+        </g>
+
+        <!-- Elliptical Polarization -->
+        <g transform="translate(250,0)">
+            <text x="0" y="-150" text-anchor="middle" font-size="16">Elliptical</text>
+            <ellipse cx="0" cy="0" rx="70" ry="40" fill="none" stroke="#666" stroke-width="1"/>
+            <line x1="0" y1="0" x2="70" y2="0" stroke="#FF5722" stroke-width="3">
+                <animate attributeName="transform"
+                         values="rotate(0);rotate(360)"
+                         dur="4s"
+                         repeatCount="indefinite"/>
+            </line>
+        </g>
+    </g>
+
+    <!-- Jones Vectors -->
+    <g transform="translate(50,550)">
+        <rect width="700" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Jones Vectors:</text>
+        <text x="20" y="55" font-size="14">Linear: [1, 0] - Vertical, [1/√2, 1/√2] - 45°</text>
+        <text x="20" y="80" font-size="14">Circular: [1, ±i]/√2 - Right/Left-handed</text>
+        <text x="20" y="105" font-size="14">Elliptical: [cos θ, sin θ exp(iδ)]</text>
+    </g>
+
+    <!-- Animation Legend -->
+    <g transform="translate(600,200)">
+        <rect width="150" height="100" fill="#f8f8f8" stroke="#666"/>
+        <text x="10" y="30" font-size="12">Orange Line:</text>
+        <text x="10" y="45" font-size="12">Electric Field Vector</text>
+        <text x="10" y="70" font-size="12">Gray Lines/Curves:</text>
+        <text x="10" y="85" font-size="12">Trace Path</text>
+    </g>
+</svg> 

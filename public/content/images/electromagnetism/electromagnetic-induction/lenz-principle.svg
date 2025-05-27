@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+    <defs>
+        <!-- Arrow markers -->
+        <marker id="magnetic-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+        <marker id="current-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+        <marker id="induced-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+    </defs>
+
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold">
+        Lenz's Law: Induced EMF Opposes Flux Change
+    </text>
+
+    <!-- Two scenarios side by side -->
+    <g transform="translate(0,0)">
+        <!-- Scenario 1: Approaching Magnet -->
+        <g transform="translate(250,250)">
+            <!-- Title -->
+            <text x="0" y="-180" text-anchor="middle" font-size="16" font-weight="bold">
+                Approaching Magnet
+            </text>
+
+            <!-- Conducting loop -->
+            <circle cx="0" cy="0" r="80" fill="none" stroke="#666" stroke-width="3"/>
+
+            <!-- Moving magnet -->
+            <g>
+                <rect x="-20" y="-140" width="40" height="60" fill="#f5f5f5" stroke="#666">
+                    <animate attributeName="y"
+                             values="-180;-120;-180"
+                             dur="3s"
+                             repeatCount="indefinite"/>
+                </rect>
+                <text x="-5" y="-150" font-size="16">N</text>
+                <text x="-5" y="-100" font-size="16">S</text>
+            </g>
+
+            <!-- Magnetic field lines -->
+            <path d="M 0,-140 C 20,-100 20,-60 0,-20" 
+                  fill="none" stroke="#4CAF50" stroke-width="2" 
+                  marker-end="url(#magnetic-arrow)">
+                <animate attributeName="d"
+                         values="M 0,-140 C 20,-100 20,-60 0,-20;
+                                M 0,-120 C 20,-80 20,-40 0,0;
+                                M 0,-140 C 20,-100 20,-60 0,-20"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </path>
+
+            <!-- Induced current -->
+            <circle cx="0" cy="0" r="80" fill="none" 
+                    stroke="#2196F3" stroke-width="2" 
+                    stroke-dasharray="15,15">
+                <animate attributeName="stroke-dashoffset"
+                         values="0;100"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </circle>
+        </g>
+
+        <!-- Scenario 2: Receding Magnet -->
+        <g transform="translate(550,250)">
+            <!-- Title -->
+            <text x="0" y="-180" text-anchor="middle" font-size="16" font-weight="bold">
+                Receding Magnet
+            </text>
+
+            <!-- Conducting loop -->
+            <circle cx="0" cy="0" r="80" fill="none" stroke="#666" stroke-width="3"/>
+
+            <!-- Moving magnet -->
+            <g>
+                <rect x="-20" y="-140" width="40" height="60" fill="#f5f5f5" stroke="#666">
+                    <animate attributeName="y"
+                             values="-120;-180;-120"
+                             dur="3s"
+                             repeatCount="indefinite"/>
+                </rect>
+                <text x="-5" y="-150" font-size="16">N</text>
+                <text x="-5" y="-100" font-size="16">S</text>
+            </g>
+
+            <!-- Magnetic field lines -->
+            <path d="M 0,-140 C -20,-100 -20,-60 0,-20" 
+                  fill="none" stroke="#4CAF50" stroke-width="2" 
+                  marker-end="url(#magnetic-arrow)">
+                <animate attributeName="d"
+                         values="M 0,-120 C -20,-80 -20,-40 0,0;
+                                M 0,-140 C -20,-100 -20,-60 0,-20;
+                                M 0,-120 C -20,-80 -20,-40 0,0"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </path>
+
+            <!-- Induced current -->
+            <circle cx="0" cy="0" r="80" fill="none" 
+                    stroke="#2196F3" stroke-width="2" 
+                    stroke-dasharray="15,15">
+                <animate attributeName="stroke-dashoffset"
+                         values="0;-100"
+                         dur="1s"
+                         repeatCount="indefinite"/>
+            </circle>
+        </g>
+    </g>
+
+    <!-- Explanation Box - Moved up by adjusting the y-coordinate from 500 to 450 -->
+    <g transform="translate(50,450)">
+        <rect width="700" height="120" fill="#f8f9fa" stroke="#e9ecef" stroke-width="1" rx="5"/>
+        
+        <text x="20" y="30" font-size="16" font-weight="bold">What's happening in this animation?</text>
+        <text x="20" y="60" font-size="14">The animation shows Lenz's Law in action through two scenarios:</text>
+        <text x="20" y="85" font-size="12">Left: As the magnet approaches, it creates an increasing magnetic field. The coil responds by generating</text>
+        <text x="20" y="100" font-size="12">a current that produces an opposing magnetic field, pushing back against the approaching magnet.</text>
+        <text x="20" y="115" font-size="12">Right: When the magnet moves away, the coil's current reverses to create a magnetic field that tries to</text>
+        <text x="20" y="130" font-size="12">prevent the decrease in magnetic flux by pulling the magnet back.</text>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(50,100)">
+        <text x="0" y="0" font-size="14" font-weight="bold">Legend:</text>
+        <line x1="0" y1="20" x2="30" y2="20" stroke="#4CAF50" stroke-width="2" marker-end="url(#magnetic-arrow)"/>
+        <text x="40" y="25" font-size="12">Magnetic Field</text>
+        <line x1="150" y1="20" x2="180" y2="20" stroke="#2196F3" stroke-width="2" marker-end="url(#current-arrow)"/>
+        <text x="190" y="25" font-size="12">Induced Current</text>
+    </g>
+</svg> 

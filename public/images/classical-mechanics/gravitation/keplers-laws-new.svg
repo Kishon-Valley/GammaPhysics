@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="400" height="300" fill="white"/>
+    
+    <!-- First Law: Elliptical Orbit -->
+    <g transform="translate(0,-20)">
+        <!-- Ellipse -->
+        <ellipse cx="200" cy="150" rx="150" ry="80" fill="none" stroke="blue" stroke-width="1"/>
+        <!-- Sun at focus -->
+        <circle cx="150" cy="150" r="15" fill="yellow" stroke="orange" stroke-width="2"/>
+        <!-- Planet -->
+        <circle cx="350" cy="150" r="8" fill="blue"/>
+        <!-- Label -->
+        <text x="20" y="150" font-family="Arial" font-size="12">First Law:</text>
+        <text x="20" y="165" font-family="Arial" font-size="10">Elliptical Orbits</text>
+    </g>
+    
+    <!-- Second Law: Equal Areas -->
+    <g transform="translate(0,80)">
+        <!-- Orbit sections -->
+        <path d="M 150 150 L 250 150 L 200 100 Z" fill="lightblue" opacity="0.3" stroke="blue"/>
+        <path d="M 150 150 L 200 200 L 170 170 Z" fill="lightblue" opacity="0.3" stroke="blue"/>
+        <!-- Label -->
+        <text x="20" y="150" font-family="Arial" font-size="12">Second Law:</text>
+        <text x="20" y="165" font-family="Arial" font-size="10">Equal Areas</text>
+    </g>
+    
+    <!-- Third Law: Period Relationship -->
+    <text x="20" y="270" font-family="Arial" font-size="12">Third Law: T² ∝ a³</text>
+</svg>

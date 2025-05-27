@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Grid -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f0f0f0" stroke-width="1"/>
+    </pattern>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+    
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="24" font-family="Arial" font-weight="bold">
+        Supersonic Flight and Shock Waves
+    </text>
+    
+    <!-- Aircraft -->
+    <g transform="translate(400,200)">
+        <!-- Shock Wave Cone -->
+        <path d="M 0,0 L 200,100 L 200,-100 Z" 
+              fill="#FFE0B2" fill-opacity="0.3" stroke="#FF5722" stroke-width="2"/>
+        
+        <!-- Aircraft Symbol -->
+        <path d="M -20,0 L 20,0 L 30,-10 L 20,0 L 30,10 L 20,0" 
+              fill="#424242" stroke="none"/>
+        
+        <!-- Mach Angle -->
+        <path d="M 0,0 A 50,50 0 0,1 43,25" fill="none" stroke="#666" stroke-width="1"/>
+        <text x="30" y="20" font-size="14">θ</text>
+        
+        <!-- Direction Arrow -->
+        <line x1="-40" y1="0" x2="40" y2="0" stroke="black" stroke-width="2" marker-end="url(#arrowhead)"/>
+    </g>
+    
+    <!-- Equations -->
+    <g transform="translate(100,400)">
+        <rect x="-10" y="-60" width="300" height="80" fill="white" stroke="#ccc"/>
+        <text font-family="Arial" font-size="16">
+            <tspan x="0" dy="0">Mach Angle:</tspan>
+            <tspan x="0" dy="25">sin θ = 1/M = v_sound/v_object</tspan>
+        </text>
+    </g>
+    
+    <!-- Properties -->
+    <g transform="translate(500,400)">
+        <text font-family="Arial" font-size="14">
+            <tspan x="0" dy="0">• M > 1: Supersonic flight</tspan>
+            <tspan x="0" dy="20">• Shock wave forms cone</tspan>
+            <tspan x="0" dy="20">• Creates sonic boom</tspan>
+        </text>
+    </g>
+    
+    <!-- Arrow marker definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+        </marker>
+    </defs>
+</svg>

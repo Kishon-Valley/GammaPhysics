@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <defs>
+        <marker id="force-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#FF5722"/>
+        </marker>
+        <marker id="current-arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+        </marker>
+    </defs>
+
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+
+    <!-- Title -->
+    <text x="400" y="40" text-anchor="middle" font-size="20" font-weight="bold">
+        Applications of Electromagnetic Induction
+    </text>
+
+    <!-- Three applications side by side -->
+    <g transform="translate(0,0)">
+        <!-- 1. Electric Generator -->
+        <g transform="translate(200,200)">
+            <text x="0" y="-120" text-anchor="middle" font-size="16" font-weight="bold">Electric Generator</text>
+            
+            <!-- Rotating coil -->
+            <rect x="-40" y="-40" width="80" height="80" fill="none" stroke="#666" stroke-width="2">
+                <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    values="0;360"
+                    dur="3s"
+                    repeatCount="indefinite"/>
+            </rect>
+            
+            <!-- Output voltage -->
+            <path d="M 60,-30 Q 90,0 120,-30" fill="none" stroke="#2196F3" stroke-width="2">
+                <animate
+                    attributeName="d"
+                    values="M 60,-30 Q 90,0 120,-30;
+                            M 60,30 Q 90,0 120,30;
+                            M 60,-30 Q 90,0 120,-30"
+                    dur="1.5s"
+                    repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- 2. Electromagnetic Brake -->
+        <g transform="translate(400,200)">
+            <text x="0" y="-120" text-anchor="middle" font-size="16" font-weight="bold">Electromagnetic Brake</text>
+            
+            <!-- Moving conductor -->
+            <rect x="-60" y="-30" width="120" height="60" fill="#e0e0e0" stroke="#666">
+                <animate attributeName="x"
+                         values="-80;-40;-80"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </rect>
+            
+            <!-- Braking force -->
+            <line x1="0" y1="-50" x2="0" y2="50" stroke="#FF5722" stroke-width="2" marker-end="url(#force-arrow)"/>
+        </g>
+
+        <!-- 3. Metal Detector -->
+        <g transform="translate(600,200)">
+            <text x="0" y="-120" text-anchor="middle" font-size="16" font-weight="bold">Metal Detector</text>
+            
+            <!-- Detection coil -->
+            <circle cx="0" cy="0" r="50" fill="none" stroke="#666" stroke-width="2"/>
+            
+            <!-- Magnetic field lines -->
+            <g stroke="#2196F3" stroke-width="2" stroke-dasharray="5,5">
+                <circle cx="0" cy="0" r="30" fill="none">
+                    <animate attributeName="r"
+                             values="20;40;20"
+                             dur="2s"
+                             repeatCount="indefinite"/>
+                </circle>
+            </g>
+        </g>
+    </g>
+
+    <!-- Equations for each application -->
+    <g transform="translate(0,350)">
+        <!-- Generator equation -->
+        <text x="200" y="0" text-anchor="middle" font-family="math" font-size="14">
+            ε = -N dΦ/dt
+        </text>
+        
+        <!-- Brake equation -->
+        <text x="400" y="0" text-anchor="middle" font-family="math" font-size="14">
+            F = -kv
+        </text>
+        
+        <!-- Metal detector equation -->
+        <text x="600" y="0" text-anchor="middle" font-family="math" font-size="14">
+            L = μN²A/l
+        </text>
+    </g>
+
+    <!-- Explanation Box -->
+    <g transform="translate(50,500)">
+        <rect width="700" height="120" fill="#f8f9fa" stroke="#e9ecef" stroke-width="1" rx="5"/>
+        
+        <text x="20" y="30" font-size="16" font-weight="bold">What's happening in this animation?</text>
+        <text x="20" y="60" font-size="14">This animation shows how Lenz's Law is used in real devices:</text>
+        <text x="20" y="85" font-size="12">Notice how the induced currents (shown in blue) always oppose the motion that creates them. In the</text>
+        <text x="20" y="100" font-size="12">brake, this creates a stopping force. In the generator, it requires mechanical work to maintain rotation.</text>
+        <text x="20" y="115" font-size="12">The transformer shows how changing magnetic fields can transfer energy between circuits.</text>
+    </g>
+</svg> 

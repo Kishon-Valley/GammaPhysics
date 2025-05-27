@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+
+  <!-- Definitions for markers and animations -->
+  <defs>
+    <!-- Arrow markers for current flow -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#3498db" />
+    </marker>
+    <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e74c3c" />
+    </marker>
+    
+    <!-- Magnetic field marker -->
+    <marker id="magfield" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <circle cx="4" cy="4" r="2" fill="#9b59b6" />
+    </marker>
+    
+    <!-- Animations -->
+    <linearGradient id="primaryCurrent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="0.3">
+        <animate attributeName="offset" values="0;1" dur="1.5s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="25%" stop-color="#3498db">
+        <animate attributeName="offset" values="0.25;1.25" dur="1.5s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#3498db" stop-opacity="0.3">
+        <animate attributeName="offset" values="0.5;1.5" dur="1.5s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+    
+    <linearGradient id="secondaryCurrent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="0.3">
+        <animate attributeName="offset" values="0;1" dur="1.5s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="25%" stop-color="#e74c3c">
+        <animate attributeName="offset" values="0.25;1.25" dur="1.5s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#e74c3c" stop-opacity="0.3">
+        <animate attributeName="offset" values="0.5;1.5" dur="1.5s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+    
+    <!-- Magnetic field animation -->
+    <radialGradient id="magneticField" cx="0.5" cy="0.5" r="0.5" fx="0.5" fy="0.5">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="0.7">
+        <animate attributeName="stop-opacity" values="0.7;0.1;0.7" dur="2s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#9b59b6" stop-opacity="0">
+        <animate attributeName="stop-opacity" values="0;0.1;0" dur="2s" repeatCount="indefinite" />
+      </stop>
+    </radialGradient>
+  </defs>
+  
+  <!-- Styles -->
+  <style>
+    .title { font: bold 24px Arial; fill: #2c3e50; }
+    .subtitle { font: bold 18px Arial; fill: #2c3e50; }
+    .label { font: 14px Arial; fill: #2c3e50; }
+    .value { font: 14px Arial; fill: #3498db; }
+    .wire { stroke: #2c3e50; stroke-width: 2; fill: none; }
+    .core { fill: #95a5a6; stroke: #7f8c8d; stroke-width: 1; }
+    .primary-coil { fill: none; stroke: #3498db; stroke-width: 3; }
+    .secondary-coil { fill: none; stroke: #e74c3c; stroke-width: 3; }
+    .source { fill: #ecf0f1; stroke: #2c3e50; stroke-width: 2; }
+    .load { fill: #ecf0f1; stroke: #2c3e50; stroke-width: 2; }
+    .axis { stroke: #7f8c8d; stroke-width: 1; }
+    .tick { stroke: #7f8c8d; stroke-width: 1; }
+    .grid { stroke: #ecf0f1; stroke-width: 1; }
+    .equation-box { fill: #f9f9f9; stroke: #95a5a6; stroke-width: 1; }
+    
+    .magnetic-field-line {
+      stroke: #9b59b6;
+      stroke-width: 2;
+      stroke-dasharray: 5;
+      fill: none;
+      opacity: 0.6;
+    }
+    
+    @keyframes flowPrimary {
+      from { stroke-dashoffset: 100; }
+      to { stroke-dashoffset: 0; }
+    }
+    
+    @keyframes flowSecondary {
+      from { stroke-dashoffset: 0; }
+      to { stroke-dashoffset: 100; }
+    }
+    
+    @keyframes pulseMagnetic {
+      0% { opacity: 0.2; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0.2; }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .primary-current {
+      stroke: url(#primaryCurrent);
+      stroke-width: 3;
+      stroke-dasharray: 10 5;
+      animation: flowPrimary 1.5s linear infinite;
+      marker-end: url(#arrowhead);
+    }
+    
+    .secondary-current {
+      stroke: url(#secondaryCurrent);
+      stroke-width: 3;
+      stroke-dasharray: 10 5;
+      animation: flowSecondary 1.5s linear infinite;
+      marker-end: url(#arrowhead2);
+    }
+    
+    .magnetic-pulse {
+      animation: pulseMagnetic 2s ease-in-out infinite;
+    }
+    
+    .fade-in {
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#ffffff" />
+  
+  <!-- Title -->
+  <text x="400" y="35" class="title" text-anchor="middle">Transformer</text>
+  
+  <!-- Transformer Diagram -->
+  <g id="transformer" transform="translate(400, 200)">
+    <!-- Iron Core -->
+    <path d="M-100,-100 L-100,100 L-80,100 L-80,-100 Z" class="core" />
+    <path d="M80,-100 L80,100 L100,100 L100,-100 Z" class="core" />
+    <path d="M-80,-100 L-80,-80 L80,-80 L80,-100 Z" class="core" />
+    <path d="M-80,100 L-80,80 L80,80 L80,100 Z" class="core" />
+    
+    <!-- Primary Coil (Left) -->
+    <g id="primary-coil">
+      <path d="M-140,-60 C-155,-60 -155,-40 -140,-40" class="primary-coil" />
+      <path d="M-140,-40 C-155,-40 -155,-20 -140,-20" class="primary-coil" />
+      <path d="M-140,-20 C-155,-20 -155,0 -140,0" class="primary-coil" />
+      <path d="M-140,0 C-155,0 -155,20 -140,20" class="primary-coil" />
+      <path d="M-140,20 C-155,20 -155,40 -140,40" class="primary-coil" />
+      <path d="M-140,40 C-155,40 -155,60 -140,60" class="primary-coil" />
+      
+      <text x="-190" y="0" class="label" text-anchor="middle">Primary</text>
+      <text x="-190" y="20" class="label" text-anchor="middle">N₁ turns</text>
+    </g>
+    
+    <!-- Secondary Coil (Right) -->
+    <g id="secondary-coil">
+      <path d="M140,-60 C155,-60 155,-40 140,-40" class="secondary-coil" />
+      <path d="M140,-40 C155,-40 155,-20 140,-20" class="secondary-coil" />
+      <path d="M140,-20 C155,-20 155,0 140,0" class="secondary-coil" />
+      <path d="M140,0 C155,0 155,20 140,20" class="secondary-coil" />
+      <path d="M140,20 C155,20 155,40 140,40" class="secondary-coil" />
+      <path d="M140,40 C155,40 155,60 140,60" class="secondary-coil" />
+      
+      <text x="190" y="0" class="label" text-anchor="middle">Secondary</text>
+      <text x="190" y="20" class="label" text-anchor="middle">N₂ turns</text>
+    </g>
+    
+    <!-- Magnetic Field Lines -->
+    <g class="magnetic-pulse">
+      <ellipse cx="0" cy="0" rx="60" ry="90" class="magnetic-field-line" />
+      <ellipse cx="0" cy="0" rx="40" ry="70" class="magnetic-field-line" />
+      <ellipse cx="0" cy="0" rx="20" ry="50" class="magnetic-field-line" />
+    </g>
+    
+    <!-- AC Source (Left) -->
+    <g id="ac-source" transform="translate(-220, 0)">
+      <circle cx="0" cy="0" r="25" class="source" />
+      <path d="M-12,0 L12,0" class="wire" />
+      <path d="M0,-10 Q5,0 0,10 Q-5,0 0,-10" class="wire" />
+      <text x="0" y="-30" class="label" text-anchor="middle">AC Source</text>
+      <text x="0" y="40" class="label" text-anchor="middle">V₁</text>
+    </g>
+    
+    <!-- Load (Right) -->
+    <g id="load" transform="translate(220, 0)">
+      <rect x="-25" y="-15" width="50" height="30" class="load" />
+      <text x="0" y="-30" class="label" text-anchor="middle">Load</text>
+      <text x="0" y="40" class="label" text-anchor="middle">V₂</text>
+    </g>
+    
+    <!-- Wires -->
+    <g id="wires">
+      <!-- Primary Circuit -->
+      <path d="M-220,-25 L-220,-100 L-250,-100 L-250,100 L-220,100 L-220,25" class="wire" />
+      <path d="M-195,0 L-140,0" class="wire" />
+      <path d="M-140,-60 L-140,-100 L-220,-100" class="wire" />
+      <path d="M-140,60 L-140,100 L-220,100" class="wire" />
+      
+      <!-- Secondary Circuit -->
+      <path d="M220,-25 L220,-100 L250,-100 L250,100 L220,100 L220,25" class="wire" />
+      <path d="M195,0 L140,0" class="wire" />
+      <path d="M140,-60 L140,-100 L220,-100" class="wire" />
+      <path d="M140,60 L140,100 L220,100" class="wire" />
+    </g>
+    
+    <!-- Current Flows -->
+    <g id="currents">
+      <path d="M-220,-80 L-250,-80" class="primary-current" />
+      <path d="M-220,80 L-140,80" class="primary-current" />
+      <path d="M-170,0 L-140,0" class="primary-current" />
+      <path d="M-140,-80 L-140,-60" class="primary-current" />
+      
+      <path d="M220,-80 L250,-80" class="secondary-current" />
+      <path d="M220,80 L140,80" class="secondary-current" />
+      <path d="M170,0 L140,0" class="secondary-current" />
+      <path d="M140,-80 L140,-60" class="secondary-current" />
+    </g>
+    
+    <!-- Turn Ratio Slider -->
+    <g id="turn-ratio-control" transform="translate(0, 150)">
+      <text x="0" y="-25" class="subtitle" text-anchor="middle">Turn Ratio (N₂/N₁)</text>
+      <line x1="-100" y1="0" x2="100" y2="0" class="axis" />
+      <line x1="-100" y1="-5" x2="-100" y2="5" class="tick" />
+      <line x1="-50" y1="-3" x2="-50" y2="3" class="tick" />
+      <line x1="0" y1="-5" x2="0" y2="5" class="tick" />
+      <line x1="50" y1="-3" x2="50" y2="3" class="tick" />
+      <line x1="100" y1="-5" x2="100" y2="5" class="tick" />
+      
+      <text x="-100" y="15" class="label" text-anchor="middle">0.5</text>
+      <text x="-50" y="15" class="label" text-anchor="middle">0.75</text>
+      <text x="0" y="15" class="label" text-anchor="middle">1.0</text>
+      <text x="50" y="15" class="label" text-anchor="middle">1.5</text>
+      <text x="100" y="15" class="label" text-anchor="middle">2.0</text>
+      
+      <!-- Slider -->
+      <circle id="ratio-slider" cx="0" cy="0" r="8" fill="#3498db" stroke="#2c3e50" stroke-width="2"
+              cursor="pointer" />
+    </g>
+  </g>
+  
+  <!-- Voltage and Current Waveforms -->
+  <g id="waveforms" transform="translate(200, 450)">
+    <text x="0" y="-110" class="subtitle" text-anchor="middle">Voltage and Current Waveforms</text>
+    
+    <!-- Axes -->
+    <line x1="-150" y1="0" x2="150" y2="0" class="axis" />
+    <line x1="-150" y1="-100" x2="-150" y2="50" class="axis" />
+    
+    <!-- Grid lines -->
+    <line x1="-150" y1="-50" x2="150" y2="-50" class="grid" />
+    <line x1="-150" y1="50" x2="150" y2="50" class="grid" />
+    <line x1="-100" y1="-100" x2="-100" y2="50" class="grid" />
+    <line x1="-50" y1="-100" x2="-50" y2="50" class="grid" />
+    <line x1="0" y1="-100" x2="0" y2="50" class="grid" />
+    <line x1="50" y1="-100" x2="50" y2="50" class="grid" />
+    <line x1="100" y1="-100" x2="100" y2="50" class="grid" />
+    
+    <!-- Labels -->
+    <text x="150" y="15" class="label">Time</text>
+    <text x="-160" y="-50" class="label" text-anchor="end">Voltage</text>
+    
+    <!-- Primary voltage (sine wave) -->
+    <path id="primary-voltage" d="M-150,0 C-130,-60 -110,60 -90,0 C-70,-60 -50,60 -30,0 C-10,-60 10,60 30,0 C50,-60 70,60 90,0 C110,-60 130,60 150,0" 
+          stroke="#3498db" stroke-width="2" fill="none" />
+    <text x="-160" y="-75" class="label" text-anchor="end" fill="#3498db">V₁</text>
+    
+    <!-- Secondary voltage (sine wave) -->
+    <path id="secondary-voltage" d="M-150,0 C-130,-40 -110,40 -90,0 C-70,-40 -50,40 -30,0 C-10,-40 10,40 30,0 C50,-40 70,40 90,0 C110,-40 130,40 150,0" 
+          stroke="#e74c3c" stroke-width="2" fill="none" />
+    <text x="-160" y="-65" class="label" text-anchor="end" fill="#e74c3c">V₂</text>
+  </g>
+  
+  <!-- Transformer Equations -->
+  <g id="equations" transform="translate(600, 450)">
+    <rect x="-150" y="-120" width="300" height="170" class="equation-box" rx="10" ry="10" />
+    <text x="0" y="-95" class="subtitle" text-anchor="middle">Transformer Equations</text>
+    
+    <text x="-135" y="-65" class="label" text-anchor="start">Voltage Ratio:</text>
+    <text x="-25" y="-65" class="value" text-anchor="start">V₂/V₁ = N₂/N₁</text>
+    
+    <text x="-135" y="-35" class="label" text-anchor="start">Current Ratio:</text>
+    <text x="-25" y="-35" class="value" text-anchor="start">I₂/I₁ = N₁/N₂</text>
+    
+    <text x="-135" y="-5" class="label" text-anchor="start">Power:</text>
+    <text x="-25" y="-5" class="value" text-anchor="start">P₁ = P₂ (ideal)</text>
+    
+    <text x="-135" y="25" class="label" text-anchor="start">Impedance:</text>
+    <text x="-25" y="25" class="value" text-anchor="start">Z₂/Z₁ = (N₂/N₁)²</text>
+  </g>
+
+  <!-- Interactive JavaScript -->
+  <script type="text/javascript"><![CDATA[
+    (function() {
+      // Get elements
+      const ratioSlider = document.getElementById('ratio-slider');
+      const primaryVoltage = document.getElementById('primary-voltage');
+      const secondaryVoltage = document.getElementById('secondary-voltage');
+      
+      // Initial values
+      let ratio = 1.0;
+      let isDragging = false;
+      
+      // Update visualization based on turn ratio
+      function updateTransformer(ratio) {
+        // Calculate slider position (0-200 range mapped to ratio 0.5-2.0)
+        const sliderX = ((ratio - 0.5) / 1.5) * 200 - 100;
+        ratioSlider.setAttribute('cx', sliderX);
+        
+        // Update secondary voltage wave based on ratio
+        const voltageScale = ratio;
+        const newPath = generateVoltagePath(voltageScale);
+        secondaryVoltage.setAttribute('d', newPath);
+        
+        // Update coil visualization
+        updateCoilAppearance(ratio);
+      }
+      
+      // Generate voltage path based on scale
+      function generateVoltagePath(scale) {
+        const amplitude = scale * 60; // Scale the amplitude
+        return `M-150,0 C-130,${-amplitude} -110,${amplitude} -90,0 
+                C-70,${-amplitude} -50,${amplitude} -30,0 
+                C-10,${-amplitude} 10,${amplitude} 30,0 
+                C50,${-amplitude} 70,${amplitude} 90,0 
+                C110,${-amplitude} 130,${amplitude} 150,0`;
+      }
+      
+      // Update coil appearance based on turn ratio
+      function updateCoilAppearance(ratio) {
+        const primaryCoil = document.getElementById('primary-coil');
+        const secondaryCoil = document.getElementById('secondary-coil');
+        
+        // Adjust opacity to visualize relative number of turns
+        const primaryOpacity = 1.0;
+        const secondaryOpacity = Math.min(1.0, ratio);
+        
+        primaryCoil.style.opacity = primaryOpacity;
+        secondaryCoil.style.opacity = secondaryOpacity;
+      }
+      
+      // Mouse events for dragging
+      ratioSlider.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        e.preventDefault();
+      });
+      
+      document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+          const svgRect = document.querySelector('svg').getBoundingClientRect();
+          const transformerGroup = document.getElementById('transformer');
+          const transformMatrix = transformerGroup.getCTM();
+          
+          // Calculate position in SVG coordinates
+          const svgX = (e.clientX - svgRect.left) / transformMatrix.a - transformMatrix.e / transformMatrix.a;
+          const svgY = (e.clientY - svgRect.top) / transformMatrix.d - transformMatrix.f / transformMatrix.d;
+          
+          // Calculate ratio control center
+          const controlCenterX = 400; // Transformer center X
+          const controlCenterY = 350; // Ratio control Y (150 + transformer Y at 200)
+          
+          // Calculate X position relative to ratio control
+          const relativeX = svgX - controlCenterX;
+          
+          // Constrain to slider range (-100 to 100)
+          const constrainedX = Math.max(-100, Math.min(100, relativeX));
+          
+          // Update slider position
+          ratioSlider.setAttribute('cx', constrainedX);
+          
+          // Calculate new ratio (map from -100:100 to 0.5:2.0)
+          const newRatio = 0.5 + (constrainedX + 100) / 200 * 1.5;
+          ratio = newRatio;
+          
+          // Update transformer visualization
+          updateTransformer(ratio);
+        }
+      });
+      
+      document.addEventListener('mouseup', function() {
+        isDragging = false;
+      });
+      
+      // Initialize
+      updateTransformer(ratio);
+    })();
+  ]]></script>
+</svg> 

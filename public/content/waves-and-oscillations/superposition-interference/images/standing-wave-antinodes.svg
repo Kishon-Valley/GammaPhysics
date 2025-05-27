@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Standing Wave Antinodes</text>
+    
+    <!-- Equilibrium line -->
+    <line x1="50" y1="200" x2="750" y2="200" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Maximum amplitude envelope -->
+    <path d="M50,200 Q200,100 350,200 T650,200" fill="none" stroke="#E91E63" stroke-width="2" stroke-dasharray="5,5"/>
+    <path d="M50,200 Q200,300 350,200 T650,200" fill="none" stroke="#E91E63" stroke-width="2" stroke-dasharray="5,5"/>
+    
+    <!-- Standing wave at t=0 -->
+    <path d="M50,200 Q200,150 350,200 T650,200" fill="none" stroke="#2196F3" stroke-width="2"/>
+    
+    <!-- Antinodes -->
+    <line x1="200" y1="100" x2="200" y2="300" stroke="#4CAF50" stroke-width="1" stroke-dasharray="5,5"/>
+    <line x1="500" y1="100" x2="500" y2="300" stroke="#4CAF50" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Antinode labels -->
+    <text x="200" y="80" text-anchor="middle" font-size="14">Antinode</text>
+    <text x="500" y="80" text-anchor="middle" font-size="14">Antinode</text>
+    
+    <!-- Motion arrows -->
+    <path d="M190,150 L200,140 L210,150" fill="none" stroke="#4CAF50" stroke-width="2"/>
+    <path d="M190,250 L200,260 L210,250" fill="none" stroke="#4CAF50" stroke-width="2"/>
+    
+    <!-- Formula -->
+    <text x="400" y="350" text-anchor="middle" font-size="16">Antinode positions: x = (n + 1/2)λ/2, n = 0,1,2,...</text>
+    <text x="400" y="380" text-anchor="middle" font-size="14">Maximum amplitude: ±2A</text>
+</svg>

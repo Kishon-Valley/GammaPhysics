@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="600" height="400" fill="white"/>
+  
+  <!-- Title -->
+  <text x="120" y="40" font-family="Arial" font-size="24" font-weight="bold" fill="black">Optical Fiber Cross-Section</text>
+  
+  <!-- Fiber cross-section (concentric circles) -->
+  <circle cx="300" cy="200" r="180" fill="#E0E0E0" stroke="black" stroke-width="2"/> <!-- Outer jacket -->
+  <circle cx="300" cy="200" r="150" fill="#D0D0D0" stroke="black" stroke-width="2"/> <!-- Buffer coating -->
+  <circle cx="300" cy="200" r="120" fill="#C0C0C0" stroke="black" stroke-width="2"/> <!-- Cladding -->
+  <circle cx="300" cy="200" r="25" fill="#A0D0FF" stroke="black" stroke-width="2"/> <!-- Core -->
+  
+  <!-- Labels -->
+  <text x="300" y="200" font-family="Arial" font-size="16" text-anchor="middle" fill="black">Core</text>
+  <text x="300" y="150" font-family="Arial" font-size="16" text-anchor="middle" fill="black">Cladding</text>
+  <text x="300" y="100" font-family="Arial" font-size="16" text-anchor="middle" fill="black">Buffer</text>
+  <text x="300" y="60" font-family="Arial" font-size="16" text-anchor="middle" fill="black">Jacket</text>
+  
+  <!-- Dimensions -->
+  <line x1="300" y1="250" x2="300" y2="350" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="325" y1="250" x2="325" y2="350" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="300" y1="350" x2="325" y2="350" stroke="black" stroke-width="2" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <text x="312" y="370" font-family="Arial" font-size="14" text-anchor="middle" fill="black">8-10 μm (SM)</text>
+  <text x="312" y="390" font-family="Arial" font-size="14" text-anchor="middle" fill="black">50-62.5 μm (MM)</text>
+  
+  <line x1="420" y1="200" x2="500" y2="200" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="420" y1="200" x2="420" y2="220" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="500" y1="200" x2="500" y2="220" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="420" y1="220" x2="500" y2="220" stroke="black" stroke-width="2" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+  <text x="460" y="240" font-family="Arial" font-size="14" text-anchor="middle" fill="black">125 μm</text>
+  
+  <!-- Refractive index values -->
+  <text x="100" y="190" font-family="Arial" font-size="14" fill="black">n₁ ≈ 1.48</text>
+  <text x="100" y="150" font-family="Arial" font-size="14" fill="black">n₂ ≈ 1.46</text>
+  
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="black"/>
+    </marker>
+  </defs>
+  
+  <!-- Legend -->
+  <rect x="450" y="300" width="15" height="15" fill="#A0D0FF" stroke="black"/>
+  <text x="475" y="313" font-family="Arial" font-size="14" fill="black">Core (GeO₂-doped SiO₂)</text>
+  
+  <rect x="450" y="325" width="15" height="15" fill="#C0C0C0" stroke="black"/>
+  <text x="475" y="338" font-family="Arial" font-size="14" fill="black">Cladding (Pure SiO₂)</text>
+  
+  <rect x="450" y="350" width="15" height="15" fill="#D0D0D0" stroke="black"/>
+  <text x="475" y="363" font-family="Arial" font-size="14" fill="black">Buffer Coating</text>
+  
+  <rect x="450" y="375" width="15" height="15" fill="#E0E0E0" stroke="black"/>
+  <text x="475" y="388" font-family="Arial" font-size="14" fill="black">Outer Jacket</text>
+</svg>

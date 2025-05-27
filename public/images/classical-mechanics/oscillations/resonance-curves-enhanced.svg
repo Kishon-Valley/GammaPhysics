@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background -->
+    <rect width="100%" height="100%" fill="white"/>
+    <!-- Definitions for gradients and markers -->
+    <defs>
+        <!-- Grid pattern -->
+        <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+            <path d="M 80 0 L 0 0 0 80" fill="none" stroke="#eee" stroke-width="0.5"/>
+        </pattern>
+        <!-- Arrow marker -->
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" 
+                markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/>
+        </marker>
+    </defs>
+
+    <!-- Background grid -->
+    <rect width="800" height="600" fill="url(#grid)"/>
+
+    <!-- Upper graph (Amplitude Response) -->
+    <g transform="translate(50, 50)">
+        <!-- Axes -->
+        <line x1="0" y1="200" x2="700" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="50" y1="250" x2="50" y2="0" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+        
+        <!-- Axis labels -->
+        <text x="350" y="240" text-anchor="middle" font-family="Arial">ω/ω₀</text>
+        <text x="20" y="100" text-anchor="middle" transform="rotate(-90, 20, 100)" font-family="Arial">A/A₀</text>
+        
+        <!-- Grid lines -->
+        <g stroke="#ddd" stroke-dasharray="2,2">
+            <line x1="50" y1="50" x2="700" y2="50"/>
+            <line x1="50" y1="100" x2="700" y2="100"/>
+            <line x1="50" y1="150" x2="700" y2="150"/>
+            <line x1="200" y1="0" x2="200" y2="200"/>
+            <line x1="350" y1="0" x2="350" y2="200"/>
+            <line x1="500" y1="0" x2="500" y2="200"/>
+        </g>
+
+        <!-- Resonance curves -->
+        <!-- ζ = 0.1 (sharp peak) -->
+        <path d="M 50 190 Q 200 180, 350 20 T 650 180" stroke="#FF4444" fill="none" stroke-width="2"/>
+        <!-- ζ = 0.5 (moderate damping) -->
+        <path d="M 50 190 Q 200 170, 350 70 T 650 170" stroke="#4444FF" fill="none" stroke-width="2"/>
+        <!-- ζ = 1.0 (critical damping) -->
+        <path d="M 50 190 Q 200 160, 350 120 T 650 160" stroke="#44AA44" fill="none" stroke-width="2"/>
+        <!-- ζ = 2.0 (overdamped) -->
+        <path d="M 50 190 Q 200 170, 350 150 T 650 170" stroke="#AA44AA" fill="none" stroke-width="2"/>
+
+        <!-- Resonance point marker -->
+        <circle cx="350" cy="20" r="4" fill="#FF4444"/>
+        <text x="360" y="15" font-family="Arial" font-size="12">Resonance (ω = ω₀)</text>
+
+        <!-- Half-power points -->
+        <circle cx="320" cy="35" r="3" fill="#FF4444"/>
+        <circle cx="380" cy="35" r="3" fill="#FF4444"/>
+        <text x="290" y="30" font-family="Arial" font-size="10">-3dB points</text>
+
+        <!-- Legend -->
+        <g transform="translate(500, 30)">
+            <rect width="150" height="80" fill="white" stroke="#333"/>
+            <text x="10" y="20" font-family="Arial" font-size="12">Damping Ratios (ζ)</text>
+            <line x1="10" y1="35" x2="30" y2="35" stroke="#FF4444" stroke-width="2"/>
+            <text x="40" y="40" font-family="Arial" font-size="12">ζ = 0.1</text>
+            <line x1="10" y1="55" x2="30" y2="55" stroke="#4444FF" stroke-width="2"/>
+            <text x="40" y="60" font-family="Arial" font-size="12">ζ = 0.5</text>
+            <line x1="10" y1="75" x2="30" y2="75" stroke="#44AA44" stroke-width="2"/>
+            <text x="40" y="80" font-family="Arial" font-size="12">ζ = 1.0</text>
+        </g>
+    </g>
+
+    <!-- Lower graph (Phase Response) -->
+    <g transform="translate(50, 300)">
+        <!-- Axes -->
+        <line x1="0" y1="200" x2="700" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+        <line x1="50" y1="250" x2="50" y2="0" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+        
+        <!-- Axis labels -->
+        <text x="350" y="240" text-anchor="middle" font-family="Arial">ω/ω₀</text>
+        <text x="20" y="100" text-anchor="middle" transform="rotate(-90, 20, 100)" font-family="Arial">Phase (φ)</text>
+        
+        <!-- Phase curves -->
+        <!-- ζ = 0.1 -->
+        <path d="M 50 180 Q 200 170, 350 100 T 650 20" stroke="#FF4444" fill="none" stroke-width="2"/>
+        <!-- ζ = 0.5 -->
+        <path d="M 50 170 Q 200 150, 350 100 T 650 30" stroke="#4444FF" fill="none" stroke-width="2"/>
+        <!-- ζ = 1.0 -->
+        <path d="M 50 160 Q 200 130, 350 100 T 650 40" stroke="#44AA44" fill="none" stroke-width="2"/>
+
+        <!-- Phase markers -->
+        <text x="30" y="180" font-family="Arial" font-size="12">0°</text>
+        <text x="30" y="100" font-family="Arial" font-size="12">90°</text>
+        <text x="30" y="20" font-family="Arial" font-size="12">180°</text>
+
+        <!-- 90° phase shift marker -->
+        <line x1="350" y1="95" x2="350" y2="105" stroke="#333" stroke-width="2"/>
+        <text x="360" y="110" font-family="Arial" font-size="12">90° phase shift</text>
+    </g>
+
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold">
+        Resonance Curves: Amplitude and Phase Response
+    </text>
+</svg>

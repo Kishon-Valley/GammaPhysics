@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="600" height="400" fill="white"/>
+    
+    <!-- Reference frame S -->
+    <line x1="50" y1="200" x2="550" y2="200" stroke="black" stroke-width="2"/>
+    <line x1="300" y1="50" x2="300" y2="350" stroke="black" stroke-width="2"/>
+    <text x="530" y="230" font-family="Arial" font-size="16">x</text>
+    <text x="280" y="70" font-family="Arial" font-size="16">ct</text>
+    <text x="320" y="230" font-family="Arial" font-size="16">S</text>
+    
+    <!-- Reference frame S' -->
+    <line x1="300" y1="200" x2="500" y2="100" stroke="blue" stroke-width="2" stroke-dasharray="5,5"/>
+    <line x1="300" y1="200" x2="400" y2="300" stroke="blue" stroke-width="2" stroke-dasharray="5,5"/>
+    <text x="510" y="100" font-family="Arial" font-size="16" fill="blue">ct'</text>
+    <text x="410" y="320" font-family="Arial" font-size="16" fill="blue">x'</text>
+    <text x="420" y="150" font-family="Arial" font-size="16" fill="blue">S'</text>
+    
+    <!-- Velocity vector -->
+    <line x1="300" y1="200" x2="400" y2="200" stroke="red" stroke-width="2"/>
+    <polygon points="400,200 390,195 390,205" fill="red"/>
+    <text x="330" y="190" font-family="Arial" font-size="16" fill="red">v</text>
+    
+    <!-- Event point -->
+    <circle cx="450" cy="150" r="5" fill="black"/>
+    <text x="460" y="145" font-family="Arial" font-size="16">E(x,t)</text>
+    <text x="460" y="165" font-family="Arial" font-size="16" fill="blue">E(x',t')</text>
+    
+    <!-- Hyperbola -->
+    <path d="M 300,150 Q 400,150 450,200 T 500,300" stroke="green" stroke-width="1" fill="none"/>
+    <text x="450" y="270" font-family="Arial" font-size="14" fill="green">Invariant hyperbola</text>
+</svg>

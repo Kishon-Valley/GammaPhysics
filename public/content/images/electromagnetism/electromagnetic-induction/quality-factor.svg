@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" style="background-color: white;">
+    <!-- Explicit white background -->
+    <rect width="800" height="600" fill="white"/>
+
+    <!-- Title with white background -->
+    <rect x="0" y="0" width="800" height="60" fill="white"/>
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Quality Factor (Q)</text>
+    
+    <!-- Explanation -->
+    <g transform="translate(50,80)">
+        <text x="0" y="0" font-size="16" font-weight="bold">Quality Factor and Bandwidth:</text>
+        <text x="0" y="30" font-size="14">1. Q measures the sharpness of resonance</text>
+        <text x="0" y="50" font-size="14">2. Higher Q = Narrower bandwidth = Less energy loss</text>
+        <text x="0" y="70" font-size="14">3. Q = ωL/R = Energy stored/Energy lost per cycle</text>
+    </g>
+
+    <!-- Resonance Curve -->
+    <g transform="translate(400,300)">
+        <!-- Axes -->
+        <line x1="-200" y1="100" x2="200" y2="100" stroke="black" stroke-width="2"/>
+        <line x1="-200" y1="-100" x2="-200" y2="100" stroke="black" stroke-width="2"/>
+        
+        <!-- High Q Curve -->
+        <path d="M -200,90 C -150,90 -120,-80 -100,-90 C -80,-100 -50,90 0,90"
+              fill="none" stroke="#2196F3" stroke-width="3">
+            <animate attributeName="d"
+                     values="M -200,90 C -150,90 -120,-80 -100,-90 C -80,-100 -50,90 0,90;
+                             M -200,90 C -150,90 -120,-90 -100,-100 C -80,-110 -50,90 0,90;
+                             M -200,90 C -150,90 -120,-80 -100,-90 C -80,-100 -50,90 0,90"
+                     dur="2s"
+                     repeatCount="indefinite"/>
+        </path>
+
+        <!-- Low Q Curve -->
+        <path d="M 0,90 C 50,90 80,-40 100,-50 C 120,-60 150,90 200,90"
+              fill="none" stroke="#FF5722" stroke-width="3"/>
+
+        <!-- Labels -->
+        <text x="-100" y="-110" fill="#2196F3">High Q</text>
+        <text x="100" y="-60" fill="#FF5722">Low Q</text>
+        <text x="0" y="120" text-anchor="middle">Frequency</text>
+        <text x="-220" y="0" text-anchor="end" transform="rotate(-90,-220,0)">Amplitude</text>
+    </g>
+
+    <!-- Key Points -->
+    <g transform="translate(50,450)">
+        <rect x="0" y="0" width="700" height="120" fill="#f5f5f5" stroke="#666"/>
+        <text x="20" y="30" font-size="16" font-weight="bold">Applications:</text>
+        <text x="20" y="60" font-size="14">• Filters: Higher Q gives better frequency selectivity</text>
+        <text x="20" y="80" font-size="14">• Resonant circuits: Q determines bandwidth BW = f₀/Q</text>
+        <text x="20" y="100" font-size="14">• Power efficiency: Higher Q means lower energy loss</text>
+    </g>
+</svg> 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- River -->
+    <rect x="50" y="100" width="300" height="100" fill="#ADD8E6" opacity="0.3"/>
+    
+    <!-- Boat -->
+    <path d="M 150,150 L 170,170 L 200,170 L 220,150 Z" fill="#8B4513"/>
+    
+    <!-- Velocity Vectors -->
+    <!-- Boat relative to water -->
+    <line x1="185" y1="160" x2="235" y2="160" stroke="red" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Water flow -->
+    <line x1="185" y1="140" x2="235" y2="120" stroke="blue" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Resultant velocity -->
+    <line x1="185" y1="160" x2="285" y2="140" stroke="green" stroke-width="2" marker-end="url(#arrowhead)"/>
+    
+    <!-- Flow indicators -->
+    <path d="M 80,150 Q 90,140 100,150" fill="none" stroke="#0000FF" stroke-width="1"/>
+    <path d="M 110,150 Q 120,140 130,150" fill="none" stroke="#0000FF" stroke-width="1"/>
+    <path d="M 270,150 Q 280,140 290,150" fill="none" stroke="#0000FF" stroke-width="1"/>
+    <path d="M 300,150 Q 310,140 320,150" fill="none" stroke="#0000FF" stroke-width="1"/>
+    
+    <!-- Arrowhead definition -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="black"/>
+        </marker>
+    </defs>
+    
+    <!-- Labels -->
+    <text x="195" y="180" font-family="Arial" font-size="12">vboat</text>
+    <text x="195" y="135" font-family="Arial" font-size="12">vwater</text>
+    <text x="245" y="155" font-family="Arial" font-size="12">vresultant</text>
+    <text x="60" y="90" font-family="Arial" font-size="14">River Flow</text>
+</svg>

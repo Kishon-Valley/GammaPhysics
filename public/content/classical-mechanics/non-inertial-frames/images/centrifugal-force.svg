@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Circular path -->
+  <circle cx="200" cy="150" r="80" fill="none" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+  
+  <!-- Center point -->
+  <circle cx="200" cy="150" r="4" fill="#444"/>
+  
+  <!-- Moving object -->
+  <circle cx="280" cy="150" r="15" fill="#4a90e2"/>
+  
+  <!-- Forces -->
+  <g stroke-width="2">
+    <!-- Centripetal force -->
+    <line x1="280" y1="150" x2="240" y2="150" stroke="#50C878"/>
+    <polygon points="240,150 250,145 250,155" fill="#50C878"/>
+    
+    <!-- Centrifugal force -->
+    <line x1="280" y1="150" x2="320" y2="150" stroke="#e24a4a"/>
+    <polygon points="320,150 310,145 310,155" fill="#e24a4a"/>
+  </g>
+  
+  <!-- Velocity vector -->
+  <line x1="280" y1="150" x2="280" y2="110" stroke="#666" stroke-width="2"/>
+  <polygon points="280,110 275,120 285,120" fill="#666"/>
+  
+  <!-- Labels -->
+  <text x="235" y="140" font-family="Arial" font-size="12" fill="#50C878">F_c</text>
+  <text x="315" y="140" font-family="Arial" font-size="12" fill="#e24a4a">F_cf</text>
+  <text x="290" y="115" font-family="Arial" font-size="12">v</text>
+  <text x="200" y="280" text-anchor="middle" font-family="Arial" font-size="14">Centrifugal Force in Rotating Frame</text>
+</svg>

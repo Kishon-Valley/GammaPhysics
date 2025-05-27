@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definitions for markers and animations -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0077cc"/>
+    </marker>
+    <style>
+      @keyframes flowAnimation {
+        0% { stroke-dashoffset: 50; }
+        100% { stroke-dashoffset: 0; }
+      }
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+      }
+      @keyframes blink {
+        0%, 50% { opacity: 0.3; }
+        51%, 100% { opacity: 1; }
+      }
+      @keyframes transformCircuit {
+        0% { opacity: 1; transform: translate(0, 0); }
+        40% { opacity: 0; transform: translate(-50px, 0); }
+        60% { opacity: 0; transform: translate(50px, 0); }
+        100% { opacity: 1; transform: translate(0, 0); }
+      }
+      .current-flow {
+        stroke-dasharray: 5;
+        animation: flowAnimation 1s linear infinite;
+      }
+      text {
+        font-family: Arial, sans-serif;
+      }
+      .circuit-original {
+        animation: transformCircuit 8s ease-in-out infinite;
+      }
+      .circuit-thevenin {
+        opacity: 0;
+        animation: transformCircuit 8s ease-in-out infinite;
+        animation-delay: 2.67s;
+      }
+      .circuit-norton {
+        opacity: 0;
+        animation: transformCircuit 8s ease-in-out infinite;
+        animation-delay: 5.33s;
+      }
+      .load {
+        animation: blink 2s ease-in-out infinite;
+      }
+      .highlight {
+        animation: blink 2s ease-in-out infinite;
+      }
+      .fadeIn {
+        opacity: 0;
+        animation: fadeIn 1s ease-in forwards;
+      }
+      .fadeIn-delayed-1 {
+        opacity: 0;
+        animation: fadeIn 1s ease-in forwards;
+        animation-delay: 1s;
+      }
+      .fadeIn-delayed-2 {
+        opacity: 0;
+        animation: fadeIn 1s ease-in forwards;
+        animation-delay: 2s;
+      }
+    </style>
+  </defs>
+
+  <!-- Background and title -->
+  <rect width="800" height="600" fill="#f8f9fa"/>
+  <text x="400" y="40" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Thévenin and Norton Equivalent Circuits</text>
+  <text x="400" y="70" font-size="16" text-anchor="middle" fill="#555">Any linear circuit can be replaced by a single voltage source with a series resistor (Thévenin)</text>
+  <text x="400" y="95" font-size="16" text-anchor="middle" fill="#555">or a single current source with a parallel resistor (Norton)</text>
+
+  <!-- Original Complex Circuit -->
+  <g class="circuit-original">
+    <text x="170" y="130" font-size="18" font-weight="bold" fill="#333">Original Circuit</text>
+    
+    <!-- Network Box -->
+    <rect x="60" y="180" width="220" height="150" rx="10" ry="10" fill="#f0f0f0" stroke="#333" stroke-width="2"/>
+    <text x="170" y="230" font-size="14" text-anchor="middle">Complex Linear Network</text>
+    <text x="170" y="255" font-size="14" text-anchor="middle">with Multiple Sources</text>
+    <text x="170" y="280" font-size="14" text-anchor="middle">and Components</text>
+    
+    <!-- Voltage Source Symbol Inside -->
+    <circle cx="100" cy="210" r="15" stroke="#333" stroke-width="1.5" fill="white"/>
+    <line x1="100" y1="195" x2="100" y2="202" stroke="#333" stroke-width="1.5"/>
+    <line x1="100" y1="218" x2="100" y2="225" stroke="#333" stroke-width="1.5"/>
+    <text x="100" y="213" font-size="10" text-anchor="middle">V₁</text>
+    
+    <!-- Current Source Symbol Inside -->
+    <circle cx="240" cy="210" r="15" stroke="#333" stroke-width="1.5" fill="white"/>
+    <line x1="240" y1="195" x2="240" y2="225" stroke="#333" stroke-width="1.5"/>
+    <path d="M 235 210 L 245 210" stroke="#333" stroke-width="1.5"/>
+    <path d="M 240 205 L 240 215" stroke="#333" stroke-width="1.5"/>
+    <text x="220" y="213" font-size="10" text-anchor="middle">I₁</text>
+    
+    <!-- Terminals -->
+    <circle cx="60" cy="200" r="6" fill="#cc0000" class="highlight"/>
+    <text x="45" y="200" font-size="14" text-anchor="end" fill="#333">A</text>
+    <circle cx="60" cy="310" r="6" fill="#cc0000" class="highlight"/>
+    <text x="45" y="310" font-size="14" text-anchor="end" fill="#333">B</text>
+    
+    <!-- Load -->
+    <line x1="60" y1="200" x2="30" y2="200" stroke="#333" stroke-width="2"/>
+    <line x1="60" y1="310" x2="30" y2="310" stroke="#333" stroke-width="2"/>
+    <rect x="-10" y="235" width="40" height="40" fill="white" stroke="#333" stroke-width="2" class="load"/>
+    <text x="10" y="259" font-size="14" text-anchor="middle">R_L</text>
+    <line x1="30" y1="200" x2="30" y2="235" stroke="#333" stroke-width="2"/>
+    <line x1="30" y1="275" x2="30" y2="310" stroke="#333" stroke-width="2"/>
+    
+    <!-- Current Flow Indicators -->
+    <path d="M 35 220 Q 45 210 55 220" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+    <path d="M 35 290 Q 45 300 55 290" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+    
+    <!-- Terminal Labels -->
+    <text x="60" y="185" font-size="12" fill="#cc0000">Terminal A</text>
+    <text x="60" y="325" font-size="12" fill="#cc0000">Terminal B</text>
+  </g>
+
+  <!-- Thévenin Equivalent Circuit -->
+  <g class="circuit-thevenin">
+    <text x="170" y="130" font-size="18" font-weight="bold" fill="#333">Thévenin Equivalent</text>
+    
+    <!-- Voltage Source -->
+    <circle cx="100" cy="240" r="25" stroke="#333" stroke-width="2" fill="white"/>
+    <line x1="100" y1="215" x2="100" y2="225" stroke="#333" stroke-width="2"/>
+    <line x1="100" y1="255" x2="100" y2="265" stroke="#333" stroke-width="2"/>
+    <text x="100" y="244" font-size="14" text-anchor="middle">V_th</text>
+    
+    <!-- Resistor -->
+    <line x1="100" y1="265" x2="100" y2="285" stroke="#333" stroke-width="2"/>
+    <rect x="80" y="285" width="40" height="20" fill="white" stroke="#333" stroke-width="2"/>
+    <text x="100" y="299" font-size="12" text-anchor="middle">R_th</text>
+    
+    <!-- Load Connection -->
+    <line x1="100" y1="305" x2="100" y2="325" stroke="#333" stroke-width="2"/>
+    <line x1="100" y1="215" x2="60" y2="215" stroke="#333" stroke-width="2"/>
+    <line x1="100" y1="325" x2="60" y2="325" stroke="#333" stroke-width="2"/>
+    
+    <!-- Load -->
+    <rect x="20" y="250" width="40" height="40" fill="white" stroke="#333" stroke-width="2" class="load"/>
+    <text x="40" y="274" font-size="14" text-anchor="middle">R_L</text>
+    <line x1="60" y1="215" x2="60" y2="250" stroke="#333" stroke-width="2"/>
+    <line x1="60" y1="290" x2="60" y2="325" stroke="#333" stroke-width="2"/>
+    
+    <!-- Terminals -->
+    <circle cx="100" cy="215" r="6" fill="#cc0000" class="highlight"/>
+    <text x="115" y="215" font-size="14" fill="#333">A</text>
+    <circle cx="100" cy="325" r="6" fill="#cc0000" class="highlight"/>
+    <text x="115" y="325" font-size="14" fill="#333">B</text>
+    
+    <!-- Current Flow Indicators -->
+    <path d="M 65 230 Q 75 220 85 230" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+    <path d="M 85 310 Q 95 300 105 310" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+    
+    <!-- Explanation -->
+    <text x="180" y="220" font-size="14" fill="#333" class="fadeIn">V_th = Open-circuit voltage</text>
+    <text x="180" y="245" font-size="14" fill="#333" class="fadeIn">between terminals A and B</text>
+    <text x="180" y="285" font-size="14" fill="#333" class="fadeIn-delayed-1">R_th = Equivalent resistance</text>
+    <text x="180" y="310" font-size="14" fill="#333" class="fadeIn-delayed-1">with all sources deactivated</text>
+  </g>
+
+  <!-- Norton Equivalent Circuit -->
+  <g class="circuit-norton">
+    <text x="170" y="130" font-size="18" font-weight="bold" fill="#333">Norton Equivalent</text>
+    
+    <!-- Current Source -->
+    <circle cx="100" cy="240" r="25" stroke="#333" stroke-width="2" fill="white"/>
+    <line x1="100" y1="215" x2="100" y2="265" stroke="#333" stroke-width="2"/>
+    <path d="M 95 240 L 105 240" stroke="#333" stroke-width="2"/>
+    <path d="M 100 235 L 100 245" stroke="#333" stroke-width="2"/>
+    <text x="130" y="240" font-size="14" fill="#333">I_N</text>
+    
+    <!-- Resistor (parallel) -->
+    <path d="M 140 215 C 150 215, 150 265, 140 265" stroke="#333" stroke-width="2" fill="none"/>
+    <text x="160" y="245" font-size="12" fill="#333">R_N</text>
+    
+    <!-- Load Connection -->
+    <line x1="100" y1="215" x2="60" y2="215" stroke="#333" stroke-width="2"/>
+    <line x1="140" y1="215" x2="100" y2="215" stroke="#333" stroke-width="2"/>
+    <line x1="100" y1="265" x2="60" y2="265" stroke="#333" stroke-width="2"/>
+    <line x1="140" y1="265" x2="100" y2="265" stroke="#333" stroke-width="2"/>
+    
+    <!-- Load -->
+    <rect x="20" y="220" width="40" height="40" fill="white" stroke="#333" stroke-width="2" class="load"/>
+    <text x="40" y="244" font-size="14" text-anchor="middle">R_L</text>
+    <line x1="60" y1="215" x2="60" y2="220" stroke="#333" stroke-width="2"/>
+    <line x1="60" y1="260" x2="60" y2="265" stroke="#333" stroke-width="2"/>
+    
+    <!-- Terminals -->
+    <circle cx="100" cy="215" r="6" fill="#cc0000" class="highlight"/>
+    <text x="85" y="200" font-size="14" fill="#333">A</text>
+    <circle cx="100" cy="265" r="6" fill="#cc0000" class="highlight"/>
+    <text x="85" y="280" font-size="14" fill="#333">B</text>
+    
+    <!-- Current Flow Indicators -->
+    <path d="M 80 225 Q 90 235 100 225" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+    <path d="M 95 255 Q 105 245 115 255" stroke="#0077cc" stroke-width="2" fill="none" marker-end="url(#arrowhead)" class="current-flow"/>
+    
+    <!-- Explanation -->
+    <text x="180" y="220" font-size="14" fill="#333" class="fadeIn">I_N = Short-circuit current</text>
+    <text x="180" y="245" font-size="14" fill="#333" class="fadeIn">between terminals A and B</text>
+    <text x="180" y="285" font-size="14" fill="#333" class="fadeIn-delayed-1">R_N = R_th</text>
+    <text x="180" y="310" font-size="14" fill="#333" class="fadeIn-delayed-1">(Same equivalent resistance)</text>
+  </g>
+
+  <!-- Relationship Between Thévenin and Norton -->
+  <g transform="translate(0, 350)">
+    <text x="400" y="40" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Relationship Between Equivalent Circuits</text>
+    
+    <!-- Conversion Formulas -->
+    <rect x="250" y="60" width="300" height="140" rx="10" ry="10" fill="#e0f0ff" stroke="#0077cc" stroke-width="2"/>
+    
+    <text x="400" y="90" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">Thévenin to Norton Conversion:</text>
+    <text x="280" y="120" font-size="14" fill="#333">I_N = V_th / R_th</text>
+    <text x="280" y="150" font-size="14" fill="#333">R_N = R_th</text>
+    
+    <text x="400" y="180" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">Norton to Thévenin Conversion:</text>
+    <text x="520" y="120" font-size="14" text-anchor="end" fill="#333">V_th = I_N × R_N</text>
+    <text x="520" y="150" font-size="14" text-anchor="end" fill="#333">R_th = R_N</text>
+    
+    <!-- Key Applications -->
+    <rect x="100" y="220" width="600" height="80" rx="10" ry="10" fill="#f0f0f0" stroke="#555" stroke-width="1"/>
+    <text x="400" y="245" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">Key Applications:</text>
+    <text x="150" y="275" font-size="14" fill="#333">• Simplifying complex networks</text>
+    <text x="350" y="275" font-size="14" fill="#333">• Analyzing circuits with varying loads</text>
+    <text x="575" y="275" font-size="14" fill="#333">• Maximum power transfer analysis</text>
+  </g>
+</svg> 

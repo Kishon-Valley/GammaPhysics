@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="700" viewBox="0 0 800 700">
+    <rect width="800" height="700" fill="white"/>
+    
+    <!-- Title and Main Equation -->
+    <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">Electromagnetic Wave Propagation</text>
+    <text x="400" y="60" text-anchor="middle" font-size="16">c = 1/√(μ₀ε₀) = 3×10⁸ m/s</text>
+
+    <!-- Key Concept Box -->
+    <rect x="50" y="80" width="700" height="50" fill="#f8f8f8" stroke="#666"/>
+    <text x="400" y="105" text-anchor="middle" font-size="14">E and B fields oscillate in phase, perpendicular to each other and to direction of propagation</text>
+    <text x="400" y="120" text-anchor="middle" font-size="14">Wave speed equals speed of light (c), with E₀ = cB₀</text>
+
+    <!-- Main Visualization -->
+    <g transform="translate(400,350)">
+        <!-- Coordinate System with Labels -->
+        <line x1="-300" y1="0" x2="300" y2="0" stroke="#666" stroke-width="1"/>
+        <line x1="0" y1="-200" x2="0" y2="200" stroke="#666" stroke-width="1"/>
+        <text x="310" y="15" font-size="14">z (propagation)</text>
+        <text x="-15" y="-210" font-size="14">x,y</text>
+
+        <!-- Electric Field Wave (x-direction) -->
+        <g class="e-field">
+            <path d="M -250,0 C -200,-100 -150,0 -100,100 S 0,0 50,-100 S 150,0 200,100" 
+                  fill="none" stroke="#FF5722" stroke-width="2">
+                <animate attributeName="d"
+                         values="M -250,0 C -200,-100 -150,0 -100,100 S 0,0 50,-100 S 150,0 200,100;
+                                M -250,100 C -200,0 -150,-100 -100,0 S 0,100 50,0 S 150,-100 200,0;
+                                M -250,0 C -200,-100 -150,0 -100,100 S 0,0 50,-100 S 150,0 200,100"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </path>
+            <text x="-280" y="-50" fill="#FF5722" font-size="14">E = 300 V/m</text>
+        </g>
+
+        <!-- Magnetic Field Wave (y-direction) -->
+        <g class="b-field">
+            <path d="M -250,0 C -200,100 -150,0 -100,-100 S 0,0 50,100 S 150,0 200,-100" 
+                  fill="none" stroke="#2196F3" stroke-width="2">
+                <animate attributeName="d"
+                         values="M -250,0 C -200,100 -150,0 -100,-100 S 0,0 50,100 S 150,0 200,-100;
+                                M -250,-100 C -200,0 -150,100 -100,0 S 0,-100 50,0 S 150,100 200,0;
+                                M -250,0 C -200,100 -150,0 -100,-100 S 0,0 50,100 S 150,0 200,-100"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </path>
+            <text x="-280" y="70" fill="#2196F3" font-size="14">B = 1.0 μT</text>
+        </g>
+
+        <!-- Energy Flow (Poynting Vector) -->
+        <g class="poynting-vector" transform="translate(-150,0)">
+            <path d="M 0,0 L 30,30" stroke="#4CAF50" stroke-width="2" marker-end="url(#arrow)">
+                <animate attributeName="transform"
+                         values="translate(0,0);translate(300,0);translate(0,0)"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </path>
+            <text x="40" y="40" fill="#4CAF50" font-size="14">S = E×B/μ₀</text>
+        </g>
+    </g>
+
+    <!-- Interactive Learning Points -->
+    <g transform="translate(50,550)">
+        <rect width="700" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="20" y="30" font-size="14" font-weight="bold">Wave Properties:</text>
+        <text x="20" y="55" font-size="14">1. E-field (red) oscillates in x-direction with amplitude 300 V/m</text>
+        <text x="20" y="80" font-size="14">2. B-field (blue) oscillates in y-direction with amplitude 1.0 μT</text>
+        <text x="20" y="105" font-size="14">3. Energy flow (green) along z-axis with intensity I = 119 W/m²</text>
+    </g>
+
+    <!-- Animation Legend -->
+    <g transform="translate(600,200)">
+        <rect width="150" height="120" fill="#f8f8f8" stroke="#666"/>
+        <text x="10" y="30" font-size="12">Red Wave: E-field</text>
+        <text x="10" y="50" font-size="12">Blue Wave: B-field</text>
+        <text x="10" y="70" font-size="12">Green Arrow: Energy</text>
+        <text x="10" y="90" font-size="12">Flow Direction</text>
+        <text x="10" y="110" font-size="12">(Poynting Vector)</text>
+    </g>
+
+    <!-- Definitions -->
+    <defs>
+        <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+        </marker>
+    </defs>
+</svg> 
+</svg> 

@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="800" viewBox="0 0 900 800">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+    </marker>
+    <marker id="currentArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#0066cc"/>
+    </marker>
+    <marker id="voltageArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#cc0000"/>
+    </marker>
+    
+    <!-- Animation definitions -->
+    <style>
+      .circuit-line { stroke: #000; stroke-width: 2.5; }
+      .component-label { font-family: Arial; font-size: 14px; text-anchor: middle; }
+      
+      .current-flow { stroke: #0066cc; stroke-width: 3; stroke-dasharray: 7,3; fill: none; }
+      .current-label { fill: #0066cc; font-family: Arial; font-size: 14px; font-weight: bold; }
+      
+      .voltage { stroke: #cc0000; stroke-width: 2; stroke-dasharray: 6,3; }
+      .voltage-label { fill: #cc0000; font-family: Arial; font-size: 14px; font-weight: bold; }
+      
+      .phasor { stroke-width: 2.5; }
+      
+      .resonance-box { fill: #f5f5f5; stroke: #333; stroke-width: 1; }
+      .resonance-title { font-family: Arial; font-size: 16px; font-weight: bold; text-anchor: middle; }
+      .resonance-formula { font-family: Arial; font-size: 14px; text-anchor: start; }
+      
+      .slider-track { stroke: #ccc; stroke-width: 4; }
+      .slider-thumb { fill: #2980b9; stroke: #1a5276; stroke-width: 2; cursor: pointer; }
+      .slider-label { font-family: Arial; font-size: 14px; text-anchor: middle; }
+
+      @keyframes flowAnimation {
+        from { stroke-dashoffset: 50; }
+        to { stroke-dashoffset: 0; }
+      }
+      
+      .animated-current {
+        animation: flowAnimation 1.5s linear infinite;
+      }
+      
+      @keyframes pulseAnimation {
+        0% { opacity: 0.3; }
+        50% { opacity: 1; }
+        100% { opacity: 0.3; }
+      }
+      
+      .pulse {
+        animation: pulseAnimation 2s ease-in-out infinite;
+      }
+      
+      @keyframes rotateAnimation {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      
+      .rotate {
+        animation: rotateAnimation 8s linear infinite;
+        transform-origin: center;
+      }
+      
+      @keyframes magFieldAnimation {
+        0% { r: 10; opacity: 0.8; }
+        50% { r: 15; opacity: 1; }
+        100% { r: 10; opacity: 0.8; }
+      }
+      
+      .mag-field {
+        animation: magFieldAnimation 2s ease-in-out infinite;
+      }
+      
+      @keyframes chargeAnimation {
+        0% { opacity: 0.2; }
+        50% { opacity: 1; }
+        100% { opacity: 0.2; }
+      }
+      
+      .charge {
+        animation: chargeAnimation 2s ease-in-out infinite;
+      }
+      
+      .interactive:hover {
+        cursor: pointer;
+        filter: brightness(1.2);
+      }
+    </style>
+  </defs>
+  
+  <!-- Background and Title -->
+  <rect width="900" height="800" fill="white"/>
+  <text x="450" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">Interactive Parallel RLC Circuit</text>
+  
+  <!-- Circuit Diagram -->
+  <g transform="translate(150, 150)">
+    <!-- AC Source -->
+    <circle cx="60" cy="200" r="30" fill="none" stroke="#000" stroke-width="2"/>
+    <path d="M60,170 Q70,185 60,200 Q50,215 60,230" fill="none" stroke="#000" stroke-width="2"/>
+    <text x="60" y="250" class="component-label">AC Source</text>
+    
+    <!-- Connecting Lines -->
+    <line x1="60" y1="140" x2="60" y2="170" class="circuit-line"/>
+    <line x1="60" y1="230" x2="60" y2="260" class="circuit-line"/>
+    <line x1="60" y1="140" x2="350" y2="140" class="circuit-line"/>
+    <line x1="60" y1="260" x2="350" y2="260" class="circuit-line"/>
+    
+    <!-- Resistor Branch -->
+    <line x1="150" y1="140" x2="150" y2="160" class="circuit-line"/>
+    <path d="M150,160 L140,165 L160,175 L140,185 L160,195 L140,205 L160,215 L150,220" fill="none" stroke="#000" stroke-width="2.5" class="interactive">
+      <title>Resistor: Consumes energy, in-phase current</title>
+    </path>
+    <line x1="150" y1="220" x2="150" y2="260" class="circuit-line"/>
+    <text x="150" y="120" class="component-label">R</text>
+    
+    <!-- Current through R -->
+    <path d="M135,200 Q145,195 155,200" class="current-flow animated-current" marker-end="url(#currentArrow)"/>
+    <text x="120" y="200" class="current-label">IR</text>
+    
+    <!-- Inductor Branch with magnetic field visualization -->
+    <line x1="250" y1="140" x2="250" y2="160" class="circuit-line"/>
+    <path d="M250,160 C270,160 270,170 250,170 C270,170 270,180 250,180 C270,180 270,190 250,190 C270,190 270,200 250,200 C270,200 270,210 250,210 C270,210 270,220 250,220" fill="none" stroke="#000" stroke-width="2.5" class="interactive">
+      <title>Inductor: Stores energy in magnetic field, current lags voltage by 90°</title>
+    </path>
+    <line x1="250" y1="220" x2="250" y2="260" class="circuit-line"/>
+    <text x="250" y="120" class="component-label">L</text>
+    
+    <!-- Magnetic field visualization -->
+    <circle cx="250" cy="190" r="10" fill="none" stroke="#0066cc" stroke-width="1" stroke-dasharray="3,2" class="mag-field"/>
+    <circle cx="250" cy="190" r="15" fill="none" stroke="#0066cc" stroke-width="1" stroke-dasharray="3,2" class="mag-field" style="animation-delay: 0.5s"/>
+    
+    <!-- Current through L -->
+    <path d="M235,200 Q245,195 255,200" class="current-flow animated-current" marker-end="url(#currentArrow)"/>
+    <text x="220" y="200" class="current-label">IL</text>
+    
+    <!-- Capacitor Branch with charge visualization -->
+    <line x1="350" y1="140" x2="350" y2="190" class="circuit-line"/>
+    <line x1="330" y1="190" x2="370" y2="190" class="circuit-line interactive">
+      <title>Capacitor top plate</title>
+    </line>
+    <line x1="330" y1="210" x2="370" y2="210" class="circuit-line interactive">
+      <title>Capacitor bottom plate</title>
+    </line>
+    <line x1="350" y1="210" x2="350" y2="260" class="circuit-line"/>
+    <text x="350" y="120" class="component-label">C</text>
+    
+    <!-- Charge visualization -->
+    <circle cx="340" cy="190" r="3" fill="#cc0000" class="charge"/>
+    <circle cx="350" cy="190" r="3" fill="#cc0000" class="charge" style="animation-delay: 0.3s"/>
+    <circle cx="360" cy="190" r="3" fill="#cc0000" class="charge" style="animation-delay: 0.6s"/>
+    
+    <circle cx="340" cy="210" r="3" fill="#0066cc" class="charge"/>
+    <circle cx="350" cy="210" r="3" fill="#0066cc" class="charge" style="animation-delay: 0.3s"/>
+    <circle cx="360" cy="210" r="3" fill="#0066cc" class="charge" style="animation-delay: 0.6s"/>
+    
+    <!-- Current through C -->
+    <path d="M335,200 Q345,195 355,200" class="current-flow animated-current" marker-end="url(#currentArrow)"/>
+    <text x="370" y="200" class="current-label">IC</text>
+    
+    <!-- Main Current Flow -->
+    <path d="M60,130 Q70,125 80,130" class="current-flow animated-current" marker-end="url(#currentArrow)"/>
+    <text x="85" y="120" class="current-label">I</text>
+    
+    <!-- Voltage Arrows -->
+    <line x1="50" y1="200" x2="70" y2="200" class="voltage" marker-end="url(#voltageArrow)"/>
+    <text x="30" y="200" class="voltage-label">V</text>
+  </g>
+  
+  <!-- Frequency Slider -->
+  <g transform="translate(450, 130)">
+    <text x="0" y="0" font-family="Arial" font-size="16" font-weight="bold">Frequency Control</text>
+    <line x1="0" y1="30" x2="300" y2="30" class="slider-track"/>
+    <text x="0" y="50" class="slider-label">Low f</text>
+    <text x="150" y="50" class="slider-label" fill="#cc0000">Resonance</text>
+    <text x="300" y="50" class="slider-label">High f</text>
+    
+    <circle id="freq-slider" cx="150" cy="30" r="10" class="slider-thumb interactive">
+      <title>Drag to change frequency</title>
+    </circle>
+  </g>
+  
+  <!-- Phasor Diagram -->
+  <g transform="translate(200, 450)">
+    <text x="0" y="-100" font-family="Arial" font-size="18" font-weight="bold">Phasor Diagram</text>
+    
+    <!-- Coordinate Axes -->
+    <line x1="-80" y1="0" x2="80" y2="0" stroke="#000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <line x1="0" y1="80" x2="0" y2="-80" stroke="#000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <text x="85" y="15" font-family="Arial" font-size="12">Real</text>
+    <text x="15" y="-85" font-family="Arial" font-size="12">Imaginary</text>
+    
+    <!-- Phasors -->
+    <g class="rotate">
+      <!-- Supply Voltage Phasor -->
+      <line x1="0" y1="0" x2="60" y2="0" class="phasor" stroke="#cc0000" marker-end="url(#voltageArrow)"/>
+      <text x="30" y="-10" class="voltage-label">V</text>
+      
+      <!-- Current Phasors -->
+      <line x1="0" y1="0" x2="50" y2="0" class="phasor" stroke="#0066cc" marker-end="url(#currentArrow)"/>
+      <text x="25" y="15" class="current-label">IR</text>
+      
+      <line x1="0" y1="0" x2="0" y2="-40" class="phasor" stroke="#0066cc" marker-end="url(#currentArrow)"/>
+      <text x="-15" y="-20" class="current-label">IL</text>
+      
+      <line x1="0" y1="0" x2="0" y2="40" class="phasor" stroke="#0066cc" marker-end="url(#currentArrow)"/>
+      <text x="15" y="20" class="current-label">IC</text>
+      
+      <!-- Total Current Phasor (will vary with frequency) -->
+      <line id="total-current" x1="0" y1="0" x2="40" y2="10" class="phasor" stroke="#0066cc" stroke-width="3.5" marker-end="url(#currentArrow)"/>
+      <text x="45" y="25" class="current-label" font-weight="bold">ITOTAL</text>
+    </g>
+    
+    <text x="0" y="100" font-family="Arial" font-size="14" text-anchor="middle" fill="#555">
+      At resonance: IL = IC (equal and opposite)
+    </text>
+  </g>
+  
+  <!-- Impedance vs Frequency Graph -->
+  <g transform="translate(550, 250)">
+    <text x="0" y="-120" font-family="Arial" font-size="18" font-weight="bold">Impedance vs Frequency</text>
+    
+    <!-- Axes -->
+    <line x1="-80" y1="100" x2="250" y2="100" stroke="#000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <line x1="-50" y1="200" x2="-50" y2="-100" stroke="#000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    
+    <!-- Axis Labels -->
+    <text x="260" y="100" font-family="Arial" font-size="14">f</text>
+    <text x="-50" y="-110" font-family="Arial" font-size="14">Z</text>
+    
+    <!-- Resonance Frequency Marker -->
+    <line x1="100" y1="100" x2="100" y2="105" stroke="#000" stroke-width="1.5"/>
+    <text x="100" y="120" font-family="Arial" font-size="12" text-anchor="middle">fr</text>
+    
+    <!-- Impedance Curves -->
+    <path d="M-50,100 Q0,100 50,50 T100,20 T150,50 T200,80 T250,100" fill="none" stroke="#0066cc" stroke-width="2.5"/>
+    <text x="200" y="70" font-family="Arial" font-size="12" fill="#0066cc">|Z|</text>
+    
+    <!-- Marker for impedance at current frequency -->
+    <circle id="z-marker" cx="100" cy="20" r="6" fill="#cc0000" class="pulse"/>
+  </g>
+  
+  <!-- Current vs Frequency Graph -->
+  <g transform="translate(550, 450)">
+    <text x="0" y="-60" font-family="Arial" font-size="18" font-weight="bold">Current vs Frequency</text>
+    
+    <!-- Axes -->
+    <line x1="-80" y1="100" x2="250" y2="100" stroke="#000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    <line x1="-50" y1="200" x2="-50" y2="-50" stroke="#000" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+    
+    <!-- Axis Labels -->
+    <text x="260" y="100" font-family="Arial" font-size="14">f</text>
+    <text x="-50" y="-60" font-family="Arial" font-size="14">I</text>
+    
+    <!-- Resonance Frequency Marker -->
+    <line x1="100" y1="100" x2="100" y2="105" stroke="#000" stroke-width="1.5"/>
+    <text x="100" y="120" font-family="Arial" font-size="12" text-anchor="middle">fr</text>
+    
+    <!-- Current Curves -->
+    <path d="M-50,180 Q0,150 50,120 T100,100 T150,80 T200,70 T250,60" fill="none" stroke="#0066cc" stroke-width="2.5"/>
+    <text x="200" y="60" font-family="Arial" font-size="12" fill="#0066cc">IL</text>
+    
+    <path d="M-50,30 Q0,40 50,50 T100,100 T150,150 T200,180 T250,200" fill="none" stroke="#cc0000" stroke-width="2.5"/>
+    <text x="200" y="190" font-family="Arial" font-size="12" fill="#cc0000">IC</text>
+    
+    <path d="M-50,100 Q0,60 50,40 T100,20 T150,40 T200,60 T250,100" fill="none" stroke="#000" stroke-width="3.5"/>
+    <text x="200" y="120" font-family="Arial" font-size="12" fill="#000">ITOTAL</text>
+    
+    <!-- Marker for current at selected frequency -->
+    <circle id="i-marker" cx="100" cy="20" r="6" fill="#0066cc" class="pulse"/>
+  </g>
+  
+  <!-- Resonance Conditions Box -->
+  <g transform="translate(200, 650)">
+    <rect x="-80" y="-40" width="360" height="180" class="resonance-box" rx="10" ry="10"/>
+    <text x="100" y="-15" class="resonance-title">Parallel Resonance Conditions</text>
+    
+    <text x="-60" y="20" class="resonance-formula">• Resonance Frequency: fr = 1/(2π√(LC))</text>
+    <text x="-60" y="50" class="resonance-formula">• At resonance:</text>
+    <text x="-40" y="80" class="resonance-formula">- XL = XC</text>
+    <text x="-40" y="110" class="resonance-formula">- Circuit impedance is maximum</text>
+    <text x="-40" y="140" class="resonance-formula">- IL and IC are equal and opposite in phase</text>
+  </g>
+  
+  <!-- Phase Angle Display -->
+  <g transform="translate(550, 650)">
+    <rect x="-80" y="-40" width="360" height="180" class="resonance-box" rx="10" ry="10"/>
+    <text x="100" y="-15" class="resonance-title">Phase Relationships</text>
+    
+    <text x="-60" y="20" class="resonance-formula" id="phase-display">• Current phase relative to voltage: 0°</text>
+    <text x="-60" y="50" class="resonance-formula">• Component behavior:</text>
+    <text x="-40" y="80" class="resonance-formula">- R: Current in phase with voltage</text>
+    <text x="-40" y="110" class="resonance-formula">- L: Current lags voltage by 90°</text>
+    <text x="-40" y="140" class="resonance-formula">- C: Current leads voltage by 90°</text>
+  </g>
+  
+  <!-- JavaScript to make the SVG interactive -->
+  <script type="text/ecmascript"><![CDATA[
+    // Get interactive elements
+    const freqSlider = document.getElementById('freq-slider');
+    const zMarker = document.getElementById('z-marker');
+    const iMarker = document.getElementById('i-marker');
+    const totalCurrent = document.getElementById('total-current');
+    const phaseDisplay = document.getElementById('phase-display');
+    
+    // Variables to track state
+    let frequency = 150; // Center position (resonance)
+    let isDragging = false;
+    
+    // Add event listeners for dragging
+    freqSlider.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('mouseup', endDrag);
+    document.addEventListener('mouseleave', endDrag);
+    
+    // Touch support
+    freqSlider.addEventListener('touchstart', startDrag);
+    document.addEventListener('touchmove', drag);
+    document.addEventListener('touchend', endDrag);
+    
+    function startDrag(event) {
+      isDragging = true;
+      // Prevent default behavior (e.g., scrolling on touch devices)
+      event.preventDefault();
+    }
+    
+    function drag(event) {
+      if (!isDragging) return;
+      
+      let clientX;
+      if (event.type === 'touchmove') {
+        clientX = event.touches[0].clientX;
+      } else {
+        clientX = event.clientX;
+      }
+      
+      // Get slider container position
+      const sliderContainer = freqSlider.parentElement;
+      const rect = sliderContainer.getBoundingClientRect();
+      
+      // Calculate new position (constrained to slider track)
+      let newX = clientX - rect.left;
+      if (newX < 0) newX = 0;
+      if (newX > 300) newX = 300;
+      
+      // Update slider position
+      freqSlider.setAttribute('cx', newX);
+      
+      // Update frequency value (0-300 range)
+      frequency = newX;
+      
+      // Update visualization based on frequency
+      updateVisualization();
+    }
+    
+    function endDrag() {
+      isDragging = false;
+    }
+    
+    function updateVisualization() {
+      // Resonance is at frequency = 150
+      const resonanceFreq = 150;
+      
+      // Calculate normalized deviation from resonance (-1 to 1)
+      const deviation = (frequency - resonanceFreq) / resonanceFreq;
+      
+      // Update impedance marker
+      // At resonance (frequency = 150), impedance is maximum (y = 20)
+      // Away from resonance, impedance decreases
+      const zPosition = Math.max(20 + Math.abs(deviation) * 80, 20);
+      zMarker.setAttribute('cy', zPosition);
+      
+      // Update x-position for both markers based on frequency
+      zMarker.setAttribute('cx', -50 + frequency);
+      iMarker.setAttribute('cx', -50 + frequency);
+      
+      // Update current marker
+      // At resonance, total current is minimum (y = 100-80 = 20)
+      // Away from resonance, current increases
+      const iPosition = Math.min(100 - 80 + Math.abs(deviation) * 80, 100);
+      iMarker.setAttribute('cy', iPosition);
+      
+      // Update total current phasor angle based on frequency
+      // Calculate phase angle: at resonance = 0°, below = negative (lagging), above = positive (leading)
+      const phaseAngle = deviation * 60; // Max ±60 degrees
+      
+      // Convert angle to (x,y) coordinates for phasor
+      const length = 40; // Length of phasor
+      const angleRad = (phaseAngle * Math.PI) / 180;
+      const x = Math.cos(angleRad) * length;
+      const y = -Math.sin(angleRad) * length; // Negative because SVG y-axis is inverted
+      
+      // Update total current phasor
+      totalCurrent.setAttribute('x2', x);
+      totalCurrent.setAttribute('y2', y);
+      
+      // Update phase display text
+      phaseDisplay.textContent = `• Current phase relative to voltage: ${phaseAngle.toFixed(1)}°`;
+    }
+    
+    // Initialize visualization
+    updateVisualization();
+  ]]></script>
+</svg> 

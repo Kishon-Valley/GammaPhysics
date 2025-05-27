@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    
+    <!-- Gradients -->
+    <linearGradient id="basis1Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3498db" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#2980b9" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="basis2Gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e74c3c" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#c0392b" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="stateGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9b59b6" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8e44ad" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <linearGradient id="projectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2ecc71" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#27ae60" stop-opacity="0.8"/>
+    </linearGradient>
+    
+    <!-- Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    
+    <!-- Rotating animation -->
+    <animateTransform
+      id="rotate"
+      attributeName="transform"
+      attributeType="XML"
+      type="rotate"
+      from="0 250 250"
+      to="360 250 250"
+      dur="20s"
+      repeatCount="indefinite"/>
+  </defs>
+  
+  <!-- Style definitions -->
+  <style>
+    .title {
+      font-family: 'Arial', sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #333;
+    }
+    
+    .subtitle {
+      font-family: 'Arial', sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-anchor: middle;
+      fill: #555;
+    }
+    
+    .vector-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    
+    .formula-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      fill: #333;
+    }
+    
+    .basis1-vector {
+      stroke: url(#basis1Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .basis2-vector {
+      stroke: url(#basis2Gradient);
+      stroke-width: 3;
+      marker-end: url(#arrowhead);
+    }
+    
+    .state-vector {
+      stroke: url(#stateGradient);
+      stroke-width: 4;
+      marker-end: url(#arrowhead);
+    }
+    
+    .projection {
+      stroke: url(#projectionGradient);
+      stroke-width: 2;
+      stroke-dasharray: 5,3;
+    }
+    
+    .coordinate-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 14px;
+      fill: #555;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes pulseOpacity {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    @keyframes rotateBasesAnimation {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(45deg); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 2s ease-in-out;
+    }
+    
+    .pulse {
+      animation: pulseOpacity 3s infinite ease-in-out;
+    }
+    
+    .rotate-bases {
+      animation: rotateBasesAnimation 8s alternate infinite ease-in-out;
+      transform-origin: 250px 250px;
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" class="title">Change of Basis in Quantum Mechanics</text>
+  <text x="400" y="70" class="subtitle">Using Dirac Notation</text>
+  
+  <!-- Left side - standard basis -->
+  <g transform="translate(250, 250)">
+    <!-- Grid lines -->
+    <line x1="-150" y1="0" x2="150" y2="0" stroke="#ddd" stroke-width="1"/>
+    <line x1="0" y1="-150" x2="0" y2="150" stroke="#ddd" stroke-width="1"/>
+    
+    <!-- Standard basis vectors {|e₁⟩, |e₂⟩} -->
+    <g class="rotate-bases">
+      <line x1="0" y1="0" x2="100" y2="0" class="basis1-vector"/>
+      <rect x="110" y="-10" width="40" height="25" rx="5" fill="#3498db" opacity="0.2"/>
+      <text x="130" y="8" class="vector-label" text-anchor="middle" fill="#3498db">|e₁⟩</text>
+      
+      <line x1="0" y1="0" x2="0" y2="-100" class="basis1-vector"/>
+      <rect x="10" y="-120" width="40" height="25" rx="5" fill="#3498db" opacity="0.2"/>
+      <text x="30" y="-102" class="vector-label" text-anchor="middle" fill="#3498db">|e₂⟩</text>
+    </g>
+    
+    <!-- State vector |ψ⟩ -->
+    <line x1="0" y1="0" x2="70" y2="-60" class="state-vector"/>
+    <rect x="80" y="-70" width="40" height="25" rx="5" fill="#9b59b6" opacity="0.2"/>
+    <text x="100" y="-52" class="vector-label" text-anchor="middle" fill="#9b59b6">|ψ⟩</text>
+    
+    <!-- Projections onto standard basis -->
+    <line x1="0" y1="0" x2="70" y2="0" class="projection"/>
+    <line x1="70" y1="0" x2="70" y2="-60" class="projection"/>
+    
+    <!-- Coordinates in standard basis -->
+    <rect x="40" y="10" width="60" height="25" rx="5" fill="#fff" stroke="#ddd" stroke-width="1"/>
+    <text x="70" y="27" class="coordinate-text" text-anchor="middle">c₁ = 0.7</text>
+    
+    <rect x="-30" y="-40" width="60" height="25" rx="5" fill="#fff" stroke="#ddd" stroke-width="1"/>
+    <text x="0" y="-23" class="coordinate-text" text-anchor="middle">c₂ = 0.6</text>
+  </g>
+  
+  <!-- Right side - alternative basis -->
+  <g transform="translate(550, 250)">
+    <!-- Grid lines -->
+    <line x1="-150" y1="0" x2="150" y2="0" stroke="#ddd" stroke-width="1"/>
+    <line x1="0" y1="-150" x2="0" y2="150" stroke="#ddd" stroke-width="1"/>
+    
+    <!-- Alternative basis vectors {|f₁⟩, |f₂⟩} (rotated) -->
+    <g>
+      <line x1="0" y1="0" x2="70.7" y2="-70.7" class="basis2-vector"/>
+      <rect x="80" y="-80" width="40" height="25" rx="5" fill="#e74c3c" opacity="0.2"/>
+      <text x="100" y="-62" class="vector-label" text-anchor="middle" fill="#e74c3c">|f₁⟩</text>
+      
+      <line x1="0" y1="0" x2="70.7" y2="70.7" class="basis2-vector"/>
+      <rect x="80" y="60" width="40" height="25" rx="5" fill="#e74c3c" opacity="0.2"/>
+      <text x="100" y="78" class="vector-label" text-anchor="middle" fill="#e74c3c">|f₂⟩</text>
+    </g>
+    
+    <!-- Same state vector |ψ⟩ -->
+    <line x1="0" y1="0" x2="70" y2="-60" class="state-vector"/>
+    <rect x="80" y="-70" width="40" height="25" rx="5" fill="#9b59b6" opacity="0.2"/>
+    <text x="100" y="-52" class="vector-label" text-anchor="middle" fill="#9b59b6">|ψ⟩</text>
+    
+    <!-- Projections onto alternative basis -->
+    <line x1="0" y1="0" x2="41" y2="-41" class="projection"/>
+    <line x1="41" y1="-41" x2="70" y2="-60" class="projection"/>
+    
+    <!-- Coordinates in alternative basis -->
+    <rect x="15" y="-50" width="60" height="25" rx="5" fill="#fff" stroke="#ddd" stroke-width="1"/>
+    <text x="45" y="-33" class="coordinate-text" text-anchor="middle">d₁ = 0.92</text>
+    
+    <rect x="25" y="10" width="60" height="25" rx="5" fill="#fff" stroke="#ddd" stroke-width="1"/>
+    <text x="55" y="27" class="coordinate-text" text-anchor="middle">d₂ = 0.07</text>
+  </g>
+  
+  <!-- Transform arrow -->
+  <g transform="translate(400, 250)">
+    <path d="M-70,0 L70,0" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <text x="0" y="-15" class="formula-text" text-anchor="middle">Change of Basis</text>
+  </g>
+  
+  <!-- Bottom equations panel -->
+  <g transform="translate(400, 430)">
+    <rect x="-350" y="-40" width="700" height="80" rx="10" fill="#f8f9fa" stroke="#ddd" stroke-width="1"/>
+    
+    <text x="-325" y="-15" class="formula-text" text-anchor="start">
+      • |ψ⟩ = c₁|e₁⟩ + c₂|e₂⟩ = d₁|f₁⟩ + d₂|f₂⟩
+    </text>
+    
+    <text x="-325" y="15" class="formula-text" text-anchor="start">
+      • Transformation: d_j = Σᵢ ⟨f_j|e_i⟩ c_i
+    </text>
+    
+    <text x="175" y="0" class="formula-text" text-anchor="middle">
+      where U_ji = ⟨f_j|e_i⟩
+    </text>
+  </g>
+  
+  <!-- Basis transformation illustration -->
+  <g transform="translate(400, 170)">
+    <rect x="-100" y="-30" width="200" height="60" rx="5" fill="#fff" stroke="#ddd" stroke-width="1"/>
+    
+    <text x="0" y="0" class="formula-text" text-anchor="middle" font-family="'Arial', sans-serif">
+      |f₁⟩ = √½|e₁⟩ + √½|e₂⟩
+    </text>
+    
+    <text x="0" y="25" class="formula-text" text-anchor="middle" font-family="'Arial', sans-serif">
+      |f₂⟩ = √½|e₁⟩ - √½|e₂⟩
+    </text>
+  </g>
+</svg> 

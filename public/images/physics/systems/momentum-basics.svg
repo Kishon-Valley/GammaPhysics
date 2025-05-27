@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+    <!-- White background that covers the entire viewport -->
+    <rect width="100%" height="100%" fill="white"/>
+    <style>
+        .title { font: bold 16px sans-serif; }
+        .label { font: 14px sans-serif; }
+        .math { font-style: italic; }
+        .equation { font: italic 16px serif; }
+    </style>
+    
+    <!-- Grid Background -->
+    <defs>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#eee" stroke-width="1"/>
+        </pattern>
+    </defs>
+    <rect width="800" height="400" fill="url(#grid)"/>
+    
+    <!-- Linear Momentum Section -->
+    <g transform="translate(0,0)">
+        <text x="200" y="30" text-anchor="middle" class="title">Linear Momentum: p = mv</text>
+        
+        <!-- Fast Light Object -->
+        <circle cx="150" cy="80" r="10" fill="#4444ff"/>
+        <line x1="120" y1="80" x2="180" y2="80" stroke="#000" marker-end="url(#arrowhead)" stroke-width="2"/>
+        <text x="150" y="60" text-anchor="middle" class="label">Light mass, high velocity</text>
+        <text x="150" y="110" text-anchor="middle" class="equation">m = 1 kg, v = 10 m/s</text>
+        
+        <!-- Slow Heavy Object -->
+        <circle cx="150" cy="180" r="20" fill="#ff4444"/>
+        <line x1="135" y1="180" x2="165" y2="180" stroke="#000" marker-end="url(#arrowhead)"/>
+        <text x="150" y="160" text-anchor="middle" class="label">Heavy mass, low velocity</text>
+        <text x="150" y="210" text-anchor="middle" class="equation">m = 10 kg, v = 1 m/s</text>
+        
+        <!-- Equal Momentum Label -->
+        <text x="150" y="250" text-anchor="middle" class="label">Both have same momentum: p = 10 kg⋅m/s</text>
+    </g>
+    
+    <!-- Impulse Section -->
+    <g transform="translate(400,0)">
+        <text x="200" y="30" text-anchor="middle" class="title">Impulse: J = F⋅Δt = Δp</text>
+        
+        <!-- Large Force Short Time -->
+        <rect x="100" y="60" width="20" height="80" fill="#ff4444"/>
+        <text x="160" y="100" class="label">Large F</text>
+        <text x="160" y="120" class="label">Short Δt</text>
+        
+        <!-- Small Force Long Time -->
+        <rect x="300" y="60" width="60" height="30" fill="#4444ff"/>
+        <text x="360" y="100" class="label">Small F</text>
+        <text x="360" y="120" class="label">Long Δt</text>
+        
+        <!-- Equal Impulse Label -->
+        <text x="200" y="180" text-anchor="middle" class="label">Same impulse: Area = F⋅Δt</text>
+    </g>
+    
+    <!-- Arrow Marker -->
+    <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#000"/>
+        </marker>
+    </defs>
+</svg>

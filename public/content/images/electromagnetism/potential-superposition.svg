@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="320" height="180" viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="180" fill="white"/>
+  <!-- Charges -->
+  <circle cx="60" cy="90" r="12" fill="#4444ff"/>
+  <text x="54" y="95" font-size="14" fill="white">+q₁</text>
+  <circle cx="260" cy="90" r="12" fill="#ff4444"/>
+  <text x="254" y="95" font-size="14" fill="white">-q₂</text>
+  <!-- Field point -->
+  <circle cx="160" cy="50" r="7" fill="#00cc66"/>
+  <text x="145" y="45" font-size="13" fill="#00cc66">P</text>
+  <!-- Lines to P -->
+  <line x1="60" y1="90" x2="160" y2="50" stroke="#888" stroke-dasharray="4" stroke-width="2"/>
+  <line x1="260" y1="90" x2="160" y2="50" stroke="#888" stroke-dasharray="4" stroke-width="2"/>
+  <text x="100" y="65" font-size="12" fill="#888">r₁</text>
+  <text x="200" y="65" font-size="12" fill="#888">r₂</text>
+  <!-- Potentials -->
+  <text x="120" y="30" font-size="13" fill="#222">$V_P = V_1 + V_2$</text>
+</svg>

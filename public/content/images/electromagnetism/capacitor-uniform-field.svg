@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240" height="120" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="120" fill="white"/>
+  <!-- Plates -->
+  <rect x="40" y="30" width="20" height="60" fill="#4444ff"/>
+  <rect x="180" y="30" width="20" height="60" fill="#ff4444"/>
+  <!-- Field lines -->
+  <g stroke="#00cc66" stroke-width="2">
+    <line x1="60" y1="40" x2="180" y2="40" marker-end="url(#arrowhead)"/>
+    <line x1="60" y1="60" x2="180" y2="60" marker-end="url(#arrowhead)"/>
+    <line x1="60" y1="80" x2="180" y2="80" marker-end="url(#arrowhead)"/>
+  </g>
+  <text x="30" y="25" font-size="13" fill="#4444ff">+Q</text>
+  <text x="200" y="25" font-size="13" fill="#ff4444">-Q</text>
+  <text x="100" y="100" font-size="13" fill="#00cc66">Uniform $\vec{E}$</text>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#00cc66"/>
+    </marker>
+  </defs>
+</svg>

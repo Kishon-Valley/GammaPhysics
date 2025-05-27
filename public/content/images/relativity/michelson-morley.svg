@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="600" height="400" fill="white"/>
+    
+    <!-- Light source -->
+    <circle cx="100" cy="200" r="15" fill="yellow" stroke="black"/>
+    <text x="70" y="240" font-family="Arial" font-size="12">Light Source</text>
+    
+    <!-- Half-silvered mirror -->
+    <line x1="200" y1="150" x2="200" y2="250" stroke="lightblue" stroke-width="4"/>
+    <text x="160" y="270" font-family="Arial" font-size="12">Half-silvered Mirror</text>
+    
+    <!-- Mirror 1 -->
+    <line x1="400" y1="200" x2="420" y2="200" stroke="silver" stroke-width="4"/>
+    <text x="380" y="180" font-family="Arial" font-size="12">Mirror 1</text>
+    
+    <!-- Mirror 2 -->
+    <line x1="200" y1="50" x2="200" y2="30" stroke="silver" stroke-width="4"/>
+    <text x="210" y="45" font-family="Arial" font-size="12">Mirror 2</text>
+    
+    <!-- Telescope -->
+    <rect x="150" y="300" width="40" height="60" fill="none" stroke="black"/>
+    <text x="140" y="380" font-family="Arial" font-size="12">Telescope</text>
+    
+    <!-- Light paths -->
+    <!-- Incident beam -->
+    <line x1="115" y1="200" x2="200" y2="200" stroke="red" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Horizontal beam -->
+    <line x1="200" y1="200" x2="400" y2="200" stroke="red" stroke-width="1" stroke-dasharray="5,5"/>
+    <line x1="400" y1="200" x2="200" y2="200" stroke="blue" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Vertical beam -->
+    <line x1="200" y1="200" x2="200" y2="50" stroke="red" stroke-width="1" stroke-dasharray="5,5"/>
+    <line x1="200" y1="50" x2="200" y2="200" stroke="blue" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- To telescope -->
+    <line x1="200" y1="200" x2="170" y2="300" stroke="purple" stroke-width="1" stroke-dasharray="5,5"/>
+    
+    <!-- Earth's motion -->
+    <line x1="450" y1="100" x2="550" y2="100" stroke="green" stroke-width="2"/>
+    <polygon points="550,100 540,95 540,105" fill="green"/>
+    <text x="470" y="90" font-family="Arial" font-size="12">Earth's Motion</text>
+    
+    <!-- Aether wind -->
+    <line x1="450" y1="130" x2="550" y2="130" stroke="orange" stroke-width="2"/>
+    <polygon points="450,130 460,125 460,135" fill="orange"/>
+    <text x="470" y="150" font-family="Arial" font-size="12">Hypothetical Aether Wind</text>
+</svg>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <!-- Title -->
+    <text x="400" y="30" text-anchor="middle" font-size="20" font-family="Arial">Phase Differences in Wave Superposition</text>
+    
+    <!-- 0° Phase Difference -->
+    <g transform="translate(0,0)">
+        <text x="200" y="80" text-anchor="middle" font-size="14">0° Phase Difference</text>
+        <path d="M100,120 Q150,90 200,120 T300,120" fill="none" stroke="#2196F3" stroke-width="2"/>
+        <path d="M100,120 Q150,90 200,120 T300,120" fill="none" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5"/>
+    </g>
+    
+    <!-- 90° Phase Difference -->
+    <g transform="translate(0,100)">
+        <text x="200" y="80" text-anchor="middle" font-size="14">90° Phase Difference</text>
+        <path d="M100,120 Q150,90 200,120 T300,120" fill="none" stroke="#2196F3" stroke-width="2"/>
+        <path d="M150,120 Q200,90 250,120 T350,120" fill="none" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5"/>
+    </g>
+    
+    <!-- 180° Phase Difference -->
+    <g transform="translate(400,0)">
+        <text x="200" y="80" text-anchor="middle" font-size="14">180° Phase Difference</text>
+        <path d="M100,120 Q150,90 200,120 T300,120" fill="none" stroke="#2196F3" stroke-width="2"/>
+        <path d="M100,120 Q150,150 200,120 T300,120" fill="none" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5"/>
+    </g>
+    
+    <!-- 270° Phase Difference -->
+    <g transform="translate(400,100)">
+        <text x="200" y="80" text-anchor="middle" font-size="14">270° Phase Difference</text>
+        <path d="M100,120 Q150,90 200,120 T300,120" fill="none" stroke="#2196F3" stroke-width="2"/>
+        <path d="M150,120 Q200,150 250,120 T350,120" fill="none" stroke="#4CAF50" stroke-width="2" stroke-dasharray="5,5"/>
+    </g>
+    
+    <!-- Legend -->
+    <text x="400" y="350" text-anchor="middle" font-size="16">Phase Difference (φ) determines interference pattern</text>
+</svg>

@@ -62,7 +62,7 @@ function App() {
                 <div className="flex items-center">
                   <Link to="/" className="flex items-center">
                     <Atom className="w-8 h-8 text-blue-600" />
-                    <span className="ml-2 text-xl font-bold">Physics Learning Hub</span>
+                    <span className="ml-2 text-xl font-bold">GammaPhysics</span>
                   </Link>
                 </div>
                 

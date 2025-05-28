@@ -50,10 +50,21 @@ export const FreeFallScene = ({
   const physicsRef = useRef({
     position: new Vector3(0, initialHeight, 0),
     velocity: new Vector3(0, initialVelocity, 0),
-    acceleration: new Vector3(0, -gravity, 0),
+    acceleration: new Vector3(0, 0, 0), // Start with zero acceleration
     stopped: false,
     time: 0
   });
+
+  // Reset physics state when props change
+  useEffect(() => {
+    if (physicsRef.current) {
+      physicsRef.current.position.set(0, initialHeight, 0);
+      physicsRef.current.velocity.set(0, initialVelocity, 0);
+      physicsRef.current.acceleration.set(0, 0, 0);
+      physicsRef.current.stopped = false;
+      physicsRef.current.time = 0;
+    }
+  }, [initialHeight, initialVelocity, gravity, mass]);
 
 
   useEffect(() => {
@@ -410,6 +421,11 @@ export const FreeFallScene = ({
         console.log('Animation frame, isPlaying:', isPlaying, 'stopped:', physics.stopped, 'position:', physics.position.y.toFixed(2));
       }
       
+      // Update physics state based on isPlaying
+      if (isPlaying) {
+        physics.stopped = false;
+      }
+
       if (isPlaying && !physics.stopped) {
         // Increment time
         physics.time += dt;

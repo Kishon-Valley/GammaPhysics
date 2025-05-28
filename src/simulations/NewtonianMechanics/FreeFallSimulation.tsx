@@ -318,9 +318,7 @@ export const FreeFallSimulation = () => {
             }}
             id="free-fall-scene-box"
           >
-            {/* Only include simulation parameters in key, not Date.now() */}
             <FreeFallScene
-              key={`${controls.initialHeight}-${controls.initialVelocity}-${controls.gravity}`}
               {...controls}
               isPlaying={isPlaying}
               onDataUpdate={handleDataUpdate}

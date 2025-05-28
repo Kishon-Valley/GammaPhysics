@@ -3,6 +3,51 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three-stdlib';
 import { Vector3 } from 'three';
 
+// Physics calculations for free fall
+const calculateFreeFall = (state: {
+  position: Vector3;
+  velocity: Vector3;
+  acceleration: Vector3;
+  time: number;
+  mass: number;
+  gravity: number;
+  airResistance: boolean;
+  dragCoefficient: number;
+}) => {
+  const { position, velocity, acceleration, time, mass, gravity, airResistance, dragCoefficient } = state;
+  
+  // Calculate air resistance force if enabled
+  const airResistanceForce = airResistance 
+    ? new Vector3(0, -0.5 * dragCoefficient * velocity.length() * velocity.length(), 0)
+    : new Vector3(0, 0, 0);
+
+  // Total force = gravity + air resistance
+  const totalForce = new Vector3(0, -mass * gravity, 0).add(airResistanceForce);
+  
+  // Update acceleration
+  acceleration.set(0, totalForce.y / mass, 0);
+  
+  // Update velocity using Euler integration
+  velocity.addScaledVector(acceleration, time);
+  
+  // Update position
+  position.addScaledVector(velocity, time);
+  
+  // Calculate energies
+  const kineticEnergy = 0.5 * mass * velocity.length() * velocity.length();
+  const potentialEnergy = mass * gravity * position.y;
+  const totalEnergy = kineticEnergy + potentialEnergy;
+  
+  return {
+    position,
+    velocity,
+    acceleration,
+    kineticEnergy,
+    potentialEnergy,
+    totalEnergy
+  };
+};
+
 interface FreeFallSceneProps {
   initialHeight: number;
   initialVelocity: number;
@@ -32,6 +77,17 @@ export const FreeFallScene = ({
   isPlaying,
   onDataUpdate,
 }: FreeFallSceneProps) => {
+  // Time step for physics simulation (in seconds)
+  const timeStep = 0.016; // Approximately 60 FPS
+  const positionRef = useRef(new Vector3(0, initialHeight, 0));
+  const velocityRef = useRef(new Vector3(0, initialVelocity, 0));
+  const accelerationRef = useRef(new Vector3(0, -gravity, 0));
+
+  // Initialize position, velocity, and acceleration with props
+  positionRef.current = new Vector3(0, initialHeight, 0);
+  velocityRef.current = new Vector3(0, initialVelocity, 0);
+  accelerationRef.current = new Vector3(0, -gravity, 0);
+
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene>();
   const cameraRef = useRef<THREE.PerspectiveCamera>();
@@ -428,17 +484,17 @@ export const FreeFallScene = ({
 
       if (isPlaying && !physics.stopped) {
         // Increment time
-        physics.time += dt;
+        physicsRef.current.time += dt;
 
         // Calculate forces and update physics
         const gravityForce = new Vector3(0, -gravity, 0);
         
         // Calculate drag force if air resistance is enabled
         let dragForce = new Vector3(0, 0, 0);
-        if (airResistance && physics.velocity.lengthSq() > 0) {
-          dragForce = physics.velocity.clone()
+        if (airResistance && physicsRef.current.velocity.lengthSq() > 0) {
+          dragForce = physicsRef.current.velocity.clone()
             .normalize()
-            .multiplyScalar(-dragCoefficient * physics.velocity.lengthSq());
+            .multiplyScalar(-dragCoefficient * physicsRef.current.velocity.lengthSq());
         }
         
         // Calculate total acceleration (a = F/m)
@@ -523,6 +579,28 @@ export const FreeFallScene = ({
     };
 
     // Start animation loop
+    const state = {
+      position: positionRef.current,
+      velocity: velocityRef.current,
+      acceleration: accelerationRef.current,
+      time: timeStep,
+      mass,
+      gravity,
+      airResistance,
+      dragCoefficient
+    };
+
+    const physicsState = calculateFreeFall(state);
+    onDataUpdate({
+      position: physicsState.position,
+      velocity: physicsState.velocity,
+      acceleration: physicsState.acceleration,
+      time: timeRef.current,
+      kineticEnergy: physicsState.kineticEnergy,
+      potentialEnergy: physicsState.potentialEnergy,
+      totalEnergy: physicsState.totalEnergy
+    });
+
     animate();
 
     // Handle resize with more robust dimension detection
@@ -615,8 +693,8 @@ export const FreeFallScene = ({
       sphereRef.current.position.copy(physicsRef.current.position);
     }
     
-    // Update vectors if they exist
-    if (vectorsRef.current) {
+    // Update vectors
+    if (vectorsRef.current && vectorsRef.current.velocity && vectorsRef.current.gravityArrow && vectorsRef.current.drag) {
       vectorsRef.current.velocity.position.copy(physicsRef.current.position);
       vectorsRef.current.gravityArrow.position.copy(physicsRef.current.position);
       vectorsRef.current.drag.position.copy(physicsRef.current.position);

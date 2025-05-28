@@ -108,7 +108,8 @@ export const FreeFallScene = ({
     velocity: new Vector3(0, initialVelocity, 0),
     acceleration: new Vector3(0, -gravity, 0), // Start with gravity acceleration
     stopped: false,
-    time: 0
+    time: 0,
+    needsReset: false // Flag to track if physics state needs reset
   });
 
   // Reset physics state when props change
@@ -137,6 +138,30 @@ export const FreeFallScene = ({
       });
     }
   }, [initialHeight, initialVelocity, gravity, mass, airResistance, dragCoefficient, onDataUpdate]);
+  
+  // Watch for changes to isPlaying prop
+  useEffect(() => {
+    if (physicsRef.current) {
+      // When play button is pressed, ensure the object is not stopped
+      if (isPlaying) {
+        physicsRef.current.stopped = false;
+        
+        // If the object has hit the ground and we're restarting, reset its position
+        if (physicsRef.current.position.y <= 0.5) {
+          // Reset physics state
+          physicsRef.current.position.set(0, initialHeight, 0);
+          physicsRef.current.velocity.set(0, initialVelocity, 0);
+          physicsRef.current.acceleration.set(0, -gravity, 0);
+          physicsRef.current.time = 0;
+          
+          // Update sphere position if it exists
+          if (sphereRef.current) {
+            sphereRef.current.position.copy(physicsRef.current.position);
+          }
+        }
+      }
+    }
+  }, [isPlaying, initialHeight, initialVelocity, gravity]);
 
 
   useEffect(() => {
@@ -486,11 +511,8 @@ export const FreeFallScene = ({
         isAnimatingRef.current = true;
       }
       
-      // Update physics state based on isPlaying
-      if (isPlaying) {
-        physics.stopped = false;
-      }
-
+      // Always check isPlaying state directly from props
+      // This ensures we respond immediately to play button presses
       if (isPlaying && !physics.stopped) {
         // Increment time
         physics.time += dt;
@@ -682,7 +704,8 @@ export const FreeFallScene = ({
       velocity: new Vector3(0, initialVelocity, 0),
       acceleration: new Vector3(0, -gravity, 0),
       stopped: false,
-      time: 0
+      time: 0,
+      needsReset: false
     };
     
     // Reset sphere position if it exists
@@ -715,7 +738,8 @@ export const FreeFallScene = ({
       velocity: new Vector3(0, initialVelocity, 0),
       acceleration: new Vector3(0, -gravity, 0),
       stopped: false,
-      time: 0
+      time: 0,
+      needsReset: false
     };
     
     timeRef.current = 0;
@@ -745,7 +769,8 @@ export const FreeFallScene = ({
           velocity: new Vector3(0, initialVelocity, 0),
           acceleration: new Vector3(0, -gravity, 0),
           stopped: false,
-          time: 0
+          time: 0,
+          needsReset: false
         };
 
         // Reset sphere position

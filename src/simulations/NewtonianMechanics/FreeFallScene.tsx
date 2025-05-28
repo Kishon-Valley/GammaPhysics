@@ -106,10 +106,9 @@ export const FreeFallScene = ({
   const physicsRef = useRef({
     position: new Vector3(0, initialHeight, 0),
     velocity: new Vector3(0, initialVelocity, 0),
-    acceleration: new Vector3(0, -gravity, 0), // Start with gravity acceleration
+    acceleration: new Vector3(0, -gravity, 0),
     stopped: false,
-    time: 0,
-    needsReset: false // Flag to track if physics state needs reset
+    time: 0
   });
 
   // Reset physics state when props change
@@ -163,6 +162,51 @@ export const FreeFallScene = ({
     }
   }, [isPlaying, initialHeight, initialVelocity, gravity]);
 
+  // Effect to handle simulation reset and play state changes
+  useEffect(() => {
+    console.log('isPlaying changed to:', isPlaying);
+    
+    if (isPlaying) {
+      // When play button is clicked, reset if needed and start animation
+      if (physicsRef.current.stopped) {
+        console.log('Resetting physics for new simulation');
+        physicsRef.current = {
+          position: new Vector3(0, initialHeight, 0),
+          velocity: new Vector3(0, initialVelocity, 0),
+          acceleration: new Vector3(0, -gravity, 0),
+          stopped: false,
+          time: 0
+        };
+
+        // Reset sphere position
+        if (sphereRef.current) {
+          sphereRef.current.position.copy(physicsRef.current.position);
+        }
+        
+        // Update vectors if they exist
+        if (vectorsRef.current) {
+          vectorsRef.current.velocity.position.copy(physicsRef.current.position);
+          vectorsRef.current.gravityArrow.position.copy(physicsRef.current.position);
+          vectorsRef.current.drag.position.copy(physicsRef.current.position);
+        }
+      }
+    } else {
+      // When paused, mark as stopped
+      physicsRef.current.stopped = true;
+    }
+    
+    // Always update UI with current state when play state changes
+    onDataUpdate({
+      position: physicsRef.current.position.clone(),
+      velocity: physicsRef.current.velocity.clone(),
+      acceleration: new Vector3(0, -gravity, 0),
+      time: physicsRef.current.time,
+      kineticEnergy: 0.5 * mass * physicsRef.current.velocity.lengthSq(),
+      potentialEnergy: mass * gravity * (physicsRef.current.position.y - 0.5),
+      totalEnergy: (0.5 * mass * physicsRef.current.velocity.lengthSq()) + 
+                  (mass * gravity * (physicsRef.current.position.y - 0.5))
+    });
+  }, [isPlaying, initialHeight, initialVelocity, gravity, mass, onDataUpdate]);
 
   useEffect(() => {
     if (!mountRef.current) {
@@ -501,39 +545,37 @@ export const FreeFallScene = ({
       
       // Check if all required references exist
       if (!sceneRef.current || !cameraRef.current || !rendererRef.current) {
-        // Continue animation loop but log the issue
+        console.warn('Scene, camera or renderer not initialized, retrying...');
         animationFrameRef.current = requestAnimationFrame(animate);
         return;
       }
       
-      // Mark animation as started
+      // Log first successful animation frame
       if (!isAnimatingRef.current) {
+        console.log('Animation loop started successfully');
         isAnimatingRef.current = true;
       }
-      
-      // Always check isPlaying state directly from props
-      // This ensures we respond immediately to play button presses
+
       if (isPlaying && !physics.stopped) {
         // Increment time
         physics.time += dt;
 
-        // Use the calculateFreeFall function for consistent physics calculations
-        const result = calculateFreeFall({
-          position: physics.position,
-          velocity: physics.velocity,
-          acceleration: physics.acceleration,
-          time: dt,
-          mass: mass,
-          gravity: gravity,
-          airResistance: airResistance,
-          dragCoefficient: dragCoefficient
-        });
-        
-        // Apply the calculated results
-        physics.position.copy(result.position);
-        physics.velocity.copy(result.velocity);
-        physics.acceleration.copy(result.acceleration);
-        
+        // Calculate forces and update physics
+        const acceleration = new Vector3(0, -gravity, 0);
+
+        if (airResistance && physics.velocity.lengthSq() > 0) {
+          const dragForce = physics.velocity.clone()
+            .normalize()
+            .multiplyScalar(-dragCoefficient * physics.velocity.lengthSq());
+          acceleration.add(dragForce.divideScalar(mass));
+        }
+
+        // Update velocity (v = v0 + at)
+        physics.velocity.add(acceleration.multiplyScalar(dt));
+
+        // Update position (x = x0 + vt)
+        physics.position.add(physics.velocity.clone().multiplyScalar(dt));
+
         // Check ground collision
         if (physics.position.y <= 0.5) {
           physics.position.y = 0.5;
@@ -576,14 +618,14 @@ export const FreeFallScene = ({
 
         // Calculate energies
         const kineticEnergy = 0.5 * mass * physics.velocity.lengthSq();
-        const potentialEnergy = mass * gravity * Math.max(physics.position.y - 0.5, 0); // Ensure non-negative
+        const potentialEnergy = mass * gravity * (physics.position.y - 0.5);
         const totalEnergy = kineticEnergy + potentialEnergy;
 
         // Update UI with current physics state
         onDataUpdate({
           position: physics.position.clone(),
           velocity: physics.velocity.clone(),
-          acceleration: physics.acceleration.clone(),
+          acceleration: acceleration.clone(),
           time: physics.time,
           kineticEnergy,
           potentialEnergy,
@@ -592,7 +634,9 @@ export const FreeFallScene = ({
       }
 
       // Always update controls and render
-      controls.update();
+      if (controls) {
+        controls.update();
+      }
       rendererRef.current.render(sceneRef.current, cameraRef.current);
       animationFrameRef.current = requestAnimationFrame(animate);
     };
@@ -704,8 +748,7 @@ export const FreeFallScene = ({
       velocity: new Vector3(0, initialVelocity, 0),
       acceleration: new Vector3(0, -gravity, 0),
       stopped: false,
-      time: 0,
-      needsReset: false
+      time: 0
     };
     
     // Reset sphere position if it exists
@@ -738,8 +781,7 @@ export const FreeFallScene = ({
       velocity: new Vector3(0, initialVelocity, 0),
       acceleration: new Vector3(0, -gravity, 0),
       stopped: false,
-      time: 0,
-      needsReset: false
+      time: 0
     };
     
     timeRef.current = 0;
@@ -755,50 +797,6 @@ export const FreeFallScene = ({
       totalEnergy: (0.5 * mass * initialVelocity * initialVelocity) + (mass * gravity * initialHeight)
     });
   }, [initialHeight, initialVelocity, gravity]);
-
-  // Effect to handle simulation reset and play state changes
-  useEffect(() => {
-    console.log('isPlaying changed to:', isPlaying);
-    
-    if (isPlaying) {
-      // When play button is clicked, reset if needed and start animation
-      if (physicsRef.current.stopped) {
-        console.log('Resetting physics for new simulation');
-        physicsRef.current = {
-          position: new Vector3(0, initialHeight, 0),
-          velocity: new Vector3(0, initialVelocity, 0),
-          acceleration: new Vector3(0, -gravity, 0),
-          stopped: false,
-          time: 0,
-          needsReset: false
-        };
-
-        // Reset sphere position
-        if (sphereRef.current) {
-          sphereRef.current.position.copy(physicsRef.current.position);
-        }
-        
-        // Update vectors if they exist
-        if (vectorsRef.current) {
-          vectorsRef.current.velocity.position.copy(physicsRef.current.position);
-          vectorsRef.current.gravityArrow.position.copy(physicsRef.current.position);
-          vectorsRef.current.drag.position.copy(physicsRef.current.position);
-        }
-      }
-    }
-    
-    // Always update UI with current state when play state changes
-    onDataUpdate({
-      position: physicsRef.current.position.clone(),
-      velocity: physicsRef.current.velocity.clone(),
-      acceleration: new Vector3(0, -gravity, 0),
-      time: physicsRef.current.time,
-      kineticEnergy: 0.5 * mass * physicsRef.current.velocity.lengthSq(),
-      potentialEnergy: mass * gravity * (physicsRef.current.position.y - 0.5),
-      totalEnergy: (0.5 * mass * physicsRef.current.velocity.lengthSq()) + 
-                  (mass * gravity * (physicsRef.current.position.y - 0.5))
-    });
-  }, [isPlaying, initialHeight, initialVelocity, gravity, mass]);
 
   // Add console logs to help debug mounting issues
   console.log('FreeFallScene mounting, mountRef exists:', !!mountRef.current);

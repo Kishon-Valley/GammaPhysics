@@ -415,30 +415,33 @@ export const FreeFallScene = ({
         physics.time += dt;
 
         // Calculate forces and update physics
-        const acceleration = new Vector3(0, -gravity, 0);
-
+        const gravityForce = new Vector3(0, -gravity, 0);
+        
+        // Calculate drag force if air resistance is enabled
+        let dragForce = new Vector3(0, 0, 0);
         if (airResistance && physics.velocity.lengthSq() > 0) {
-          const dragForce = physics.velocity.clone()
+          dragForce = physics.velocity.clone()
             .normalize()
             .multiplyScalar(-dragCoefficient * physics.velocity.lengthSq());
-          acceleration.add(dragForce.divideScalar(mass));
         }
+        
+        // Calculate total acceleration (a = F/m)
+        const totalForce = gravityForce.clone().add(dragForce);
+        physics.acceleration.copy(totalForce).divideScalar(mass);
         
         // Log physics state for debugging
         console.log('Physics update:', {
           time: physics.time,
           position: physics.position.y,
           velocity: physics.velocity.y,
-          acceleration: acceleration.y
+          acceleration: physics.acceleration.y
         });
 
         // Update velocity (v = v0 + at)
-        const deltaV = acceleration.clone().multiplyScalar(dt);
-        physics.velocity.add(deltaV);
+        physics.velocity.add(physics.acceleration.clone().multiplyScalar(dt));
 
         // Update position (x = x0 + vt)
-        const deltaP = physics.velocity.clone().multiplyScalar(dt);
-        physics.position.add(deltaP);
+        physics.position.add(physics.velocity.clone().multiplyScalar(dt));
 
         // Check ground collision
         if (physics.position.y <= 0.5) {

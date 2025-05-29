@@ -82,7 +82,12 @@ export const FreeFallSimulation = () => {
   };
 
   const handlePlayPause = () => {
-    setIsPlaying(prev => !prev);
+    // Toggle the isPlaying state and log the change
+    setIsPlaying(prev => {
+      const newState = !prev;
+      console.log('Play button clicked - setting isPlaying to:', newState);
+      return newState;
+    });
   };
 
   const handleControlChange = (name: string, value: number | boolean) => {

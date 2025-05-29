@@ -153,19 +153,25 @@ export const FreeFallScene = ({
       // Always ensure the object is not stopped when play is clicked
       physicsRef.current.stopped = false;
       
+      // Force a small initial velocity if starting from rest to ensure movement
+      if (Math.abs(physicsRef.current.velocity.y) < 0.001) {
+        console.log('Adding small initial downward velocity to ensure movement');
+        physicsRef.current.velocity.y = -0.01; // Small downward velocity
+      }
+      
       // If the object has hit the ground and we're restarting, reset its position
       if (physicsRef.current.position.y <= 0.5) {
         console.log('Ball at ground level, resetting position to:', initialHeight);
         // Reset physics state
         physicsRef.current.position.set(0, initialHeight, 0);
-        physicsRef.current.velocity.set(0, initialVelocity, 0);
+        physicsRef.current.velocity.set(0, initialVelocity || -0.01, 0); // Ensure some velocity
         physicsRef.current.acceleration.set(0, -gravity, 0);
         physicsRef.current.time = 0;
         
         // Update sphere position if it exists
         if (sphereRef.current) {
           console.log('Updating sphere position to:', initialHeight);
-          sphereRef.current.position.copy(physicsRef.current.position);
+          sphereRef.current.position.set(0, initialHeight, 0); // Use direct set instead of copy
         } else {
           console.warn('Sphere ref not available for position update');
         }
@@ -178,6 +184,11 @@ export const FreeFallScene = ({
         }
       } else {
         console.log('Ball not at ground level, current position:', physicsRef.current.position.y);
+        
+        // Force update sphere position to match physics position
+        if (sphereRef.current) {
+          sphereRef.current.position.copy(physicsRef.current.position);
+        }
       }
     } else {
       // When paused, mark as stopped but don't reset position
@@ -615,32 +626,44 @@ export const FreeFallScene = ({
         // Increment time
         physics.time += dt;
 
-        // Calculate forces and update physics
-        const acceleration = new Vector3(0, -gravity, 0);
-
+        // Apply gravity directly - this is the key fix
+        // Always apply a downward acceleration due to gravity
+        const gravityAcceleration = -gravity; // Negative because gravity pulls downward
+        
+        // Calculate total acceleration including air resistance if enabled
+        let totalAcceleration = gravityAcceleration;
+        
         if (airResistance && physics.velocity.lengthSq() > 0) {
-          const dragForce = physics.velocity.clone()
-            .normalize()
-            .multiplyScalar(-dragCoefficient * physics.velocity.lengthSq());
-          acceleration.add(dragForce.divideScalar(mass));
-        }
-
-        // Update velocity (v = v0 + at)
-        const velocityChange = acceleration.clone().multiplyScalar(dt);
-        physics.velocity.add(velocityChange);
-
-        // Update position (x = x0 + vt)
-        const positionChange = physics.velocity.clone().multiplyScalar(dt);
-        physics.position.add(positionChange);
-        
-        // Log significant velocity changes
-        if (Math.abs(velocityChange.y) > 0.1) {
-          console.log('Significant velocity change:', velocityChange.y.toFixed(2));
+          // Calculate drag coefficient based on velocity
+          const dragEffect = (dragCoefficient * physics.velocity.lengthSq()) / mass;
+          // If moving downward, drag opposes gravity (reduces acceleration)
+          // If moving upward, drag adds to gravity (increases downward acceleration)
+          const dragAcceleration = physics.velocity.y > 0 ? -dragEffect : dragEffect;
+          totalAcceleration += dragAcceleration;
         }
         
-        // Log significant position changes
-        if (Math.abs(positionChange.y) > 0.1) {
-          console.log('Significant position change:', positionChange.y.toFixed(2));
+        // Update velocity using the acceleration (v = v0 + at)
+        physics.velocity.y += totalAcceleration * dt;
+        
+        // Update position using the new velocity (x = x0 + vt)
+        physics.position.y += physics.velocity.y * dt;
+        
+        // Force console log for debugging
+        console.log('Physics update:', {
+          time: physics.time.toFixed(2),
+          position: physics.position.y.toFixed(2),
+          velocity: physics.velocity.y.toFixed(2),
+          acceleration: totalAcceleration.toFixed(2)
+        });
+        
+        // Log significant velocity or position changes
+        if (Math.abs(physics.velocity.y) > 0.5) {
+          console.log('Significant velocity:', physics.velocity.y.toFixed(2));
+        }
+        
+        // Log position changes
+        if (Math.floor(physics.time * 10) % 5 === 0) {
+          console.log('Position update:', physics.position.y.toFixed(2));
         }
 
         // Check ground collision
@@ -833,7 +856,8 @@ export const FreeFallScene = ({
     
     // Reset sphere position if it exists
     if (sphereRef.current) {
-      sphereRef.current.position.copy(physicsRef.current.position);
+      console.log('Updating sphere position to match physics:', initialHeight);
+      sphereRef.current.position.set(0, initialHeight, 0);
     }
     
     // Update vectors

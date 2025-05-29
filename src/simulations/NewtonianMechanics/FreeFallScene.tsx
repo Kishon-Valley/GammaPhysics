@@ -140,6 +140,8 @@ export const FreeFallScene = ({
   
   // Watch for changes to isPlaying prop
   useEffect(() => {
+    console.log('isPlaying changed to:', isPlaying);
+    
     if (physicsRef.current) {
       // When play button is pressed, ensure the object is not stopped
       if (isPlaying) {
@@ -157,7 +159,17 @@ export const FreeFallScene = ({
           if (sphereRef.current) {
             sphereRef.current.position.copy(physicsRef.current.position);
           }
+          
+          // Update vectors if they exist
+          if (vectorsRef.current) {
+            vectorsRef.current.velocity.position.copy(physicsRef.current.position);
+            vectorsRef.current.gravityArrow.position.copy(physicsRef.current.position);
+            vectorsRef.current.drag.position.copy(physicsRef.current.position);
+          }
         }
+      } else {
+        // When paused, mark as stopped but don't reset position
+        physicsRef.current.stopped = true;
       }
     }
   }, [isPlaying, initialHeight, initialVelocity, gravity]);
@@ -555,6 +567,16 @@ export const FreeFallScene = ({
         console.log('Animation loop started successfully');
         isAnimatingRef.current = true;
       }
+      
+      // Debug logging for physics state
+      if (isPlaying && !physics.stopped) {
+        console.log('Physics state:', { 
+          position: physics.position.y.toFixed(2),
+          velocity: physics.velocity.y.toFixed(2),
+          isPlaying,
+          stopped: physics.stopped
+        });
+      }
 
       if (isPlaying && !physics.stopped) {
         // Increment time
@@ -571,7 +593,7 @@ export const FreeFallScene = ({
         }
 
         // Update velocity (v = v0 + at)
-        physics.velocity.add(acceleration.multiplyScalar(dt));
+        physics.velocity.add(acceleration.clone().multiplyScalar(dt));
 
         // Update position (x = x0 + vt)
         physics.position.add(physics.velocity.clone().multiplyScalar(dt));

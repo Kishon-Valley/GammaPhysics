@@ -1,5 +1,6 @@
 import { Atom, Menu, X, Book, Brain, Microscope, Heart } from 'lucide-react';
 import { SimulationsPage } from './pages/SimulationsPage';
+import FreeFallAnimation from './components/FreeFallAnimation';
 import { ConceptsPage } from './pages/ConceptsPage';
 import { DefinitionsPage } from './pages/DefinitionsPage';
 import { TopicPage } from './pages/TopicPage';
@@ -46,6 +47,7 @@ export const topics = [
 const navigationItems = [
   { icon: Book, label: 'Concepts', path: '/concepts' },
   { icon: Microscope, label: 'Simulations', path: '/simulations' },
+  { icon: Brain, label: 'Free Fall', path: '/free-fall' },
   { icon: Brain, label: 'Definitions', path: '/definitions' },
 ];
 
@@ -134,6 +136,7 @@ function App() {
               <Route path="/" element={<LandingPage />} />
               <Route path="/concepts" element={<ConceptsPage />} />
               <Route path="/simulations" element={<SimulationsPage />} />
+              <Route path="/free-fall" element={<FreeFallAnimation />} />
               <Route path="/definitions" element={<DefinitionsPage />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/donate" element={<DonatePage />} />

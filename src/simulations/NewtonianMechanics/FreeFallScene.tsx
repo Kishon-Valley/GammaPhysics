@@ -138,50 +138,69 @@ export const FreeFallScene = ({
     }
   }, [initialHeight, initialVelocity, gravity, mass, airResistance, dragCoefficient, onDataUpdate]);
   
-  // Watch for changes to isPlaying prop
+  // Watch for changes to isPlaying prop - this is the main control for the animation
   useEffect(() => {
     console.log('isPlaying changed to:', isPlaying);
     
-    if (physicsRef.current) {
-      // When play button is pressed, ensure the object is not stopped
-      if (isPlaying) {
-        physicsRef.current.stopped = false;
+    if (!physicsRef.current) {
+      console.error('Physics ref is not initialized');
+      return;
+    }
+
+    // When play button is pressed
+    if (isPlaying) {
+      console.log('Starting animation - setting stopped to false');
+      // Always ensure the object is not stopped when play is clicked
+      physicsRef.current.stopped = false;
+      
+      // If the object has hit the ground and we're restarting, reset its position
+      if (physicsRef.current.position.y <= 0.5) {
+        console.log('Ball at ground level, resetting position to:', initialHeight);
+        // Reset physics state
+        physicsRef.current.position.set(0, initialHeight, 0);
+        physicsRef.current.velocity.set(0, initialVelocity, 0);
+        physicsRef.current.acceleration.set(0, -gravity, 0);
+        physicsRef.current.time = 0;
         
-        // If the object has hit the ground and we're restarting, reset its position
-        if (physicsRef.current.position.y <= 0.5) {
-          // Reset physics state
-          physicsRef.current.position.set(0, initialHeight, 0);
-          physicsRef.current.velocity.set(0, initialVelocity, 0);
-          physicsRef.current.acceleration.set(0, -gravity, 0);
-          physicsRef.current.time = 0;
-          
-          // Update sphere position if it exists
-          if (sphereRef.current) {
-            sphereRef.current.position.copy(physicsRef.current.position);
-          }
-          
-          // Update vectors if they exist
-          if (vectorsRef.current) {
-            vectorsRef.current.velocity.position.copy(physicsRef.current.position);
-            vectorsRef.current.gravityArrow.position.copy(physicsRef.current.position);
-            vectorsRef.current.drag.position.copy(physicsRef.current.position);
-          }
+        // Update sphere position if it exists
+        if (sphereRef.current) {
+          console.log('Updating sphere position to:', initialHeight);
+          sphereRef.current.position.copy(physicsRef.current.position);
+        } else {
+          console.warn('Sphere ref not available for position update');
+        }
+        
+        // Update vectors if they exist
+        if (vectorsRef.current) {
+          vectorsRef.current.velocity.position.copy(physicsRef.current.position);
+          vectorsRef.current.gravityArrow.position.copy(physicsRef.current.position);
+          vectorsRef.current.drag.position.copy(physicsRef.current.position);
         }
       } else {
-        // When paused, mark as stopped but don't reset position
-        physicsRef.current.stopped = true;
+        console.log('Ball not at ground level, current position:', physicsRef.current.position.y);
       }
+    } else {
+      // When paused, mark as stopped but don't reset position
+      console.log('Pausing animation - setting stopped to true');
+      physicsRef.current.stopped = true;
     }
   }, [isPlaying, initialHeight, initialVelocity, gravity]);
 
-  // Effect to handle simulation reset and play state changes
+  // Effect to handle simulation reset and play state changes - this is called when isPlaying changes
   useEffect(() => {
-    console.log('isPlaying changed to:', isPlaying);
+    if (!physicsRef.current) {
+      console.error('Physics ref is not initialized in reset effect');
+      return;
+    }
+    
+    console.log('Play state effect triggered, isPlaying:', isPlaying);
     
     if (isPlaying) {
       // When play button is clicked, reset if needed and start animation
       if (physicsRef.current.stopped) {
-        console.log('Resetting physics for new simulation');
+        console.log('Resetting physics for new simulation, initialHeight:', initialHeight);
+        
+        // Create a new physics state object
         physicsRef.current = {
           position: new Vector3(0, initialHeight, 0),
           velocity: new Vector3(0, initialVelocity, 0),
@@ -192,7 +211,10 @@ export const FreeFallScene = ({
 
         // Reset sphere position
         if (sphereRef.current) {
+          console.log('Updating sphere position in reset effect');
           sphereRef.current.position.copy(physicsRef.current.position);
+        } else {
+          console.warn('Sphere ref not available in reset effect');
         }
         
         // Update vectors if they exist
@@ -204,6 +226,7 @@ export const FreeFallScene = ({
       }
     } else {
       // When paused, mark as stopped
+      console.log('Pausing simulation in reset effect');
       physicsRef.current.stopped = true;
     }
     
@@ -553,6 +576,14 @@ export const FreeFallScene = ({
     const animate = () => {
       // Use fixed time step for consistent physics
       const dt = 0.016; // 60 FPS time step
+      
+      // Check if physics ref exists
+      if (!physicsRef.current) {
+        console.error('Physics ref is not initialized in animation loop');
+        animationFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      
       const physics = physicsRef.current;
       
       // Check if all required references exist
@@ -568,9 +599,10 @@ export const FreeFallScene = ({
         isAnimatingRef.current = true;
       }
       
-      // Debug logging for physics state
-      if (isPlaying && !physics.stopped) {
+      // Debug logging for physics state - log every 30 frames to avoid console spam
+      if (isPlaying && !physics.stopped && Math.floor(physics.time * 60) % 30 === 0) {
         console.log('Physics state:', { 
+          time: physics.time.toFixed(2),
           position: physics.position.y.toFixed(2),
           velocity: physics.velocity.y.toFixed(2),
           isPlaying,
@@ -578,6 +610,7 @@ export const FreeFallScene = ({
         });
       }
 
+      // Check if we should update physics (playing and not stopped)
       if (isPlaying && !physics.stopped) {
         // Increment time
         physics.time += dt;
@@ -593,13 +626,26 @@ export const FreeFallScene = ({
         }
 
         // Update velocity (v = v0 + at)
-        physics.velocity.add(acceleration.clone().multiplyScalar(dt));
+        const velocityChange = acceleration.clone().multiplyScalar(dt);
+        physics.velocity.add(velocityChange);
 
         // Update position (x = x0 + vt)
-        physics.position.add(physics.velocity.clone().multiplyScalar(dt));
+        const positionChange = physics.velocity.clone().multiplyScalar(dt);
+        physics.position.add(positionChange);
+        
+        // Log significant velocity changes
+        if (Math.abs(velocityChange.y) > 0.1) {
+          console.log('Significant velocity change:', velocityChange.y.toFixed(2));
+        }
+        
+        // Log significant position changes
+        if (Math.abs(positionChange.y) > 0.1) {
+          console.log('Significant position change:', positionChange.y.toFixed(2));
+        }
 
         // Check ground collision
         if (physics.position.y <= 0.5) {
+          console.log('Ground collision detected');
           physics.position.y = 0.5;
           physics.velocity.set(0, 0, 0);
           physics.stopped = true;
@@ -607,6 +653,10 @@ export const FreeFallScene = ({
 
         // Update sphere position
         if (sphereRef.current) {
+          // Log sphere position update
+          if (Math.floor(physics.time * 60) % 30 === 0) {
+            console.log('Updating sphere position to:', physics.position.y.toFixed(2));
+          }
           sphereRef.current.position.copy(physics.position);
           
           // Update force vectors if they exist
@@ -663,11 +713,14 @@ export const FreeFallScene = ({
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
-    // Start animation loop
+    // Start animation loop with initial physics state
+    console.log('Starting animation loop with initial state');
+    
+    // Initialize physics state
     const state = {
-      position: positionRef.current,
-      velocity: velocityRef.current,
-      acceleration: accelerationRef.current,
+      position: new Vector3(0, initialHeight, 0),
+      velocity: new Vector3(0, initialVelocity, 0),
+      acceleration: new Vector3(0, -gravity, 0),
       time: timeStep,
       mass,
       gravity,
@@ -675,7 +728,10 @@ export const FreeFallScene = ({
       dragCoefficient
     };
 
+    // Calculate initial physics state
     const physicsState = calculateFreeFall(state);
+    
+    // Update UI with initial state
     onDataUpdate({
       position: physicsState.position,
       velocity: physicsState.velocity,
@@ -686,6 +742,8 @@ export const FreeFallScene = ({
       totalEnergy: physicsState.totalEnergy
     });
 
+    // Start the animation loop
+    console.log('Starting animation loop');
     animate();
 
     // Handle resize with more robust dimension detection

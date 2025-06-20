@@ -46,7 +46,7 @@ export const topics = [
 
 const navigationItems = [
   { icon: Book, label: 'Concepts', path: '/concepts' },
-  { icon: Microscope, label: 'Simulations', path: '/simulations' },
+  { icon: Microscope, label: 'Simulations', path: 'https://animations.gammaphysics.app/', external: true },
   { icon: Brain, label: 'Free Fall', path: '/free-fall' },
   { icon: Brain, label: 'Definitions', path: '/definitions' },
 ];
@@ -135,7 +135,7 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/concepts" element={<ConceptsPage />} />
-              <Route path="/simulations" element={<SimulationsPage />} />
+
               <Route path="/free-fall" element={<FreeFallAnimation />} />
               <Route path="/definitions" element={<DefinitionsPage />} />
               <Route path="/contact" element={<ContactPage />} />

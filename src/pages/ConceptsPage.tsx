@@ -816,10 +816,10 @@ const ConceptCard: React.FC<ConceptCardProps> = ({ concept, isExpanded, onToggle
               <div className="p-4 mb-4 bg-blue-50 rounded-lg">
                 <h4 className="mb-2 text-sm font-medium text-blue-900">Quick Start Guide:</h4>
                 <p className="text-blue-700">Start with understanding {topic.keyPoints[0].toLowerCase()}</p>
-                <Link to={`/simulations/${concept.id}`} className="inline-flex items-center mt-2 text-blue-600 hover:text-blue-700">
+                <a href={`https://animations.gammaphysics.app/`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center mt-2 text-blue-600 hover:text-blue-700">
                   <PlayCircle className="mr-1 w-4 h-4" />
                   Try Interactive Simulation
-                </Link>
+                </a>
               </div>
 
               {/* Real World Applications */}
@@ -853,10 +853,10 @@ const ConceptCard: React.FC<ConceptCardProps> = ({ concept, isExpanded, onToggle
                     <Book className="mr-1 w-4 h-4" />
                     Definitions
                   </Link>
-                  <Link to={`/simulations/${concept.id}`} className="inline-flex items-center px-3 py-1 text-sm text-gray-700 bg-white rounded-full hover:bg-gray-50">
+                  <a href={`https://animations.gammaphysics.app/`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-3 py-1 text-sm text-gray-700 bg-white rounded-full hover:bg-gray-50">
                     <Microscope className="mr-1 w-4 h-4" />
                     Simulations
-                  </Link>
+                  </a>
                   <Link to={`/practice/${concept.id}`} className="inline-flex items-center px-3 py-1 text-sm text-gray-700 bg-white rounded-full hover:bg-gray-50">
                     <Brain className="mr-1 w-4 h-4" />
                     Practice

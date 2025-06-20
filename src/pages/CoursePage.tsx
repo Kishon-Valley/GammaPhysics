@@ -93,35 +93,41 @@ export function CoursePage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           {courseId === 'ph1a' ? (
             <>
-              <Link
-                to="/simulations/pendulum"
+              <a
+                href="https://animations.gammaphysics.app/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-4 bg-white rounded-lg shadow-md transition-shadow hover:shadow-lg"
               >
                 <h3 className="mb-2 text-lg font-medium">Simple Pendulum</h3>
                 <p className="text-gray-600">
                   Explore periodic motion and oscillations with an interactive pendulum simulation.
                 </p>
-              </Link>
-              <Link
-                to="/simulations/spring"
+              </a>
+              <a
+                href="https://animations.gammaphysics.app/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-4 bg-white rounded-lg shadow-md transition-shadow hover:shadow-lg"
               >
-                <h3 className="mb-2 text-lg font-medium">Spring Oscillation</h3>
+                <h3 className="mb-2 text-lg font-medium">Free Fall</h3>
                 <p className="text-gray-600">
-                  Study Hooke's law and harmonic motion with a spring-mass system.
+                  Simulate the motion of an object in free fall and analyze its velocity and acceleration.
                 </p>
-              </Link>
+              </a>
             </>
           ) : courseId === 'ph1b' ? (
-            <Link
-              to="/simulations/wave"
+            <a
+              href="https://animations.gammaphysics.app/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="p-4 bg-white rounded-lg shadow-md transition-shadow hover:shadow-lg"
             >
               <h3 className="mb-2 text-lg font-medium">Wave Propagation</h3>
               <p className="text-gray-600">
                 Visualize wave behavior and understand wave mechanics principles.
               </p>
-            </Link>
+            </a>
           ) : (
             <div className="p-4 bg-gray-100 rounded-lg">
               <p className="text-gray-600">

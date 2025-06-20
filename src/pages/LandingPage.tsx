@@ -100,7 +100,7 @@ export function LandingPage() {
   const navigationLinks = [
     { name: 'Home', path: '/' },
     { name: 'Concepts', path: '/concepts' },
-    { name: 'Simulations', path: '/simulations' },
+    { name: 'Simulations', path: 'https://animations.gammaphysics.app/', external: true },
     { name: 'Definitions', path: '/definitions' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -118,13 +118,25 @@ export function LandingPage() {
             {/* Desktop Navigation */}
             <div className="hidden items-center space-x-8 md:flex">
               {navigationLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="text-gray-600 transition-colors hover:text-blue-600"
-                >
-                  {link.name}
-                </Link>
+                link.external ? (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 transition-colors hover:text-blue-600"
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="text-gray-600 transition-colors hover:text-blue-600"
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
               <Link to="/donate">
                 <button className="flex items-center px-4 py-2 text-white bg-pink-600 rounded-full transition-colors hover:bg-pink-700">
@@ -153,14 +165,27 @@ export function LandingPage() {
           >
             <div className="px-4 pt-2 pb-3 space-y-1">
               {navigationLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  className="block px-3 py-2 text-gray-600 transition-colors hover:text-blue-600"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
+                link.external ? (
+                  <a
+                    key={link.path}
+                    href={link.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-3 py-2 text-gray-600 transition-colors hover:text-blue-600"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    className="block px-3 py-2 text-gray-600 transition-colors hover:text-blue-600"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
               <Link to="/donate" onClick={() => setIsMenuOpen(false)}>
                 <button className="flex justify-center items-center px-4 py-2 mt-2 w-full text-white bg-pink-600 rounded-full transition-colors hover:bg-pink-700">
@@ -210,11 +235,11 @@ export function LandingPage() {
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </button>
                 </Link>
-                <Link to="/simulations">
+                <a href="https://animations.gammaphysics.app/" target="_blank" rel="noopener noreferrer">
                   <button className="px-8 py-3 text-blue-600 bg-white rounded-full border-2 border-blue-600 transition-colors hover:bg-blue-50">
                     Try Simulations
                   </button>
-                </Link>
+                </a>
               </motion.div>
             </div>
           </div>

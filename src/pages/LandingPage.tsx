@@ -329,10 +329,10 @@ export function LandingPage() {
 
         {/* CTA Section */}
         <div 
-          className="relative bg-cover bg-center"
+          className="relative bg-contain bg-no-repeat bg-center"
           style={{ backgroundImage: "url('/images/GammaphysicsLogo.jpg')" }}
         >
-          <div className="absolute inset-0 bg-black opacity-60"></div>
+          <div className="absolute inset-0 bg-black opacity-70"></div>
           <div className="relative px-4 py-24 mx-auto max-w-7xl text-center sm:px-6 lg:px-8">
             <h2 className="mb-8 text-4xl font-extrabold text-white tracking-tight drop-shadow-sm">Ready to Start Learning?</h2>
             <div className="flex gap-4 justify-center">
@@ -348,13 +348,13 @@ export function LandingPage() {
               </Link>
             </div>
             <div className="mt-12">
-              <span className="text-white text-lg font-medium">
+              <span className="text-sm text-gray-300">
                 built by{' '}
                 <a
                   href="https://lmtsoftware.gammaphysics.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="underline text-blue-300 hover:text-blue-400"
+                  className="underline text-blue-400 hover:text-blue-300"
                 >
                   lmtsoftware
                 </a>

@@ -355,7 +355,7 @@ export function LandingPage() {
                     href="https://lmtsoftware.gammaphysics.app/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 text-sm font-semibold tracking-wider text-white uppercase bg-red-500 underline hover:bg-red-600"
+                    className="px-4 py-2 text-sm font-semibold tracking-wider text-white uppercase bg-pink-500 underline hover:bg-pink-600"
                   >
                     lmtsoftware
                   </a>

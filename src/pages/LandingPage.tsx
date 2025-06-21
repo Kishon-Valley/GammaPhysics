@@ -333,9 +333,9 @@ export function LandingPage() {
           style={{ backgroundImage: "url('/images/GammaphysicsLogo.jpg')" }}
         >
           <div className="absolute inset-0 bg-black opacity-70"></div>
-          <div className="relative px-4 py-24 mx-auto max-w-7xl text-center sm:px-6 lg:px-8">
+          <div className="relative px-4 py-16 mx-auto max-w-7xl text-center sm:px-6 lg:px-8">
             <h2 className="mb-8 text-4xl font-extrabold text-white tracking-tight drop-shadow-sm">Ready to Start Learning?</h2>
-            <div className="flex gap-4 justify-center">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4">
               <Link to="/concepts">
                 <button className="px-8 py-3 text-blue-600 bg-white rounded-full transition-colors hover:bg-blue-50">
                   Start Learning
@@ -346,19 +346,19 @@ export function LandingPage() {
                   Contact Us
                 </button>
               </Link>
-            </div>
-            <div className="mt-12">
-              <span className="text-sm text-gray-300">
-                built by{' '}
-                <a
-                  href="https://lmtsoftware.gammaphysics.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline text-blue-400 hover:text-blue-300"
-                >
-                  lmtsoftware
-                </a>
-              </span>
+              <div className="mt-6 md:mt-0 md:ml-6">
+                <span className="text-sm font-semibold tracking-wider uppercase text-gray-300">
+                  built by{' '}
+                  <a
+                    href="https://lmtsoftware.gammaphysics.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-blue-400 hover:text-blue-300"
+                  >
+                    lmtsoftware
+                  </a>
+                </span>
+              </div>
             </div>
           </div>
         </div>

@@ -329,7 +329,7 @@ export function LandingPage() {
 
         {/* CTA Section */}
         <div 
-          className="relative bg-contain bg-no-repeat bg-center"
+          className="relative bg-contain bg-no-repeat bg-center bg-black"
           style={{ backgroundImage: "url('/images/GammaphysicsLogo.jpg')" }}
         >
           <div className="absolute inset-0 bg-black opacity-70"></div>

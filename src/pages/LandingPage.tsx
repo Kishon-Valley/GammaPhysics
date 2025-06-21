@@ -347,17 +347,19 @@ export function LandingPage() {
                 </button>
               </Link>
               <div className="mt-6 md:mt-0 md:ml-6">
-                <span className="text-sm font-semibold tracking-wider uppercase text-gray-300">
-                  built by{' '}
-                  <a
-                    href="https://lmtsoftware.gammaphysics.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-blue-400 hover:text-blue-300"
-                  >
-                    lmtsoftware
-                  </a>
-                </span>
+                <div className="inline-block p-3 border-2 border-red-500 rounded-full">
+                  <span className="text-sm font-semibold tracking-wider uppercase text-gray-300">
+                    built by{' '}
+                    <a
+                      href="https://lmtsoftware.gammaphysics.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline text-blue-400 hover:text-blue-300"
+                    >
+                      lmtsoftware
+                    </a>
+                  </span>
+                </div>
               </div>
             </div>
           </div>

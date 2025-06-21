@@ -63,7 +63,7 @@ function App() {
               <div className="flex justify-between items-center h-16">
                 <div className="flex items-center">
                   <Link to="/" className="flex items-center">
-                    <img src="/images/GammaphysicsLogo.jpg" alt="GammaPhysics Logo" className="w-8 h-8" />
+                    <img src="/images/GammaphysicsLogo.jpg" alt="GammaPhysics Logo" className="w-8 h-8 rounded-full" />
                     <span className="ml-2 text-xl font-bold">GammaPhysics</span>
                   </Link>
                 </div>

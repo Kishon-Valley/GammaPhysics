@@ -1,4 +1,4 @@
-import { Atom, Menu, X, Book, Brain, Microscope, Heart } from 'lucide-react';
+import { Menu, X, Book, Brain, Microscope, Heart } from 'lucide-react';
 import { SimulationsPage } from './pages/SimulationsPage';
 import FreeFallAnimation from './components/FreeFallAnimation';
 import { ConceptsPage } from './pages/ConceptsPage';
@@ -46,7 +46,7 @@ export const topics = [
 
 const navigationItems = [
   { icon: Book, label: 'Concepts', path: '/concepts' },
-  { icon: Microscope, label: 'Simulations', path: 'https://animations.gammaphysics.app/', external: true },
+  { icon: Microscope, label: 'Simulations', path: '/simulations' },
   { icon: Brain, label: 'Free Fall', path: '/free-fall' },
   { icon: Brain, label: 'Definitions', path: '/definitions' },
 ];
@@ -63,7 +63,7 @@ function App() {
               <div className="flex justify-between items-center h-16">
                 <div className="flex items-center">
                   <Link to="/" className="flex items-center">
-                    <Atom className="w-8 h-8 text-blue-600" />
+                    <img src="/images/GammaphysicsLogo.jpg" alt="GammaPhysics Logo" className="w-8 h-8" />
                     <span className="ml-2 text-xl font-bold">GammaPhysics</span>
                   </Link>
                 </div>
@@ -139,7 +139,8 @@ function App() {
               <Route path="/free-fall" element={<FreeFallAnimation />} />
               <Route path="/definitions" element={<DefinitionsPage />} />
               <Route path="/contact" element={<ContactPage />} />
-              <Route path="/donate" element={<DonatePage />} />
+                            <Route path="/donate" element={<DonatePage />} />
+              <Route path="/simulations" element={<SimulationsPage />} />
               <Route path="/topic/:id" element={<TopicPage />} />
               
               {/* Classical Mechanics Routes */}

@@ -113,7 +113,10 @@ export function LandingPage() {
       <nav className="fixed top-0 right-0 left-0 z-50 shadow-sm backdrop-blur-sm bg-white/80">
         <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link to="/" className="text-2xl font-bold text-blue-600">GammaPhysics</Link>
+            <Link to="/" className="flex items-center text-2xl font-bold text-blue-600">
+              <img src="/images/GammaphysicsLogo.jpg" alt="GammaPhysics Logo" className="w-8 h-8 mr-2" />
+              GammaPhysics
+            </Link>
             
             {/* Desktop Navigation */}
             <div className="hidden items-center space-x-8 md:flex">

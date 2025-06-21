@@ -19,6 +19,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { ThemeProvider } from './contexts/ThemeContext';
 import { ThemeToggle } from './components/ThemeToggle';
+import Footer from './components/Footer';
 
 export const topics = [
   {
@@ -207,6 +208,7 @@ function App() {
               <Route path="/content/electromagnetism" element={<ElectromagnetismContents />} />
             </Routes>
           </main>
+          <Footer />
         </div>
       </Router>
     </ThemeProvider>

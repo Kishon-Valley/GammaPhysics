@@ -1,4 +1,4 @@
-[&larr; Back to Kinematics](/classical-mechanics/kinematics) | [&larr; Back to Classical Mechanics](/classical-mechanics)
+ [&larr; Back to Classical Mechanics](/classical-mechanics)
 
 
 ### INTRODUCTION

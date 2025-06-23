@@ -1,4 +1,4 @@
-[← Back to Kinematics](/classical-mechanics/kinematics) | [← Back to Classical Mechanics](/classical-mechanics)
+ [← Back to Classical Mechanics](/classical-mechanics)
 
 # Motion in Multiple Dimensions
 

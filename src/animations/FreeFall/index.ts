@@ -1,1 +1,1 @@
-export { default as FreeFallAnimation } from './FreeFallAnimation';
+export { default as FreeFallAnimation } from '../../components/FreeFallAnimation';

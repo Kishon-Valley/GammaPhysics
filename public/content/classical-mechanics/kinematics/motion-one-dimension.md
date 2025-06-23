@@ -1,4 +1,4 @@
-[← Back to Kinematics](/classical-mechanics/kinematics) | [← Back to Classical Mechanics](/classical-mechanics)
+ [← Back to Classical Mechanics](/classical-mechanics)
 
 ## Introduction
 Motion in one dimension is the study of how objects move along a straight line. Whether it's a car driving down a straight road, an elevator moving up and down, or a ball falling to the ground, understanding this basic type of motion is essential for grasping more complex ideas in physics. This note will explain one-dimensional motion in simple terms, with clear examples and practical questions to help you understand the concepts.

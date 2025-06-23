@@ -89,7 +89,6 @@ const ClassicalMechanicsStudyPage: React.FC = () => {
 
   return (
     <div className="p-4 mx-auto max-w-4xl">
-      {/* ← Back to Classical Mechanics link retained. Removed ← Back to Kinematics as requested. */}
       <Link to="/classical-mechanics" className="inline-block mb-4 text-blue-600 hover:underline">
         ← Back to Classical Mechanics
       </Link>

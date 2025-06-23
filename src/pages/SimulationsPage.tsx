@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 export const SimulationsPage = () => {
   useEffect(() => {
     // Open the external animations site in a new tab
-    window.open('https://all-animations-x.vercel.app/', '_blank', 'noopener,noreferrer');
+    window.open('https://www.gammaphysics.app/simulations', '_blank', 'noopener,noreferrer');
     
     // No need to redirect, user stays on current page
   }, []);
@@ -17,7 +17,7 @@ export const SimulationsPage = () => {
       </p>
       
       <a 
-        href="https://all-animations-x.vercel.app/" 
+        href="https://www.gammaphysics.app/simulations" 
         target="_blank" 
         rel="noopener noreferrer"
         className="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"

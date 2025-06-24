@@ -318,4 +318,4 @@ The negative sign indicates that the car is decelerating.
 
 ---
 
-[← Back to Kinematics](/classical-mechanics/kinematics) | [← Back to Classical Mechanics](/classical-mechanics)
+ [← Back to Classical Mechanics](/classical-mechanics)
